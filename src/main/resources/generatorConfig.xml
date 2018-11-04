@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 数据库配置文件 -->
+    <properties resource="jdbc.properties" />
+    <classPathEntry location="E:\maven\repository\mysql\mysql-connector-java\5.1.37\mysql-connector-java-5.1.37.jar"/>
+    <context id="context1">
+        <property name="javaFileEncoding" value="UTF-8" />
+        <property name="autoDelimitKeywords" value="true" />
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+
+        <!-- 注释生成规则 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
+
+        <!-- 数据库类型与java类型转换 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 数据库的生成配置 -->
+        <javaModelGenerator targetPackage="lab.c505.entity" targetProject="E:\IDEAProjects\MedicalTracking\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="E:\IDEAProjects\MedicalTracking\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="lab.c505.dao" targetProject="E:\IDEAProjects\MedicalTracking\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 以上部分配置固定，无需改动，此处往下开始项目设置 -->
+
+        <!-- user表 -->
+        <table tableName="user" domainObjectName="User"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- hospital表 -->
+        <table tableName="hospital" domainObjectName="Hospital"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- patient表 -->
+        <table tableName="patient" domainObjectName="Patient"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- doctor表 -->
+        <table tableName="doctor" domainObjectName="Doctor"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_admission_record表 -->
+        <table tableName="t_admission_record" domainObjectName="AdmissionRecord"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_risk_factor表 -->
+        <table tableName="t_risk_factor" domainObjectName="RiskFactor"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_past_medical_history表 -->
+        <table tableName="t_past_medical_history" domainObjectName="PastMedicalHistory"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_assessment表 -->
+        <table tableName="t_assessment" domainObjectName="Assessment"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_bodycomp表 -->
+        <table tableName="t_bodycomp" domainObjectName="BodyComp"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_exercise_cardiopulmonary表 -->
+        <table tableName="t_exercise_cardiopulmonary" domainObjectName="ExerciseCardiopulmonary"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_noninvasive_cardiac_func表 -->
+        <table tableName="t_noninvasive_cardiac_func" domainObjectName="NoninvasiveCardiacFunc"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_walk_test表 -->
+        <table tableName="t_walk" domainObjectName="Walk"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_nutritional_prescription表 -->
+        <table tableName="t_nutritional_prescription" domainObjectName="NutritionalPrescription"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_breath_train表 -->
+        <table tableName="t_breath_train" domainObjectName="BreathTrain"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_aerobic_train表 -->
+        <table tableName="t_aerobic_train" domainObjectName="AerobicTrain"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_bike_train表 -->
+        <table tableName="t_bike_train" domainObjectName="BikeTrain"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_treadmill_train表 -->
+        <table tableName="t_treadmill_train" domainObjectName="TreadmillTrain"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_resistance_train表 -->
+        <table tableName="t_resistance_train" domainObjectName="ResistanceTrain"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_treadmill_elastic_belt表 -->
+        <table tableName="t_treadmill_elastic_belt" domainObjectName="TreadmillElasticBelt"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_dumbbell_elastic_belt表 -->
+        <table tableName="t_dumbbell_elastic_belt" domainObjectName="DumbbellElasticBelt"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_resistance_training_instrument表 -->
+        <table tableName="t_resistance_training_instrument" domainObjectName="ResistanceTrainingInstrument"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_flexibility_train表 -->
+        <table tableName="t_flexibility_train" domainObjectName="FlexibilityTrain"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_external_counterpulsation表 -->
+        <table tableName="t_external_counterpulsation" domainObjectName="ExternalCounterpulsation"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_train_item表 -->
+        <table tableName="t_train_item" domainObjectName="TrainItem"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+
+
+        <!-- t_colour_sonography表 -->
+        <table tableName="t_colour_sonography" domainObjectName="ColourSonography"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_pci表 -->
+        <table tableName="t_pci" domainObjectName="Pci"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_vascular_complication表 -->
+        <table tableName="t_vascular_complication" domainObjectName="VascularComplication"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_pci_score表 -->
+        <table tableName="t_pci_score" domainObjectName="PciScore"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_follow_schedule表 -->
+        <table tableName="t_follow_schedule" domainObjectName="FollowSchedule"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_follow_record表 -->
+        <table tableName="t_follow_record" domainObjectName="FollowRecord"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_medical_history表 -->
+        <table tableName="t_medical_history" domainObjectName="MedicalHistory"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_physical_exam表 -->
+        <table tableName="t_physical_exam" domainObjectName="PhysicalExam"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_medication_regimen表 -->
+        <table tableName="t_medication_regimen" domainObjectName="MedicationRegimen"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_risk_factors表 -->
+        <table tableName="t_risk_factors" domainObjectName="RiskFactors"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_adverse_reaction表 -->
+        <table tableName="t_adverse_reaction" domainObjectName="AdverseReaction"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_routine_blood表 -->
+        <table tableName="t_routine_blood" domainObjectName="RoutineBlood"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_liver_kidney表 -->
+        <table tableName="t_liver_kidney" domainObjectName="LiverKidney"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_blood_lipid表 -->
+        <table tableName="t_blood_lipid" domainObjectName="BloodLipid"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_blood_coagulation表 -->
+        <table tableName="t_blood_coagulation" domainObjectName="BloodCoagulation"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+        <!-- t_other_exam表 -->
+        <table tableName="t_other_exam" domainObjectName="OtherExam"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+        </table>
+
+    </context>
+</generatorConfiguration>
