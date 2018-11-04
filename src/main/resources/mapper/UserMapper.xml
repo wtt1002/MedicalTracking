@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.User" >
+    <id column="user_id" property="user_id" jdbcType="BIGINT" />
+    <result column="user_account" property="user_account" jdbcType="VARCHAR" />
+    <result column="user_phone" property="user_phone" jdbcType="VARCHAR" />
+    <result column="user_psw" property="user_psw" jdbcType="VARCHAR" />
+    <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+    <result column="user_type" property="user_type" jdbcType="TINYINT" />
+    <result column="user_status" property="user_status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_account, user_phone, user_psw, user_name, user_type, user_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.User" >
+    insert into user (user_id, user_account, user_phone, 
+      user_psw, user_name, user_type, 
+      user_status)
+    values (#{user_id,jdbcType=BIGINT}, #{user_account,jdbcType=VARCHAR}, #{user_phone,jdbcType=VARCHAR}, 
+      #{user_psw,jdbcType=VARCHAR}, #{user_name,jdbcType=VARCHAR}, #{user_type,jdbcType=TINYINT}, 
+      #{user_status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        user_id,
+      </if>
+      <if test="user_account != null" >
+        user_account,
+      </if>
+      <if test="user_phone != null" >
+        user_phone,
+      </if>
+      <if test="user_psw != null" >
+        user_psw,
+      </if>
+      <if test="user_name != null" >
+        user_name,
+      </if>
+      <if test="user_type != null" >
+        user_type,
+      </if>
+      <if test="user_status != null" >
+        user_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="user_account != null" >
+        #{user_account,jdbcType=VARCHAR},
+      </if>
+      <if test="user_phone != null" >
+        #{user_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="user_psw != null" >
+        #{user_psw,jdbcType=VARCHAR},
+      </if>
+      <if test="user_name != null" >
+        #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_type != null" >
+        #{user_type,jdbcType=TINYINT},
+      </if>
+      <if test="user_status != null" >
+        #{user_status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.User" >
+    update user
+    <set >
+      <if test="user_account != null" >
+        user_account = #{user_account,jdbcType=VARCHAR},
+      </if>
+      <if test="user_phone != null" >
+        user_phone = #{user_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="user_psw != null" >
+        user_psw = #{user_psw,jdbcType=VARCHAR},
+      </if>
+      <if test="user_name != null" >
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_type != null" >
+        user_type = #{user_type,jdbcType=TINYINT},
+      </if>
+      <if test="user_status != null" >
+        user_status = #{user_status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.User" >
+    update user
+    set user_account = #{user_account,jdbcType=VARCHAR},
+      user_phone = #{user_phone,jdbcType=VARCHAR},
+      user_psw = #{user_psw,jdbcType=VARCHAR},
+      user_name = #{user_name,jdbcType=VARCHAR},
+      user_type = #{user_type,jdbcType=TINYINT},
+      user_status = #{user_status,jdbcType=TINYINT}
+    where user_id = #{user_id,jdbcType=BIGINT}
+  </update>
+</mapper>

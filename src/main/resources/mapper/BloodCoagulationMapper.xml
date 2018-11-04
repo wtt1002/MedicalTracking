@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.BloodCoagulationMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.BloodCoagulation" >
+    <id column="bc_id" property="bc_id" jdbcType="BIGINT" />
+    <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="r_type" property="r_type" jdbcType="TINYINT" />
+    <result column="exam_time" property="exam_time" jdbcType="DATE" />
+    <result column="inr" property="inr" jdbcType="REAL" />
+    <result column="d_dimer" property="d_dimer" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bc_id, patient_id, fr_id, ar_id, r_type, exam_time, inr, d_dimer
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_blood_coagulation
+    where bc_id = #{bc_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_blood_coagulation
+    where bc_id = #{bc_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.BloodCoagulation" >
+    insert into t_blood_coagulation (bc_id, patient_id, fr_id, 
+      ar_id, r_type, exam_time, 
+      inr, d_dimer)
+    values (#{bc_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{r_type,jdbcType=TINYINT}, #{exam_time,jdbcType=DATE}, 
+      #{inr,jdbcType=REAL}, #{d_dimer,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.BloodCoagulation" >
+    insert into t_blood_coagulation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bc_id != null" >
+        bc_id,
+      </if>
+      <if test="patient_id != null" >
+        patient_id,
+      </if>
+      <if test="fr_id != null" >
+        fr_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="r_type != null" >
+        r_type,
+      </if>
+      <if test="exam_time != null" >
+        exam_time,
+      </if>
+      <if test="inr != null" >
+        inr,
+      </if>
+      <if test="d_dimer != null" >
+        d_dimer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bc_id != null" >
+        #{bc_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null" >
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null" >
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="r_type != null" >
+        #{r_type,jdbcType=TINYINT},
+      </if>
+      <if test="exam_time != null" >
+        #{exam_time,jdbcType=DATE},
+      </if>
+      <if test="inr != null" >
+        #{inr,jdbcType=REAL},
+      </if>
+      <if test="d_dimer != null" >
+        #{d_dimer,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BloodCoagulation" >
+    update t_blood_coagulation
+    <set >
+      <if test="patient_id != null" >
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null" >
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="r_type != null" >
+        r_type = #{r_type,jdbcType=TINYINT},
+      </if>
+      <if test="exam_time != null" >
+        exam_time = #{exam_time,jdbcType=DATE},
+      </if>
+      <if test="inr != null" >
+        inr = #{inr,jdbcType=REAL},
+      </if>
+      <if test="d_dimer != null" >
+        d_dimer = #{d_dimer,jdbcType=REAL},
+      </if>
+    </set>
+    where bc_id = #{bc_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BloodCoagulation" >
+    update t_blood_coagulation
+    set patient_id = #{patient_id,jdbcType=BIGINT},
+      fr_id = #{fr_id,jdbcType=BIGINT},
+      ar_id = #{ar_id,jdbcType=BIGINT},
+      r_type = #{r_type,jdbcType=TINYINT},
+      exam_time = #{exam_time,jdbcType=DATE},
+      inr = #{inr,jdbcType=REAL},
+      d_dimer = #{d_dimer,jdbcType=REAL}
+    where bc_id = #{bc_id,jdbcType=BIGINT}
+  </update>
+</mapper>

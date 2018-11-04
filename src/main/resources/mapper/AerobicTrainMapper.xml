@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.AerobicTrainMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.AerobicTrain" >
+    <id column="at_id" property="at_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="strength" property="strength" jdbcType="INTEGER" />
+    <result column="train_time" property="train_time" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    at_id, ar_id, strength, train_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_aerobic_train
+    where at_id = #{at_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_aerobic_train
+    where at_id = #{at_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.AerobicTrain" >
+    insert into t_aerobic_train (at_id, ar_id, strength, 
+      train_time, remark)
+    values (#{at_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{strength,jdbcType=INTEGER}, 
+      #{train_time,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.AerobicTrain" >
+    insert into t_aerobic_train
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="at_id != null" >
+        at_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="strength != null" >
+        strength,
+      </if>
+      <if test="train_time != null" >
+        train_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="at_id != null" >
+        #{at_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="strength != null" >
+        #{strength,jdbcType=INTEGER},
+      </if>
+      <if test="train_time != null" >
+        #{train_time,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AerobicTrain" >
+    update t_aerobic_train
+    <set >
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="strength != null" >
+        strength = #{strength,jdbcType=INTEGER},
+      </if>
+      <if test="train_time != null" >
+        train_time = #{train_time,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where at_id = #{at_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AerobicTrain" >
+    update t_aerobic_train
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      strength = #{strength,jdbcType=INTEGER},
+      train_time = #{train_time,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where at_id = #{at_id,jdbcType=BIGINT}
+  </update>
+</mapper>

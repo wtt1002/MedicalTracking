@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.MedicationRegimenMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.MedicationRegimen" >
+    <id column="mr_id" property="mr_id" jdbcType="BIGINT" />
+    <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="r_type" property="r_type" jdbcType="TINYINT" />
+    <result column="drug_name" property="drug_name" jdbcType="VARCHAR" />
+    <result column="drug_num" property="drug_num" jdbcType="VARCHAR" />
+    <result column="drug_time" property="drug_time" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mr_id, patient_id, fr_id, ar_id, r_type, drug_name, drug_num, drug_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_medication_regimen
+    where mr_id = #{mr_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_medication_regimen
+    where mr_id = #{mr_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.MedicationRegimen" >
+    insert into t_medication_regimen (mr_id, patient_id, fr_id, 
+      ar_id, r_type, drug_name, 
+      drug_num, drug_time, remark
+      )
+    values (#{mr_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{r_type,jdbcType=TINYINT}, #{drug_name,jdbcType=VARCHAR}, 
+      #{drug_num,jdbcType=VARCHAR}, #{drug_time,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.MedicationRegimen" >
+    insert into t_medication_regimen
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mr_id != null" >
+        mr_id,
+      </if>
+      <if test="patient_id != null" >
+        patient_id,
+      </if>
+      <if test="fr_id != null" >
+        fr_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="r_type != null" >
+        r_type,
+      </if>
+      <if test="drug_name != null" >
+        drug_name,
+      </if>
+      <if test="drug_num != null" >
+        drug_num,
+      </if>
+      <if test="drug_time != null" >
+        drug_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mr_id != null" >
+        #{mr_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null" >
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null" >
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="r_type != null" >
+        #{r_type,jdbcType=TINYINT},
+      </if>
+      <if test="drug_name != null" >
+        #{drug_name,jdbcType=VARCHAR},
+      </if>
+      <if test="drug_num != null" >
+        #{drug_num,jdbcType=VARCHAR},
+      </if>
+      <if test="drug_time != null" >
+        #{drug_time,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.MedicationRegimen" >
+    update t_medication_regimen
+    <set >
+      <if test="patient_id != null" >
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null" >
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="r_type != null" >
+        r_type = #{r_type,jdbcType=TINYINT},
+      </if>
+      <if test="drug_name != null" >
+        drug_name = #{drug_name,jdbcType=VARCHAR},
+      </if>
+      <if test="drug_num != null" >
+        drug_num = #{drug_num,jdbcType=VARCHAR},
+      </if>
+      <if test="drug_time != null" >
+        drug_time = #{drug_time,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mr_id = #{mr_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.MedicationRegimen" >
+    update t_medication_regimen
+    set patient_id = #{patient_id,jdbcType=BIGINT},
+      fr_id = #{fr_id,jdbcType=BIGINT},
+      ar_id = #{ar_id,jdbcType=BIGINT},
+      r_type = #{r_type,jdbcType=TINYINT},
+      drug_name = #{drug_name,jdbcType=VARCHAR},
+      drug_num = #{drug_num,jdbcType=VARCHAR},
+      drug_time = #{drug_time,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where mr_id = #{mr_id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.VascularComplicationMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.VascularComplication" >
+    <id column="vcp_id" property="vcp_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="hemorrhage" property="hemorrhage" jdbcType="TINYINT" />
+    <result column="hematoma" property="hematoma" jdbcType="TINYINT" />
+    <result column="pseudoaneurysm" property="pseudoaneurysm" jdbcType="TINYINT" />
+    <result column="av_fistula" property="av_fistula" jdbcType="TINYINT" />
+    <result column="other" property="other" jdbcType="TINYINT" />
+    <result column="supplement" property="supplement" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    vcp_id, ar_id, hemorrhage, hematoma, pseudoaneurysm, av_fistula, other, supplement
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_vascular_complication
+    where vcp_id = #{vcp_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_vascular_complication
+    where vcp_id = #{vcp_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.VascularComplication" >
+    insert into t_vascular_complication (vcp_id, ar_id, hemorrhage, 
+      hematoma, pseudoaneurysm, av_fistula, 
+      other, supplement)
+    values (#{vcp_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{hemorrhage,jdbcType=TINYINT}, 
+      #{hematoma,jdbcType=TINYINT}, #{pseudoaneurysm,jdbcType=TINYINT}, #{av_fistula,jdbcType=TINYINT}, 
+      #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.VascularComplication" >
+    insert into t_vascular_complication
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vcp_id != null" >
+        vcp_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="hemorrhage != null" >
+        hemorrhage,
+      </if>
+      <if test="hematoma != null" >
+        hematoma,
+      </if>
+      <if test="pseudoaneurysm != null" >
+        pseudoaneurysm,
+      </if>
+      <if test="av_fistula != null" >
+        av_fistula,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+      <if test="supplement != null" >
+        supplement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vcp_id != null" >
+        #{vcp_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="hemorrhage != null" >
+        #{hemorrhage,jdbcType=TINYINT},
+      </if>
+      <if test="hematoma != null" >
+        #{hematoma,jdbcType=TINYINT},
+      </if>
+      <if test="pseudoaneurysm != null" >
+        #{pseudoaneurysm,jdbcType=TINYINT},
+      </if>
+      <if test="av_fistula != null" >
+        #{av_fistula,jdbcType=TINYINT},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null" >
+        #{supplement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.VascularComplication" >
+    update t_vascular_complication
+    <set >
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="hemorrhage != null" >
+        hemorrhage = #{hemorrhage,jdbcType=TINYINT},
+      </if>
+      <if test="hematoma != null" >
+        hematoma = #{hematoma,jdbcType=TINYINT},
+      </if>
+      <if test="pseudoaneurysm != null" >
+        pseudoaneurysm = #{pseudoaneurysm,jdbcType=TINYINT},
+      </if>
+      <if test="av_fistula != null" >
+        av_fistula = #{av_fistula,jdbcType=TINYINT},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null" >
+        supplement = #{supplement,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vcp_id = #{vcp_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.VascularComplication" >
+    update t_vascular_complication
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      hemorrhage = #{hemorrhage,jdbcType=TINYINT},
+      hematoma = #{hematoma,jdbcType=TINYINT},
+      pseudoaneurysm = #{pseudoaneurysm,jdbcType=TINYINT},
+      av_fistula = #{av_fistula,jdbcType=TINYINT},
+      other = #{other,jdbcType=TINYINT},
+      supplement = #{supplement,jdbcType=VARCHAR}
+    where vcp_id = #{vcp_id,jdbcType=BIGINT}
+  </update>
+</mapper>

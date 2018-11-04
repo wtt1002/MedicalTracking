@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.BikeTrainMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.BikeTrain" >
+    <id column="bt_id" property="bt_id" jdbcType="BIGINT" />
+    <result column="at_id" property="at_id" jdbcType="BIGINT" />
+    <result column="speed" property="speed" jdbcType="INTEGER" />
+    <result column="strength" property="strength" jdbcType="INTEGER" />
+    <result column="time_len" property="time_len" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bt_id, at_id, speed, strength, time_len, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bike_train
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_bike_train
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.BikeTrain" >
+    insert into t_bike_train (bt_id, at_id, speed, 
+      strength, time_len, remark
+      )
+    values (#{bt_id,jdbcType=BIGINT}, #{at_id,jdbcType=BIGINT}, #{speed,jdbcType=INTEGER}, 
+      #{strength,jdbcType=INTEGER}, #{time_len,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.BikeTrain" >
+    insert into t_bike_train
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bt_id != null" >
+        bt_id,
+      </if>
+      <if test="at_id != null" >
+        at_id,
+      </if>
+      <if test="speed != null" >
+        speed,
+      </if>
+      <if test="strength != null" >
+        strength,
+      </if>
+      <if test="time_len != null" >
+        time_len,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bt_id != null" >
+        #{bt_id,jdbcType=BIGINT},
+      </if>
+      <if test="at_id != null" >
+        #{at_id,jdbcType=BIGINT},
+      </if>
+      <if test="speed != null" >
+        #{speed,jdbcType=INTEGER},
+      </if>
+      <if test="strength != null" >
+        #{strength,jdbcType=INTEGER},
+      </if>
+      <if test="time_len != null" >
+        #{time_len,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BikeTrain" >
+    update t_bike_train
+    <set >
+      <if test="at_id != null" >
+        at_id = #{at_id,jdbcType=BIGINT},
+      </if>
+      <if test="speed != null" >
+        speed = #{speed,jdbcType=INTEGER},
+      </if>
+      <if test="strength != null" >
+        strength = #{strength,jdbcType=INTEGER},
+      </if>
+      <if test="time_len != null" >
+        time_len = #{time_len,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BikeTrain" >
+    update t_bike_train
+    set at_id = #{at_id,jdbcType=BIGINT},
+      speed = #{speed,jdbcType=INTEGER},
+      strength = #{strength,jdbcType=INTEGER},
+      time_len = #{time_len,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </update>
+</mapper>

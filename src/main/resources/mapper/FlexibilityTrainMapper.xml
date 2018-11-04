@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.FlexibilityTrainMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.FlexibilityTrain" >
+    <id column="ft_id" property="ft_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="train_time" property="train_time" jdbcType="TINYINT" />
+    <result column="taijiquan" property="taijiquan" jdbcType="TINYINT" />
+    <result column="baduanjin" property="baduanjin" jdbcType="TINYINT" />
+    <result column="wuqinxi" property="wuqinxi" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ft_id, ar_id, train_time, taijiquan, baduanjin, wuqinxi, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_flexibility_train
+    where ft_id = #{ft_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_flexibility_train
+    where ft_id = #{ft_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.FlexibilityTrain" >
+    insert into t_flexibility_train (ft_id, ar_id, train_time, 
+      taijiquan, baduanjin, wuqinxi, 
+      remark)
+    values (#{ft_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{train_time,jdbcType=TINYINT}, 
+      #{taijiquan,jdbcType=TINYINT}, #{baduanjin,jdbcType=TINYINT}, #{wuqinxi,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.FlexibilityTrain" >
+    insert into t_flexibility_train
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ft_id != null" >
+        ft_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="train_time != null" >
+        train_time,
+      </if>
+      <if test="taijiquan != null" >
+        taijiquan,
+      </if>
+      <if test="baduanjin != null" >
+        baduanjin,
+      </if>
+      <if test="wuqinxi != null" >
+        wuqinxi,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ft_id != null" >
+        #{ft_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="train_time != null" >
+        #{train_time,jdbcType=TINYINT},
+      </if>
+      <if test="taijiquan != null" >
+        #{taijiquan,jdbcType=TINYINT},
+      </if>
+      <if test="baduanjin != null" >
+        #{baduanjin,jdbcType=TINYINT},
+      </if>
+      <if test="wuqinxi != null" >
+        #{wuqinxi,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.FlexibilityTrain" >
+    update t_flexibility_train
+    <set >
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="train_time != null" >
+        train_time = #{train_time,jdbcType=TINYINT},
+      </if>
+      <if test="taijiquan != null" >
+        taijiquan = #{taijiquan,jdbcType=TINYINT},
+      </if>
+      <if test="baduanjin != null" >
+        baduanjin = #{baduanjin,jdbcType=TINYINT},
+      </if>
+      <if test="wuqinxi != null" >
+        wuqinxi = #{wuqinxi,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ft_id = #{ft_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.FlexibilityTrain" >
+    update t_flexibility_train
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      train_time = #{train_time,jdbcType=TINYINT},
+      taijiquan = #{taijiquan,jdbcType=TINYINT},
+      baduanjin = #{baduanjin,jdbcType=TINYINT},
+      wuqinxi = #{wuqinxi,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where ft_id = #{ft_id,jdbcType=BIGINT}
+  </update>
+</mapper>

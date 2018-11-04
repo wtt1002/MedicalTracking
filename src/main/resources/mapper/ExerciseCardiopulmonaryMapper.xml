@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ExerciseCardiopulmonaryMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.ExerciseCardiopulmonary" >
+    <id column="ecp_id" property="ecp_id" jdbcType="BIGINT" />
+    <result column="check_type" property="check_type" jdbcType="TINYINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="peak_load" property="peak_load" jdbcType="REAL" />
+    <result column="peak_mets" property="peak_mets" jdbcType="REAL" />
+    <result column="peak_vo2" property="peak_vo2" jdbcType="REAL" />
+    <result column="vo2_max" property="vo2_max" jdbcType="REAL" />
+    <result column="at" property="at" jdbcType="REAL" />
+    <result column="peace_rate" property="peace_rate" jdbcType="INTEGER" />
+    <result column="peak_rate" property="peak_rate" jdbcType="INTEGER" />
+    <result column="target_rate" property="target_rate" jdbcType="INTEGER" />
+    <result column="fev" property="fev" jdbcType="REAL" />
+    <result column="fev_rate" property="fev_rate" jdbcType="REAL" />
+    <result column="fev_fvc" property="fev_fvc" jdbcType="REAL" />
+    <result column="conclusion" property="conclusion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ecp_id, check_type, ar_id, peak_load, peak_mets, peak_vo2, vo2_max, "at", peace_rate, 
+    peak_rate, target_rate, fev, fev_rate, fev_fvc, conclusion
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_exercise_cardiopulmonary
+    where ecp_id = #{ecp_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_exercise_cardiopulmonary
+    where ecp_id = #{ecp_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.ExerciseCardiopulmonary" >
+    insert into t_exercise_cardiopulmonary (ecp_id, check_type, ar_id, 
+      peak_load, peak_mets, peak_vo2, 
+      vo2_max, "at", peace_rate, 
+      peak_rate, target_rate, fev, 
+      fev_rate, fev_fvc, conclusion
+      )
+    values (#{ecp_id,jdbcType=BIGINT}, #{check_type,jdbcType=TINYINT}, #{ar_id,jdbcType=BIGINT}, 
+      #{peak_load,jdbcType=REAL}, #{peak_mets,jdbcType=REAL}, #{peak_vo2,jdbcType=REAL}, 
+      #{vo2_max,jdbcType=REAL}, #{at,jdbcType=REAL}, #{peace_rate,jdbcType=INTEGER}, 
+      #{peak_rate,jdbcType=INTEGER}, #{target_rate,jdbcType=INTEGER}, #{fev,jdbcType=REAL}, 
+      #{fev_rate,jdbcType=REAL}, #{fev_fvc,jdbcType=REAL}, #{conclusion,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.ExerciseCardiopulmonary" >
+    insert into t_exercise_cardiopulmonary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ecp_id != null" >
+        ecp_id,
+      </if>
+      <if test="check_type != null" >
+        check_type,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="peak_load != null" >
+        peak_load,
+      </if>
+      <if test="peak_mets != null" >
+        peak_mets,
+      </if>
+      <if test="peak_vo2 != null" >
+        peak_vo2,
+      </if>
+      <if test="vo2_max != null" >
+        vo2_max,
+      </if>
+      <if test="at != null" >
+        "at",
+      </if>
+      <if test="peace_rate != null" >
+        peace_rate,
+      </if>
+      <if test="peak_rate != null" >
+        peak_rate,
+      </if>
+      <if test="target_rate != null" >
+        target_rate,
+      </if>
+      <if test="fev != null" >
+        fev,
+      </if>
+      <if test="fev_rate != null" >
+        fev_rate,
+      </if>
+      <if test="fev_fvc != null" >
+        fev_fvc,
+      </if>
+      <if test="conclusion != null" >
+        conclusion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ecp_id != null" >
+        #{ecp_id,jdbcType=BIGINT},
+      </if>
+      <if test="check_type != null" >
+        #{check_type,jdbcType=TINYINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="peak_load != null" >
+        #{peak_load,jdbcType=REAL},
+      </if>
+      <if test="peak_mets != null" >
+        #{peak_mets,jdbcType=REAL},
+      </if>
+      <if test="peak_vo2 != null" >
+        #{peak_vo2,jdbcType=REAL},
+      </if>
+      <if test="vo2_max != null" >
+        #{vo2_max,jdbcType=REAL},
+      </if>
+      <if test="at != null" >
+        #{at,jdbcType=REAL},
+      </if>
+      <if test="peace_rate != null" >
+        #{peace_rate,jdbcType=INTEGER},
+      </if>
+      <if test="peak_rate != null" >
+        #{peak_rate,jdbcType=INTEGER},
+      </if>
+      <if test="target_rate != null" >
+        #{target_rate,jdbcType=INTEGER},
+      </if>
+      <if test="fev != null" >
+        #{fev,jdbcType=REAL},
+      </if>
+      <if test="fev_rate != null" >
+        #{fev_rate,jdbcType=REAL},
+      </if>
+      <if test="fev_fvc != null" >
+        #{fev_fvc,jdbcType=REAL},
+      </if>
+      <if test="conclusion != null" >
+        #{conclusion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ExerciseCardiopulmonary" >
+    update t_exercise_cardiopulmonary
+    <set >
+      <if test="check_type != null" >
+        check_type = #{check_type,jdbcType=TINYINT},
+      </if>
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="peak_load != null" >
+        peak_load = #{peak_load,jdbcType=REAL},
+      </if>
+      <if test="peak_mets != null" >
+        peak_mets = #{peak_mets,jdbcType=REAL},
+      </if>
+      <if test="peak_vo2 != null" >
+        peak_vo2 = #{peak_vo2,jdbcType=REAL},
+      </if>
+      <if test="vo2_max != null" >
+        vo2_max = #{vo2_max,jdbcType=REAL},
+      </if>
+      <if test="at != null" >
+        "at" = #{at,jdbcType=REAL},
+      </if>
+      <if test="peace_rate != null" >
+        peace_rate = #{peace_rate,jdbcType=INTEGER},
+      </if>
+      <if test="peak_rate != null" >
+        peak_rate = #{peak_rate,jdbcType=INTEGER},
+      </if>
+      <if test="target_rate != null" >
+        target_rate = #{target_rate,jdbcType=INTEGER},
+      </if>
+      <if test="fev != null" >
+        fev = #{fev,jdbcType=REAL},
+      </if>
+      <if test="fev_rate != null" >
+        fev_rate = #{fev_rate,jdbcType=REAL},
+      </if>
+      <if test="fev_fvc != null" >
+        fev_fvc = #{fev_fvc,jdbcType=REAL},
+      </if>
+      <if test="conclusion != null" >
+        conclusion = #{conclusion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ecp_id = #{ecp_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ExerciseCardiopulmonary" >
+    update t_exercise_cardiopulmonary
+    set check_type = #{check_type,jdbcType=TINYINT},
+      ar_id = #{ar_id,jdbcType=BIGINT},
+      peak_load = #{peak_load,jdbcType=REAL},
+      peak_mets = #{peak_mets,jdbcType=REAL},
+      peak_vo2 = #{peak_vo2,jdbcType=REAL},
+      vo2_max = #{vo2_max,jdbcType=REAL},
+      "at" = #{at,jdbcType=REAL},
+      peace_rate = #{peace_rate,jdbcType=INTEGER},
+      peak_rate = #{peak_rate,jdbcType=INTEGER},
+      target_rate = #{target_rate,jdbcType=INTEGER},
+      fev = #{fev,jdbcType=REAL},
+      fev_rate = #{fev_rate,jdbcType=REAL},
+      fev_fvc = #{fev_fvc,jdbcType=REAL},
+      conclusion = #{conclusion,jdbcType=VARCHAR}
+    where ecp_id = #{ecp_id,jdbcType=BIGINT}
+  </update>
+</mapper>

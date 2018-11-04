@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.OtherExamMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.OtherExam" >
+    <id column="oe_id" property="oe_id" jdbcType="BIGINT" />
+    <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="r_type" property="r_type" jdbcType="TINYINT" />
+    <result column="exam_time" property="exam_time" jdbcType="DATE" />
+    <result column="ghb" property="ghb" jdbcType="REAL" />
+    <result column="ctnt" property="ctnt" jdbcType="REAL" />
+    <result column="nt_probnp" property="nt_probnp" jdbcType="REAL" />
+    <result column="ck" property="ck" jdbcType="REAL" />
+    <result column="ck_mb" property="ck_mb" jdbcType="REAL" />
+    <result column="lvef" property="lvef" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    oe_id, patient_id, fr_id, ar_id, r_type, exam_time, ghb, ctnt, nt_probnp, ck, ck_mb, 
+    lvef
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_other_exam
+    where oe_id = #{oe_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_other_exam
+    where oe_id = #{oe_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.OtherExam" >
+    insert into t_other_exam (oe_id, patient_id, fr_id, 
+      ar_id, r_type, exam_time, 
+      ghb, ctnt, nt_probnp, ck, 
+      ck_mb, lvef)
+    values (#{oe_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{r_type,jdbcType=TINYINT}, #{exam_time,jdbcType=DATE}, 
+      #{ghb,jdbcType=REAL}, #{ctnt,jdbcType=REAL}, #{nt_probnp,jdbcType=REAL}, #{ck,jdbcType=REAL}, 
+      #{ck_mb,jdbcType=REAL}, #{lvef,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.OtherExam" >
+    insert into t_other_exam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oe_id != null" >
+        oe_id,
+      </if>
+      <if test="patient_id != null" >
+        patient_id,
+      </if>
+      <if test="fr_id != null" >
+        fr_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="r_type != null" >
+        r_type,
+      </if>
+      <if test="exam_time != null" >
+        exam_time,
+      </if>
+      <if test="ghb != null" >
+        ghb,
+      </if>
+      <if test="ctnt != null" >
+        ctnt,
+      </if>
+      <if test="nt_probnp != null" >
+        nt_probnp,
+      </if>
+      <if test="ck != null" >
+        ck,
+      </if>
+      <if test="ck_mb != null" >
+        ck_mb,
+      </if>
+      <if test="lvef != null" >
+        lvef,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oe_id != null" >
+        #{oe_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null" >
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null" >
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="r_type != null" >
+        #{r_type,jdbcType=TINYINT},
+      </if>
+      <if test="exam_time != null" >
+        #{exam_time,jdbcType=DATE},
+      </if>
+      <if test="ghb != null" >
+        #{ghb,jdbcType=REAL},
+      </if>
+      <if test="ctnt != null" >
+        #{ctnt,jdbcType=REAL},
+      </if>
+      <if test="nt_probnp != null" >
+        #{nt_probnp,jdbcType=REAL},
+      </if>
+      <if test="ck != null" >
+        #{ck,jdbcType=REAL},
+      </if>
+      <if test="ck_mb != null" >
+        #{ck_mb,jdbcType=REAL},
+      </if>
+      <if test="lvef != null" >
+        #{lvef,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.OtherExam" >
+    update t_other_exam
+    <set >
+      <if test="patient_id != null" >
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null" >
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="r_type != null" >
+        r_type = #{r_type,jdbcType=TINYINT},
+      </if>
+      <if test="exam_time != null" >
+        exam_time = #{exam_time,jdbcType=DATE},
+      </if>
+      <if test="ghb != null" >
+        ghb = #{ghb,jdbcType=REAL},
+      </if>
+      <if test="ctnt != null" >
+        ctnt = #{ctnt,jdbcType=REAL},
+      </if>
+      <if test="nt_probnp != null" >
+        nt_probnp = #{nt_probnp,jdbcType=REAL},
+      </if>
+      <if test="ck != null" >
+        ck = #{ck,jdbcType=REAL},
+      </if>
+      <if test="ck_mb != null" >
+        ck_mb = #{ck_mb,jdbcType=REAL},
+      </if>
+      <if test="lvef != null" >
+        lvef = #{lvef,jdbcType=REAL},
+      </if>
+    </set>
+    where oe_id = #{oe_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.OtherExam" >
+    update t_other_exam
+    set patient_id = #{patient_id,jdbcType=BIGINT},
+      fr_id = #{fr_id,jdbcType=BIGINT},
+      ar_id = #{ar_id,jdbcType=BIGINT},
+      r_type = #{r_type,jdbcType=TINYINT},
+      exam_time = #{exam_time,jdbcType=DATE},
+      ghb = #{ghb,jdbcType=REAL},
+      ctnt = #{ctnt,jdbcType=REAL},
+      nt_probnp = #{nt_probnp,jdbcType=REAL},
+      ck = #{ck,jdbcType=REAL},
+      ck_mb = #{ck_mb,jdbcType=REAL},
+      lvef = #{lvef,jdbcType=REAL}
+    where oe_id = #{oe_id,jdbcType=BIGINT}
+  </update>
+</mapper>

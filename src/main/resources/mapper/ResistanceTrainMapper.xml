@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ResistanceTrainMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.ResistanceTrain" >
+    <id column="rst_id" property="rst_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="train_time" property="train_time" jdbcType="INTEGER" />
+    <result column="strength" property="strength" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rst_id, ar_id, train_time, strength, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_resistance_train
+    where rst_id = #{rst_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_resistance_train
+    where rst_id = #{rst_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.ResistanceTrain" >
+    insert into t_resistance_train (rst_id, ar_id, train_time, 
+      strength, remark)
+    values (#{rst_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{train_time,jdbcType=INTEGER}, 
+      #{strength,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.ResistanceTrain" >
+    insert into t_resistance_train
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rst_id != null" >
+        rst_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="train_time != null" >
+        train_time,
+      </if>
+      <if test="strength != null" >
+        strength,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rst_id != null" >
+        #{rst_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="train_time != null" >
+        #{train_time,jdbcType=INTEGER},
+      </if>
+      <if test="strength != null" >
+        #{strength,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ResistanceTrain" >
+    update t_resistance_train
+    <set >
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="train_time != null" >
+        train_time = #{train_time,jdbcType=INTEGER},
+      </if>
+      <if test="strength != null" >
+        strength = #{strength,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rst_id = #{rst_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ResistanceTrain" >
+    update t_resistance_train
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      train_time = #{train_time,jdbcType=INTEGER},
+      strength = #{strength,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where rst_id = #{rst_id,jdbcType=BIGINT}
+  </update>
+</mapper>

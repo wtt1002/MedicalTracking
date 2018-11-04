@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.TreadmillElasticBeltMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.TreadmillElasticBelt" >
+    <id column="tteb_id" property="tteb_id" jdbcType="BIGINT" />
+    <result column="rst_id" property="rst_id" jdbcType="BIGINT" />
+    <result column="color" property="color" jdbcType="TINYINT" />
+    <result column="train_time" property="train_time" jdbcType="INTEGER" />
+    <result column="train_group" property="train_group" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tteb_id, rst_id, color, train_time, train_group, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_treadmill_elastic_belt
+    where tteb_id = #{tteb_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_treadmill_elastic_belt
+    where tteb_id = #{tteb_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.TreadmillElasticBelt" >
+    insert into t_treadmill_elastic_belt (tteb_id, rst_id, color, 
+      train_time, train_group, remark
+      )
+    values (#{tteb_id,jdbcType=BIGINT}, #{rst_id,jdbcType=BIGINT}, #{color,jdbcType=TINYINT}, 
+      #{train_time,jdbcType=INTEGER}, #{train_group,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.TreadmillElasticBelt" >
+    insert into t_treadmill_elastic_belt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tteb_id != null" >
+        tteb_id,
+      </if>
+      <if test="rst_id != null" >
+        rst_id,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="train_time != null" >
+        train_time,
+      </if>
+      <if test="train_group != null" >
+        train_group,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tteb_id != null" >
+        #{tteb_id,jdbcType=BIGINT},
+      </if>
+      <if test="rst_id != null" >
+        #{rst_id,jdbcType=BIGINT},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=TINYINT},
+      </if>
+      <if test="train_time != null" >
+        #{train_time,jdbcType=INTEGER},
+      </if>
+      <if test="train_group != null" >
+        #{train_group,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.TreadmillElasticBelt" >
+    update t_treadmill_elastic_belt
+    <set >
+      <if test="rst_id != null" >
+        rst_id = #{rst_id,jdbcType=BIGINT},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=TINYINT},
+      </if>
+      <if test="train_time != null" >
+        train_time = #{train_time,jdbcType=INTEGER},
+      </if>
+      <if test="train_group != null" >
+        train_group = #{train_group,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tteb_id = #{tteb_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.TreadmillElasticBelt" >
+    update t_treadmill_elastic_belt
+    set rst_id = #{rst_id,jdbcType=BIGINT},
+      color = #{color,jdbcType=TINYINT},
+      train_time = #{train_time,jdbcType=INTEGER},
+      train_group = #{train_group,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where tteb_id = #{tteb_id,jdbcType=BIGINT}
+  </update>
+</mapper>
