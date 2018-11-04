@@ -1,0 +1,37 @@
+package lab.c505.service;
+
+import java.util.List;
+import lab.c505.dto.AppointExecution;
+import lab.c505.entity.Book;
+
+/**
+ * Package: lab.c505.service
+ * Description： 业务接口：站在"使用者"角度设计接口 三个方面：方法定义粒度，参数，返回类型（return 类型/异常）
+ * Author: TingTing W
+ * Date: Created in 2018/10/17 16:12
+ */
+public interface BookService {
+    /**
+     * 查询一本图书
+     *
+     * @param bookId
+     * @return
+     */
+    Book getById(long bookId);
+
+    /**
+     * 查询所有图书
+     *
+     * @return
+     */
+    List<Book> getList();
+
+    /**
+     * 预约图书
+     *
+     * @param bookId
+     * @param studentId
+     * @return
+     */
+    AppointExecution appoint(long bookId, long studentId);
+}
