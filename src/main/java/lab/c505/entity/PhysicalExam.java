@@ -3,13 +3,13 @@ package lab.c505.entity;
 public class PhysicalExam {
     private Long pe_id;
 
-    private Long patient_id;
+    private Byte check_type;
 
     private Long fr_id;
 
     private Long ar_id;
 
-    private Byte r_type;
+    private Long patient_id;
 
     private Byte blood_h;
 
@@ -29,12 +29,12 @@ public class PhysicalExam {
         this.pe_id = pe_id;
     }
 
-    public Long getPatient_id() {
-        return patient_id;
+    public Byte getCheck_type() {
+        return check_type;
     }
 
-    public void setPatient_id(Long patient_id) {
-        this.patient_id = patient_id;
+    public void setCheck_type(Byte check_type) {
+        this.check_type = check_type;
     }
 
     public Long getFr_id() {
@@ -53,12 +53,12 @@ public class PhysicalExam {
         this.ar_id = ar_id;
     }
 
-    public Byte getR_type() {
-        return r_type;
+    public Long getPatient_id() {
+        return patient_id;
     }
 
-    public void setR_type(Byte r_type) {
-        this.r_type = r_type;
+    public void setPatient_id(Long patient_id) {
+        this.patient_id = patient_id;
     }
 
     public Byte getBlood_h() {

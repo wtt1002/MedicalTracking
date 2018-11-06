@@ -1,7 +1,7 @@
 package lab.c505.entity;
 
-public class RiskFactors {
-    private Long rf_id;
+public class FollowRiskFactor {
+    private Long frf_id;
 
     private Long fr_id;
 
@@ -21,12 +21,12 @@ public class RiskFactors {
 
     private String supplement;
 
-    public Long getRf_id() {
-        return rf_id;
+    public Long getFrf_id() {
+        return frf_id;
     }
 
-    public void setRf_id(Long rf_id) {
-        this.rf_id = rf_id;
+    public void setFrf_id(Long frf_id) {
+        this.frf_id = frf_id;
     }
 
     public Long getFr_id() {

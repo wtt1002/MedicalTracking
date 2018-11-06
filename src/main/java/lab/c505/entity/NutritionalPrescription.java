@@ -3,7 +3,7 @@ package lab.c505.entity;
 public class NutritionalPrescription {
     private Long np_id;
 
-    private Long ar_id;
+    private Long fr_id;
 
     private Integer calorie;
 
@@ -19,12 +19,12 @@ public class NutritionalPrescription {
         this.np_id = np_id;
     }
 
-    public Long getAr_id() {
-        return ar_id;
+    public Long getFr_id() {
+        return fr_id;
     }
 
-    public void setAr_id(Long ar_id) {
-        this.ar_id = ar_id;
+    public void setFr_id(Long fr_id) {
+        this.fr_id = fr_id;
     }
 
     public Integer getCalorie() {
