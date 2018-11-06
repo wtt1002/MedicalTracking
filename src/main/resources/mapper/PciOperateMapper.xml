@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.PciOperateMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.PciOperate" >
+    <id column="po_id" property="po_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="operate_type" property="operate_type" jdbcType="TINYINT" />
+    <result column="operate_date" property="operate_date" jdbcType="TINYINT" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="pci_db2_time" property="pci_db2_time" jdbcType="DATE" />
+    <result column="lm_start" property="lm_start" jdbcType="REAL" />
+    <result column="lm_near" property="lm_near" jdbcType="REAL" />
+    <result column="lm_mid" property="lm_mid" jdbcType="REAL" />
+    <result column="lm_far" property="lm_far" jdbcType="REAL" />
+    <result column="lad_start" property="lad_start" jdbcType="REAL" />
+    <result column="lad_near" property="lad_near" jdbcType="REAL" />
+    <result column="lad_mid" property="lad_mid" jdbcType="REAL" />
+    <result column="lad_far" property="lad_far" jdbcType="REAL" />
+    <result column="lcx_start" property="lcx_start" jdbcType="REAL" />
+    <result column="lcx_near" property="lcx_near" jdbcType="REAL" />
+    <result column="lcx_mid" property="lcx_mid" jdbcType="REAL" />
+    <result column="lcx_far" property="lcx_far" jdbcType="REAL" />
+    <result column="rca_start" property="rca_start" jdbcType="REAL" />
+    <result column="rca_near" property="rca_near" jdbcType="REAL" />
+    <result column="rca_mid" property="rca_mid" jdbcType="REAL" />
+    <result column="rca_far" property="rca_far" jdbcType="REAL" />
+    <result column="other_start" property="other_start" jdbcType="REAL" />
+    <result column="other_near" property="other_near" jdbcType="REAL" />
+    <result column="other_mid" property="other_mid" jdbcType="REAL" />
+    <result column="other_far" property="other_far" jdbcType="REAL" />
+    <result column="aspirin" property="aspirin" jdbcType="TINYINT" />
+    <result column="tigeruiluo" property="tigeruiluo" jdbcType="TINYINT" />
+    <result column="clopidogrel" property="clopidogrel" jdbcType="TINYINT" />
+    <result column="other_antiplatelet" property="other_antiplatelet" jdbcType="VARCHAR" />
+    <result column="heparin" property="heparin" jdbcType="TINYINT" />
+    <result column="bivalirudin" property="bivalirudin" jdbcType="TINYINT" />
+    <result column="other_anti" property="other_anti" jdbcType="VARCHAR" />
+    <result column="nitroglycerin" property="nitroglycerin" jdbcType="TINYINT" />
+    <result column="nikdal" property="nikdal" jdbcType="TINYINT" />
+    <result column="iibiiia" property="iibiiia" jdbcType="TINYINT" />
+    <result column="angio_guided" property="angio_guided" jdbcType="TINYINT" />
+    <result column="ivus_guided" property="ivus_guided" jdbcType="TINYINT" />
+    <result column="ffr_guided" property="ffr_guided" jdbcType="TINYINT" />
+    <result column="other_operate_drug" property="other_operate_drug" jdbcType="VARCHAR" />
+    <result column="thrombus_suction" property="thrombus_suction" jdbcType="TINYINT" />
+    <result column="temporary_pacemaker" property="temporary_pacemaker" jdbcType="TINYINT" />
+    <result column="iabp" property="iabp" jdbcType="TINYINT" />
+    <result column="rotablation" property="rotablation" jdbcType="TINYINT" />
+    <result column="other_auxiliary_device" property="other_auxiliary_device" jdbcType="VARCHAR" />
+    <result column="contrast_type" property="contrast_type" jdbcType="TINYINT" />
+    <result column="contrast_number" property="contrast_number" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    po_id, ar_id, operate_type, operate_date, "operator", pci_db2_time, lm_start, lm_near, 
+    lm_mid, lm_far, lad_start, lad_near, lad_mid, lad_far, lcx_start, lcx_near, lcx_mid, 
+    lcx_far, rca_start, rca_near, rca_mid, rca_far, other_start, other_near, other_mid, 
+    other_far, aspirin, tigeruiluo, clopidogrel, other_antiplatelet, heparin, bivalirudin, 
+    other_anti, nitroglycerin, nikdal, iibiiia, angio_guided, ivus_guided, ffr_guided, 
+    other_operate_drug, thrombus_suction, temporary_pacemaker, iabp, rotablation, other_auxiliary_device, 
+    contrast_type, contrast_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pci_operate
+    where po_id = #{po_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_pci_operate
+    where po_id = #{po_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.PciOperate" >
+    insert into t_pci_operate (po_id, ar_id, operate_type, 
+      operate_date, "operator", pci_db2_time, 
+      lm_start, lm_near, lm_mid, lm_far, 
+      lad_start, lad_near, lad_mid, 
+      lad_far, lcx_start, lcx_near, 
+      lcx_mid, lcx_far, rca_start, 
+      rca_near, rca_mid, rca_far, 
+      other_start, other_near, other_mid, 
+      other_far, aspirin, tigeruiluo, 
+      clopidogrel, other_antiplatelet, heparin, 
+      bivalirudin, other_anti, nitroglycerin, 
+      nikdal, iibiiia, angio_guided, 
+      ivus_guided, ffr_guided, other_operate_drug, 
+      thrombus_suction, temporary_pacemaker, 
+      iabp, rotablation, other_auxiliary_device, 
+      contrast_type, contrast_number)
+    values (#{po_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{operate_type,jdbcType=TINYINT}, 
+      #{operate_date,jdbcType=TINYINT}, #{operator,jdbcType=VARCHAR}, #{pci_db2_time,jdbcType=DATE}, 
+      #{lm_start,jdbcType=REAL}, #{lm_near,jdbcType=REAL}, #{lm_mid,jdbcType=REAL}, #{lm_far,jdbcType=REAL}, 
+      #{lad_start,jdbcType=REAL}, #{lad_near,jdbcType=REAL}, #{lad_mid,jdbcType=REAL}, 
+      #{lad_far,jdbcType=REAL}, #{lcx_start,jdbcType=REAL}, #{lcx_near,jdbcType=REAL}, 
+      #{lcx_mid,jdbcType=REAL}, #{lcx_far,jdbcType=REAL}, #{rca_start,jdbcType=REAL}, 
+      #{rca_near,jdbcType=REAL}, #{rca_mid,jdbcType=REAL}, #{rca_far,jdbcType=REAL}, 
+      #{other_start,jdbcType=REAL}, #{other_near,jdbcType=REAL}, #{other_mid,jdbcType=REAL}, 
+      #{other_far,jdbcType=REAL}, #{aspirin,jdbcType=TINYINT}, #{tigeruiluo,jdbcType=TINYINT}, 
+      #{clopidogrel,jdbcType=TINYINT}, #{other_antiplatelet,jdbcType=VARCHAR}, #{heparin,jdbcType=TINYINT}, 
+      #{bivalirudin,jdbcType=TINYINT}, #{other_anti,jdbcType=VARCHAR}, #{nitroglycerin,jdbcType=TINYINT}, 
+      #{nikdal,jdbcType=TINYINT}, #{iibiiia,jdbcType=TINYINT}, #{angio_guided,jdbcType=TINYINT}, 
+      #{ivus_guided,jdbcType=TINYINT}, #{ffr_guided,jdbcType=TINYINT}, #{other_operate_drug,jdbcType=VARCHAR}, 
+      #{thrombus_suction,jdbcType=TINYINT}, #{temporary_pacemaker,jdbcType=TINYINT}, 
+      #{iabp,jdbcType=TINYINT}, #{rotablation,jdbcType=TINYINT}, #{other_auxiliary_device,jdbcType=VARCHAR}, 
+      #{contrast_type,jdbcType=TINYINT}, #{contrast_number,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.PciOperate" >
+    insert into t_pci_operate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="po_id != null" >
+        po_id,
+      </if>
+      <if test="ar_id != null" >
+        ar_id,
+      </if>
+      <if test="operate_type != null" >
+        operate_type,
+      </if>
+      <if test="operate_date != null" >
+        operate_date,
+      </if>
+      <if test="operator != null" >
+        "operator",
+      </if>
+      <if test="pci_db2_time != null" >
+        pci_db2_time,
+      </if>
+      <if test="lm_start != null" >
+        lm_start,
+      </if>
+      <if test="lm_near != null" >
+        lm_near,
+      </if>
+      <if test="lm_mid != null" >
+        lm_mid,
+      </if>
+      <if test="lm_far != null" >
+        lm_far,
+      </if>
+      <if test="lad_start != null" >
+        lad_start,
+      </if>
+      <if test="lad_near != null" >
+        lad_near,
+      </if>
+      <if test="lad_mid != null" >
+        lad_mid,
+      </if>
+      <if test="lad_far != null" >
+        lad_far,
+      </if>
+      <if test="lcx_start != null" >
+        lcx_start,
+      </if>
+      <if test="lcx_near != null" >
+        lcx_near,
+      </if>
+      <if test="lcx_mid != null" >
+        lcx_mid,
+      </if>
+      <if test="lcx_far != null" >
+        lcx_far,
+      </if>
+      <if test="rca_start != null" >
+        rca_start,
+      </if>
+      <if test="rca_near != null" >
+        rca_near,
+      </if>
+      <if test="rca_mid != null" >
+        rca_mid,
+      </if>
+      <if test="rca_far != null" >
+        rca_far,
+      </if>
+      <if test="other_start != null" >
+        other_start,
+      </if>
+      <if test="other_near != null" >
+        other_near,
+      </if>
+      <if test="other_mid != null" >
+        other_mid,
+      </if>
+      <if test="other_far != null" >
+        other_far,
+      </if>
+      <if test="aspirin != null" >
+        aspirin,
+      </if>
+      <if test="tigeruiluo != null" >
+        tigeruiluo,
+      </if>
+      <if test="clopidogrel != null" >
+        clopidogrel,
+      </if>
+      <if test="other_antiplatelet != null" >
+        other_antiplatelet,
+      </if>
+      <if test="heparin != null" >
+        heparin,
+      </if>
+      <if test="bivalirudin != null" >
+        bivalirudin,
+      </if>
+      <if test="other_anti != null" >
+        other_anti,
+      </if>
+      <if test="nitroglycerin != null" >
+        nitroglycerin,
+      </if>
+      <if test="nikdal != null" >
+        nikdal,
+      </if>
+      <if test="iibiiia != null" >
+        iibiiia,
+      </if>
+      <if test="angio_guided != null" >
+        angio_guided,
+      </if>
+      <if test="ivus_guided != null" >
+        ivus_guided,
+      </if>
+      <if test="ffr_guided != null" >
+        ffr_guided,
+      </if>
+      <if test="other_operate_drug != null" >
+        other_operate_drug,
+      </if>
+      <if test="thrombus_suction != null" >
+        thrombus_suction,
+      </if>
+      <if test="temporary_pacemaker != null" >
+        temporary_pacemaker,
+      </if>
+      <if test="iabp != null" >
+        iabp,
+      </if>
+      <if test="rotablation != null" >
+        rotablation,
+      </if>
+      <if test="other_auxiliary_device != null" >
+        other_auxiliary_device,
+      </if>
+      <if test="contrast_type != null" >
+        contrast_type,
+      </if>
+      <if test="contrast_number != null" >
+        contrast_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="po_id != null" >
+        #{po_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null" >
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="operate_type != null" >
+        #{operate_type,jdbcType=TINYINT},
+      </if>
+      <if test="operate_date != null" >
+        #{operate_date,jdbcType=TINYINT},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="pci_db2_time != null" >
+        #{pci_db2_time,jdbcType=DATE},
+      </if>
+      <if test="lm_start != null" >
+        #{lm_start,jdbcType=REAL},
+      </if>
+      <if test="lm_near != null" >
+        #{lm_near,jdbcType=REAL},
+      </if>
+      <if test="lm_mid != null" >
+        #{lm_mid,jdbcType=REAL},
+      </if>
+      <if test="lm_far != null" >
+        #{lm_far,jdbcType=REAL},
+      </if>
+      <if test="lad_start != null" >
+        #{lad_start,jdbcType=REAL},
+      </if>
+      <if test="lad_near != null" >
+        #{lad_near,jdbcType=REAL},
+      </if>
+      <if test="lad_mid != null" >
+        #{lad_mid,jdbcType=REAL},
+      </if>
+      <if test="lad_far != null" >
+        #{lad_far,jdbcType=REAL},
+      </if>
+      <if test="lcx_start != null" >
+        #{lcx_start,jdbcType=REAL},
+      </if>
+      <if test="lcx_near != null" >
+        #{lcx_near,jdbcType=REAL},
+      </if>
+      <if test="lcx_mid != null" >
+        #{lcx_mid,jdbcType=REAL},
+      </if>
+      <if test="lcx_far != null" >
+        #{lcx_far,jdbcType=REAL},
+      </if>
+      <if test="rca_start != null" >
+        #{rca_start,jdbcType=REAL},
+      </if>
+      <if test="rca_near != null" >
+        #{rca_near,jdbcType=REAL},
+      </if>
+      <if test="rca_mid != null" >
+        #{rca_mid,jdbcType=REAL},
+      </if>
+      <if test="rca_far != null" >
+        #{rca_far,jdbcType=REAL},
+      </if>
+      <if test="other_start != null" >
+        #{other_start,jdbcType=REAL},
+      </if>
+      <if test="other_near != null" >
+        #{other_near,jdbcType=REAL},
+      </if>
+      <if test="other_mid != null" >
+        #{other_mid,jdbcType=REAL},
+      </if>
+      <if test="other_far != null" >
+        #{other_far,jdbcType=REAL},
+      </if>
+      <if test="aspirin != null" >
+        #{aspirin,jdbcType=TINYINT},
+      </if>
+      <if test="tigeruiluo != null" >
+        #{tigeruiluo,jdbcType=TINYINT},
+      </if>
+      <if test="clopidogrel != null" >
+        #{clopidogrel,jdbcType=TINYINT},
+      </if>
+      <if test="other_antiplatelet != null" >
+        #{other_antiplatelet,jdbcType=VARCHAR},
+      </if>
+      <if test="heparin != null" >
+        #{heparin,jdbcType=TINYINT},
+      </if>
+      <if test="bivalirudin != null" >
+        #{bivalirudin,jdbcType=TINYINT},
+      </if>
+      <if test="other_anti != null" >
+        #{other_anti,jdbcType=VARCHAR},
+      </if>
+      <if test="nitroglycerin != null" >
+        #{nitroglycerin,jdbcType=TINYINT},
+      </if>
+      <if test="nikdal != null" >
+        #{nikdal,jdbcType=TINYINT},
+      </if>
+      <if test="iibiiia != null" >
+        #{iibiiia,jdbcType=TINYINT},
+      </if>
+      <if test="angio_guided != null" >
+        #{angio_guided,jdbcType=TINYINT},
+      </if>
+      <if test="ivus_guided != null" >
+        #{ivus_guided,jdbcType=TINYINT},
+      </if>
+      <if test="ffr_guided != null" >
+        #{ffr_guided,jdbcType=TINYINT},
+      </if>
+      <if test="other_operate_drug != null" >
+        #{other_operate_drug,jdbcType=VARCHAR},
+      </if>
+      <if test="thrombus_suction != null" >
+        #{thrombus_suction,jdbcType=TINYINT},
+      </if>
+      <if test="temporary_pacemaker != null" >
+        #{temporary_pacemaker,jdbcType=TINYINT},
+      </if>
+      <if test="iabp != null" >
+        #{iabp,jdbcType=TINYINT},
+      </if>
+      <if test="rotablation != null" >
+        #{rotablation,jdbcType=TINYINT},
+      </if>
+      <if test="other_auxiliary_device != null" >
+        #{other_auxiliary_device,jdbcType=VARCHAR},
+      </if>
+      <if test="contrast_type != null" >
+        #{contrast_type,jdbcType=TINYINT},
+      </if>
+      <if test="contrast_number != null" >
+        #{contrast_number,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PciOperate" >
+    update t_pci_operate
+    <set >
+      <if test="ar_id != null" >
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="operate_type != null" >
+        operate_type = #{operate_type,jdbcType=TINYINT},
+      </if>
+      <if test="operate_date != null" >
+        operate_date = #{operate_date,jdbcType=TINYINT},
+      </if>
+      <if test="operator != null" >
+        "operator" = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="pci_db2_time != null" >
+        pci_db2_time = #{pci_db2_time,jdbcType=DATE},
+      </if>
+      <if test="lm_start != null" >
+        lm_start = #{lm_start,jdbcType=REAL},
+      </if>
+      <if test="lm_near != null" >
+        lm_near = #{lm_near,jdbcType=REAL},
+      </if>
+      <if test="lm_mid != null" >
+        lm_mid = #{lm_mid,jdbcType=REAL},
+      </if>
+      <if test="lm_far != null" >
+        lm_far = #{lm_far,jdbcType=REAL},
+      </if>
+      <if test="lad_start != null" >
+        lad_start = #{lad_start,jdbcType=REAL},
+      </if>
+      <if test="lad_near != null" >
+        lad_near = #{lad_near,jdbcType=REAL},
+      </if>
+      <if test="lad_mid != null" >
+        lad_mid = #{lad_mid,jdbcType=REAL},
+      </if>
+      <if test="lad_far != null" >
+        lad_far = #{lad_far,jdbcType=REAL},
+      </if>
+      <if test="lcx_start != null" >
+        lcx_start = #{lcx_start,jdbcType=REAL},
+      </if>
+      <if test="lcx_near != null" >
+        lcx_near = #{lcx_near,jdbcType=REAL},
+      </if>
+      <if test="lcx_mid != null" >
+        lcx_mid = #{lcx_mid,jdbcType=REAL},
+      </if>
+      <if test="lcx_far != null" >
+        lcx_far = #{lcx_far,jdbcType=REAL},
+      </if>
+      <if test="rca_start != null" >
+        rca_start = #{rca_start,jdbcType=REAL},
+      </if>
+      <if test="rca_near != null" >
+        rca_near = #{rca_near,jdbcType=REAL},
+      </if>
+      <if test="rca_mid != null" >
+        rca_mid = #{rca_mid,jdbcType=REAL},
+      </if>
+      <if test="rca_far != null" >
+        rca_far = #{rca_far,jdbcType=REAL},
+      </if>
+      <if test="other_start != null" >
+        other_start = #{other_start,jdbcType=REAL},
+      </if>
+      <if test="other_near != null" >
+        other_near = #{other_near,jdbcType=REAL},
+      </if>
+      <if test="other_mid != null" >
+        other_mid = #{other_mid,jdbcType=REAL},
+      </if>
+      <if test="other_far != null" >
+        other_far = #{other_far,jdbcType=REAL},
+      </if>
+      <if test="aspirin != null" >
+        aspirin = #{aspirin,jdbcType=TINYINT},
+      </if>
+      <if test="tigeruiluo != null" >
+        tigeruiluo = #{tigeruiluo,jdbcType=TINYINT},
+      </if>
+      <if test="clopidogrel != null" >
+        clopidogrel = #{clopidogrel,jdbcType=TINYINT},
+      </if>
+      <if test="other_antiplatelet != null" >
+        other_antiplatelet = #{other_antiplatelet,jdbcType=VARCHAR},
+      </if>
+      <if test="heparin != null" >
+        heparin = #{heparin,jdbcType=TINYINT},
+      </if>
+      <if test="bivalirudin != null" >
+        bivalirudin = #{bivalirudin,jdbcType=TINYINT},
+      </if>
+      <if test="other_anti != null" >
+        other_anti = #{other_anti,jdbcType=VARCHAR},
+      </if>
+      <if test="nitroglycerin != null" >
+        nitroglycerin = #{nitroglycerin,jdbcType=TINYINT},
+      </if>
+      <if test="nikdal != null" >
+        nikdal = #{nikdal,jdbcType=TINYINT},
+      </if>
+      <if test="iibiiia != null" >
+        iibiiia = #{iibiiia,jdbcType=TINYINT},
+      </if>
+      <if test="angio_guided != null" >
+        angio_guided = #{angio_guided,jdbcType=TINYINT},
+      </if>
+      <if test="ivus_guided != null" >
+        ivus_guided = #{ivus_guided,jdbcType=TINYINT},
+      </if>
+      <if test="ffr_guided != null" >
+        ffr_guided = #{ffr_guided,jdbcType=TINYINT},
+      </if>
+      <if test="other_operate_drug != null" >
+        other_operate_drug = #{other_operate_drug,jdbcType=VARCHAR},
+      </if>
+      <if test="thrombus_suction != null" >
+        thrombus_suction = #{thrombus_suction,jdbcType=TINYINT},
+      </if>
+      <if test="temporary_pacemaker != null" >
+        temporary_pacemaker = #{temporary_pacemaker,jdbcType=TINYINT},
+      </if>
+      <if test="iabp != null" >
+        iabp = #{iabp,jdbcType=TINYINT},
+      </if>
+      <if test="rotablation != null" >
+        rotablation = #{rotablation,jdbcType=TINYINT},
+      </if>
+      <if test="other_auxiliary_device != null" >
+        other_auxiliary_device = #{other_auxiliary_device,jdbcType=VARCHAR},
+      </if>
+      <if test="contrast_type != null" >
+        contrast_type = #{contrast_type,jdbcType=TINYINT},
+      </if>
+      <if test="contrast_number != null" >
+        contrast_number = #{contrast_number,jdbcType=TINYINT},
+      </if>
+    </set>
+    where po_id = #{po_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PciOperate" >
+    update t_pci_operate
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      operate_type = #{operate_type,jdbcType=TINYINT},
+      operate_date = #{operate_date,jdbcType=TINYINT},
+      "operator" = #{operator,jdbcType=VARCHAR},
+      pci_db2_time = #{pci_db2_time,jdbcType=DATE},
+      lm_start = #{lm_start,jdbcType=REAL},
+      lm_near = #{lm_near,jdbcType=REAL},
+      lm_mid = #{lm_mid,jdbcType=REAL},
+      lm_far = #{lm_far,jdbcType=REAL},
+      lad_start = #{lad_start,jdbcType=REAL},
+      lad_near = #{lad_near,jdbcType=REAL},
+      lad_mid = #{lad_mid,jdbcType=REAL},
+      lad_far = #{lad_far,jdbcType=REAL},
+      lcx_start = #{lcx_start,jdbcType=REAL},
+      lcx_near = #{lcx_near,jdbcType=REAL},
+      lcx_mid = #{lcx_mid,jdbcType=REAL},
+      lcx_far = #{lcx_far,jdbcType=REAL},
+      rca_start = #{rca_start,jdbcType=REAL},
+      rca_near = #{rca_near,jdbcType=REAL},
+      rca_mid = #{rca_mid,jdbcType=REAL},
+      rca_far = #{rca_far,jdbcType=REAL},
+      other_start = #{other_start,jdbcType=REAL},
+      other_near = #{other_near,jdbcType=REAL},
+      other_mid = #{other_mid,jdbcType=REAL},
+      other_far = #{other_far,jdbcType=REAL},
+      aspirin = #{aspirin,jdbcType=TINYINT},
+      tigeruiluo = #{tigeruiluo,jdbcType=TINYINT},
+      clopidogrel = #{clopidogrel,jdbcType=TINYINT},
+      other_antiplatelet = #{other_antiplatelet,jdbcType=VARCHAR},
+      heparin = #{heparin,jdbcType=TINYINT},
+      bivalirudin = #{bivalirudin,jdbcType=TINYINT},
+      other_anti = #{other_anti,jdbcType=VARCHAR},
+      nitroglycerin = #{nitroglycerin,jdbcType=TINYINT},
+      nikdal = #{nikdal,jdbcType=TINYINT},
+      iibiiia = #{iibiiia,jdbcType=TINYINT},
+      angio_guided = #{angio_guided,jdbcType=TINYINT},
+      ivus_guided = #{ivus_guided,jdbcType=TINYINT},
+      ffr_guided = #{ffr_guided,jdbcType=TINYINT},
+      other_operate_drug = #{other_operate_drug,jdbcType=VARCHAR},
+      thrombus_suction = #{thrombus_suction,jdbcType=TINYINT},
+      temporary_pacemaker = #{temporary_pacemaker,jdbcType=TINYINT},
+      iabp = #{iabp,jdbcType=TINYINT},
+      rotablation = #{rotablation,jdbcType=TINYINT},
+      other_auxiliary_device = #{other_auxiliary_device,jdbcType=VARCHAR},
+      contrast_type = #{contrast_type,jdbcType=TINYINT},
+      contrast_number = #{contrast_number,jdbcType=TINYINT}
+    where po_id = #{po_id,jdbcType=BIGINT}
+  </update>
+</mapper>

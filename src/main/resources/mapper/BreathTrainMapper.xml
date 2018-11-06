@@ -1,122 +1,246 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.BreathTrainMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.BreathTrain" >
-    <id column="bt_id" property="bt_id" jdbcType="BIGINT" />
-    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="train_name" property="train_name" jdbcType="VARCHAR" />
-    <result column="train_num" property="train_num" jdbcType="TINYINT" />
-    <result column="breath1_time" property="breath1_time" jdbcType="TINYINT" />
-    <result column="breath1_group" property="breath1_group" jdbcType="TINYINT" />
-    <result column="breath2_time" property="breath2_time" jdbcType="TINYINT" />
-    <result column="breath2_group" property="breath2_group" jdbcType="TINYINT" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.BreathTrainMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.BreathTrain">
+    <id column="bt_id" jdbcType="BIGINT" property="bt_id" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="train_name" jdbcType="VARCHAR" property="train_name" />
+    <result column="train_num" jdbcType="TINYINT" property="train_num" />
+    <result column="breath1_time" jdbcType="TINYINT" property="breath1_time" />
+    <result column="breath1_group" jdbcType="TINYINT" property="breath1_group" />
+    <result column="breath2_time" jdbcType="TINYINT" property="breath2_time" />
+    <result column="breath2_group" jdbcType="TINYINT" property="breath2_group" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    bt_id, ar_id, train_name, train_num, breath1_time, breath1_group, breath2_time, breath2_group
+  <sql id="Base_Column_List">
+    bt_id, fr_id, train_name, train_num, breath1_time, breath1_group, breath2_time, breath2_group
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_breath_train
     where bt_id = #{bt_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_breath_train
     where bt_id = #{bt_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.BreathTrain" >
-    insert into t_breath_train (bt_id, ar_id, train_name, 
+  <insert id="insert" parameterType="lab.c505.entity.BreathTrain">
+    insert into t_breath_train (bt_id, fr_id, train_name, 
       train_num, breath1_time, breath1_group, 
       breath2_time, breath2_group)
-    values (#{bt_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{train_name,jdbcType=VARCHAR}, 
+    values (#{bt_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{train_name,jdbcType=VARCHAR}, 
       #{train_num,jdbcType=TINYINT}, #{breath1_time,jdbcType=TINYINT}, #{breath1_group,jdbcType=TINYINT}, 
       #{breath2_time,jdbcType=TINYINT}, #{breath2_group,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.BreathTrain" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.BreathTrain">
     insert into t_breath_train
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="bt_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bt_id != null">
         bt_id,
       </if>
-      <if test="ar_id != null" >
-        ar_id,
+      <if test="fr_id != null">
+        fr_id,
       </if>
-      <if test="train_name != null" >
+      <if test="train_name != null">
         train_name,
       </if>
-      <if test="train_num != null" >
+      <if test="train_num != null">
         train_num,
       </if>
-      <if test="breath1_time != null" >
+      <if test="breath1_time != null">
         breath1_time,
       </if>
-      <if test="breath1_group != null" >
+      <if test="breath1_group != null">
         breath1_group,
       </if>
-      <if test="breath2_time != null" >
+      <if test="breath2_time != null">
         breath2_time,
       </if>
-      <if test="breath2_group != null" >
+      <if test="breath2_group != null">
         breath2_group,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="bt_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bt_id != null">
         #{bt_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null" >
-        #{ar_id,jdbcType=BIGINT},
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="train_name != null" >
+      <if test="train_name != null">
         #{train_name,jdbcType=VARCHAR},
       </if>
-      <if test="train_num != null" >
+      <if test="train_num != null">
         #{train_num,jdbcType=TINYINT},
       </if>
-      <if test="breath1_time != null" >
+      <if test="breath1_time != null">
         #{breath1_time,jdbcType=TINYINT},
       </if>
-      <if test="breath1_group != null" >
+      <if test="breath1_group != null">
         #{breath1_group,jdbcType=TINYINT},
       </if>
-      <if test="breath2_time != null" >
+      <if test="breath2_time != null">
         #{breath2_time,jdbcType=TINYINT},
       </if>
-      <if test="breath2_group != null" >
+      <if test="breath2_group != null">
         #{breath2_group,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BreathTrain" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BreathTrain">
     update t_breath_train
-    <set >
-      <if test="ar_id != null" >
-        ar_id = #{ar_id,jdbcType=BIGINT},
+    <set>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="train_name != null" >
+      <if test="train_name != null">
         train_name = #{train_name,jdbcType=VARCHAR},
       </if>
-      <if test="train_num != null" >
+      <if test="train_num != null">
         train_num = #{train_num,jdbcType=TINYINT},
       </if>
-      <if test="breath1_time != null" >
+      <if test="breath1_time != null">
         breath1_time = #{breath1_time,jdbcType=TINYINT},
       </if>
-      <if test="breath1_group != null" >
+      <if test="breath1_group != null">
         breath1_group = #{breath1_group,jdbcType=TINYINT},
       </if>
-      <if test="breath2_time != null" >
+      <if test="breath2_time != null">
         breath2_time = #{breath2_time,jdbcType=TINYINT},
       </if>
-      <if test="breath2_group != null" >
+      <if test="breath2_group != null">
         breath2_group = #{breath2_group,jdbcType=TINYINT},
       </if>
     </set>
     where bt_id = #{bt_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BreathTrain" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BreathTrain">
     update t_breath_train
-    set ar_id = #{ar_id,jdbcType=BIGINT},
+    set fr_id = #{fr_id,jdbcType=BIGINT},
+      train_name = #{train_name,jdbcType=VARCHAR},
+      train_num = #{train_num,jdbcType=TINYINT},
+      breath1_time = #{breath1_time,jdbcType=TINYINT},
+      breath1_group = #{breath1_group,jdbcType=TINYINT},
+      breath2_time = #{breath2_time,jdbcType=TINYINT},
+      breath2_group = #{breath2_group,jdbcType=TINYINT}
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.BreathTrain">
+    <id column="bt_id" jdbcType="BIGINT" property="bt_id" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="train_name" jdbcType="VARCHAR" property="train_name" />
+    <result column="train_num" jdbcType="TINYINT" property="train_num" />
+    <result column="breath1_time" jdbcType="TINYINT" property="breath1_time" />
+    <result column="breath1_group" jdbcType="TINYINT" property="breath1_group" />
+    <result column="breath2_time" jdbcType="TINYINT" property="breath2_time" />
+    <result column="breath2_group" jdbcType="TINYINT" property="breath2_group" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bt_id, fr_id, train_name, train_num, breath1_time, breath1_group, breath2_time, breath2_group
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_breath_train
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_breath_train
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.BreathTrain">
+    insert into t_breath_train (bt_id, fr_id, train_name, 
+      train_num, breath1_time, breath1_group, 
+      breath2_time, breath2_group)
+    values (#{bt_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{train_name,jdbcType=VARCHAR}, 
+      #{train_num,jdbcType=TINYINT}, #{breath1_time,jdbcType=TINYINT}, #{breath1_group,jdbcType=TINYINT}, 
+      #{breath2_time,jdbcType=TINYINT}, #{breath2_group,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.BreathTrain">
+    insert into t_breath_train
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bt_id != null">
+        bt_id,
+      </if>
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="train_name != null">
+        train_name,
+      </if>
+      <if test="train_num != null">
+        train_num,
+      </if>
+      <if test="breath1_time != null">
+        breath1_time,
+      </if>
+      <if test="breath1_group != null">
+        breath1_group,
+      </if>
+      <if test="breath2_time != null">
+        breath2_time,
+      </if>
+      <if test="breath2_group != null">
+        breath2_group,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bt_id != null">
+        #{bt_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="train_name != null">
+        #{train_name,jdbcType=VARCHAR},
+      </if>
+      <if test="train_num != null">
+        #{train_num,jdbcType=TINYINT},
+      </if>
+      <if test="breath1_time != null">
+        #{breath1_time,jdbcType=TINYINT},
+      </if>
+      <if test="breath1_group != null">
+        #{breath1_group,jdbcType=TINYINT},
+      </if>
+      <if test="breath2_time != null">
+        #{breath2_time,jdbcType=TINYINT},
+      </if>
+      <if test="breath2_group != null">
+        #{breath2_group,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BreathTrain">
+    update t_breath_train
+    <set>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="train_name != null">
+        train_name = #{train_name,jdbcType=VARCHAR},
+      </if>
+      <if test="train_num != null">
+        train_num = #{train_num,jdbcType=TINYINT},
+      </if>
+      <if test="breath1_time != null">
+        breath1_time = #{breath1_time,jdbcType=TINYINT},
+      </if>
+      <if test="breath1_group != null">
+        breath1_group = #{breath1_group,jdbcType=TINYINT},
+      </if>
+      <if test="breath2_time != null">
+        breath2_time = #{breath2_time,jdbcType=TINYINT},
+      </if>
+      <if test="breath2_group != null">
+        breath2_group = #{breath2_group,jdbcType=TINYINT},
+      </if>
+    </set>
+    where bt_id = #{bt_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BreathTrain">
+    update t_breath_train
+    set fr_id = #{fr_id,jdbcType=BIGINT},
       train_name = #{train_name,jdbcType=VARCHAR},
       train_num = #{train_num,jdbcType=TINYINT},
       breath1_time = #{breath1_time,jdbcType=TINYINT},

@@ -1,218 +1,494 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.NoninvasiveCardiacFuncMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.NoninvasiveCardiacFunc" >
-    <id column="ncf_id" property="ncf_id" jdbcType="BIGINT" />
-    <result column="check_type" property="check_type" jdbcType="TINYINT" />
-    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="hr" property="hr" jdbcType="INTEGER" />
-    <result column="sv" property="sv" jdbcType="REAL" />
-    <result column="svi" property="svi" jdbcType="REAL" />
-    <result column="co" property="co" jdbcType="REAL" />
-    <result column="ci" property="ci" jdbcType="REAL" />
-    <result column="cti" property="cti" jdbcType="REAL" />
-    <result column="lcwi" property="lcwi" jdbcType="REAL" />
-    <result column="lvet" property="lvet" jdbcType="REAL" />
-    <result column="ef" property="ef" jdbcType="REAL" />
-    <result column="svr" property="svr" jdbcType="REAL" />
-    <result column="svri" property="svri" jdbcType="REAL" />
-    <result column="edfr" property="edfr" jdbcType="REAL" />
-    <result column="edv" property="edv" jdbcType="REAL" />
-    <result column="conclusion" property="conclusion" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.NoninvasiveCardiacFuncMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.NoninvasiveCardiacFunc">
+    <id column="ncf_id" jdbcType="BIGINT" property="ncf_id" />
+    <result column="check_type" jdbcType="TINYINT" property="check_type" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="hr" jdbcType="INTEGER" property="hr" />
+    <result column="sv" jdbcType="REAL" property="sv" />
+    <result column="svi" jdbcType="REAL" property="svi" />
+    <result column="co" jdbcType="REAL" property="co" />
+    <result column="ci" jdbcType="REAL" property="ci" />
+    <result column="cti" jdbcType="REAL" property="cti" />
+    <result column="lcwi" jdbcType="REAL" property="lcwi" />
+    <result column="lvet" jdbcType="REAL" property="lvet" />
+    <result column="ef" jdbcType="REAL" property="ef" />
+    <result column="svr" jdbcType="REAL" property="svr" />
+    <result column="svri" jdbcType="REAL" property="svri" />
+    <result column="edfr" jdbcType="REAL" property="edfr" />
+    <result column="edv" jdbcType="REAL" property="edv" />
+    <result column="conclusion" jdbcType="VARCHAR" property="conclusion" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    ncf_id, check_type, ar_id, hr, sv, svi, co, ci, cti, lcwi, lvet, ef, svr, svri, edfr, 
-    edv, conclusion
+  <sql id="Base_Column_List">
+    ncf_id, check_type, fr_id, ar_id, patient_id, hr, sv, svi, co, ci, cti, lcwi, lvet, 
+    ef, svr, svri, edfr, edv, conclusion
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_noninvasive_cardiac_func
     where ncf_id = #{ncf_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_noninvasive_cardiac_func
     where ncf_id = #{ncf_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.NoninvasiveCardiacFunc" >
-    insert into t_noninvasive_cardiac_func (ncf_id, check_type, ar_id, 
-      hr, sv, svi, co, 
-      ci, cti, lcwi, lvet, 
-      ef, svr, svri, edfr, 
-      edv, conclusion)
-    values (#{ncf_id,jdbcType=BIGINT}, #{check_type,jdbcType=TINYINT}, #{ar_id,jdbcType=BIGINT}, 
-      #{hr,jdbcType=INTEGER}, #{sv,jdbcType=REAL}, #{svi,jdbcType=REAL}, #{co,jdbcType=REAL}, 
-      #{ci,jdbcType=REAL}, #{cti,jdbcType=REAL}, #{lcwi,jdbcType=REAL}, #{lvet,jdbcType=REAL}, 
-      #{ef,jdbcType=REAL}, #{svr,jdbcType=REAL}, #{svri,jdbcType=REAL}, #{edfr,jdbcType=REAL}, 
-      #{edv,jdbcType=REAL}, #{conclusion,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
+    insert into t_noninvasive_cardiac_func (ncf_id, check_type, fr_id, 
+      ar_id, patient_id, hr, 
+      sv, svi, co, ci, 
+      cti, lcwi, lvet, ef, 
+      svr, svri, edfr, edv, 
+      conclusion)
+    values (#{ncf_id,jdbcType=BIGINT}, #{check_type,jdbcType=TINYINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{hr,jdbcType=INTEGER}, 
+      #{sv,jdbcType=REAL}, #{svi,jdbcType=REAL}, #{co,jdbcType=REAL}, #{ci,jdbcType=REAL}, 
+      #{cti,jdbcType=REAL}, #{lcwi,jdbcType=REAL}, #{lvet,jdbcType=REAL}, #{ef,jdbcType=REAL}, 
+      #{svr,jdbcType=REAL}, #{svri,jdbcType=REAL}, #{edfr,jdbcType=REAL}, #{edv,jdbcType=REAL}, 
+      #{conclusion,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.NoninvasiveCardiacFunc" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
     insert into t_noninvasive_cardiac_func
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="ncf_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ncf_id != null">
         ncf_id,
       </if>
-      <if test="check_type != null" >
+      <if test="check_type != null">
         check_type,
       </if>
-      <if test="ar_id != null" >
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="ar_id != null">
         ar_id,
       </if>
-      <if test="hr != null" >
+      <if test="patient_id != null">
+        patient_id,
+      </if>
+      <if test="hr != null">
         hr,
       </if>
-      <if test="sv != null" >
+      <if test="sv != null">
         sv,
       </if>
-      <if test="svi != null" >
+      <if test="svi != null">
         svi,
       </if>
-      <if test="co != null" >
+      <if test="co != null">
         co,
       </if>
-      <if test="ci != null" >
+      <if test="ci != null">
         ci,
       </if>
-      <if test="cti != null" >
+      <if test="cti != null">
         cti,
       </if>
-      <if test="lcwi != null" >
+      <if test="lcwi != null">
         lcwi,
       </if>
-      <if test="lvet != null" >
+      <if test="lvet != null">
         lvet,
       </if>
-      <if test="ef != null" >
+      <if test="ef != null">
         ef,
       </if>
-      <if test="svr != null" >
+      <if test="svr != null">
         svr,
       </if>
-      <if test="svri != null" >
+      <if test="svri != null">
         svri,
       </if>
-      <if test="edfr != null" >
+      <if test="edfr != null">
         edfr,
       </if>
-      <if test="edv != null" >
+      <if test="edv != null">
         edv,
       </if>
-      <if test="conclusion != null" >
+      <if test="conclusion != null">
         conclusion,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="ncf_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ncf_id != null">
         #{ncf_id,jdbcType=BIGINT},
       </if>
-      <if test="check_type != null" >
+      <if test="check_type != null">
         #{check_type,jdbcType=TINYINT},
       </if>
-      <if test="ar_id != null" >
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="hr != null" >
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="hr != null">
         #{hr,jdbcType=INTEGER},
       </if>
-      <if test="sv != null" >
+      <if test="sv != null">
         #{sv,jdbcType=REAL},
       </if>
-      <if test="svi != null" >
+      <if test="svi != null">
         #{svi,jdbcType=REAL},
       </if>
-      <if test="co != null" >
+      <if test="co != null">
         #{co,jdbcType=REAL},
       </if>
-      <if test="ci != null" >
+      <if test="ci != null">
         #{ci,jdbcType=REAL},
       </if>
-      <if test="cti != null" >
+      <if test="cti != null">
         #{cti,jdbcType=REAL},
       </if>
-      <if test="lcwi != null" >
+      <if test="lcwi != null">
         #{lcwi,jdbcType=REAL},
       </if>
-      <if test="lvet != null" >
+      <if test="lvet != null">
         #{lvet,jdbcType=REAL},
       </if>
-      <if test="ef != null" >
+      <if test="ef != null">
         #{ef,jdbcType=REAL},
       </if>
-      <if test="svr != null" >
+      <if test="svr != null">
         #{svr,jdbcType=REAL},
       </if>
-      <if test="svri != null" >
+      <if test="svri != null">
         #{svri,jdbcType=REAL},
       </if>
-      <if test="edfr != null" >
+      <if test="edfr != null">
         #{edfr,jdbcType=REAL},
       </if>
-      <if test="edv != null" >
+      <if test="edv != null">
         #{edv,jdbcType=REAL},
       </if>
-      <if test="conclusion != null" >
+      <if test="conclusion != null">
         #{conclusion,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NoninvasiveCardiacFunc" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
     update t_noninvasive_cardiac_func
-    <set >
-      <if test="check_type != null" >
+    <set>
+      <if test="check_type != null">
         check_type = #{check_type,jdbcType=TINYINT},
       </if>
-      <if test="ar_id != null" >
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
         ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="hr != null" >
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="hr != null">
         hr = #{hr,jdbcType=INTEGER},
       </if>
-      <if test="sv != null" >
+      <if test="sv != null">
         sv = #{sv,jdbcType=REAL},
       </if>
-      <if test="svi != null" >
+      <if test="svi != null">
         svi = #{svi,jdbcType=REAL},
       </if>
-      <if test="co != null" >
+      <if test="co != null">
         co = #{co,jdbcType=REAL},
       </if>
-      <if test="ci != null" >
+      <if test="ci != null">
         ci = #{ci,jdbcType=REAL},
       </if>
-      <if test="cti != null" >
+      <if test="cti != null">
         cti = #{cti,jdbcType=REAL},
       </if>
-      <if test="lcwi != null" >
+      <if test="lcwi != null">
         lcwi = #{lcwi,jdbcType=REAL},
       </if>
-      <if test="lvet != null" >
+      <if test="lvet != null">
         lvet = #{lvet,jdbcType=REAL},
       </if>
-      <if test="ef != null" >
+      <if test="ef != null">
         ef = #{ef,jdbcType=REAL},
       </if>
-      <if test="svr != null" >
+      <if test="svr != null">
         svr = #{svr,jdbcType=REAL},
       </if>
-      <if test="svri != null" >
+      <if test="svri != null">
         svri = #{svri,jdbcType=REAL},
       </if>
-      <if test="edfr != null" >
+      <if test="edfr != null">
         edfr = #{edfr,jdbcType=REAL},
       </if>
-      <if test="edv != null" >
+      <if test="edv != null">
         edv = #{edv,jdbcType=REAL},
       </if>
-      <if test="conclusion != null" >
+      <if test="conclusion != null">
         conclusion = #{conclusion,jdbcType=VARCHAR},
       </if>
     </set>
     where ncf_id = #{ncf_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NoninvasiveCardiacFunc" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
     update t_noninvasive_cardiac_func
     set check_type = #{check_type,jdbcType=TINYINT},
+      fr_id = #{fr_id,jdbcType=BIGINT},
       ar_id = #{ar_id,jdbcType=BIGINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
+      hr = #{hr,jdbcType=INTEGER},
+      sv = #{sv,jdbcType=REAL},
+      svi = #{svi,jdbcType=REAL},
+      co = #{co,jdbcType=REAL},
+      ci = #{ci,jdbcType=REAL},
+      cti = #{cti,jdbcType=REAL},
+      lcwi = #{lcwi,jdbcType=REAL},
+      lvet = #{lvet,jdbcType=REAL},
+      ef = #{ef,jdbcType=REAL},
+      svr = #{svr,jdbcType=REAL},
+      svri = #{svri,jdbcType=REAL},
+      edfr = #{edfr,jdbcType=REAL},
+      edv = #{edv,jdbcType=REAL},
+      conclusion = #{conclusion,jdbcType=VARCHAR}
+    where ncf_id = #{ncf_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.NoninvasiveCardiacFunc">
+    <id column="ncf_id" jdbcType="BIGINT" property="ncf_id" />
+    <result column="check_type" jdbcType="TINYINT" property="check_type" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="hr" jdbcType="INTEGER" property="hr" />
+    <result column="sv" jdbcType="REAL" property="sv" />
+    <result column="svi" jdbcType="REAL" property="svi" />
+    <result column="co" jdbcType="REAL" property="co" />
+    <result column="ci" jdbcType="REAL" property="ci" />
+    <result column="cti" jdbcType="REAL" property="cti" />
+    <result column="lcwi" jdbcType="REAL" property="lcwi" />
+    <result column="lvet" jdbcType="REAL" property="lvet" />
+    <result column="ef" jdbcType="REAL" property="ef" />
+    <result column="svr" jdbcType="REAL" property="svr" />
+    <result column="svri" jdbcType="REAL" property="svri" />
+    <result column="edfr" jdbcType="REAL" property="edfr" />
+    <result column="edv" jdbcType="REAL" property="edv" />
+    <result column="conclusion" jdbcType="VARCHAR" property="conclusion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ncf_id, check_type, fr_id, ar_id, patient_id, hr, sv, svi, co, ci, cti, lcwi, lvet, 
+    ef, svr, svri, edfr, edv, conclusion
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_noninvasive_cardiac_func
+    where ncf_id = #{ncf_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_noninvasive_cardiac_func
+    where ncf_id = #{ncf_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
+    insert into t_noninvasive_cardiac_func (ncf_id, check_type, fr_id, 
+      ar_id, patient_id, hr, 
+      sv, svi, co, ci, 
+      cti, lcwi, lvet, ef, 
+      svr, svri, edfr, edv, 
+      conclusion)
+    values (#{ncf_id,jdbcType=BIGINT}, #{check_type,jdbcType=TINYINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{hr,jdbcType=INTEGER}, 
+      #{sv,jdbcType=REAL}, #{svi,jdbcType=REAL}, #{co,jdbcType=REAL}, #{ci,jdbcType=REAL}, 
+      #{cti,jdbcType=REAL}, #{lcwi,jdbcType=REAL}, #{lvet,jdbcType=REAL}, #{ef,jdbcType=REAL}, 
+      #{svr,jdbcType=REAL}, #{svri,jdbcType=REAL}, #{edfr,jdbcType=REAL}, #{edv,jdbcType=REAL}, 
+      #{conclusion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
+    insert into t_noninvasive_cardiac_func
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ncf_id != null">
+        ncf_id,
+      </if>
+      <if test="check_type != null">
+        check_type,
+      </if>
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="ar_id != null">
+        ar_id,
+      </if>
+      <if test="patient_id != null">
+        patient_id,
+      </if>
+      <if test="hr != null">
+        hr,
+      </if>
+      <if test="sv != null">
+        sv,
+      </if>
+      <if test="svi != null">
+        svi,
+      </if>
+      <if test="co != null">
+        co,
+      </if>
+      <if test="ci != null">
+        ci,
+      </if>
+      <if test="cti != null">
+        cti,
+      </if>
+      <if test="lcwi != null">
+        lcwi,
+      </if>
+      <if test="lvet != null">
+        lvet,
+      </if>
+      <if test="ef != null">
+        ef,
+      </if>
+      <if test="svr != null">
+        svr,
+      </if>
+      <if test="svri != null">
+        svri,
+      </if>
+      <if test="edfr != null">
+        edfr,
+      </if>
+      <if test="edv != null">
+        edv,
+      </if>
+      <if test="conclusion != null">
+        conclusion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ncf_id != null">
+        #{ncf_id,jdbcType=BIGINT},
+      </if>
+      <if test="check_type != null">
+        #{check_type,jdbcType=TINYINT},
+      </if>
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="hr != null">
+        #{hr,jdbcType=INTEGER},
+      </if>
+      <if test="sv != null">
+        #{sv,jdbcType=REAL},
+      </if>
+      <if test="svi != null">
+        #{svi,jdbcType=REAL},
+      </if>
+      <if test="co != null">
+        #{co,jdbcType=REAL},
+      </if>
+      <if test="ci != null">
+        #{ci,jdbcType=REAL},
+      </if>
+      <if test="cti != null">
+        #{cti,jdbcType=REAL},
+      </if>
+      <if test="lcwi != null">
+        #{lcwi,jdbcType=REAL},
+      </if>
+      <if test="lvet != null">
+        #{lvet,jdbcType=REAL},
+      </if>
+      <if test="ef != null">
+        #{ef,jdbcType=REAL},
+      </if>
+      <if test="svr != null">
+        #{svr,jdbcType=REAL},
+      </if>
+      <if test="svri != null">
+        #{svri,jdbcType=REAL},
+      </if>
+      <if test="edfr != null">
+        #{edfr,jdbcType=REAL},
+      </if>
+      <if test="edv != null">
+        #{edv,jdbcType=REAL},
+      </if>
+      <if test="conclusion != null">
+        #{conclusion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
+    update t_noninvasive_cardiac_func
+    <set>
+      <if test="check_type != null">
+        check_type = #{check_type,jdbcType=TINYINT},
+      </if>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="hr != null">
+        hr = #{hr,jdbcType=INTEGER},
+      </if>
+      <if test="sv != null">
+        sv = #{sv,jdbcType=REAL},
+      </if>
+      <if test="svi != null">
+        svi = #{svi,jdbcType=REAL},
+      </if>
+      <if test="co != null">
+        co = #{co,jdbcType=REAL},
+      </if>
+      <if test="ci != null">
+        ci = #{ci,jdbcType=REAL},
+      </if>
+      <if test="cti != null">
+        cti = #{cti,jdbcType=REAL},
+      </if>
+      <if test="lcwi != null">
+        lcwi = #{lcwi,jdbcType=REAL},
+      </if>
+      <if test="lvet != null">
+        lvet = #{lvet,jdbcType=REAL},
+      </if>
+      <if test="ef != null">
+        ef = #{ef,jdbcType=REAL},
+      </if>
+      <if test="svr != null">
+        svr = #{svr,jdbcType=REAL},
+      </if>
+      <if test="svri != null">
+        svri = #{svri,jdbcType=REAL},
+      </if>
+      <if test="edfr != null">
+        edfr = #{edfr,jdbcType=REAL},
+      </if>
+      <if test="edv != null">
+        edv = #{edv,jdbcType=REAL},
+      </if>
+      <if test="conclusion != null">
+        conclusion = #{conclusion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ncf_id = #{ncf_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NoninvasiveCardiacFunc">
+    update t_noninvasive_cardiac_func
+    set check_type = #{check_type,jdbcType=TINYINT},
+      fr_id = #{fr_id,jdbcType=BIGINT},
+      ar_id = #{ar_id,jdbcType=BIGINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
       hr = #{hr,jdbcType=INTEGER},
       sv = #{sv,jdbcType=REAL},
       svi = #{svi,jdbcType=REAL},

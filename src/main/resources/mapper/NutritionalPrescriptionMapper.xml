@@ -1,90 +1,179 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.NutritionalPrescriptionMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.NutritionalPrescription" >
-    <id column="np_id" property="np_id" jdbcType="BIGINT" />
-    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="calorie" property="calorie" jdbcType="INTEGER" />
-    <result column="fat" property="fat" jdbcType="INTEGER" />
-    <result column="protein" property="protein" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.NutritionalPrescriptionMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.NutritionalPrescription">
+    <id column="np_id" jdbcType="BIGINT" property="np_id" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="calorie" jdbcType="INTEGER" property="calorie" />
+    <result column="fat" jdbcType="INTEGER" property="fat" />
+    <result column="protein" jdbcType="INTEGER" property="protein" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    np_id, ar_id, calorie, fat, protein
+  <sql id="Base_Column_List">
+    np_id, fr_id, calorie, fat, protein
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_nutritional_prescription
     where np_id = #{np_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_nutritional_prescription
     where np_id = #{np_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.NutritionalPrescription" >
-    insert into t_nutritional_prescription (np_id, ar_id, calorie, 
+  <insert id="insert" parameterType="lab.c505.entity.NutritionalPrescription">
+    insert into t_nutritional_prescription (np_id, fr_id, calorie, 
       fat, protein)
-    values (#{np_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{calorie,jdbcType=INTEGER}, 
+    values (#{np_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{calorie,jdbcType=INTEGER}, 
       #{fat,jdbcType=INTEGER}, #{protein,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.NutritionalPrescription" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.NutritionalPrescription">
     insert into t_nutritional_prescription
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="np_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="np_id != null">
         np_id,
       </if>
-      <if test="ar_id != null" >
-        ar_id,
+      <if test="fr_id != null">
+        fr_id,
       </if>
-      <if test="calorie != null" >
+      <if test="calorie != null">
         calorie,
       </if>
-      <if test="fat != null" >
+      <if test="fat != null">
         fat,
       </if>
-      <if test="protein != null" >
+      <if test="protein != null">
         protein,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="np_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="np_id != null">
         #{np_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null" >
-        #{ar_id,jdbcType=BIGINT},
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="calorie != null" >
+      <if test="calorie != null">
         #{calorie,jdbcType=INTEGER},
       </if>
-      <if test="fat != null" >
+      <if test="fat != null">
         #{fat,jdbcType=INTEGER},
       </if>
-      <if test="protein != null" >
+      <if test="protein != null">
         #{protein,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NutritionalPrescription" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NutritionalPrescription">
     update t_nutritional_prescription
-    <set >
-      <if test="ar_id != null" >
-        ar_id = #{ar_id,jdbcType=BIGINT},
+    <set>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="calorie != null" >
+      <if test="calorie != null">
         calorie = #{calorie,jdbcType=INTEGER},
       </if>
-      <if test="fat != null" >
+      <if test="fat != null">
         fat = #{fat,jdbcType=INTEGER},
       </if>
-      <if test="protein != null" >
+      <if test="protein != null">
         protein = #{protein,jdbcType=INTEGER},
       </if>
     </set>
     where np_id = #{np_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NutritionalPrescription" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NutritionalPrescription">
     update t_nutritional_prescription
-    set ar_id = #{ar_id,jdbcType=BIGINT},
+    set fr_id = #{fr_id,jdbcType=BIGINT},
+      calorie = #{calorie,jdbcType=INTEGER},
+      fat = #{fat,jdbcType=INTEGER},
+      protein = #{protein,jdbcType=INTEGER}
+    where np_id = #{np_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.NutritionalPrescription">
+    <id column="np_id" jdbcType="BIGINT" property="np_id" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="calorie" jdbcType="INTEGER" property="calorie" />
+    <result column="fat" jdbcType="INTEGER" property="fat" />
+    <result column="protein" jdbcType="INTEGER" property="protein" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    np_id, fr_id, calorie, fat, protein
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_nutritional_prescription
+    where np_id = #{np_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_nutritional_prescription
+    where np_id = #{np_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.NutritionalPrescription">
+    insert into t_nutritional_prescription (np_id, fr_id, calorie, 
+      fat, protein)
+    values (#{np_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{calorie,jdbcType=INTEGER}, 
+      #{fat,jdbcType=INTEGER}, #{protein,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.NutritionalPrescription">
+    insert into t_nutritional_prescription
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="np_id != null">
+        np_id,
+      </if>
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="calorie != null">
+        calorie,
+      </if>
+      <if test="fat != null">
+        fat,
+      </if>
+      <if test="protein != null">
+        protein,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="np_id != null">
+        #{np_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="calorie != null">
+        #{calorie,jdbcType=INTEGER},
+      </if>
+      <if test="fat != null">
+        #{fat,jdbcType=INTEGER},
+      </if>
+      <if test="protein != null">
+        #{protein,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NutritionalPrescription">
+    update t_nutritional_prescription
+    <set>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="calorie != null">
+        calorie = #{calorie,jdbcType=INTEGER},
+      </if>
+      <if test="fat != null">
+        fat = #{fat,jdbcType=INTEGER},
+      </if>
+      <if test="protein != null">
+        protein = #{protein,jdbcType=INTEGER},
+      </if>
+    </set>
+    where np_id = #{np_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NutritionalPrescription">
+    update t_nutritional_prescription
+    set fr_id = #{fr_id,jdbcType=BIGINT},
       calorie = #{calorie,jdbcType=INTEGER},
       fat = #{fat,jdbcType=INTEGER},
       protein = #{protein,jdbcType=INTEGER}

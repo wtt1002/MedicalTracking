@@ -1,147 +1,295 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.PhysicalExamMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.PhysicalExam" >
-    <id column="pe_id" property="pe_id" jdbcType="BIGINT" />
-    <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
-    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
-    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="r_type" property="r_type" jdbcType="TINYINT" />
-    <result column="blood_h" property="blood_h" jdbcType="TINYINT" />
-    <result column="blood_l" property="blood_l" jdbcType="TINYINT" />
-    <result column="hr" property="hr" jdbcType="TINYINT" />
-    <result column="weight" property="weight" jdbcType="TINYINT" />
-    <result column="supplement" property="supplement" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.PhysicalExamMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.PhysicalExam">
+    <id column="pe_id" jdbcType="BIGINT" property="pe_id" />
+    <result column="check_type" jdbcType="TINYINT" property="check_type" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="blood_h" jdbcType="TINYINT" property="blood_h" />
+    <result column="blood_l" jdbcType="TINYINT" property="blood_l" />
+    <result column="hr" jdbcType="TINYINT" property="hr" />
+    <result column="weight" jdbcType="TINYINT" property="weight" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    pe_id, patient_id, fr_id, ar_id, r_type, blood_h, blood_l, hr, weight, supplement
+  <sql id="Base_Column_List">
+    pe_id, check_type, fr_id, ar_id, patient_id, blood_h, blood_l, hr, weight, supplement
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_physical_exam
     where pe_id = #{pe_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_physical_exam
     where pe_id = #{pe_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.PhysicalExam" >
-    insert into t_physical_exam (pe_id, patient_id, fr_id, 
-      ar_id, r_type, blood_h, 
+  <insert id="insert" parameterType="lab.c505.entity.PhysicalExam">
+    insert into t_physical_exam (pe_id, check_type, fr_id, 
+      ar_id, patient_id, blood_h, 
       blood_l, hr, weight, 
       supplement)
-    values (#{pe_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, 
-      #{ar_id,jdbcType=BIGINT}, #{r_type,jdbcType=TINYINT}, #{blood_h,jdbcType=TINYINT}, 
+    values (#{pe_id,jdbcType=BIGINT}, #{check_type,jdbcType=TINYINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{blood_h,jdbcType=TINYINT}, 
       #{blood_l,jdbcType=TINYINT}, #{hr,jdbcType=TINYINT}, #{weight,jdbcType=TINYINT}, 
       #{supplement,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.PhysicalExam" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.PhysicalExam">
     insert into t_physical_exam
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pe_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pe_id != null">
         pe_id,
       </if>
-      <if test="patient_id != null" >
-        patient_id,
+      <if test="check_type != null">
+        check_type,
       </if>
-      <if test="fr_id != null" >
+      <if test="fr_id != null">
         fr_id,
       </if>
-      <if test="ar_id != null" >
+      <if test="ar_id != null">
         ar_id,
       </if>
-      <if test="r_type != null" >
-        r_type,
+      <if test="patient_id != null">
+        patient_id,
       </if>
-      <if test="blood_h != null" >
+      <if test="blood_h != null">
         blood_h,
       </if>
-      <if test="blood_l != null" >
+      <if test="blood_l != null">
         blood_l,
       </if>
-      <if test="hr != null" >
+      <if test="hr != null">
         hr,
       </if>
-      <if test="weight != null" >
+      <if test="weight != null">
         weight,
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         supplement,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pe_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pe_id != null">
         #{pe_id,jdbcType=BIGINT},
       </if>
-      <if test="patient_id != null" >
-        #{patient_id,jdbcType=BIGINT},
+      <if test="check_type != null">
+        #{check_type,jdbcType=TINYINT},
       </if>
-      <if test="fr_id != null" >
+      <if test="fr_id != null">
         #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null" >
+      <if test="ar_id != null">
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="r_type != null" >
-        #{r_type,jdbcType=TINYINT},
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
       </if>
-      <if test="blood_h != null" >
+      <if test="blood_h != null">
         #{blood_h,jdbcType=TINYINT},
       </if>
-      <if test="blood_l != null" >
+      <if test="blood_l != null">
         #{blood_l,jdbcType=TINYINT},
       </if>
-      <if test="hr != null" >
+      <if test="hr != null">
         #{hr,jdbcType=TINYINT},
       </if>
-      <if test="weight != null" >
+      <if test="weight != null">
         #{weight,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         #{supplement,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PhysicalExam" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PhysicalExam">
     update t_physical_exam
-    <set >
-      <if test="patient_id != null" >
-        patient_id = #{patient_id,jdbcType=BIGINT},
+    <set>
+      <if test="check_type != null">
+        check_type = #{check_type,jdbcType=TINYINT},
       </if>
-      <if test="fr_id != null" >
+      <if test="fr_id != null">
         fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null" >
+      <if test="ar_id != null">
         ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="r_type != null" >
-        r_type = #{r_type,jdbcType=TINYINT},
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
       </if>
-      <if test="blood_h != null" >
+      <if test="blood_h != null">
         blood_h = #{blood_h,jdbcType=TINYINT},
       </if>
-      <if test="blood_l != null" >
+      <if test="blood_l != null">
         blood_l = #{blood_l,jdbcType=TINYINT},
       </if>
-      <if test="hr != null" >
+      <if test="hr != null">
         hr = #{hr,jdbcType=TINYINT},
       </if>
-      <if test="weight != null" >
+      <if test="weight != null">
         weight = #{weight,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         supplement = #{supplement,jdbcType=VARCHAR},
       </if>
     </set>
     where pe_id = #{pe_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PhysicalExam" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PhysicalExam">
     update t_physical_exam
-    set patient_id = #{patient_id,jdbcType=BIGINT},
+    set check_type = #{check_type,jdbcType=TINYINT},
       fr_id = #{fr_id,jdbcType=BIGINT},
       ar_id = #{ar_id,jdbcType=BIGINT},
-      r_type = #{r_type,jdbcType=TINYINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
+      blood_h = #{blood_h,jdbcType=TINYINT},
+      blood_l = #{blood_l,jdbcType=TINYINT},
+      hr = #{hr,jdbcType=TINYINT},
+      weight = #{weight,jdbcType=TINYINT},
+      supplement = #{supplement,jdbcType=VARCHAR}
+    where pe_id = #{pe_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.PhysicalExam">
+    <id column="pe_id" jdbcType="BIGINT" property="pe_id" />
+    <result column="check_type" jdbcType="TINYINT" property="check_type" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="blood_h" jdbcType="TINYINT" property="blood_h" />
+    <result column="blood_l" jdbcType="TINYINT" property="blood_l" />
+    <result column="hr" jdbcType="TINYINT" property="hr" />
+    <result column="weight" jdbcType="TINYINT" property="weight" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pe_id, check_type, fr_id, ar_id, patient_id, blood_h, blood_l, hr, weight, supplement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_physical_exam
+    where pe_id = #{pe_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_physical_exam
+    where pe_id = #{pe_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.PhysicalExam">
+    insert into t_physical_exam (pe_id, check_type, fr_id, 
+      ar_id, patient_id, blood_h, 
+      blood_l, hr, weight, 
+      supplement)
+    values (#{pe_id,jdbcType=BIGINT}, #{check_type,jdbcType=TINYINT}, #{fr_id,jdbcType=BIGINT}, 
+      #{ar_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, #{blood_h,jdbcType=TINYINT}, 
+      #{blood_l,jdbcType=TINYINT}, #{hr,jdbcType=TINYINT}, #{weight,jdbcType=TINYINT}, 
+      #{supplement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.PhysicalExam">
+    insert into t_physical_exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pe_id != null">
+        pe_id,
+      </if>
+      <if test="check_type != null">
+        check_type,
+      </if>
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="ar_id != null">
+        ar_id,
+      </if>
+      <if test="patient_id != null">
+        patient_id,
+      </if>
+      <if test="blood_h != null">
+        blood_h,
+      </if>
+      <if test="blood_l != null">
+        blood_l,
+      </if>
+      <if test="hr != null">
+        hr,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="supplement != null">
+        supplement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pe_id != null">
+        #{pe_id,jdbcType=BIGINT},
+      </if>
+      <if test="check_type != null">
+        #{check_type,jdbcType=TINYINT},
+      </if>
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="blood_h != null">
+        #{blood_h,jdbcType=TINYINT},
+      </if>
+      <if test="blood_l != null">
+        #{blood_l,jdbcType=TINYINT},
+      </if>
+      <if test="hr != null">
+        #{hr,jdbcType=TINYINT},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        #{supplement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PhysicalExam">
+    update t_physical_exam
+    <set>
+      <if test="check_type != null">
+        check_type = #{check_type,jdbcType=TINYINT},
+      </if>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="blood_h != null">
+        blood_h = #{blood_h,jdbcType=TINYINT},
+      </if>
+      <if test="blood_l != null">
+        blood_l = #{blood_l,jdbcType=TINYINT},
+      </if>
+      <if test="hr != null">
+        hr = #{hr,jdbcType=TINYINT},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        supplement = #{supplement,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pe_id = #{pe_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PhysicalExam">
+    update t_physical_exam
+    set check_type = #{check_type,jdbcType=TINYINT},
+      fr_id = #{fr_id,jdbcType=BIGINT},
+      ar_id = #{ar_id,jdbcType=BIGINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
       blood_h = #{blood_h,jdbcType=TINYINT},
       blood_l = #{blood_l,jdbcType=TINYINT},
       hr = #{hr,jdbcType=TINYINT},

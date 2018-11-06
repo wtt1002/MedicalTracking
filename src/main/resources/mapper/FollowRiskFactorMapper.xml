@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.FollowRiskFactorMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.FollowRiskFactor">
+    <id column="frf_id" jdbcType="BIGINT" property="frf_id" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="is_smoke" jdbcType="TINYINT" property="is_smoke" />
+    <result column="is_heavy" jdbcType="TINYINT" property="is_heavy" />
+    <result column="is_lessmove" jdbcType="TINYINT" property="is_lessmove" />
+    <result column="is_bl" jdbcType="TINYINT" property="is_bl" />
+    <result column="is_bs" jdbcType="TINYINT" property="is_bs" />
+    <result column="is_bf" jdbcType="TINYINT" property="is_bf" />
+    <result column="other" jdbcType="TINYINT" property="other" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    frf_id, fr_id, is_smoke, is_heavy, is_lessmove, is_bl, is_bs, is_bf, other, supplement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_follow_risk_factor
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_follow_risk_factor
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.FollowRiskFactor">
+    insert into t_follow_risk_factor (frf_id, fr_id, is_smoke, 
+      is_heavy, is_lessmove, is_bl, 
+      is_bs, is_bf, other, 
+      supplement)
+    values (#{frf_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{is_smoke,jdbcType=TINYINT}, 
+      #{is_heavy,jdbcType=TINYINT}, #{is_lessmove,jdbcType=TINYINT}, #{is_bl,jdbcType=TINYINT}, 
+      #{is_bs,jdbcType=TINYINT}, #{is_bf,jdbcType=TINYINT}, #{other,jdbcType=TINYINT}, 
+      #{supplement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.FollowRiskFactor">
+    insert into t_follow_risk_factor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="frf_id != null">
+        frf_id,
+      </if>
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="is_smoke != null">
+        is_smoke,
+      </if>
+      <if test="is_heavy != null">
+        is_heavy,
+      </if>
+      <if test="is_lessmove != null">
+        is_lessmove,
+      </if>
+      <if test="is_bl != null">
+        is_bl,
+      </if>
+      <if test="is_bs != null">
+        is_bs,
+      </if>
+      <if test="is_bf != null">
+        is_bf,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="supplement != null">
+        supplement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="frf_id != null">
+        #{frf_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_smoke != null">
+        #{is_smoke,jdbcType=TINYINT},
+      </if>
+      <if test="is_heavy != null">
+        #{is_heavy,jdbcType=TINYINT},
+      </if>
+      <if test="is_lessmove != null">
+        #{is_lessmove,jdbcType=TINYINT},
+      </if>
+      <if test="is_bl != null">
+        #{is_bl,jdbcType=TINYINT},
+      </if>
+      <if test="is_bs != null">
+        #{is_bs,jdbcType=TINYINT},
+      </if>
+      <if test="is_bf != null">
+        #{is_bf,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        #{supplement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.FollowRiskFactor">
+    update t_follow_risk_factor
+    <set>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_smoke != null">
+        is_smoke = #{is_smoke,jdbcType=TINYINT},
+      </if>
+      <if test="is_heavy != null">
+        is_heavy = #{is_heavy,jdbcType=TINYINT},
+      </if>
+      <if test="is_lessmove != null">
+        is_lessmove = #{is_lessmove,jdbcType=TINYINT},
+      </if>
+      <if test="is_bl != null">
+        is_bl = #{is_bl,jdbcType=TINYINT},
+      </if>
+      <if test="is_bs != null">
+        is_bs = #{is_bs,jdbcType=TINYINT},
+      </if>
+      <if test="is_bf != null">
+        is_bf = #{is_bf,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        supplement = #{supplement,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.FollowRiskFactor">
+    update t_follow_risk_factor
+    set fr_id = #{fr_id,jdbcType=BIGINT},
+      is_smoke = #{is_smoke,jdbcType=TINYINT},
+      is_heavy = #{is_heavy,jdbcType=TINYINT},
+      is_lessmove = #{is_lessmove,jdbcType=TINYINT},
+      is_bl = #{is_bl,jdbcType=TINYINT},
+      is_bs = #{is_bs,jdbcType=TINYINT},
+      is_bf = #{is_bf,jdbcType=TINYINT},
+      other = #{other,jdbcType=TINYINT},
+      supplement = #{supplement,jdbcType=VARCHAR}
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.FollowRiskFactor">
+    <id column="frf_id" jdbcType="BIGINT" property="frf_id" />
+    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
+    <result column="is_smoke" jdbcType="TINYINT" property="is_smoke" />
+    <result column="is_heavy" jdbcType="TINYINT" property="is_heavy" />
+    <result column="is_lessmove" jdbcType="TINYINT" property="is_lessmove" />
+    <result column="is_bl" jdbcType="TINYINT" property="is_bl" />
+    <result column="is_bs" jdbcType="TINYINT" property="is_bs" />
+    <result column="is_bf" jdbcType="TINYINT" property="is_bf" />
+    <result column="other" jdbcType="TINYINT" property="other" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    frf_id, fr_id, is_smoke, is_heavy, is_lessmove, is_bl, is_bs, is_bf, other, supplement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_follow_risk_factor
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_follow_risk_factor
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.FollowRiskFactor">
+    insert into t_follow_risk_factor (frf_id, fr_id, is_smoke, 
+      is_heavy, is_lessmove, is_bl, 
+      is_bs, is_bf, other, 
+      supplement)
+    values (#{frf_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{is_smoke,jdbcType=TINYINT}, 
+      #{is_heavy,jdbcType=TINYINT}, #{is_lessmove,jdbcType=TINYINT}, #{is_bl,jdbcType=TINYINT}, 
+      #{is_bs,jdbcType=TINYINT}, #{is_bf,jdbcType=TINYINT}, #{other,jdbcType=TINYINT}, 
+      #{supplement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.FollowRiskFactor">
+    insert into t_follow_risk_factor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="frf_id != null">
+        frf_id,
+      </if>
+      <if test="fr_id != null">
+        fr_id,
+      </if>
+      <if test="is_smoke != null">
+        is_smoke,
+      </if>
+      <if test="is_heavy != null">
+        is_heavy,
+      </if>
+      <if test="is_lessmove != null">
+        is_lessmove,
+      </if>
+      <if test="is_bl != null">
+        is_bl,
+      </if>
+      <if test="is_bs != null">
+        is_bs,
+      </if>
+      <if test="is_bf != null">
+        is_bf,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="supplement != null">
+        supplement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="frf_id != null">
+        #{frf_id,jdbcType=BIGINT},
+      </if>
+      <if test="fr_id != null">
+        #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_smoke != null">
+        #{is_smoke,jdbcType=TINYINT},
+      </if>
+      <if test="is_heavy != null">
+        #{is_heavy,jdbcType=TINYINT},
+      </if>
+      <if test="is_lessmove != null">
+        #{is_lessmove,jdbcType=TINYINT},
+      </if>
+      <if test="is_bl != null">
+        #{is_bl,jdbcType=TINYINT},
+      </if>
+      <if test="is_bs != null">
+        #{is_bs,jdbcType=TINYINT},
+      </if>
+      <if test="is_bf != null">
+        #{is_bf,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        #{supplement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.FollowRiskFactor">
+    update t_follow_risk_factor
+    <set>
+      <if test="fr_id != null">
+        fr_id = #{fr_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_smoke != null">
+        is_smoke = #{is_smoke,jdbcType=TINYINT},
+      </if>
+      <if test="is_heavy != null">
+        is_heavy = #{is_heavy,jdbcType=TINYINT},
+      </if>
+      <if test="is_lessmove != null">
+        is_lessmove = #{is_lessmove,jdbcType=TINYINT},
+      </if>
+      <if test="is_bl != null">
+        is_bl = #{is_bl,jdbcType=TINYINT},
+      </if>
+      <if test="is_bs != null">
+        is_bs = #{is_bs,jdbcType=TINYINT},
+      </if>
+      <if test="is_bf != null">
+        is_bf = #{is_bf,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        supplement = #{supplement,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.FollowRiskFactor">
+    update t_follow_risk_factor
+    set fr_id = #{fr_id,jdbcType=BIGINT},
+      is_smoke = #{is_smoke,jdbcType=TINYINT},
+      is_heavy = #{is_heavy,jdbcType=TINYINT},
+      is_lessmove = #{is_lessmove,jdbcType=TINYINT},
+      is_bl = #{is_bl,jdbcType=TINYINT},
+      is_bs = #{is_bs,jdbcType=TINYINT},
+      is_bf = #{is_bf,jdbcType=TINYINT},
+      other = #{other,jdbcType=TINYINT},
+      supplement = #{supplement,jdbcType=VARCHAR}
+    where frf_id = #{frf_id,jdbcType=BIGINT}
+  </update>
+</mapper>

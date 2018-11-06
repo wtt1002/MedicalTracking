@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.RiskFactorMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.RiskFactor" >
-    <id column="rf_id" property="rf_id" jdbcType="BIGINT" />
-    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="smoke" property="smoke" jdbcType="TINYINT" />
-    <result column="coronary_heart" property="coronary_heart" jdbcType="TINYINT" />
-    <result column="hypertension" property="hypertension" jdbcType="TINYINT" />
-    <result column="dyslipidemia" property="dyslipidemia" jdbcType="TINYINT" />
-    <result column="diabetes" property="diabetes" jdbcType="TINYINT" />
-    <result column="renal_inadequacy" property="renal_inadequacy" jdbcType="TINYINT" />
-    <result column="pcad" property="pcad" jdbcType="TINYINT" />
-    <result column="other" property="other" jdbcType="TINYINT" />
-    <result column="supplement" property="supplement" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.RiskFactorMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.RiskFactor">
+    <id column="rf_id" jdbcType="BIGINT" property="rf_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="smoke" jdbcType="TINYINT" property="smoke" />
+    <result column="coronary_heart" jdbcType="TINYINT" property="coronary_heart" />
+    <result column="hypertension" jdbcType="TINYINT" property="hypertension" />
+    <result column="dyslipidemia" jdbcType="TINYINT" property="dyslipidemia" />
+    <result column="diabetes" jdbcType="TINYINT" property="diabetes" />
+    <result column="renal_inadequacy" jdbcType="TINYINT" property="renal_inadequacy" />
+    <result column="pcad" jdbcType="TINYINT" property="pcad" />
+    <result column="other" jdbcType="TINYINT" property="other" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     rf_id, ar_id, smoke, coronary_heart, hypertension, dyslipidemia, diabetes, renal_inadequacy, 
     pcad, other, supplement
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_risk_factor
     where rf_id = #{rf_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_risk_factor
     where rf_id = #{rf_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.RiskFactor" >
+  <insert id="insert" parameterType="lab.c505.entity.RiskFactor">
     insert into t_risk_factor (rf_id, ar_id, smoke, 
       coronary_heart, hypertension, dyslipidemia, 
       diabetes, renal_inadequacy, pcad, 
@@ -38,116 +38,276 @@
       #{diabetes,jdbcType=TINYINT}, #{renal_inadequacy,jdbcType=TINYINT}, #{pcad,jdbcType=TINYINT}, 
       #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.RiskFactor" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.RiskFactor">
     insert into t_risk_factor
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rf_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rf_id != null">
         rf_id,
       </if>
-      <if test="ar_id != null" >
+      <if test="ar_id != null">
         ar_id,
       </if>
-      <if test="smoke != null" >
+      <if test="smoke != null">
         smoke,
       </if>
-      <if test="coronary_heart != null" >
+      <if test="coronary_heart != null">
         coronary_heart,
       </if>
-      <if test="hypertension != null" >
+      <if test="hypertension != null">
         hypertension,
       </if>
-      <if test="dyslipidemia != null" >
+      <if test="dyslipidemia != null">
         dyslipidemia,
       </if>
-      <if test="diabetes != null" >
+      <if test="diabetes != null">
         diabetes,
       </if>
-      <if test="renal_inadequacy != null" >
+      <if test="renal_inadequacy != null">
         renal_inadequacy,
       </if>
-      <if test="pcad != null" >
+      <if test="pcad != null">
         pcad,
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         other,
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         supplement,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rf_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rf_id != null">
         #{rf_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null" >
+      <if test="ar_id != null">
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="smoke != null" >
+      <if test="smoke != null">
         #{smoke,jdbcType=TINYINT},
       </if>
-      <if test="coronary_heart != null" >
+      <if test="coronary_heart != null">
         #{coronary_heart,jdbcType=TINYINT},
       </if>
-      <if test="hypertension != null" >
+      <if test="hypertension != null">
         #{hypertension,jdbcType=TINYINT},
       </if>
-      <if test="dyslipidemia != null" >
+      <if test="dyslipidemia != null">
         #{dyslipidemia,jdbcType=TINYINT},
       </if>
-      <if test="diabetes != null" >
+      <if test="diabetes != null">
         #{diabetes,jdbcType=TINYINT},
       </if>
-      <if test="renal_inadequacy != null" >
+      <if test="renal_inadequacy != null">
         #{renal_inadequacy,jdbcType=TINYINT},
       </if>
-      <if test="pcad != null" >
+      <if test="pcad != null">
         #{pcad,jdbcType=TINYINT},
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         #{supplement,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.RiskFactor" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.RiskFactor">
     update t_risk_factor
-    <set >
-      <if test="ar_id != null" >
+    <set>
+      <if test="ar_id != null">
         ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="smoke != null" >
+      <if test="smoke != null">
         smoke = #{smoke,jdbcType=TINYINT},
       </if>
-      <if test="coronary_heart != null" >
+      <if test="coronary_heart != null">
         coronary_heart = #{coronary_heart,jdbcType=TINYINT},
       </if>
-      <if test="hypertension != null" >
+      <if test="hypertension != null">
         hypertension = #{hypertension,jdbcType=TINYINT},
       </if>
-      <if test="dyslipidemia != null" >
+      <if test="dyslipidemia != null">
         dyslipidemia = #{dyslipidemia,jdbcType=TINYINT},
       </if>
-      <if test="diabetes != null" >
+      <if test="diabetes != null">
         diabetes = #{diabetes,jdbcType=TINYINT},
       </if>
-      <if test="renal_inadequacy != null" >
+      <if test="renal_inadequacy != null">
         renal_inadequacy = #{renal_inadequacy,jdbcType=TINYINT},
       </if>
-      <if test="pcad != null" >
+      <if test="pcad != null">
         pcad = #{pcad,jdbcType=TINYINT},
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         other = #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         supplement = #{supplement,jdbcType=VARCHAR},
       </if>
     </set>
     where rf_id = #{rf_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.RiskFactor" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.RiskFactor">
+    update t_risk_factor
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      smoke = #{smoke,jdbcType=TINYINT},
+      coronary_heart = #{coronary_heart,jdbcType=TINYINT},
+      hypertension = #{hypertension,jdbcType=TINYINT},
+      dyslipidemia = #{dyslipidemia,jdbcType=TINYINT},
+      diabetes = #{diabetes,jdbcType=TINYINT},
+      renal_inadequacy = #{renal_inadequacy,jdbcType=TINYINT},
+      pcad = #{pcad,jdbcType=TINYINT},
+      other = #{other,jdbcType=TINYINT},
+      supplement = #{supplement,jdbcType=VARCHAR}
+    where rf_id = #{rf_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.RiskFactor">
+    <id column="rf_id" jdbcType="BIGINT" property="rf_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="smoke" jdbcType="TINYINT" property="smoke" />
+    <result column="coronary_heart" jdbcType="TINYINT" property="coronary_heart" />
+    <result column="hypertension" jdbcType="TINYINT" property="hypertension" />
+    <result column="dyslipidemia" jdbcType="TINYINT" property="dyslipidemia" />
+    <result column="diabetes" jdbcType="TINYINT" property="diabetes" />
+    <result column="renal_inadequacy" jdbcType="TINYINT" property="renal_inadequacy" />
+    <result column="pcad" jdbcType="TINYINT" property="pcad" />
+    <result column="other" jdbcType="TINYINT" property="other" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rf_id, ar_id, smoke, coronary_heart, hypertension, dyslipidemia, diabetes, renal_inadequacy, 
+    pcad, other, supplement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_risk_factor
+    where rf_id = #{rf_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_risk_factor
+    where rf_id = #{rf_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.RiskFactor">
+    insert into t_risk_factor (rf_id, ar_id, smoke, 
+      coronary_heart, hypertension, dyslipidemia, 
+      diabetes, renal_inadequacy, pcad, 
+      other, supplement)
+    values (#{rf_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{smoke,jdbcType=TINYINT}, 
+      #{coronary_heart,jdbcType=TINYINT}, #{hypertension,jdbcType=TINYINT}, #{dyslipidemia,jdbcType=TINYINT}, 
+      #{diabetes,jdbcType=TINYINT}, #{renal_inadequacy,jdbcType=TINYINT}, #{pcad,jdbcType=TINYINT}, 
+      #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.RiskFactor">
+    insert into t_risk_factor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rf_id != null">
+        rf_id,
+      </if>
+      <if test="ar_id != null">
+        ar_id,
+      </if>
+      <if test="smoke != null">
+        smoke,
+      </if>
+      <if test="coronary_heart != null">
+        coronary_heart,
+      </if>
+      <if test="hypertension != null">
+        hypertension,
+      </if>
+      <if test="dyslipidemia != null">
+        dyslipidemia,
+      </if>
+      <if test="diabetes != null">
+        diabetes,
+      </if>
+      <if test="renal_inadequacy != null">
+        renal_inadequacy,
+      </if>
+      <if test="pcad != null">
+        pcad,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="supplement != null">
+        supplement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rf_id != null">
+        #{rf_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="smoke != null">
+        #{smoke,jdbcType=TINYINT},
+      </if>
+      <if test="coronary_heart != null">
+        #{coronary_heart,jdbcType=TINYINT},
+      </if>
+      <if test="hypertension != null">
+        #{hypertension,jdbcType=TINYINT},
+      </if>
+      <if test="dyslipidemia != null">
+        #{dyslipidemia,jdbcType=TINYINT},
+      </if>
+      <if test="diabetes != null">
+        #{diabetes,jdbcType=TINYINT},
+      </if>
+      <if test="renal_inadequacy != null">
+        #{renal_inadequacy,jdbcType=TINYINT},
+      </if>
+      <if test="pcad != null">
+        #{pcad,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        #{supplement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.RiskFactor">
+    update t_risk_factor
+    <set>
+      <if test="ar_id != null">
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="smoke != null">
+        smoke = #{smoke,jdbcType=TINYINT},
+      </if>
+      <if test="coronary_heart != null">
+        coronary_heart = #{coronary_heart,jdbcType=TINYINT},
+      </if>
+      <if test="hypertension != null">
+        hypertension = #{hypertension,jdbcType=TINYINT},
+      </if>
+      <if test="dyslipidemia != null">
+        dyslipidemia = #{dyslipidemia,jdbcType=TINYINT},
+      </if>
+      <if test="diabetes != null">
+        diabetes = #{diabetes,jdbcType=TINYINT},
+      </if>
+      <if test="renal_inadequacy != null">
+        renal_inadequacy = #{renal_inadequacy,jdbcType=TINYINT},
+      </if>
+      <if test="pcad != null">
+        pcad = #{pcad,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        supplement = #{supplement,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rf_id = #{rf_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.RiskFactor">
     update t_risk_factor
     set ar_id = #{ar_id,jdbcType=BIGINT},
       smoke = #{smoke,jdbcType=TINYINT},

@@ -1,32 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.AdmissionRecordMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.AdmissionRecord" >
-    <id column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="hosp_id" property="hosp_id" jdbcType="BIGINT" />
-    <result column="patient_id" property="patient_id" jdbcType="BIGINT" />
-    <result column="ad_number" property="ad_number" jdbcType="VARCHAR" />
-    <result column="operator" property="operator" jdbcType="VARCHAR" />
-    <result column="main_diag" property="main_diag" jdbcType="TINYINT" />
-    <result column="detail_diag" property="detail_diag" jdbcType="VARCHAR" />
-    <result column="create_time" property="create_time" jdbcType="DATE" />
-    <result column="upt_time" property="upt_time" jdbcType="DATE" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.AdmissionRecordMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.AdmissionRecord">
+    <id column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="hosp_id" jdbcType="BIGINT" property="hosp_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="ad_number" jdbcType="VARCHAR" property="ad_number" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="main_diag" jdbcType="TINYINT" property="main_diag" />
+    <result column="detail_diag" jdbcType="VARCHAR" property="detail_diag" />
+    <result column="create_time" jdbcType="DATE" property="create_time" />
+    <result column="upt_time" jdbcType="DATE" property="upt_time" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     ar_id, hosp_id, patient_id, ad_number, "operator", main_diag, detail_diag, create_time, 
     upt_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_admission_record
     where ar_id = #{ar_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_admission_record
     where ar_id = #{ar_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.AdmissionRecord" >
+  <insert id="insert" parameterType="lab.c505.entity.AdmissionRecord">
     insert into t_admission_record (ar_id, hosp_id, patient_id, 
       ad_number, "operator", main_diag, 
       detail_diag, create_time, upt_time
@@ -36,98 +36,236 @@
       #{detail_diag,jdbcType=VARCHAR}, #{create_time,jdbcType=DATE}, #{upt_time,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.AdmissionRecord" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.AdmissionRecord">
     insert into t_admission_record
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="ar_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ar_id != null">
         ar_id,
       </if>
-      <if test="hosp_id != null" >
+      <if test="hosp_id != null">
         hosp_id,
       </if>
-      <if test="patient_id != null" >
+      <if test="patient_id != null">
         patient_id,
       </if>
-      <if test="ad_number != null" >
+      <if test="ad_number != null">
         ad_number,
       </if>
-      <if test="operator != null" >
+      <if test="operator != null">
         "operator",
       </if>
-      <if test="main_diag != null" >
+      <if test="main_diag != null">
         main_diag,
       </if>
-      <if test="detail_diag != null" >
+      <if test="detail_diag != null">
         detail_diag,
       </if>
-      <if test="create_time != null" >
+      <if test="create_time != null">
         create_time,
       </if>
-      <if test="upt_time != null" >
+      <if test="upt_time != null">
         upt_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="ar_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ar_id != null">
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="hosp_id != null" >
+      <if test="hosp_id != null">
         #{hosp_id,jdbcType=BIGINT},
       </if>
-      <if test="patient_id != null" >
+      <if test="patient_id != null">
         #{patient_id,jdbcType=BIGINT},
       </if>
-      <if test="ad_number != null" >
+      <if test="ad_number != null">
         #{ad_number,jdbcType=VARCHAR},
       </if>
-      <if test="operator != null" >
+      <if test="operator != null">
         #{operator,jdbcType=VARCHAR},
       </if>
-      <if test="main_diag != null" >
+      <if test="main_diag != null">
         #{main_diag,jdbcType=TINYINT},
       </if>
-      <if test="detail_diag != null" >
+      <if test="detail_diag != null">
         #{detail_diag,jdbcType=VARCHAR},
       </if>
-      <if test="create_time != null" >
+      <if test="create_time != null">
         #{create_time,jdbcType=DATE},
       </if>
-      <if test="upt_time != null" >
+      <if test="upt_time != null">
         #{upt_time,jdbcType=DATE},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AdmissionRecord" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AdmissionRecord">
     update t_admission_record
-    <set >
-      <if test="hosp_id != null" >
+    <set>
+      <if test="hosp_id != null">
         hosp_id = #{hosp_id,jdbcType=BIGINT},
       </if>
-      <if test="patient_id != null" >
+      <if test="patient_id != null">
         patient_id = #{patient_id,jdbcType=BIGINT},
       </if>
-      <if test="ad_number != null" >
+      <if test="ad_number != null">
         ad_number = #{ad_number,jdbcType=VARCHAR},
       </if>
-      <if test="operator != null" >
+      <if test="operator != null">
         "operator" = #{operator,jdbcType=VARCHAR},
       </if>
-      <if test="main_diag != null" >
+      <if test="main_diag != null">
         main_diag = #{main_diag,jdbcType=TINYINT},
       </if>
-      <if test="detail_diag != null" >
+      <if test="detail_diag != null">
         detail_diag = #{detail_diag,jdbcType=VARCHAR},
       </if>
-      <if test="create_time != null" >
+      <if test="create_time != null">
         create_time = #{create_time,jdbcType=DATE},
       </if>
-      <if test="upt_time != null" >
+      <if test="upt_time != null">
         upt_time = #{upt_time,jdbcType=DATE},
       </if>
     </set>
     where ar_id = #{ar_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AdmissionRecord" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AdmissionRecord">
+    update t_admission_record
+    set hosp_id = #{hosp_id,jdbcType=BIGINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
+      ad_number = #{ad_number,jdbcType=VARCHAR},
+      "operator" = #{operator,jdbcType=VARCHAR},
+      main_diag = #{main_diag,jdbcType=TINYINT},
+      detail_diag = #{detail_diag,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=DATE},
+      upt_time = #{upt_time,jdbcType=DATE}
+    where ar_id = #{ar_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.AdmissionRecord">
+    <id column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="hosp_id" jdbcType="BIGINT" property="hosp_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="ad_number" jdbcType="VARCHAR" property="ad_number" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="main_diag" jdbcType="TINYINT" property="main_diag" />
+    <result column="detail_diag" jdbcType="VARCHAR" property="detail_diag" />
+    <result column="create_time" jdbcType="DATE" property="create_time" />
+    <result column="upt_time" jdbcType="DATE" property="upt_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ar_id, hosp_id, patient_id, ad_number, "operator", main_diag, detail_diag, create_time, 
+    upt_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_admission_record
+    where ar_id = #{ar_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_admission_record
+    where ar_id = #{ar_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.AdmissionRecord">
+    insert into t_admission_record (ar_id, hosp_id, patient_id, 
+      ad_number, "operator", main_diag, 
+      detail_diag, create_time, upt_time
+      )
+    values (#{ar_id,jdbcType=BIGINT}, #{hosp_id,jdbcType=BIGINT}, #{patient_id,jdbcType=BIGINT}, 
+      #{ad_number,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{main_diag,jdbcType=TINYINT}, 
+      #{detail_diag,jdbcType=VARCHAR}, #{create_time,jdbcType=DATE}, #{upt_time,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.AdmissionRecord">
+    insert into t_admission_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ar_id != null">
+        ar_id,
+      </if>
+      <if test="hosp_id != null">
+        hosp_id,
+      </if>
+      <if test="patient_id != null">
+        patient_id,
+      </if>
+      <if test="ad_number != null">
+        ad_number,
+      </if>
+      <if test="operator != null">
+        "operator",
+      </if>
+      <if test="main_diag != null">
+        main_diag,
+      </if>
+      <if test="detail_diag != null">
+        detail_diag,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="upt_time != null">
+        upt_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ar_id != null">
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="hosp_id != null">
+        #{hosp_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="ad_number != null">
+        #{ad_number,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="main_diag != null">
+        #{main_diag,jdbcType=TINYINT},
+      </if>
+      <if test="detail_diag != null">
+        #{detail_diag,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=DATE},
+      </if>
+      <if test="upt_time != null">
+        #{upt_time,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AdmissionRecord">
+    update t_admission_record
+    <set>
+      <if test="hosp_id != null">
+        hosp_id = #{hosp_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="ad_number != null">
+        ad_number = #{ad_number,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        "operator" = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="main_diag != null">
+        main_diag = #{main_diag,jdbcType=TINYINT},
+      </if>
+      <if test="detail_diag != null">
+        detail_diag = #{detail_diag,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=DATE},
+      </if>
+      <if test="upt_time != null">
+        upt_time = #{upt_time,jdbcType=DATE},
+      </if>
+    </set>
+    where ar_id = #{ar_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AdmissionRecord">
     update t_admission_record
     set hosp_id = #{hosp_id,jdbcType=BIGINT},
       patient_id = #{patient_id,jdbcType=BIGINT},

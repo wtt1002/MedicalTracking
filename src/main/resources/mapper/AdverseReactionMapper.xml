@@ -1,128 +1,302 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="lab.c505.dao.AdverseReactionMapper" >
-  <resultMap id="BaseResultMap" type="lab.c505.entity.AdverseReaction" >
-    <id column="ar_id" property="ar_id" jdbcType="BIGINT" />
-    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
-    <result column="drug_stimulate" property="drug_stimulate" jdbcType="TINYINT" />
-    <result column="hemorrhage" property="hemorrhage" jdbcType="VARCHAR" />
-    <result column="re_hospital" property="re_hospital" jdbcType="TINYINT" />
-    <result column="dyspnea" property="dyspnea" jdbcType="TINYINT" />
-    <result column="other" property="other" jdbcType="TINYINT" />
-    <result column="supplement" property="supplement" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.dao.AdverseReactionMapper">
+  <resultMap id="BaseResultMap" type="lab.c505.entity.AdverseReaction">
+    <id column="arc_id" jdbcType="BIGINT" property="arc_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="mr_id" jdbcType="BIGINT" property="mr_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="drug_stimulate" jdbcType="TINYINT" property="drug_stimulate" />
+    <result column="hemorrhage" jdbcType="VARCHAR" property="hemorrhage" />
+    <result column="re_hospital" jdbcType="TINYINT" property="re_hospital" />
+    <result column="dyspnea" jdbcType="TINYINT" property="dyspnea" />
+    <result column="other" jdbcType="TINYINT" property="other" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    ar_id, fr_id, drug_stimulate, hemorrhage, re_hospital, dyspnea, other, supplement
+  <sql id="Base_Column_List">
+    arc_id, ar_id, mr_id, patient_id, drug_stimulate, hemorrhage, re_hospital, dyspnea, 
+    other, supplement
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_adverse_reaction
-    where ar_id = #{ar_id,jdbcType=BIGINT}
+    where arc_id = #{arc_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_adverse_reaction
-    where ar_id = #{ar_id,jdbcType=BIGINT}
+    where arc_id = #{arc_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.AdverseReaction" >
-    insert into t_adverse_reaction (ar_id, fr_id, drug_stimulate, 
-      hemorrhage, re_hospital, dyspnea, 
-      other, supplement)
-    values (#{ar_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{drug_stimulate,jdbcType=TINYINT}, 
-      #{hemorrhage,jdbcType=VARCHAR}, #{re_hospital,jdbcType=TINYINT}, #{dyspnea,jdbcType=TINYINT}, 
-      #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="lab.c505.entity.AdverseReaction">
+    insert into t_adverse_reaction (arc_id, ar_id, mr_id, 
+      patient_id, drug_stimulate, hemorrhage, 
+      re_hospital, dyspnea, other, 
+      supplement)
+    values (#{arc_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{mr_id,jdbcType=BIGINT}, 
+      #{patient_id,jdbcType=BIGINT}, #{drug_stimulate,jdbcType=TINYINT}, #{hemorrhage,jdbcType=VARCHAR}, 
+      #{re_hospital,jdbcType=TINYINT}, #{dyspnea,jdbcType=TINYINT}, #{other,jdbcType=TINYINT}, 
+      #{supplement,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.AdverseReaction" >
+  <insert id="insertSelective" parameterType="lab.c505.entity.AdverseReaction">
     insert into t_adverse_reaction
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="ar_id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="arc_id != null">
+        arc_id,
+      </if>
+      <if test="ar_id != null">
         ar_id,
       </if>
-      <if test="fr_id != null" >
-        fr_id,
+      <if test="mr_id != null">
+        mr_id,
       </if>
-      <if test="drug_stimulate != null" >
+      <if test="patient_id != null">
+        patient_id,
+      </if>
+      <if test="drug_stimulate != null">
         drug_stimulate,
       </if>
-      <if test="hemorrhage != null" >
+      <if test="hemorrhage != null">
         hemorrhage,
       </if>
-      <if test="re_hospital != null" >
+      <if test="re_hospital != null">
         re_hospital,
       </if>
-      <if test="dyspnea != null" >
+      <if test="dyspnea != null">
         dyspnea,
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         other,
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         supplement,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="ar_id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="arc_id != null">
+        #{arc_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="fr_id != null" >
-        #{fr_id,jdbcType=BIGINT},
+      <if test="mr_id != null">
+        #{mr_id,jdbcType=BIGINT},
       </if>
-      <if test="drug_stimulate != null" >
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="drug_stimulate != null">
         #{drug_stimulate,jdbcType=TINYINT},
       </if>
-      <if test="hemorrhage != null" >
+      <if test="hemorrhage != null">
         #{hemorrhage,jdbcType=VARCHAR},
       </if>
-      <if test="re_hospital != null" >
+      <if test="re_hospital != null">
         #{re_hospital,jdbcType=TINYINT},
       </if>
-      <if test="dyspnea != null" >
+      <if test="dyspnea != null">
         #{dyspnea,jdbcType=TINYINT},
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         #{supplement,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AdverseReaction" >
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AdverseReaction">
     update t_adverse_reaction
-    <set >
-      <if test="fr_id != null" >
-        fr_id = #{fr_id,jdbcType=BIGINT},
+    <set>
+      <if test="ar_id != null">
+        ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="drug_stimulate != null" >
+      <if test="mr_id != null">
+        mr_id = #{mr_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="drug_stimulate != null">
         drug_stimulate = #{drug_stimulate,jdbcType=TINYINT},
       </if>
-      <if test="hemorrhage != null" >
+      <if test="hemorrhage != null">
         hemorrhage = #{hemorrhage,jdbcType=VARCHAR},
       </if>
-      <if test="re_hospital != null" >
+      <if test="re_hospital != null">
         re_hospital = #{re_hospital,jdbcType=TINYINT},
       </if>
-      <if test="dyspnea != null" >
+      <if test="dyspnea != null">
         dyspnea = #{dyspnea,jdbcType=TINYINT},
       </if>
-      <if test="other != null" >
+      <if test="other != null">
         other = #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null" >
+      <if test="supplement != null">
         supplement = #{supplement,jdbcType=VARCHAR},
       </if>
     </set>
-    where ar_id = #{ar_id,jdbcType=BIGINT}
+    where arc_id = #{arc_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AdverseReaction" >
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AdverseReaction">
     update t_adverse_reaction
-    set fr_id = #{fr_id,jdbcType=BIGINT},
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      mr_id = #{mr_id,jdbcType=BIGINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
       drug_stimulate = #{drug_stimulate,jdbcType=TINYINT},
       hemorrhage = #{hemorrhage,jdbcType=VARCHAR},
       re_hospital = #{re_hospital,jdbcType=TINYINT},
       dyspnea = #{dyspnea,jdbcType=TINYINT},
       other = #{other,jdbcType=TINYINT},
       supplement = #{supplement,jdbcType=VARCHAR}
-    where ar_id = #{ar_id,jdbcType=BIGINT}
+    where arc_id = #{arc_id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="lab.c505.entity.AdverseReaction">
+    <id column="arc_id" jdbcType="BIGINT" property="arc_id" />
+    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
+    <result column="mr_id" jdbcType="BIGINT" property="mr_id" />
+    <result column="patient_id" jdbcType="BIGINT" property="patient_id" />
+    <result column="drug_stimulate" jdbcType="TINYINT" property="drug_stimulate" />
+    <result column="hemorrhage" jdbcType="VARCHAR" property="hemorrhage" />
+    <result column="re_hospital" jdbcType="TINYINT" property="re_hospital" />
+    <result column="dyspnea" jdbcType="TINYINT" property="dyspnea" />
+    <result column="other" jdbcType="TINYINT" property="other" />
+    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    arc_id, ar_id, mr_id, patient_id, drug_stimulate, hemorrhage, re_hospital, dyspnea, 
+    other, supplement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_adverse_reaction
+    where arc_id = #{arc_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_adverse_reaction
+    where arc_id = #{arc_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.AdverseReaction">
+    insert into t_adverse_reaction (arc_id, ar_id, mr_id, 
+      patient_id, drug_stimulate, hemorrhage, 
+      re_hospital, dyspnea, other, 
+      supplement)
+    values (#{arc_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{mr_id,jdbcType=BIGINT}, 
+      #{patient_id,jdbcType=BIGINT}, #{drug_stimulate,jdbcType=TINYINT}, #{hemorrhage,jdbcType=VARCHAR}, 
+      #{re_hospital,jdbcType=TINYINT}, #{dyspnea,jdbcType=TINYINT}, #{other,jdbcType=TINYINT}, 
+      #{supplement,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.AdverseReaction">
+    insert into t_adverse_reaction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="arc_id != null">
+        arc_id,
+      </if>
+      <if test="ar_id != null">
+        ar_id,
+      </if>
+      <if test="mr_id != null">
+        mr_id,
+      </if>
+      <if test="patient_id != null">
+        patient_id,
+      </if>
+      <if test="drug_stimulate != null">
+        drug_stimulate,
+      </if>
+      <if test="hemorrhage != null">
+        hemorrhage,
+      </if>
+      <if test="re_hospital != null">
+        re_hospital,
+      </if>
+      <if test="dyspnea != null">
+        dyspnea,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="supplement != null">
+        supplement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="arc_id != null">
+        #{arc_id,jdbcType=BIGINT},
+      </if>
+      <if test="ar_id != null">
+        #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="mr_id != null">
+        #{mr_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="drug_stimulate != null">
+        #{drug_stimulate,jdbcType=TINYINT},
+      </if>
+      <if test="hemorrhage != null">
+        #{hemorrhage,jdbcType=VARCHAR},
+      </if>
+      <if test="re_hospital != null">
+        #{re_hospital,jdbcType=TINYINT},
+      </if>
+      <if test="dyspnea != null">
+        #{dyspnea,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        #{supplement,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AdverseReaction">
+    update t_adverse_reaction
+    <set>
+      <if test="ar_id != null">
+        ar_id = #{ar_id,jdbcType=BIGINT},
+      </if>
+      <if test="mr_id != null">
+        mr_id = #{mr_id,jdbcType=BIGINT},
+      </if>
+      <if test="patient_id != null">
+        patient_id = #{patient_id,jdbcType=BIGINT},
+      </if>
+      <if test="drug_stimulate != null">
+        drug_stimulate = #{drug_stimulate,jdbcType=TINYINT},
+      </if>
+      <if test="hemorrhage != null">
+        hemorrhage = #{hemorrhage,jdbcType=VARCHAR},
+      </if>
+      <if test="re_hospital != null">
+        re_hospital = #{re_hospital,jdbcType=TINYINT},
+      </if>
+      <if test="dyspnea != null">
+        dyspnea = #{dyspnea,jdbcType=TINYINT},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=TINYINT},
+      </if>
+      <if test="supplement != null">
+        supplement = #{supplement,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where arc_id = #{arc_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AdverseReaction">
+    update t_adverse_reaction
+    set ar_id = #{ar_id,jdbcType=BIGINT},
+      mr_id = #{mr_id,jdbcType=BIGINT},
+      patient_id = #{patient_id,jdbcType=BIGINT},
+      drug_stimulate = #{drug_stimulate,jdbcType=TINYINT},
+      hemorrhage = #{hemorrhage,jdbcType=VARCHAR},
+      re_hospital = #{re_hospital,jdbcType=TINYINT},
+      dyspnea = #{dyspnea,jdbcType=TINYINT},
+      other = #{other,jdbcType=TINYINT},
+      supplement = #{supplement,jdbcType=VARCHAR}
+    where arc_id = #{arc_id,jdbcType=BIGINT}
   </update>
 </mapper>
