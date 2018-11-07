@@ -1,38 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.ResistanceTrainMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.ResistanceTrain">
-    <id column="rst_id" jdbcType="BIGINT" property="rst_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="train_time" jdbcType="INTEGER" property="train_time" />
-    <result column="strength" jdbcType="INTEGER" property="strength" />
-    <result column="belt_color" jdbcType="INTEGER" property="belt_color" />
-    <result column="belt_frequency" jdbcType="INTEGER" property="belt_frequency" />
-    <result column="belt_group" jdbcType="INTEGER" property="belt_group" />
-    <result column="dumbbell_strength" jdbcType="INTEGER" property="dumbbell_strength" />
-    <result column="dumbbell_frequency" jdbcType="INTEGER" property="dumbbell_frequency" />
-    <result column="dumbbell_group" jdbcType="INTEGER" property="dumbbell_group" />
-    <result column="instrument_strength" jdbcType="INTEGER" property="instrument_strength" />
-    <result column="instrument_frequency" jdbcType="INTEGER" property="instrument_frequency" />
-    <result column="instrument_group" jdbcType="INTEGER" property="instrument_group" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ResistanceTrainMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.ResistanceTrain" >
+    <id column="rst_id" property="rst_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="train_time" property="train_time" jdbcType="INTEGER" />
+    <result column="strength" property="strength" jdbcType="INTEGER" />
+    <result column="belt_color" property="belt_color" jdbcType="INTEGER" />
+    <result column="belt_frequency" property="belt_frequency" jdbcType="INTEGER" />
+    <result column="belt_group" property="belt_group" jdbcType="INTEGER" />
+    <result column="dumbbell_strength" property="dumbbell_strength" jdbcType="INTEGER" />
+    <result column="dumbbell_frequency" property="dumbbell_frequency" jdbcType="INTEGER" />
+    <result column="dumbbell_group" property="dumbbell_group" jdbcType="INTEGER" />
+    <result column="instrument_strength" property="instrument_strength" jdbcType="INTEGER" />
+    <result column="instrument_frequency" property="instrument_frequency" jdbcType="INTEGER" />
+    <result column="instrument_group" property="instrument_group" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     rst_id, fr_id, train_time, strength, belt_color, belt_frequency, belt_group, dumbbell_strength, 
     dumbbell_frequency, dumbbell_group, instrument_strength, instrument_frequency, instrument_group, 
     remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_resistance_train
     where rst_id = #{rst_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_resistance_train
     where rst_id = #{rst_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.ResistanceTrain">
+  <insert id="insert" parameterType="lab.c505.entity.ResistanceTrain" >
     insert into t_resistance_train (rst_id, fr_id, train_time, 
       strength, belt_color, belt_frequency, 
       belt_group, dumbbell_strength, dumbbell_frequency, 
@@ -44,339 +44,143 @@
       #{dumbbell_group,jdbcType=INTEGER}, #{instrument_strength,jdbcType=INTEGER}, #{instrument_frequency,jdbcType=INTEGER}, 
       #{instrument_group,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.ResistanceTrain">
+  <insert id="insertSelective" parameterType="lab.c505.entity.ResistanceTrain" >
     insert into t_resistance_train
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rst_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rst_id != null" >
         rst_id,
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         fr_id,
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         train_time,
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         strength,
       </if>
-      <if test="belt_color != null">
+      <if test="belt_color != null" >
         belt_color,
       </if>
-      <if test="belt_frequency != null">
+      <if test="belt_frequency != null" >
         belt_frequency,
       </if>
-      <if test="belt_group != null">
+      <if test="belt_group != null" >
         belt_group,
       </if>
-      <if test="dumbbell_strength != null">
+      <if test="dumbbell_strength != null" >
         dumbbell_strength,
       </if>
-      <if test="dumbbell_frequency != null">
+      <if test="dumbbell_frequency != null" >
         dumbbell_frequency,
       </if>
-      <if test="dumbbell_group != null">
+      <if test="dumbbell_group != null" >
         dumbbell_group,
       </if>
-      <if test="instrument_strength != null">
+      <if test="instrument_strength != null" >
         instrument_strength,
       </if>
-      <if test="instrument_frequency != null">
+      <if test="instrument_frequency != null" >
         instrument_frequency,
       </if>
-      <if test="instrument_group != null">
+      <if test="instrument_group != null" >
         instrument_group,
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rst_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rst_id != null" >
         #{rst_id,jdbcType=BIGINT},
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         #{train_time,jdbcType=INTEGER},
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         #{strength,jdbcType=INTEGER},
       </if>
-      <if test="belt_color != null">
+      <if test="belt_color != null" >
         #{belt_color,jdbcType=INTEGER},
       </if>
-      <if test="belt_frequency != null">
+      <if test="belt_frequency != null" >
         #{belt_frequency,jdbcType=INTEGER},
       </if>
-      <if test="belt_group != null">
+      <if test="belt_group != null" >
         #{belt_group,jdbcType=INTEGER},
       </if>
-      <if test="dumbbell_strength != null">
+      <if test="dumbbell_strength != null" >
         #{dumbbell_strength,jdbcType=INTEGER},
       </if>
-      <if test="dumbbell_frequency != null">
+      <if test="dumbbell_frequency != null" >
         #{dumbbell_frequency,jdbcType=INTEGER},
       </if>
-      <if test="dumbbell_group != null">
+      <if test="dumbbell_group != null" >
         #{dumbbell_group,jdbcType=INTEGER},
       </if>
-      <if test="instrument_strength != null">
+      <if test="instrument_strength != null" >
         #{instrument_strength,jdbcType=INTEGER},
       </if>
-      <if test="instrument_frequency != null">
+      <if test="instrument_frequency != null" >
         #{instrument_frequency,jdbcType=INTEGER},
       </if>
-      <if test="instrument_group != null">
+      <if test="instrument_group != null" >
         #{instrument_group,jdbcType=INTEGER},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ResistanceTrain">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ResistanceTrain" >
     update t_resistance_train
-    <set>
-      <if test="fr_id != null">
+    <set >
+      <if test="fr_id != null" >
         fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         train_time = #{train_time,jdbcType=INTEGER},
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         strength = #{strength,jdbcType=INTEGER},
       </if>
-      <if test="belt_color != null">
+      <if test="belt_color != null" >
         belt_color = #{belt_color,jdbcType=INTEGER},
       </if>
-      <if test="belt_frequency != null">
+      <if test="belt_frequency != null" >
         belt_frequency = #{belt_frequency,jdbcType=INTEGER},
       </if>
-      <if test="belt_group != null">
+      <if test="belt_group != null" >
         belt_group = #{belt_group,jdbcType=INTEGER},
       </if>
-      <if test="dumbbell_strength != null">
+      <if test="dumbbell_strength != null" >
         dumbbell_strength = #{dumbbell_strength,jdbcType=INTEGER},
       </if>
-      <if test="dumbbell_frequency != null">
+      <if test="dumbbell_frequency != null" >
         dumbbell_frequency = #{dumbbell_frequency,jdbcType=INTEGER},
       </if>
-      <if test="dumbbell_group != null">
+      <if test="dumbbell_group != null" >
         dumbbell_group = #{dumbbell_group,jdbcType=INTEGER},
       </if>
-      <if test="instrument_strength != null">
+      <if test="instrument_strength != null" >
         instrument_strength = #{instrument_strength,jdbcType=INTEGER},
       </if>
-      <if test="instrument_frequency != null">
+      <if test="instrument_frequency != null" >
         instrument_frequency = #{instrument_frequency,jdbcType=INTEGER},
       </if>
-      <if test="instrument_group != null">
+      <if test="instrument_group != null" >
         instrument_group = #{instrument_group,jdbcType=INTEGER},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where rst_id = #{rst_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ResistanceTrain">
-    update t_resistance_train
-    set fr_id = #{fr_id,jdbcType=BIGINT},
-      train_time = #{train_time,jdbcType=INTEGER},
-      strength = #{strength,jdbcType=INTEGER},
-      belt_color = #{belt_color,jdbcType=INTEGER},
-      belt_frequency = #{belt_frequency,jdbcType=INTEGER},
-      belt_group = #{belt_group,jdbcType=INTEGER},
-      dumbbell_strength = #{dumbbell_strength,jdbcType=INTEGER},
-      dumbbell_frequency = #{dumbbell_frequency,jdbcType=INTEGER},
-      dumbbell_group = #{dumbbell_group,jdbcType=INTEGER},
-      instrument_strength = #{instrument_strength,jdbcType=INTEGER},
-      instrument_frequency = #{instrument_frequency,jdbcType=INTEGER},
-      instrument_group = #{instrument_group,jdbcType=INTEGER},
-      remark = #{remark,jdbcType=VARCHAR}
-    where rst_id = #{rst_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.ResistanceTrain">
-    <id column="rst_id" jdbcType="BIGINT" property="rst_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="train_time" jdbcType="INTEGER" property="train_time" />
-    <result column="strength" jdbcType="INTEGER" property="strength" />
-    <result column="belt_color" jdbcType="INTEGER" property="belt_color" />
-    <result column="belt_frequency" jdbcType="INTEGER" property="belt_frequency" />
-    <result column="belt_group" jdbcType="INTEGER" property="belt_group" />
-    <result column="dumbbell_strength" jdbcType="INTEGER" property="dumbbell_strength" />
-    <result column="dumbbell_frequency" jdbcType="INTEGER" property="dumbbell_frequency" />
-    <result column="dumbbell_group" jdbcType="INTEGER" property="dumbbell_group" />
-    <result column="instrument_strength" jdbcType="INTEGER" property="instrument_strength" />
-    <result column="instrument_frequency" jdbcType="INTEGER" property="instrument_frequency" />
-    <result column="instrument_group" jdbcType="INTEGER" property="instrument_group" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    rst_id, fr_id, train_time, strength, belt_color, belt_frequency, belt_group, dumbbell_strength, 
-    dumbbell_frequency, dumbbell_group, instrument_strength, instrument_frequency, instrument_group, 
-    remark
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_resistance_train
-    where rst_id = #{rst_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_resistance_train
-    where rst_id = #{rst_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.ResistanceTrain">
-    insert into t_resistance_train (rst_id, fr_id, train_time, 
-      strength, belt_color, belt_frequency, 
-      belt_group, dumbbell_strength, dumbbell_frequency, 
-      dumbbell_group, instrument_strength, instrument_frequency, 
-      instrument_group, remark)
-    values (#{rst_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{train_time,jdbcType=INTEGER}, 
-      #{strength,jdbcType=INTEGER}, #{belt_color,jdbcType=INTEGER}, #{belt_frequency,jdbcType=INTEGER}, 
-      #{belt_group,jdbcType=INTEGER}, #{dumbbell_strength,jdbcType=INTEGER}, #{dumbbell_frequency,jdbcType=INTEGER}, 
-      #{dumbbell_group,jdbcType=INTEGER}, #{instrument_strength,jdbcType=INTEGER}, #{instrument_frequency,jdbcType=INTEGER}, 
-      #{instrument_group,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.ResistanceTrain">
-    insert into t_resistance_train
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rst_id != null">
-        rst_id,
-      </if>
-      <if test="fr_id != null">
-        fr_id,
-      </if>
-      <if test="train_time != null">
-        train_time,
-      </if>
-      <if test="strength != null">
-        strength,
-      </if>
-      <if test="belt_color != null">
-        belt_color,
-      </if>
-      <if test="belt_frequency != null">
-        belt_frequency,
-      </if>
-      <if test="belt_group != null">
-        belt_group,
-      </if>
-      <if test="dumbbell_strength != null">
-        dumbbell_strength,
-      </if>
-      <if test="dumbbell_frequency != null">
-        dumbbell_frequency,
-      </if>
-      <if test="dumbbell_group != null">
-        dumbbell_group,
-      </if>
-      <if test="instrument_strength != null">
-        instrument_strength,
-      </if>
-      <if test="instrument_frequency != null">
-        instrument_frequency,
-      </if>
-      <if test="instrument_group != null">
-        instrument_group,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rst_id != null">
-        #{rst_id,jdbcType=BIGINT},
-      </if>
-      <if test="fr_id != null">
-        #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="train_time != null">
-        #{train_time,jdbcType=INTEGER},
-      </if>
-      <if test="strength != null">
-        #{strength,jdbcType=INTEGER},
-      </if>
-      <if test="belt_color != null">
-        #{belt_color,jdbcType=INTEGER},
-      </if>
-      <if test="belt_frequency != null">
-        #{belt_frequency,jdbcType=INTEGER},
-      </if>
-      <if test="belt_group != null">
-        #{belt_group,jdbcType=INTEGER},
-      </if>
-      <if test="dumbbell_strength != null">
-        #{dumbbell_strength,jdbcType=INTEGER},
-      </if>
-      <if test="dumbbell_frequency != null">
-        #{dumbbell_frequency,jdbcType=INTEGER},
-      </if>
-      <if test="dumbbell_group != null">
-        #{dumbbell_group,jdbcType=INTEGER},
-      </if>
-      <if test="instrument_strength != null">
-        #{instrument_strength,jdbcType=INTEGER},
-      </if>
-      <if test="instrument_frequency != null">
-        #{instrument_frequency,jdbcType=INTEGER},
-      </if>
-      <if test="instrument_group != null">
-        #{instrument_group,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ResistanceTrain">
-    update t_resistance_train
-    <set>
-      <if test="fr_id != null">
-        fr_id = #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="train_time != null">
-        train_time = #{train_time,jdbcType=INTEGER},
-      </if>
-      <if test="strength != null">
-        strength = #{strength,jdbcType=INTEGER},
-      </if>
-      <if test="belt_color != null">
-        belt_color = #{belt_color,jdbcType=INTEGER},
-      </if>
-      <if test="belt_frequency != null">
-        belt_frequency = #{belt_frequency,jdbcType=INTEGER},
-      </if>
-      <if test="belt_group != null">
-        belt_group = #{belt_group,jdbcType=INTEGER},
-      </if>
-      <if test="dumbbell_strength != null">
-        dumbbell_strength = #{dumbbell_strength,jdbcType=INTEGER},
-      </if>
-      <if test="dumbbell_frequency != null">
-        dumbbell_frequency = #{dumbbell_frequency,jdbcType=INTEGER},
-      </if>
-      <if test="dumbbell_group != null">
-        dumbbell_group = #{dumbbell_group,jdbcType=INTEGER},
-      </if>
-      <if test="instrument_strength != null">
-        instrument_strength = #{instrument_strength,jdbcType=INTEGER},
-      </if>
-      <if test="instrument_frequency != null">
-        instrument_frequency = #{instrument_frequency,jdbcType=INTEGER},
-      </if>
-      <if test="instrument_group != null">
-        instrument_group = #{instrument_group,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where rst_id = #{rst_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ResistanceTrain">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ResistanceTrain" >
     update t_resistance_train
     set fr_id = #{fr_id,jdbcType=BIGINT},
       train_time = #{train_time,jdbcType=INTEGER},

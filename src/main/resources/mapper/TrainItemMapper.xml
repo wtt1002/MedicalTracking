@@ -1,30 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.TrainItemMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.TrainItem">
-    <id column="ti_id" jdbcType="BIGINT" property="ti_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="train_type" jdbcType="TINYINT" property="train_type" />
-    <result column="train_name" jdbcType="VARCHAR" property="train_name" />
-    <result column="duration" jdbcType="REAL" property="duration" />
-    <result column="strength" jdbcType="TINYINT" property="strength" />
-    <result column="train_time" jdbcType="TINYINT" property="train_time" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.TrainItemMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.TrainItem" >
+    <id column="ti_id" property="ti_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="train_type" property="train_type" jdbcType="TINYINT" />
+    <result column="train_name" property="train_name" jdbcType="VARCHAR" />
+    <result column="duration" property="duration" jdbcType="REAL" />
+    <result column="strength" property="strength" jdbcType="TINYINT" />
+    <result column="train_time" property="train_time" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     ti_id, fr_id, train_type, train_name, duration, strength, train_time, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_train_item
     where ti_id = #{ti_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_train_item
     where ti_id = #{ti_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.TrainItem">
+  <insert id="insert" parameterType="lab.c505.entity.TrainItem" >
     insert into t_train_item (ti_id, fr_id, train_type, 
       train_name, duration, strength, 
       train_time, remark)
@@ -32,213 +32,89 @@
       #{train_name,jdbcType=VARCHAR}, #{duration,jdbcType=REAL}, #{strength,jdbcType=TINYINT}, 
       #{train_time,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.TrainItem">
+  <insert id="insertSelective" parameterType="lab.c505.entity.TrainItem" >
     insert into t_train_item
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ti_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ti_id != null" >
         ti_id,
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         fr_id,
       </if>
-      <if test="train_type != null">
+      <if test="train_type != null" >
         train_type,
       </if>
-      <if test="train_name != null">
+      <if test="train_name != null" >
         train_name,
       </if>
-      <if test="duration != null">
+      <if test="duration != null" >
         duration,
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         strength,
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         train_time,
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ti_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ti_id != null" >
         #{ti_id,jdbcType=BIGINT},
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="train_type != null">
+      <if test="train_type != null" >
         #{train_type,jdbcType=TINYINT},
       </if>
-      <if test="train_name != null">
+      <if test="train_name != null" >
         #{train_name,jdbcType=VARCHAR},
       </if>
-      <if test="duration != null">
+      <if test="duration != null" >
         #{duration,jdbcType=REAL},
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         #{strength,jdbcType=TINYINT},
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         #{train_time,jdbcType=TINYINT},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.TrainItem">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.TrainItem" >
     update t_train_item
-    <set>
-      <if test="fr_id != null">
+    <set >
+      <if test="fr_id != null" >
         fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="train_type != null">
+      <if test="train_type != null" >
         train_type = #{train_type,jdbcType=TINYINT},
       </if>
-      <if test="train_name != null">
+      <if test="train_name != null" >
         train_name = #{train_name,jdbcType=VARCHAR},
       </if>
-      <if test="duration != null">
+      <if test="duration != null" >
         duration = #{duration,jdbcType=REAL},
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         strength = #{strength,jdbcType=TINYINT},
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         train_time = #{train_time,jdbcType=TINYINT},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where ti_id = #{ti_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.TrainItem">
-    update t_train_item
-    set fr_id = #{fr_id,jdbcType=BIGINT},
-      train_type = #{train_type,jdbcType=TINYINT},
-      train_name = #{train_name,jdbcType=VARCHAR},
-      duration = #{duration,jdbcType=REAL},
-      strength = #{strength,jdbcType=TINYINT},
-      train_time = #{train_time,jdbcType=TINYINT},
-      remark = #{remark,jdbcType=VARCHAR}
-    where ti_id = #{ti_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.TrainItem">
-    <id column="ti_id" jdbcType="BIGINT" property="ti_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="train_type" jdbcType="TINYINT" property="train_type" />
-    <result column="train_name" jdbcType="VARCHAR" property="train_name" />
-    <result column="duration" jdbcType="REAL" property="duration" />
-    <result column="strength" jdbcType="TINYINT" property="strength" />
-    <result column="train_time" jdbcType="TINYINT" property="train_time" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    ti_id, fr_id, train_type, train_name, duration, strength, train_time, remark
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_train_item
-    where ti_id = #{ti_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_train_item
-    where ti_id = #{ti_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.TrainItem">
-    insert into t_train_item (ti_id, fr_id, train_type, 
-      train_name, duration, strength, 
-      train_time, remark)
-    values (#{ti_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{train_type,jdbcType=TINYINT}, 
-      #{train_name,jdbcType=VARCHAR}, #{duration,jdbcType=REAL}, #{strength,jdbcType=TINYINT}, 
-      #{train_time,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.TrainItem">
-    insert into t_train_item
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ti_id != null">
-        ti_id,
-      </if>
-      <if test="fr_id != null">
-        fr_id,
-      </if>
-      <if test="train_type != null">
-        train_type,
-      </if>
-      <if test="train_name != null">
-        train_name,
-      </if>
-      <if test="duration != null">
-        duration,
-      </if>
-      <if test="strength != null">
-        strength,
-      </if>
-      <if test="train_time != null">
-        train_time,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ti_id != null">
-        #{ti_id,jdbcType=BIGINT},
-      </if>
-      <if test="fr_id != null">
-        #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="train_type != null">
-        #{train_type,jdbcType=TINYINT},
-      </if>
-      <if test="train_name != null">
-        #{train_name,jdbcType=VARCHAR},
-      </if>
-      <if test="duration != null">
-        #{duration,jdbcType=REAL},
-      </if>
-      <if test="strength != null">
-        #{strength,jdbcType=TINYINT},
-      </if>
-      <if test="train_time != null">
-        #{train_time,jdbcType=TINYINT},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.TrainItem">
-    update t_train_item
-    <set>
-      <if test="fr_id != null">
-        fr_id = #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="train_type != null">
-        train_type = #{train_type,jdbcType=TINYINT},
-      </if>
-      <if test="train_name != null">
-        train_name = #{train_name,jdbcType=VARCHAR},
-      </if>
-      <if test="duration != null">
-        duration = #{duration,jdbcType=REAL},
-      </if>
-      <if test="strength != null">
-        strength = #{strength,jdbcType=TINYINT},
-      </if>
-      <if test="train_time != null">
-        train_time = #{train_time,jdbcType=TINYINT},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where ti_id = #{ti_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.TrainItem">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.TrainItem" >
     update t_train_item
     set fr_id = #{fr_id,jdbcType=BIGINT},
       train_type = #{train_type,jdbcType=TINYINT},

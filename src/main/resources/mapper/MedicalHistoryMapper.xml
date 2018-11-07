@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.MedicalHistoryMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.MedicalHistory">
-    <id column="mh_id" jdbcType="BIGINT" property="mh_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="is_ischemia" jdbcType="TINYINT" property="is_ischemia" />
-    <result column="is_hemorrhage" jdbcType="TINYINT" property="is_hemorrhage" />
-    <result column="is_revascularization" jdbcType="TINYINT" property="is_revascularization" />
-    <result column="nyna" jdbcType="TINYINT" property="nyna" />
-    <result column="is_weak" jdbcType="TINYINT" property="is_weak" />
-    <result column="is_soreness" jdbcType="TINYINT" property="is_soreness" />
-    <result column="is_smoke" jdbcType="TINYINT" property="is_smoke" />
-    <result column="other" jdbcType="TINYINT" property="other" />
-    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.MedicalHistoryMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.MedicalHistory" >
+    <id column="mh_id" property="mh_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="is_ischemia" property="is_ischemia" jdbcType="TINYINT" />
+    <result column="is_hemorrhage" property="is_hemorrhage" jdbcType="TINYINT" />
+    <result column="is_revascularization" property="is_revascularization" jdbcType="TINYINT" />
+    <result column="nyna" property="nyna" jdbcType="TINYINT" />
+    <result column="is_weak" property="is_weak" jdbcType="TINYINT" />
+    <result column="is_soreness" property="is_soreness" jdbcType="TINYINT" />
+    <result column="is_smoke" property="is_smoke" jdbcType="TINYINT" />
+    <result column="other" property="other" jdbcType="TINYINT" />
+    <result column="supplement" property="supplement" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     mh_id, fr_id, is_ischemia, is_hemorrhage, is_revascularization, nyna, is_weak, is_soreness, 
     is_smoke, other, supplement
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_medical_history
     where mh_id = #{mh_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_medical_history
     where mh_id = #{mh_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.MedicalHistory">
+  <insert id="insert" parameterType="lab.c505.entity.MedicalHistory" >
     insert into t_medical_history (mh_id, fr_id, is_ischemia, 
       is_hemorrhage, is_revascularization, nyna, 
       is_weak, is_soreness, is_smoke, 
@@ -38,276 +38,116 @@
       #{is_weak,jdbcType=TINYINT}, #{is_soreness,jdbcType=TINYINT}, #{is_smoke,jdbcType=TINYINT}, 
       #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.MedicalHistory">
+  <insert id="insertSelective" parameterType="lab.c505.entity.MedicalHistory" >
     insert into t_medical_history
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mh_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mh_id != null" >
         mh_id,
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         fr_id,
       </if>
-      <if test="is_ischemia != null">
+      <if test="is_ischemia != null" >
         is_ischemia,
       </if>
-      <if test="is_hemorrhage != null">
+      <if test="is_hemorrhage != null" >
         is_hemorrhage,
       </if>
-      <if test="is_revascularization != null">
+      <if test="is_revascularization != null" >
         is_revascularization,
       </if>
-      <if test="nyna != null">
+      <if test="nyna != null" >
         nyna,
       </if>
-      <if test="is_weak != null">
+      <if test="is_weak != null" >
         is_weak,
       </if>
-      <if test="is_soreness != null">
+      <if test="is_soreness != null" >
         is_soreness,
       </if>
-      <if test="is_smoke != null">
+      <if test="is_smoke != null" >
         is_smoke,
       </if>
-      <if test="other != null">
+      <if test="other != null" >
         other,
       </if>
-      <if test="supplement != null">
+      <if test="supplement != null" >
         supplement,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mh_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mh_id != null" >
         #{mh_id,jdbcType=BIGINT},
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="is_ischemia != null">
+      <if test="is_ischemia != null" >
         #{is_ischemia,jdbcType=TINYINT},
       </if>
-      <if test="is_hemorrhage != null">
+      <if test="is_hemorrhage != null" >
         #{is_hemorrhage,jdbcType=TINYINT},
       </if>
-      <if test="is_revascularization != null">
+      <if test="is_revascularization != null" >
         #{is_revascularization,jdbcType=TINYINT},
       </if>
-      <if test="nyna != null">
+      <if test="nyna != null" >
         #{nyna,jdbcType=TINYINT},
       </if>
-      <if test="is_weak != null">
+      <if test="is_weak != null" >
         #{is_weak,jdbcType=TINYINT},
       </if>
-      <if test="is_soreness != null">
+      <if test="is_soreness != null" >
         #{is_soreness,jdbcType=TINYINT},
       </if>
-      <if test="is_smoke != null">
+      <if test="is_smoke != null" >
         #{is_smoke,jdbcType=TINYINT},
       </if>
-      <if test="other != null">
+      <if test="other != null" >
         #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null">
+      <if test="supplement != null" >
         #{supplement,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.MedicalHistory">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.MedicalHistory" >
     update t_medical_history
-    <set>
-      <if test="fr_id != null">
+    <set >
+      <if test="fr_id != null" >
         fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="is_ischemia != null">
+      <if test="is_ischemia != null" >
         is_ischemia = #{is_ischemia,jdbcType=TINYINT},
       </if>
-      <if test="is_hemorrhage != null">
+      <if test="is_hemorrhage != null" >
         is_hemorrhage = #{is_hemorrhage,jdbcType=TINYINT},
       </if>
-      <if test="is_revascularization != null">
+      <if test="is_revascularization != null" >
         is_revascularization = #{is_revascularization,jdbcType=TINYINT},
       </if>
-      <if test="nyna != null">
+      <if test="nyna != null" >
         nyna = #{nyna,jdbcType=TINYINT},
       </if>
-      <if test="is_weak != null">
+      <if test="is_weak != null" >
         is_weak = #{is_weak,jdbcType=TINYINT},
       </if>
-      <if test="is_soreness != null">
+      <if test="is_soreness != null" >
         is_soreness = #{is_soreness,jdbcType=TINYINT},
       </if>
-      <if test="is_smoke != null">
+      <if test="is_smoke != null" >
         is_smoke = #{is_smoke,jdbcType=TINYINT},
       </if>
-      <if test="other != null">
+      <if test="other != null" >
         other = #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null">
+      <if test="supplement != null" >
         supplement = #{supplement,jdbcType=VARCHAR},
       </if>
     </set>
     where mh_id = #{mh_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.MedicalHistory">
-    update t_medical_history
-    set fr_id = #{fr_id,jdbcType=BIGINT},
-      is_ischemia = #{is_ischemia,jdbcType=TINYINT},
-      is_hemorrhage = #{is_hemorrhage,jdbcType=TINYINT},
-      is_revascularization = #{is_revascularization,jdbcType=TINYINT},
-      nyna = #{nyna,jdbcType=TINYINT},
-      is_weak = #{is_weak,jdbcType=TINYINT},
-      is_soreness = #{is_soreness,jdbcType=TINYINT},
-      is_smoke = #{is_smoke,jdbcType=TINYINT},
-      other = #{other,jdbcType=TINYINT},
-      supplement = #{supplement,jdbcType=VARCHAR}
-    where mh_id = #{mh_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.MedicalHistory">
-    <id column="mh_id" jdbcType="BIGINT" property="mh_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="is_ischemia" jdbcType="TINYINT" property="is_ischemia" />
-    <result column="is_hemorrhage" jdbcType="TINYINT" property="is_hemorrhage" />
-    <result column="is_revascularization" jdbcType="TINYINT" property="is_revascularization" />
-    <result column="nyna" jdbcType="TINYINT" property="nyna" />
-    <result column="is_weak" jdbcType="TINYINT" property="is_weak" />
-    <result column="is_soreness" jdbcType="TINYINT" property="is_soreness" />
-    <result column="is_smoke" jdbcType="TINYINT" property="is_smoke" />
-    <result column="other" jdbcType="TINYINT" property="other" />
-    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    mh_id, fr_id, is_ischemia, is_hemorrhage, is_revascularization, nyna, is_weak, is_soreness, 
-    is_smoke, other, supplement
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_medical_history
-    where mh_id = #{mh_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_medical_history
-    where mh_id = #{mh_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.MedicalHistory">
-    insert into t_medical_history (mh_id, fr_id, is_ischemia, 
-      is_hemorrhage, is_revascularization, nyna, 
-      is_weak, is_soreness, is_smoke, 
-      other, supplement)
-    values (#{mh_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{is_ischemia,jdbcType=TINYINT}, 
-      #{is_hemorrhage,jdbcType=TINYINT}, #{is_revascularization,jdbcType=TINYINT}, #{nyna,jdbcType=TINYINT}, 
-      #{is_weak,jdbcType=TINYINT}, #{is_soreness,jdbcType=TINYINT}, #{is_smoke,jdbcType=TINYINT}, 
-      #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.MedicalHistory">
-    insert into t_medical_history
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mh_id != null">
-        mh_id,
-      </if>
-      <if test="fr_id != null">
-        fr_id,
-      </if>
-      <if test="is_ischemia != null">
-        is_ischemia,
-      </if>
-      <if test="is_hemorrhage != null">
-        is_hemorrhage,
-      </if>
-      <if test="is_revascularization != null">
-        is_revascularization,
-      </if>
-      <if test="nyna != null">
-        nyna,
-      </if>
-      <if test="is_weak != null">
-        is_weak,
-      </if>
-      <if test="is_soreness != null">
-        is_soreness,
-      </if>
-      <if test="is_smoke != null">
-        is_smoke,
-      </if>
-      <if test="other != null">
-        other,
-      </if>
-      <if test="supplement != null">
-        supplement,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mh_id != null">
-        #{mh_id,jdbcType=BIGINT},
-      </if>
-      <if test="fr_id != null">
-        #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="is_ischemia != null">
-        #{is_ischemia,jdbcType=TINYINT},
-      </if>
-      <if test="is_hemorrhage != null">
-        #{is_hemorrhage,jdbcType=TINYINT},
-      </if>
-      <if test="is_revascularization != null">
-        #{is_revascularization,jdbcType=TINYINT},
-      </if>
-      <if test="nyna != null">
-        #{nyna,jdbcType=TINYINT},
-      </if>
-      <if test="is_weak != null">
-        #{is_weak,jdbcType=TINYINT},
-      </if>
-      <if test="is_soreness != null">
-        #{is_soreness,jdbcType=TINYINT},
-      </if>
-      <if test="is_smoke != null">
-        #{is_smoke,jdbcType=TINYINT},
-      </if>
-      <if test="other != null">
-        #{other,jdbcType=TINYINT},
-      </if>
-      <if test="supplement != null">
-        #{supplement,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.MedicalHistory">
-    update t_medical_history
-    <set>
-      <if test="fr_id != null">
-        fr_id = #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="is_ischemia != null">
-        is_ischemia = #{is_ischemia,jdbcType=TINYINT},
-      </if>
-      <if test="is_hemorrhage != null">
-        is_hemorrhage = #{is_hemorrhage,jdbcType=TINYINT},
-      </if>
-      <if test="is_revascularization != null">
-        is_revascularization = #{is_revascularization,jdbcType=TINYINT},
-      </if>
-      <if test="nyna != null">
-        nyna = #{nyna,jdbcType=TINYINT},
-      </if>
-      <if test="is_weak != null">
-        is_weak = #{is_weak,jdbcType=TINYINT},
-      </if>
-      <if test="is_soreness != null">
-        is_soreness = #{is_soreness,jdbcType=TINYINT},
-      </if>
-      <if test="is_smoke != null">
-        is_smoke = #{is_smoke,jdbcType=TINYINT},
-      </if>
-      <if test="other != null">
-        other = #{other,jdbcType=TINYINT},
-      </if>
-      <if test="supplement != null">
-        supplement = #{supplement,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where mh_id = #{mh_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.MedicalHistory">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.MedicalHistory" >
     update t_medical_history
     set fr_id = #{fr_id,jdbcType=BIGINT},
       is_ischemia = #{is_ischemia,jdbcType=TINYINT},

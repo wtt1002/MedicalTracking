@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.BloodLipidMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.BloodLipid">
-    <id column="bl_id" jdbcType="BIGINT" property="bl_id" />
-    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
-    <result column="exam_time" jdbcType="DATE" property="exam_time" />
-    <result column="tc" jdbcType="REAL" property="tc" />
-    <result column="tg" jdbcType="REAL" property="tg" />
-    <result column="ldl_c" jdbcType="REAL" property="ldl_c" />
-    <result column="hdl_c" jdbcType="REAL" property="hdl_c" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.BloodLipidMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.BloodLipid" >
+    <id column="bl_id" property="bl_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="exam_time" property="exam_time" jdbcType="DATE" />
+    <result column="tc" property="tc" jdbcType="REAL" />
+    <result column="tg" property="tg" jdbcType="REAL" />
+    <result column="ldl_c" property="ldl_c" jdbcType="REAL" />
+    <result column="hdl_c" property="hdl_c" jdbcType="REAL" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     bl_id, ar_id, exam_time, tc, tg, ldl_c, hdl_c
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_blood_lipid
     where bl_id = #{bl_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_blood_lipid
     where bl_id = #{bl_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.BloodLipid">
+  <insert id="insert" parameterType="lab.c505.entity.BloodLipid" >
     insert into t_blood_lipid (bl_id, ar_id, exam_time, 
       tc, tg, ldl_c, hdl_c
       )
@@ -31,193 +31,80 @@
       #{tc,jdbcType=REAL}, #{tg,jdbcType=REAL}, #{ldl_c,jdbcType=REAL}, #{hdl_c,jdbcType=REAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.BloodLipid">
+  <insert id="insertSelective" parameterType="lab.c505.entity.BloodLipid" >
     insert into t_blood_lipid
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="bl_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bl_id != null" >
         bl_id,
       </if>
-      <if test="ar_id != null">
+      <if test="ar_id != null" >
         ar_id,
       </if>
-      <if test="exam_time != null">
+      <if test="exam_time != null" >
         exam_time,
       </if>
-      <if test="tc != null">
+      <if test="tc != null" >
         tc,
       </if>
-      <if test="tg != null">
+      <if test="tg != null" >
         tg,
       </if>
-      <if test="ldl_c != null">
+      <if test="ldl_c != null" >
         ldl_c,
       </if>
-      <if test="hdl_c != null">
+      <if test="hdl_c != null" >
         hdl_c,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="bl_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bl_id != null" >
         #{bl_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null">
+      <if test="ar_id != null" >
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="exam_time != null">
+      <if test="exam_time != null" >
         #{exam_time,jdbcType=DATE},
       </if>
-      <if test="tc != null">
+      <if test="tc != null" >
         #{tc,jdbcType=REAL},
       </if>
-      <if test="tg != null">
+      <if test="tg != null" >
         #{tg,jdbcType=REAL},
       </if>
-      <if test="ldl_c != null">
+      <if test="ldl_c != null" >
         #{ldl_c,jdbcType=REAL},
       </if>
-      <if test="hdl_c != null">
+      <if test="hdl_c != null" >
         #{hdl_c,jdbcType=REAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BloodLipid">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BloodLipid" >
     update t_blood_lipid
-    <set>
-      <if test="ar_id != null">
+    <set >
+      <if test="ar_id != null" >
         ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="exam_time != null">
+      <if test="exam_time != null" >
         exam_time = #{exam_time,jdbcType=DATE},
       </if>
-      <if test="tc != null">
+      <if test="tc != null" >
         tc = #{tc,jdbcType=REAL},
       </if>
-      <if test="tg != null">
+      <if test="tg != null" >
         tg = #{tg,jdbcType=REAL},
       </if>
-      <if test="ldl_c != null">
+      <if test="ldl_c != null" >
         ldl_c = #{ldl_c,jdbcType=REAL},
       </if>
-      <if test="hdl_c != null">
+      <if test="hdl_c != null" >
         hdl_c = #{hdl_c,jdbcType=REAL},
       </if>
     </set>
     where bl_id = #{bl_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BloodLipid">
-    update t_blood_lipid
-    set ar_id = #{ar_id,jdbcType=BIGINT},
-      exam_time = #{exam_time,jdbcType=DATE},
-      tc = #{tc,jdbcType=REAL},
-      tg = #{tg,jdbcType=REAL},
-      ldl_c = #{ldl_c,jdbcType=REAL},
-      hdl_c = #{hdl_c,jdbcType=REAL}
-    where bl_id = #{bl_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.BloodLipid">
-    <id column="bl_id" jdbcType="BIGINT" property="bl_id" />
-    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
-    <result column="exam_time" jdbcType="DATE" property="exam_time" />
-    <result column="tc" jdbcType="REAL" property="tc" />
-    <result column="tg" jdbcType="REAL" property="tg" />
-    <result column="ldl_c" jdbcType="REAL" property="ldl_c" />
-    <result column="hdl_c" jdbcType="REAL" property="hdl_c" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    bl_id, ar_id, exam_time, tc, tg, ldl_c, hdl_c
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_blood_lipid
-    where bl_id = #{bl_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_blood_lipid
-    where bl_id = #{bl_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.BloodLipid">
-    insert into t_blood_lipid (bl_id, ar_id, exam_time, 
-      tc, tg, ldl_c, hdl_c
-      )
-    values (#{bl_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{exam_time,jdbcType=DATE}, 
-      #{tc,jdbcType=REAL}, #{tg,jdbcType=REAL}, #{ldl_c,jdbcType=REAL}, #{hdl_c,jdbcType=REAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.BloodLipid">
-    insert into t_blood_lipid
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="bl_id != null">
-        bl_id,
-      </if>
-      <if test="ar_id != null">
-        ar_id,
-      </if>
-      <if test="exam_time != null">
-        exam_time,
-      </if>
-      <if test="tc != null">
-        tc,
-      </if>
-      <if test="tg != null">
-        tg,
-      </if>
-      <if test="ldl_c != null">
-        ldl_c,
-      </if>
-      <if test="hdl_c != null">
-        hdl_c,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="bl_id != null">
-        #{bl_id,jdbcType=BIGINT},
-      </if>
-      <if test="ar_id != null">
-        #{ar_id,jdbcType=BIGINT},
-      </if>
-      <if test="exam_time != null">
-        #{exam_time,jdbcType=DATE},
-      </if>
-      <if test="tc != null">
-        #{tc,jdbcType=REAL},
-      </if>
-      <if test="tg != null">
-        #{tg,jdbcType=REAL},
-      </if>
-      <if test="ldl_c != null">
-        #{ldl_c,jdbcType=REAL},
-      </if>
-      <if test="hdl_c != null">
-        #{hdl_c,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.BloodLipid">
-    update t_blood_lipid
-    <set>
-      <if test="ar_id != null">
-        ar_id = #{ar_id,jdbcType=BIGINT},
-      </if>
-      <if test="exam_time != null">
-        exam_time = #{exam_time,jdbcType=DATE},
-      </if>
-      <if test="tc != null">
-        tc = #{tc,jdbcType=REAL},
-      </if>
-      <if test="tg != null">
-        tg = #{tg,jdbcType=REAL},
-      </if>
-      <if test="ldl_c != null">
-        ldl_c = #{ldl_c,jdbcType=REAL},
-      </if>
-      <if test="hdl_c != null">
-        hdl_c = #{hdl_c,jdbcType=REAL},
-      </if>
-    </set>
-    where bl_id = #{bl_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BloodLipid">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.BloodLipid" >
     update t_blood_lipid
     set ar_id = #{ar_id,jdbcType=BIGINT},
       exam_time = #{exam_time,jdbcType=DATE},

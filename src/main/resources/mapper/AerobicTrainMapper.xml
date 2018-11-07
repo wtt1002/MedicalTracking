@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.AerobicTrainMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.AerobicTrain">
-    <id column="at_id" jdbcType="BIGINT" property="at_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="strength" jdbcType="INTEGER" property="strength" />
-    <result column="train_time" jdbcType="INTEGER" property="train_time" />
-    <result column="bike_revolution" jdbcType="INTEGER" property="bike_revolution" />
-    <result column="bike_resistance" jdbcType="INTEGER" property="bike_resistance" />
-    <result column="bike_time" jdbcType="INTEGER" property="bike_time" />
-    <result column="treadmill_work" jdbcType="INTEGER" property="treadmill_work" />
-    <result column="treadmill_time" jdbcType="INTEGER" property="treadmill_time" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.AerobicTrainMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.AerobicTrain" >
+    <id column="at_id" property="at_id" jdbcType="BIGINT" />
+    <result column="fr_id" property="fr_id" jdbcType="BIGINT" />
+    <result column="strength" property="strength" jdbcType="INTEGER" />
+    <result column="train_time" property="train_time" jdbcType="INTEGER" />
+    <result column="bike_revolution" property="bike_revolution" jdbcType="INTEGER" />
+    <result column="bike_resistance" property="bike_resistance" jdbcType="INTEGER" />
+    <result column="bike_time" property="bike_time" jdbcType="INTEGER" />
+    <result column="treadmill_work" property="treadmill_work" jdbcType="INTEGER" />
+    <result column="treadmill_time" property="treadmill_time" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     at_id, fr_id, strength, train_time, bike_revolution, bike_resistance, bike_time, 
     treadmill_work, treadmill_time, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_aerobic_train
     where at_id = #{at_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_aerobic_train
     where at_id = #{at_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.AerobicTrain">
+  <insert id="insert" parameterType="lab.c505.entity.AerobicTrain" >
     insert into t_aerobic_train (at_id, fr_id, strength, 
       train_time, bike_revolution, bike_resistance, 
       bike_time, treadmill_work, treadmill_time, 
@@ -37,256 +37,107 @@
       #{bike_time,jdbcType=INTEGER}, #{treadmill_work,jdbcType=INTEGER}, #{treadmill_time,jdbcType=INTEGER}, 
       #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.AerobicTrain">
+  <insert id="insertSelective" parameterType="lab.c505.entity.AerobicTrain" >
     insert into t_aerobic_train
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="at_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="at_id != null" >
         at_id,
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         fr_id,
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         strength,
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         train_time,
       </if>
-      <if test="bike_revolution != null">
+      <if test="bike_revolution != null" >
         bike_revolution,
       </if>
-      <if test="bike_resistance != null">
+      <if test="bike_resistance != null" >
         bike_resistance,
       </if>
-      <if test="bike_time != null">
+      <if test="bike_time != null" >
         bike_time,
       </if>
-      <if test="treadmill_work != null">
+      <if test="treadmill_work != null" >
         treadmill_work,
       </if>
-      <if test="treadmill_time != null">
+      <if test="treadmill_time != null" >
         treadmill_time,
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="at_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="at_id != null" >
         #{at_id,jdbcType=BIGINT},
       </if>
-      <if test="fr_id != null">
+      <if test="fr_id != null" >
         #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         #{strength,jdbcType=INTEGER},
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         #{train_time,jdbcType=INTEGER},
       </if>
-      <if test="bike_revolution != null">
+      <if test="bike_revolution != null" >
         #{bike_revolution,jdbcType=INTEGER},
       </if>
-      <if test="bike_resistance != null">
+      <if test="bike_resistance != null" >
         #{bike_resistance,jdbcType=INTEGER},
       </if>
-      <if test="bike_time != null">
+      <if test="bike_time != null" >
         #{bike_time,jdbcType=INTEGER},
       </if>
-      <if test="treadmill_work != null">
+      <if test="treadmill_work != null" >
         #{treadmill_work,jdbcType=INTEGER},
       </if>
-      <if test="treadmill_time != null">
+      <if test="treadmill_time != null" >
         #{treadmill_time,jdbcType=INTEGER},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AerobicTrain">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AerobicTrain" >
     update t_aerobic_train
-    <set>
-      <if test="fr_id != null">
+    <set >
+      <if test="fr_id != null" >
         fr_id = #{fr_id,jdbcType=BIGINT},
       </if>
-      <if test="strength != null">
+      <if test="strength != null" >
         strength = #{strength,jdbcType=INTEGER},
       </if>
-      <if test="train_time != null">
+      <if test="train_time != null" >
         train_time = #{train_time,jdbcType=INTEGER},
       </if>
-      <if test="bike_revolution != null">
+      <if test="bike_revolution != null" >
         bike_revolution = #{bike_revolution,jdbcType=INTEGER},
       </if>
-      <if test="bike_resistance != null">
+      <if test="bike_resistance != null" >
         bike_resistance = #{bike_resistance,jdbcType=INTEGER},
       </if>
-      <if test="bike_time != null">
+      <if test="bike_time != null" >
         bike_time = #{bike_time,jdbcType=INTEGER},
       </if>
-      <if test="treadmill_work != null">
+      <if test="treadmill_work != null" >
         treadmill_work = #{treadmill_work,jdbcType=INTEGER},
       </if>
-      <if test="treadmill_time != null">
+      <if test="treadmill_time != null" >
         treadmill_time = #{treadmill_time,jdbcType=INTEGER},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where at_id = #{at_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AerobicTrain">
-    update t_aerobic_train
-    set fr_id = #{fr_id,jdbcType=BIGINT},
-      strength = #{strength,jdbcType=INTEGER},
-      train_time = #{train_time,jdbcType=INTEGER},
-      bike_revolution = #{bike_revolution,jdbcType=INTEGER},
-      bike_resistance = #{bike_resistance,jdbcType=INTEGER},
-      bike_time = #{bike_time,jdbcType=INTEGER},
-      treadmill_work = #{treadmill_work,jdbcType=INTEGER},
-      treadmill_time = #{treadmill_time,jdbcType=INTEGER},
-      remark = #{remark,jdbcType=VARCHAR}
-    where at_id = #{at_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.AerobicTrain">
-    <id column="at_id" jdbcType="BIGINT" property="at_id" />
-    <result column="fr_id" jdbcType="BIGINT" property="fr_id" />
-    <result column="strength" jdbcType="INTEGER" property="strength" />
-    <result column="train_time" jdbcType="INTEGER" property="train_time" />
-    <result column="bike_revolution" jdbcType="INTEGER" property="bike_revolution" />
-    <result column="bike_resistance" jdbcType="INTEGER" property="bike_resistance" />
-    <result column="bike_time" jdbcType="INTEGER" property="bike_time" />
-    <result column="treadmill_work" jdbcType="INTEGER" property="treadmill_work" />
-    <result column="treadmill_time" jdbcType="INTEGER" property="treadmill_time" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    at_id, fr_id, strength, train_time, bike_revolution, bike_resistance, bike_time, 
-    treadmill_work, treadmill_time, remark
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_aerobic_train
-    where at_id = #{at_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_aerobic_train
-    where at_id = #{at_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.AerobicTrain">
-    insert into t_aerobic_train (at_id, fr_id, strength, 
-      train_time, bike_revolution, bike_resistance, 
-      bike_time, treadmill_work, treadmill_time, 
-      remark)
-    values (#{at_id,jdbcType=BIGINT}, #{fr_id,jdbcType=BIGINT}, #{strength,jdbcType=INTEGER}, 
-      #{train_time,jdbcType=INTEGER}, #{bike_revolution,jdbcType=INTEGER}, #{bike_resistance,jdbcType=INTEGER}, 
-      #{bike_time,jdbcType=INTEGER}, #{treadmill_work,jdbcType=INTEGER}, #{treadmill_time,jdbcType=INTEGER}, 
-      #{remark,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.AerobicTrain">
-    insert into t_aerobic_train
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="at_id != null">
-        at_id,
-      </if>
-      <if test="fr_id != null">
-        fr_id,
-      </if>
-      <if test="strength != null">
-        strength,
-      </if>
-      <if test="train_time != null">
-        train_time,
-      </if>
-      <if test="bike_revolution != null">
-        bike_revolution,
-      </if>
-      <if test="bike_resistance != null">
-        bike_resistance,
-      </if>
-      <if test="bike_time != null">
-        bike_time,
-      </if>
-      <if test="treadmill_work != null">
-        treadmill_work,
-      </if>
-      <if test="treadmill_time != null">
-        treadmill_time,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="at_id != null">
-        #{at_id,jdbcType=BIGINT},
-      </if>
-      <if test="fr_id != null">
-        #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="strength != null">
-        #{strength,jdbcType=INTEGER},
-      </if>
-      <if test="train_time != null">
-        #{train_time,jdbcType=INTEGER},
-      </if>
-      <if test="bike_revolution != null">
-        #{bike_revolution,jdbcType=INTEGER},
-      </if>
-      <if test="bike_resistance != null">
-        #{bike_resistance,jdbcType=INTEGER},
-      </if>
-      <if test="bike_time != null">
-        #{bike_time,jdbcType=INTEGER},
-      </if>
-      <if test="treadmill_work != null">
-        #{treadmill_work,jdbcType=INTEGER},
-      </if>
-      <if test="treadmill_time != null">
-        #{treadmill_time,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.AerobicTrain">
-    update t_aerobic_train
-    <set>
-      <if test="fr_id != null">
-        fr_id = #{fr_id,jdbcType=BIGINT},
-      </if>
-      <if test="strength != null">
-        strength = #{strength,jdbcType=INTEGER},
-      </if>
-      <if test="train_time != null">
-        train_time = #{train_time,jdbcType=INTEGER},
-      </if>
-      <if test="bike_revolution != null">
-        bike_revolution = #{bike_revolution,jdbcType=INTEGER},
-      </if>
-      <if test="bike_resistance != null">
-        bike_resistance = #{bike_resistance,jdbcType=INTEGER},
-      </if>
-      <if test="bike_time != null">
-        bike_time = #{bike_time,jdbcType=INTEGER},
-      </if>
-      <if test="treadmill_work != null">
-        treadmill_work = #{treadmill_work,jdbcType=INTEGER},
-      </if>
-      <if test="treadmill_time != null">
-        treadmill_time = #{treadmill_time,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where at_id = #{at_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AerobicTrain">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.AerobicTrain" >
     update t_aerobic_train
     set fr_id = #{fr_id,jdbcType=BIGINT},
       strength = #{strength,jdbcType=INTEGER},

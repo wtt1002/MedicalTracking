@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.ColourSonographyMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.ColourSonography">
-    <id column="cs_id" jdbcType="BIGINT" property="cs_id" />
-    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
-    <result column="graph_name" jdbcType="VARCHAR" property="graph_name" />
-    <result column="graph_time" jdbcType="DATE" property="graph_time" />
-    <result column="graph_path" jdbcType="VARCHAR" property="graph_path" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ColourSonographyMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.ColourSonography" >
+    <id column="cs_id" property="cs_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="graph_name" property="graph_name" jdbcType="VARCHAR" />
+    <result column="graph_time" property="graph_time" jdbcType="DATE" />
+    <result column="graph_path" property="graph_path" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     cs_id, ar_id, graph_name, graph_time, graph_path, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_colour_sonography
     where cs_id = #{cs_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_colour_sonography
     where cs_id = #{cs_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.ColourSonography">
+  <insert id="insert" parameterType="lab.c505.entity.ColourSonography" >
     insert into t_colour_sonography (cs_id, ar_id, graph_name, 
       graph_time, graph_path, remark
       )
@@ -30,173 +30,71 @@
       #{graph_time,jdbcType=DATE}, #{graph_path,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.ColourSonography">
+  <insert id="insertSelective" parameterType="lab.c505.entity.ColourSonography" >
     insert into t_colour_sonography
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cs_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cs_id != null" >
         cs_id,
       </if>
-      <if test="ar_id != null">
+      <if test="ar_id != null" >
         ar_id,
       </if>
-      <if test="graph_name != null">
+      <if test="graph_name != null" >
         graph_name,
       </if>
-      <if test="graph_time != null">
+      <if test="graph_time != null" >
         graph_time,
       </if>
-      <if test="graph_path != null">
+      <if test="graph_path != null" >
         graph_path,
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cs_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cs_id != null" >
         #{cs_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null">
+      <if test="ar_id != null" >
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="graph_name != null">
+      <if test="graph_name != null" >
         #{graph_name,jdbcType=VARCHAR},
       </if>
-      <if test="graph_time != null">
+      <if test="graph_time != null" >
         #{graph_time,jdbcType=DATE},
       </if>
-      <if test="graph_path != null">
+      <if test="graph_path != null" >
         #{graph_path,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ColourSonography">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ColourSonography" >
     update t_colour_sonography
-    <set>
-      <if test="ar_id != null">
+    <set >
+      <if test="ar_id != null" >
         ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="graph_name != null">
+      <if test="graph_name != null" >
         graph_name = #{graph_name,jdbcType=VARCHAR},
       </if>
-      <if test="graph_time != null">
+      <if test="graph_time != null" >
         graph_time = #{graph_time,jdbcType=DATE},
       </if>
-      <if test="graph_path != null">
+      <if test="graph_path != null" >
         graph_path = #{graph_path,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null">
+      <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where cs_id = #{cs_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ColourSonography">
-    update t_colour_sonography
-    set ar_id = #{ar_id,jdbcType=BIGINT},
-      graph_name = #{graph_name,jdbcType=VARCHAR},
-      graph_time = #{graph_time,jdbcType=DATE},
-      graph_path = #{graph_path,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
-    where cs_id = #{cs_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.ColourSonography">
-    <id column="cs_id" jdbcType="BIGINT" property="cs_id" />
-    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
-    <result column="graph_name" jdbcType="VARCHAR" property="graph_name" />
-    <result column="graph_time" jdbcType="DATE" property="graph_time" />
-    <result column="graph_path" jdbcType="VARCHAR" property="graph_path" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    cs_id, ar_id, graph_name, graph_time, graph_path, remark
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_colour_sonography
-    where cs_id = #{cs_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_colour_sonography
-    where cs_id = #{cs_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.ColourSonography">
-    insert into t_colour_sonography (cs_id, ar_id, graph_name, 
-      graph_time, graph_path, remark
-      )
-    values (#{cs_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{graph_name,jdbcType=VARCHAR}, 
-      #{graph_time,jdbcType=DATE}, #{graph_path,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.ColourSonography">
-    insert into t_colour_sonography
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cs_id != null">
-        cs_id,
-      </if>
-      <if test="ar_id != null">
-        ar_id,
-      </if>
-      <if test="graph_name != null">
-        graph_name,
-      </if>
-      <if test="graph_time != null">
-        graph_time,
-      </if>
-      <if test="graph_path != null">
-        graph_path,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cs_id != null">
-        #{cs_id,jdbcType=BIGINT},
-      </if>
-      <if test="ar_id != null">
-        #{ar_id,jdbcType=BIGINT},
-      </if>
-      <if test="graph_name != null">
-        #{graph_name,jdbcType=VARCHAR},
-      </if>
-      <if test="graph_time != null">
-        #{graph_time,jdbcType=DATE},
-      </if>
-      <if test="graph_path != null">
-        #{graph_path,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ColourSonography">
-    update t_colour_sonography
-    <set>
-      <if test="ar_id != null">
-        ar_id = #{ar_id,jdbcType=BIGINT},
-      </if>
-      <if test="graph_name != null">
-        graph_name = #{graph_name,jdbcType=VARCHAR},
-      </if>
-      <if test="graph_time != null">
-        graph_time = #{graph_time,jdbcType=DATE},
-      </if>
-      <if test="graph_path != null">
-        graph_path = #{graph_path,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where cs_id = #{cs_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ColourSonography">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ColourSonography" >
     update t_colour_sonography
     set ar_id = #{ar_id,jdbcType=BIGINT},
       graph_name = #{graph_name,jdbcType=VARCHAR},

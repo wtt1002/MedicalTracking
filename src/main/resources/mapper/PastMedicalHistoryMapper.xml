@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lab.c505.dao.PastMedicalHistoryMapper">
-  <resultMap id="BaseResultMap" type="lab.c505.entity.PastMedicalHistory">
-    <id column="pmh_id" jdbcType="BIGINT" property="pmh_id" />
-    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
-    <result column="cld" jdbcType="TINYINT" property="cld" />
-    <result column="ckd" jdbcType="TINYINT" property="ckd" />
-    <result column="cyd" jdbcType="TINYINT" property="cyd" />
-    <result column="pad" jdbcType="TINYINT" property="pad" />
-    <result column="mi" jdbcType="TINYINT" property="mi" />
-    <result column="cabg" jdbcType="TINYINT" property="cabg" />
-    <result column="pci" jdbcType="TINYINT" property="pci" />
-    <result column="other" jdbcType="TINYINT" property="other" />
-    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.PastMedicalHistoryMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.PastMedicalHistory" >
+    <id column="pmh_id" property="pmh_id" jdbcType="BIGINT" />
+    <result column="ar_id" property="ar_id" jdbcType="BIGINT" />
+    <result column="cld" property="cld" jdbcType="TINYINT" />
+    <result column="ckd" property="ckd" jdbcType="TINYINT" />
+    <result column="cyd" property="cyd" jdbcType="TINYINT" />
+    <result column="pad" property="pad" jdbcType="TINYINT" />
+    <result column="mi" property="mi" jdbcType="TINYINT" />
+    <result column="cabg" property="cabg" jdbcType="TINYINT" />
+    <result column="pci" property="pci" jdbcType="TINYINT" />
+    <result column="other" property="other" jdbcType="TINYINT" />
+    <result column="supplement" property="supplement" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     pmh_id, ar_id, cld, ckd, cyd, "pad", mi, cabg, pci, other, supplement
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_past_medical_history
     where pmh_id = #{pmh_id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_past_medical_history
     where pmh_id = #{pmh_id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="lab.c505.entity.PastMedicalHistory">
+  <insert id="insert" parameterType="lab.c505.entity.PastMedicalHistory" >
     insert into t_past_medical_history (pmh_id, ar_id, cld, 
       ckd, cyd, "pad", mi, 
       cabg, pci, other, supplement
@@ -37,275 +37,116 @@
       #{cabg,jdbcType=TINYINT}, #{pci,jdbcType=TINYINT}, #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.PastMedicalHistory">
+  <insert id="insertSelective" parameterType="lab.c505.entity.PastMedicalHistory" >
     insert into t_past_medical_history
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pmh_id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pmh_id != null" >
         pmh_id,
       </if>
-      <if test="ar_id != null">
+      <if test="ar_id != null" >
         ar_id,
       </if>
-      <if test="cld != null">
+      <if test="cld != null" >
         cld,
       </if>
-      <if test="ckd != null">
+      <if test="ckd != null" >
         ckd,
       </if>
-      <if test="cyd != null">
+      <if test="cyd != null" >
         cyd,
       </if>
-      <if test="pad != null">
+      <if test="pad != null" >
         "pad",
       </if>
-      <if test="mi != null">
+      <if test="mi != null" >
         mi,
       </if>
-      <if test="cabg != null">
+      <if test="cabg != null" >
         cabg,
       </if>
-      <if test="pci != null">
+      <if test="pci != null" >
         pci,
       </if>
-      <if test="other != null">
+      <if test="other != null" >
         other,
       </if>
-      <if test="supplement != null">
+      <if test="supplement != null" >
         supplement,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pmh_id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pmh_id != null" >
         #{pmh_id,jdbcType=BIGINT},
       </if>
-      <if test="ar_id != null">
+      <if test="ar_id != null" >
         #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="cld != null">
+      <if test="cld != null" >
         #{cld,jdbcType=TINYINT},
       </if>
-      <if test="ckd != null">
+      <if test="ckd != null" >
         #{ckd,jdbcType=TINYINT},
       </if>
-      <if test="cyd != null">
+      <if test="cyd != null" >
         #{cyd,jdbcType=TINYINT},
       </if>
-      <if test="pad != null">
+      <if test="pad != null" >
         #{pad,jdbcType=TINYINT},
       </if>
-      <if test="mi != null">
+      <if test="mi != null" >
         #{mi,jdbcType=TINYINT},
       </if>
-      <if test="cabg != null">
+      <if test="cabg != null" >
         #{cabg,jdbcType=TINYINT},
       </if>
-      <if test="pci != null">
+      <if test="pci != null" >
         #{pci,jdbcType=TINYINT},
       </if>
-      <if test="other != null">
+      <if test="other != null" >
         #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null">
+      <if test="supplement != null" >
         #{supplement,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PastMedicalHistory">
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PastMedicalHistory" >
     update t_past_medical_history
-    <set>
-      <if test="ar_id != null">
+    <set >
+      <if test="ar_id != null" >
         ar_id = #{ar_id,jdbcType=BIGINT},
       </if>
-      <if test="cld != null">
+      <if test="cld != null" >
         cld = #{cld,jdbcType=TINYINT},
       </if>
-      <if test="ckd != null">
+      <if test="ckd != null" >
         ckd = #{ckd,jdbcType=TINYINT},
       </if>
-      <if test="cyd != null">
+      <if test="cyd != null" >
         cyd = #{cyd,jdbcType=TINYINT},
       </if>
-      <if test="pad != null">
+      <if test="pad != null" >
         "pad" = #{pad,jdbcType=TINYINT},
       </if>
-      <if test="mi != null">
+      <if test="mi != null" >
         mi = #{mi,jdbcType=TINYINT},
       </if>
-      <if test="cabg != null">
+      <if test="cabg != null" >
         cabg = #{cabg,jdbcType=TINYINT},
       </if>
-      <if test="pci != null">
+      <if test="pci != null" >
         pci = #{pci,jdbcType=TINYINT},
       </if>
-      <if test="other != null">
+      <if test="other != null" >
         other = #{other,jdbcType=TINYINT},
       </if>
-      <if test="supplement != null">
+      <if test="supplement != null" >
         supplement = #{supplement,jdbcType=VARCHAR},
       </if>
     </set>
     where pmh_id = #{pmh_id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PastMedicalHistory">
-    update t_past_medical_history
-    set ar_id = #{ar_id,jdbcType=BIGINT},
-      cld = #{cld,jdbcType=TINYINT},
-      ckd = #{ckd,jdbcType=TINYINT},
-      cyd = #{cyd,jdbcType=TINYINT},
-      "pad" = #{pad,jdbcType=TINYINT},
-      mi = #{mi,jdbcType=TINYINT},
-      cabg = #{cabg,jdbcType=TINYINT},
-      pci = #{pci,jdbcType=TINYINT},
-      other = #{other,jdbcType=TINYINT},
-      supplement = #{supplement,jdbcType=VARCHAR}
-    where pmh_id = #{pmh_id,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="lab.c505.entity.PastMedicalHistory">
-    <id column="pmh_id" jdbcType="BIGINT" property="pmh_id" />
-    <result column="ar_id" jdbcType="BIGINT" property="ar_id" />
-    <result column="cld" jdbcType="TINYINT" property="cld" />
-    <result column="ckd" jdbcType="TINYINT" property="ckd" />
-    <result column="cyd" jdbcType="TINYINT" property="cyd" />
-    <result column="pad" jdbcType="TINYINT" property="pad" />
-    <result column="mi" jdbcType="TINYINT" property="mi" />
-    <result column="cabg" jdbcType="TINYINT" property="cabg" />
-    <result column="pci" jdbcType="TINYINT" property="pci" />
-    <result column="other" jdbcType="TINYINT" property="other" />
-    <result column="supplement" jdbcType="VARCHAR" property="supplement" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    pmh_id, ar_id, cld, ckd, cyd, "pad", mi, cabg, pci, other, supplement
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_past_medical_history
-    where pmh_id = #{pmh_id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_past_medical_history
-    where pmh_id = #{pmh_id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="lab.c505.entity.PastMedicalHistory">
-    insert into t_past_medical_history (pmh_id, ar_id, cld, 
-      ckd, cyd, "pad", mi, 
-      cabg, pci, other, supplement
-      )
-    values (#{pmh_id,jdbcType=BIGINT}, #{ar_id,jdbcType=BIGINT}, #{cld,jdbcType=TINYINT}, 
-      #{ckd,jdbcType=TINYINT}, #{cyd,jdbcType=TINYINT}, #{pad,jdbcType=TINYINT}, #{mi,jdbcType=TINYINT}, 
-      #{cabg,jdbcType=TINYINT}, #{pci,jdbcType=TINYINT}, #{other,jdbcType=TINYINT}, #{supplement,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="lab.c505.entity.PastMedicalHistory">
-    insert into t_past_medical_history
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pmh_id != null">
-        pmh_id,
-      </if>
-      <if test="ar_id != null">
-        ar_id,
-      </if>
-      <if test="cld != null">
-        cld,
-      </if>
-      <if test="ckd != null">
-        ckd,
-      </if>
-      <if test="cyd != null">
-        cyd,
-      </if>
-      <if test="pad != null">
-        "pad",
-      </if>
-      <if test="mi != null">
-        mi,
-      </if>
-      <if test="cabg != null">
-        cabg,
-      </if>
-      <if test="pci != null">
-        pci,
-      </if>
-      <if test="other != null">
-        other,
-      </if>
-      <if test="supplement != null">
-        supplement,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pmh_id != null">
-        #{pmh_id,jdbcType=BIGINT},
-      </if>
-      <if test="ar_id != null">
-        #{ar_id,jdbcType=BIGINT},
-      </if>
-      <if test="cld != null">
-        #{cld,jdbcType=TINYINT},
-      </if>
-      <if test="ckd != null">
-        #{ckd,jdbcType=TINYINT},
-      </if>
-      <if test="cyd != null">
-        #{cyd,jdbcType=TINYINT},
-      </if>
-      <if test="pad != null">
-        #{pad,jdbcType=TINYINT},
-      </if>
-      <if test="mi != null">
-        #{mi,jdbcType=TINYINT},
-      </if>
-      <if test="cabg != null">
-        #{cabg,jdbcType=TINYINT},
-      </if>
-      <if test="pci != null">
-        #{pci,jdbcType=TINYINT},
-      </if>
-      <if test="other != null">
-        #{other,jdbcType=TINYINT},
-      </if>
-      <if test="supplement != null">
-        #{supplement,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.PastMedicalHistory">
-    update t_past_medical_history
-    <set>
-      <if test="ar_id != null">
-        ar_id = #{ar_id,jdbcType=BIGINT},
-      </if>
-      <if test="cld != null">
-        cld = #{cld,jdbcType=TINYINT},
-      </if>
-      <if test="ckd != null">
-        ckd = #{ckd,jdbcType=TINYINT},
-      </if>
-      <if test="cyd != null">
-        cyd = #{cyd,jdbcType=TINYINT},
-      </if>
-      <if test="pad != null">
-        "pad" = #{pad,jdbcType=TINYINT},
-      </if>
-      <if test="mi != null">
-        mi = #{mi,jdbcType=TINYINT},
-      </if>
-      <if test="cabg != null">
-        cabg = #{cabg,jdbcType=TINYINT},
-      </if>
-      <if test="pci != null">
-        pci = #{pci,jdbcType=TINYINT},
-      </if>
-      <if test="other != null">
-        other = #{other,jdbcType=TINYINT},
-      </if>
-      <if test="supplement != null">
-        supplement = #{supplement,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where pmh_id = #{pmh_id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PastMedicalHistory">
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.PastMedicalHistory" >
     update t_past_medical_history
     set ar_id = #{ar_id,jdbcType=BIGINT},
       cld = #{cld,jdbcType=TINYINT},
