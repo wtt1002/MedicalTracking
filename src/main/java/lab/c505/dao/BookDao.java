@@ -2,7 +2,6 @@ package lab.c505.dao;
 
 import lab.c505.entity.Book;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface BookDao {
