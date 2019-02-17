@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.FollowPhysicalExamMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.FollowPhysicalExam" >
+    <constructor >
+      <idArg column="follow_physical_exam_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="follow_up_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="blood_pressure_high" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="blood_pressure_low" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="heart_rate" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="weight" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="other_info" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    follow_physical_exam_id, follow_up_id, blood_pressure_high, blood_pressure_low, heart_rate, 
+    weight, other_info
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_follow_physical_exam
+    where follow_physical_exam_id = #{follow_physical_exam_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_follow_physical_exam
+    where follow_physical_exam_id = #{follow_physical_exam_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.FollowPhysicalExam" >
+    insert into t_follow_physical_exam (follow_physical_exam_id, follow_up_id, 
+      blood_pressure_high, blood_pressure_low, 
+      heart_rate, weight, other_info
+      )
+    values (#{follow_physical_exam_id,jdbcType=VARCHAR}, #{follow_up_id,jdbcType=VARCHAR}, 
+      #{blood_pressure_high,jdbcType=DECIMAL}, #{blood_pressure_low,jdbcType=DECIMAL}, 
+      #{heart_rate,jdbcType=DECIMAL}, #{weight,jdbcType=DECIMAL}, #{other_info,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.FollowPhysicalExam" >
+    insert into t_follow_physical_exam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="follow_physical_exam_id != null" >
+        follow_physical_exam_id,
+      </if>
+      <if test="follow_up_id != null" >
+        follow_up_id,
+      </if>
+      <if test="blood_pressure_high != null" >
+        blood_pressure_high,
+      </if>
+      <if test="blood_pressure_low != null" >
+        blood_pressure_low,
+      </if>
+      <if test="heart_rate != null" >
+        heart_rate,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="other_info != null" >
+        other_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="follow_physical_exam_id != null" >
+        #{follow_physical_exam_id,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_id != null" >
+        #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="blood_pressure_high != null" >
+        #{blood_pressure_high,jdbcType=DECIMAL},
+      </if>
+      <if test="blood_pressure_low != null" >
+        #{blood_pressure_low,jdbcType=DECIMAL},
+      </if>
+      <if test="heart_rate != null" >
+        #{heart_rate,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="other_info != null" >
+        #{other_info,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.FollowPhysicalExam" >
+    update t_follow_physical_exam
+    <set >
+      <if test="follow_up_id != null" >
+        follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="blood_pressure_high != null" >
+        blood_pressure_high = #{blood_pressure_high,jdbcType=DECIMAL},
+      </if>
+      <if test="blood_pressure_low != null" >
+        blood_pressure_low = #{blood_pressure_low,jdbcType=DECIMAL},
+      </if>
+      <if test="heart_rate != null" >
+        heart_rate = #{heart_rate,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="other_info != null" >
+        other_info = #{other_info,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where follow_physical_exam_id = #{follow_physical_exam_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.FollowPhysicalExam" >
+    update t_follow_physical_exam
+    set follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      blood_pressure_high = #{blood_pressure_high,jdbcType=DECIMAL},
+      blood_pressure_low = #{blood_pressure_low,jdbcType=DECIMAL},
+      heart_rate = #{heart_rate,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=DECIMAL},
+      other_info = #{other_info,jdbcType=VARCHAR}
+    where follow_physical_exam_id = #{follow_physical_exam_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

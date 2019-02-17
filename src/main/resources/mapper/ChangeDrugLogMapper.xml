@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ChangeDrugLogMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.ChangeDrugLog" >
+    <constructor >
+      <idArg column="change_drug_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operate_doc_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="follow_up_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pre_drug_usage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="aft_drug_usage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="change_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="change_reason" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    change_drug_id, operate_doc_id, follow_up_id, pre_drug_usage, aft_drug_usage, change_time, 
+    change_reason, create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_change_drug_log
+    where change_drug_id = #{change_drug_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_change_drug_log
+    where change_drug_id = #{change_drug_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.ChangeDrugLog" >
+    insert into t_change_drug_log (change_drug_id, operate_doc_id, follow_up_id, 
+      pre_drug_usage, aft_drug_usage, change_time, 
+      change_reason, create_time, create_user, 
+      modify_time, modify_user, delete_flag, 
+      version)
+    values (#{change_drug_id,jdbcType=VARCHAR}, #{operate_doc_id,jdbcType=VARCHAR}, #{follow_up_id,jdbcType=VARCHAR}, 
+      #{pre_drug_usage,jdbcType=VARCHAR}, #{aft_drug_usage,jdbcType=VARCHAR}, #{change_time,jdbcType=TIMESTAMP}, 
+      #{change_reason,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, 
+      #{modify_time,jdbcType=TIMESTAMP}, #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.ChangeDrugLog" >
+    insert into t_change_drug_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="change_drug_id != null" >
+        change_drug_id,
+      </if>
+      <if test="operate_doc_id != null" >
+        operate_doc_id,
+      </if>
+      <if test="follow_up_id != null" >
+        follow_up_id,
+      </if>
+      <if test="pre_drug_usage != null" >
+        pre_drug_usage,
+      </if>
+      <if test="aft_drug_usage != null" >
+        aft_drug_usage,
+      </if>
+      <if test="change_time != null" >
+        change_time,
+      </if>
+      <if test="change_reason != null" >
+        change_reason,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="change_drug_id != null" >
+        #{change_drug_id,jdbcType=VARCHAR},
+      </if>
+      <if test="operate_doc_id != null" >
+        #{operate_doc_id,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_id != null" >
+        #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="pre_drug_usage != null" >
+        #{pre_drug_usage,jdbcType=VARCHAR},
+      </if>
+      <if test="aft_drug_usage != null" >
+        #{aft_drug_usage,jdbcType=VARCHAR},
+      </if>
+      <if test="change_time != null" >
+        #{change_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="change_reason != null" >
+        #{change_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ChangeDrugLog" >
+    update t_change_drug_log
+    <set >
+      <if test="operate_doc_id != null" >
+        operate_doc_id = #{operate_doc_id,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_id != null" >
+        follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="pre_drug_usage != null" >
+        pre_drug_usage = #{pre_drug_usage,jdbcType=VARCHAR},
+      </if>
+      <if test="aft_drug_usage != null" >
+        aft_drug_usage = #{aft_drug_usage,jdbcType=VARCHAR},
+      </if>
+      <if test="change_time != null" >
+        change_time = #{change_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="change_reason != null" >
+        change_reason = #{change_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where change_drug_id = #{change_drug_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ChangeDrugLog" >
+    update t_change_drug_log
+    set operate_doc_id = #{operate_doc_id,jdbcType=VARCHAR},
+      follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      pre_drug_usage = #{pre_drug_usage,jdbcType=VARCHAR},
+      aft_drug_usage = #{aft_drug_usage,jdbcType=VARCHAR},
+      change_time = #{change_time,jdbcType=TIMESTAMP},
+      change_reason = #{change_reason,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where change_drug_id = #{change_drug_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.AssessmentMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.Assessment" >
+    <constructor >
+      <idArg column="assessment_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sas_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="sds_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="na_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="psqi_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ipqa_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="fagerstorm_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="left_grip" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="right_grip" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="three_meter_test" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="four_meter_test" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="stand_up_test" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="left_balance_test" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="right_balance_test" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="sit_reach" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="upperarm_circumference" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="bmi" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="triceps_skinfold_thickness" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="medical_history_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    assessment_id, sas_score, sds_score, na_score, psqi_score, ipqa_score, fagerstorm_score, 
+    left_grip, right_grip, three_meter_test, four_meter_test, stand_up_test, left_balance_test, 
+    right_balance_test, sit_reach, upperarm_circumference, bmi, triceps_skinfold_thickness, 
+    medical_history_id, create_time, create_user, modify_time, modify_user, delete_flag, 
+    version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_assessment
+    where assessment_id = #{assessment_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_assessment
+    where assessment_id = #{assessment_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.Assessment" >
+    insert into t_assessment (assessment_id, sas_score, sds_score, 
+      na_score, psqi_score, ipqa_score, 
+      fagerstorm_score, left_grip, right_grip, 
+      three_meter_test, four_meter_test, stand_up_test, 
+      left_balance_test, right_balance_test, 
+      sit_reach, upperarm_circumference, bmi, 
+      triceps_skinfold_thickness, medical_history_id, 
+      create_time, create_user, modify_time, 
+      modify_user, delete_flag, version
+      )
+    values (#{assessment_id,jdbcType=VARCHAR}, #{sas_score,jdbcType=DECIMAL}, #{sds_score,jdbcType=DECIMAL}, 
+      #{na_score,jdbcType=DECIMAL}, #{psqi_score,jdbcType=DECIMAL}, #{ipqa_score,jdbcType=DECIMAL}, 
+      #{fagerstorm_score,jdbcType=DECIMAL}, #{left_grip,jdbcType=DECIMAL}, #{right_grip,jdbcType=DECIMAL}, 
+      #{three_meter_test,jdbcType=DECIMAL}, #{four_meter_test,jdbcType=DECIMAL}, #{stand_up_test,jdbcType=DECIMAL}, 
+      #{left_balance_test,jdbcType=DECIMAL}, #{right_balance_test,jdbcType=DECIMAL}, 
+      #{sit_reach,jdbcType=DECIMAL}, #{upperarm_circumference,jdbcType=DECIMAL}, #{bmi,jdbcType=DECIMAL}, 
+      #{triceps_skinfold_thickness,jdbcType=DECIMAL}, #{medical_history_id,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, 
+      #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.Assessment" >
+    insert into t_assessment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assessment_id != null" >
+        assessment_id,
+      </if>
+      <if test="sas_score != null" >
+        sas_score,
+      </if>
+      <if test="sds_score != null" >
+        sds_score,
+      </if>
+      <if test="na_score != null" >
+        na_score,
+      </if>
+      <if test="psqi_score != null" >
+        psqi_score,
+      </if>
+      <if test="ipqa_score != null" >
+        ipqa_score,
+      </if>
+      <if test="fagerstorm_score != null" >
+        fagerstorm_score,
+      </if>
+      <if test="left_grip != null" >
+        left_grip,
+      </if>
+      <if test="right_grip != null" >
+        right_grip,
+      </if>
+      <if test="three_meter_test != null" >
+        three_meter_test,
+      </if>
+      <if test="four_meter_test != null" >
+        four_meter_test,
+      </if>
+      <if test="stand_up_test != null" >
+        stand_up_test,
+      </if>
+      <if test="left_balance_test != null" >
+        left_balance_test,
+      </if>
+      <if test="right_balance_test != null" >
+        right_balance_test,
+      </if>
+      <if test="sit_reach != null" >
+        sit_reach,
+      </if>
+      <if test="upperarm_circumference != null" >
+        upperarm_circumference,
+      </if>
+      <if test="bmi != null" >
+        bmi,
+      </if>
+      <if test="triceps_skinfold_thickness != null" >
+        triceps_skinfold_thickness,
+      </if>
+      <if test="medical_history_id != null" >
+        medical_history_id,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assessment_id != null" >
+        #{assessment_id,jdbcType=VARCHAR},
+      </if>
+      <if test="sas_score != null" >
+        #{sas_score,jdbcType=DECIMAL},
+      </if>
+      <if test="sds_score != null" >
+        #{sds_score,jdbcType=DECIMAL},
+      </if>
+      <if test="na_score != null" >
+        #{na_score,jdbcType=DECIMAL},
+      </if>
+      <if test="psqi_score != null" >
+        #{psqi_score,jdbcType=DECIMAL},
+      </if>
+      <if test="ipqa_score != null" >
+        #{ipqa_score,jdbcType=DECIMAL},
+      </if>
+      <if test="fagerstorm_score != null" >
+        #{fagerstorm_score,jdbcType=DECIMAL},
+      </if>
+      <if test="left_grip != null" >
+        #{left_grip,jdbcType=DECIMAL},
+      </if>
+      <if test="right_grip != null" >
+        #{right_grip,jdbcType=DECIMAL},
+      </if>
+      <if test="three_meter_test != null" >
+        #{three_meter_test,jdbcType=DECIMAL},
+      </if>
+      <if test="four_meter_test != null" >
+        #{four_meter_test,jdbcType=DECIMAL},
+      </if>
+      <if test="stand_up_test != null" >
+        #{stand_up_test,jdbcType=DECIMAL},
+      </if>
+      <if test="left_balance_test != null" >
+        #{left_balance_test,jdbcType=DECIMAL},
+      </if>
+      <if test="right_balance_test != null" >
+        #{right_balance_test,jdbcType=DECIMAL},
+      </if>
+      <if test="sit_reach != null" >
+        #{sit_reach,jdbcType=DECIMAL},
+      </if>
+      <if test="upperarm_circumference != null" >
+        #{upperarm_circumference,jdbcType=DECIMAL},
+      </if>
+      <if test="bmi != null" >
+        #{bmi,jdbcType=DECIMAL},
+      </if>
+      <if test="triceps_skinfold_thickness != null" >
+        #{triceps_skinfold_thickness,jdbcType=DECIMAL},
+      </if>
+      <if test="medical_history_id != null" >
+        #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.Assessment" >
+    update t_assessment
+    <set >
+      <if test="sas_score != null" >
+        sas_score = #{sas_score,jdbcType=DECIMAL},
+      </if>
+      <if test="sds_score != null" >
+        sds_score = #{sds_score,jdbcType=DECIMAL},
+      </if>
+      <if test="na_score != null" >
+        na_score = #{na_score,jdbcType=DECIMAL},
+      </if>
+      <if test="psqi_score != null" >
+        psqi_score = #{psqi_score,jdbcType=DECIMAL},
+      </if>
+      <if test="ipqa_score != null" >
+        ipqa_score = #{ipqa_score,jdbcType=DECIMAL},
+      </if>
+      <if test="fagerstorm_score != null" >
+        fagerstorm_score = #{fagerstorm_score,jdbcType=DECIMAL},
+      </if>
+      <if test="left_grip != null" >
+        left_grip = #{left_grip,jdbcType=DECIMAL},
+      </if>
+      <if test="right_grip != null" >
+        right_grip = #{right_grip,jdbcType=DECIMAL},
+      </if>
+      <if test="three_meter_test != null" >
+        three_meter_test = #{three_meter_test,jdbcType=DECIMAL},
+      </if>
+      <if test="four_meter_test != null" >
+        four_meter_test = #{four_meter_test,jdbcType=DECIMAL},
+      </if>
+      <if test="stand_up_test != null" >
+        stand_up_test = #{stand_up_test,jdbcType=DECIMAL},
+      </if>
+      <if test="left_balance_test != null" >
+        left_balance_test = #{left_balance_test,jdbcType=DECIMAL},
+      </if>
+      <if test="right_balance_test != null" >
+        right_balance_test = #{right_balance_test,jdbcType=DECIMAL},
+      </if>
+      <if test="sit_reach != null" >
+        sit_reach = #{sit_reach,jdbcType=DECIMAL},
+      </if>
+      <if test="upperarm_circumference != null" >
+        upperarm_circumference = #{upperarm_circumference,jdbcType=DECIMAL},
+      </if>
+      <if test="bmi != null" >
+        bmi = #{bmi,jdbcType=DECIMAL},
+      </if>
+      <if test="triceps_skinfold_thickness != null" >
+        triceps_skinfold_thickness = #{triceps_skinfold_thickness,jdbcType=DECIMAL},
+      </if>
+      <if test="medical_history_id != null" >
+        medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where assessment_id = #{assessment_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.Assessment" >
+    update t_assessment
+    set sas_score = #{sas_score,jdbcType=DECIMAL},
+      sds_score = #{sds_score,jdbcType=DECIMAL},
+      na_score = #{na_score,jdbcType=DECIMAL},
+      psqi_score = #{psqi_score,jdbcType=DECIMAL},
+      ipqa_score = #{ipqa_score,jdbcType=DECIMAL},
+      fagerstorm_score = #{fagerstorm_score,jdbcType=DECIMAL},
+      left_grip = #{left_grip,jdbcType=DECIMAL},
+      right_grip = #{right_grip,jdbcType=DECIMAL},
+      three_meter_test = #{three_meter_test,jdbcType=DECIMAL},
+      four_meter_test = #{four_meter_test,jdbcType=DECIMAL},
+      stand_up_test = #{stand_up_test,jdbcType=DECIMAL},
+      left_balance_test = #{left_balance_test,jdbcType=DECIMAL},
+      right_balance_test = #{right_balance_test,jdbcType=DECIMAL},
+      sit_reach = #{sit_reach,jdbcType=DECIMAL},
+      upperarm_circumference = #{upperarm_circumference,jdbcType=DECIMAL},
+      bmi = #{bmi,jdbcType=DECIMAL},
+      triceps_skinfold_thickness = #{triceps_skinfold_thickness,jdbcType=DECIMAL},
+      medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where assessment_id = #{assessment_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

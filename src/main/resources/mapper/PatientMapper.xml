@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.PatientMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.Patient" >
+    <constructor >
+      <idArg column="patient_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="num_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gender" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nation" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="province" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="district" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="birthday" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="sick_age" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="mobile_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="telphone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="emerge_people" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="emerge_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="emerge_relationship" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="married" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="profession" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="education" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="income" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="profession_status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    patient_id, "name", num_id, gender, nation, province, city, district, address, birthday, 
+    sick_age, mobile_phone, telphone, emerge_people, emerge_phone, emerge_relationship, 
+    married, profession, education, income, profession_status, create_time, create_user, 
+    modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_patient
+    where patient_id = #{patient_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_patient
+    where patient_id = #{patient_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.Patient" >
+    insert into t_patient (patient_id, "name", num_id, 
+      gender, nation, province, 
+      city, district, address, 
+      birthday, sick_age, mobile_phone, 
+      telphone, emerge_people, emerge_phone, 
+      emerge_relationship, married, profession, 
+      education, income, profession_status, 
+      create_time, create_user, modify_time, 
+      modify_user, delete_flag, version
+      )
+    values (#{patient_id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{num_id,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{sick_age,jdbcType=INTEGER}, #{mobile_phone,jdbcType=VARCHAR}, 
+      #{telphone,jdbcType=VARCHAR}, #{emerge_people,jdbcType=VARCHAR}, #{emerge_phone,jdbcType=VARCHAR}, 
+      #{emerge_relationship,jdbcType=VARCHAR}, #{married,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{income,jdbcType=VARCHAR}, #{profession_status,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, 
+      #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.Patient" >
+    insert into t_patient
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="patient_id != null" >
+        patient_id,
+      </if>
+      <if test="name != null" >
+        "name",
+      </if>
+      <if test="num_id != null" >
+        num_id,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="sick_age != null" >
+        sick_age,
+      </if>
+      <if test="mobile_phone != null" >
+        mobile_phone,
+      </if>
+      <if test="telphone != null" >
+        telphone,
+      </if>
+      <if test="emerge_people != null" >
+        emerge_people,
+      </if>
+      <if test="emerge_phone != null" >
+        emerge_phone,
+      </if>
+      <if test="emerge_relationship != null" >
+        emerge_relationship,
+      </if>
+      <if test="married != null" >
+        married,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="income != null" >
+        income,
+      </if>
+      <if test="profession_status != null" >
+        profession_status,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="patient_id != null" >
+        #{patient_id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="num_id != null" >
+        #{num_id,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="sick_age != null" >
+        #{sick_age,jdbcType=INTEGER},
+      </if>
+      <if test="mobile_phone != null" >
+        #{mobile_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="emerge_people != null" >
+        #{emerge_people,jdbcType=VARCHAR},
+      </if>
+      <if test="emerge_phone != null" >
+        #{emerge_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="emerge_relationship != null" >
+        #{emerge_relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="married != null" >
+        #{married,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null" >
+        #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="profession_status != null" >
+        #{profession_status,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.Patient" >
+    update t_patient
+    <set >
+      <if test="name != null" >
+        "name" = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="num_id != null" >
+        num_id = #{num_id,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="sick_age != null" >
+        sick_age = #{sick_age,jdbcType=INTEGER},
+      </if>
+      <if test="mobile_phone != null" >
+        mobile_phone = #{mobile_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="emerge_people != null" >
+        emerge_people = #{emerge_people,jdbcType=VARCHAR},
+      </if>
+      <if test="emerge_phone != null" >
+        emerge_phone = #{emerge_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="emerge_relationship != null" >
+        emerge_relationship = #{emerge_relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="married != null" >
+        married = #{married,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null" >
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="profession_status != null" >
+        profession_status = #{profession_status,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where patient_id = #{patient_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.Patient" >
+    update t_patient
+    set "name" = #{name,jdbcType=VARCHAR},
+      num_id = #{num_id,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      sick_age = #{sick_age,jdbcType=INTEGER},
+      mobile_phone = #{mobile_phone,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      emerge_people = #{emerge_people,jdbcType=VARCHAR},
+      emerge_phone = #{emerge_phone,jdbcType=VARCHAR},
+      emerge_relationship = #{emerge_relationship,jdbcType=VARCHAR},
+      married = #{married,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      income = #{income,jdbcType=VARCHAR},
+      profession_status = #{profession_status,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where patient_id = #{patient_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

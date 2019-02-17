@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.NutritionPrescriptionMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.NutritionPrescription" >
+    <constructor >
+      <idArg column="nutrition_prescription_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="heat_quantity" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="saccharides" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="fat" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="protein" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="other_info" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="follow_up_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    nutrition_prescription_id, heat_quantity, saccharides, fat, protein, other_info, 
+    follow_up_id, create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_nutrition_prescription
+    where nutrition_prescription_id = #{nutrition_prescription_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_nutrition_prescription
+    where nutrition_prescription_id = #{nutrition_prescription_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.NutritionPrescription" >
+    insert into t_nutrition_prescription (nutrition_prescription_id, heat_quantity, 
+      saccharides, fat, protein, 
+      other_info, follow_up_id, create_time, 
+      create_user, modify_time, modify_user, 
+      delete_flag, version)
+    values (#{nutrition_prescription_id,jdbcType=VARCHAR}, #{heat_quantity,jdbcType=DECIMAL}, 
+      #{saccharides,jdbcType=DECIMAL}, #{fat,jdbcType=DECIMAL}, #{protein,jdbcType=DECIMAL}, 
+      #{other_info,jdbcType=VARCHAR}, #{follow_up_id,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, #{modify_user,jdbcType=VARCHAR}, 
+      #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.NutritionPrescription" >
+    insert into t_nutrition_prescription
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nutrition_prescription_id != null" >
+        nutrition_prescription_id,
+      </if>
+      <if test="heat_quantity != null" >
+        heat_quantity,
+      </if>
+      <if test="saccharides != null" >
+        saccharides,
+      </if>
+      <if test="fat != null" >
+        fat,
+      </if>
+      <if test="protein != null" >
+        protein,
+      </if>
+      <if test="other_info != null" >
+        other_info,
+      </if>
+      <if test="follow_up_id != null" >
+        follow_up_id,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nutrition_prescription_id != null" >
+        #{nutrition_prescription_id,jdbcType=VARCHAR},
+      </if>
+      <if test="heat_quantity != null" >
+        #{heat_quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="saccharides != null" >
+        #{saccharides,jdbcType=DECIMAL},
+      </if>
+      <if test="fat != null" >
+        #{fat,jdbcType=DECIMAL},
+      </if>
+      <if test="protein != null" >
+        #{protein,jdbcType=DECIMAL},
+      </if>
+      <if test="other_info != null" >
+        #{other_info,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_id != null" >
+        #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.NutritionPrescription" >
+    update t_nutrition_prescription
+    <set >
+      <if test="heat_quantity != null" >
+        heat_quantity = #{heat_quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="saccharides != null" >
+        saccharides = #{saccharides,jdbcType=DECIMAL},
+      </if>
+      <if test="fat != null" >
+        fat = #{fat,jdbcType=DECIMAL},
+      </if>
+      <if test="protein != null" >
+        protein = #{protein,jdbcType=DECIMAL},
+      </if>
+      <if test="other_info != null" >
+        other_info = #{other_info,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_id != null" >
+        follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where nutrition_prescription_id = #{nutrition_prescription_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.NutritionPrescription" >
+    update t_nutrition_prescription
+    set heat_quantity = #{heat_quantity,jdbcType=DECIMAL},
+      saccharides = #{saccharides,jdbcType=DECIMAL},
+      fat = #{fat,jdbcType=DECIMAL},
+      protein = #{protein,jdbcType=DECIMAL},
+      other_info = #{other_info,jdbcType=VARCHAR},
+      follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where nutrition_prescription_id = #{nutrition_prescription_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.HospitalMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.Hospital" >
+    <constructor >
+      <idArg column="hos_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_py" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_rank" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_province" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_city" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_district" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_beds" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hos_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_detail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_longitude" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="hos_latitude" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hos_id, hos_name, hos_py, hos_code, hos_rank, hos_type, hos_province, hos_city, hos_district, 
+    hos_beds, hos_address, hos_detail, hos_tel, hos_longitude, hos_latitude, create_time, 
+    create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hospital
+    where hos_id = #{hos_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_hospital
+    where hos_id = #{hos_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.Hospital" >
+    insert into t_hospital (hos_id, hos_name, hos_py, 
+      hos_code, hos_rank, hos_type, 
+      hos_province, hos_city, hos_district, 
+      hos_beds, hos_address, hos_detail, 
+      hos_tel, hos_longitude, hos_latitude, 
+      create_time, create_user, modify_time, 
+      modify_user, delete_flag, version
+      )
+    values (#{hos_id,jdbcType=VARCHAR}, #{hos_name,jdbcType=VARCHAR}, #{hos_py,jdbcType=VARCHAR}, 
+      #{hos_code,jdbcType=VARCHAR}, #{hos_rank,jdbcType=VARCHAR}, #{hos_type,jdbcType=VARCHAR}, 
+      #{hos_province,jdbcType=VARCHAR}, #{hos_city,jdbcType=VARCHAR}, #{hos_district,jdbcType=VARCHAR}, 
+      #{hos_beds,jdbcType=INTEGER}, #{hos_address,jdbcType=VARCHAR}, #{hos_detail,jdbcType=VARCHAR}, 
+      #{hos_tel,jdbcType=VARCHAR}, #{hos_longitude,jdbcType=DECIMAL}, #{hos_latitude,jdbcType=DECIMAL}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, 
+      #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.Hospital" >
+    insert into t_hospital
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hos_id != null" >
+        hos_id,
+      </if>
+      <if test="hos_name != null" >
+        hos_name,
+      </if>
+      <if test="hos_py != null" >
+        hos_py,
+      </if>
+      <if test="hos_code != null" >
+        hos_code,
+      </if>
+      <if test="hos_rank != null" >
+        hos_rank,
+      </if>
+      <if test="hos_type != null" >
+        hos_type,
+      </if>
+      <if test="hos_province != null" >
+        hos_province,
+      </if>
+      <if test="hos_city != null" >
+        hos_city,
+      </if>
+      <if test="hos_district != null" >
+        hos_district,
+      </if>
+      <if test="hos_beds != null" >
+        hos_beds,
+      </if>
+      <if test="hos_address != null" >
+        hos_address,
+      </if>
+      <if test="hos_detail != null" >
+        hos_detail,
+      </if>
+      <if test="hos_tel != null" >
+        hos_tel,
+      </if>
+      <if test="hos_longitude != null" >
+        hos_longitude,
+      </if>
+      <if test="hos_latitude != null" >
+        hos_latitude,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hos_id != null" >
+        #{hos_id,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_name != null" >
+        #{hos_name,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_py != null" >
+        #{hos_py,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_code != null" >
+        #{hos_code,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_rank != null" >
+        #{hos_rank,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_type != null" >
+        #{hos_type,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_province != null" >
+        #{hos_province,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_city != null" >
+        #{hos_city,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_district != null" >
+        #{hos_district,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_beds != null" >
+        #{hos_beds,jdbcType=INTEGER},
+      </if>
+      <if test="hos_address != null" >
+        #{hos_address,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_detail != null" >
+        #{hos_detail,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_tel != null" >
+        #{hos_tel,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_longitude != null" >
+        #{hos_longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="hos_latitude != null" >
+        #{hos_latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.Hospital" >
+    update t_hospital
+    <set >
+      <if test="hos_name != null" >
+        hos_name = #{hos_name,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_py != null" >
+        hos_py = #{hos_py,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_code != null" >
+        hos_code = #{hos_code,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_rank != null" >
+        hos_rank = #{hos_rank,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_type != null" >
+        hos_type = #{hos_type,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_province != null" >
+        hos_province = #{hos_province,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_city != null" >
+        hos_city = #{hos_city,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_district != null" >
+        hos_district = #{hos_district,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_beds != null" >
+        hos_beds = #{hos_beds,jdbcType=INTEGER},
+      </if>
+      <if test="hos_address != null" >
+        hos_address = #{hos_address,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_detail != null" >
+        hos_detail = #{hos_detail,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_tel != null" >
+        hos_tel = #{hos_tel,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_longitude != null" >
+        hos_longitude = #{hos_longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="hos_latitude != null" >
+        hos_latitude = #{hos_latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where hos_id = #{hos_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.Hospital" >
+    update t_hospital
+    set hos_name = #{hos_name,jdbcType=VARCHAR},
+      hos_py = #{hos_py,jdbcType=VARCHAR},
+      hos_code = #{hos_code,jdbcType=VARCHAR},
+      hos_rank = #{hos_rank,jdbcType=VARCHAR},
+      hos_type = #{hos_type,jdbcType=VARCHAR},
+      hos_province = #{hos_province,jdbcType=VARCHAR},
+      hos_city = #{hos_city,jdbcType=VARCHAR},
+      hos_district = #{hos_district,jdbcType=VARCHAR},
+      hos_beds = #{hos_beds,jdbcType=INTEGER},
+      hos_address = #{hos_address,jdbcType=VARCHAR},
+      hos_detail = #{hos_detail,jdbcType=VARCHAR},
+      hos_tel = #{hos_tel,jdbcType=VARCHAR},
+      hos_longitude = #{hos_longitude,jdbcType=DECIMAL},
+      hos_latitude = #{hos_latitude,jdbcType=DECIMAL},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where hos_id = #{hos_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ScoreMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.Score" >
+    <constructor >
+      <idArg column="score_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="medical_history_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="grace_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="dapt_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="crucede_score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="dapt_detail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    score_id, medical_history_id, grace_score, dapt_score, crucede_score, dapt_detail, 
+    create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_score
+    where score_id = #{score_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_score
+    where score_id = #{score_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.Score" >
+    insert into t_score (score_id, medical_history_id, grace_score, 
+      dapt_score, crucede_score, dapt_detail, 
+      create_time, create_user, modify_time, 
+      modify_user, delete_flag, version
+      )
+    values (#{score_id,jdbcType=VARCHAR}, #{medical_history_id,jdbcType=VARCHAR}, #{grace_score,jdbcType=DECIMAL}, 
+      #{dapt_score,jdbcType=DECIMAL}, #{crucede_score,jdbcType=DECIMAL}, #{dapt_detail,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, 
+      #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.Score" >
+    insert into t_score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="score_id != null" >
+        score_id,
+      </if>
+      <if test="medical_history_id != null" >
+        medical_history_id,
+      </if>
+      <if test="grace_score != null" >
+        grace_score,
+      </if>
+      <if test="dapt_score != null" >
+        dapt_score,
+      </if>
+      <if test="crucede_score != null" >
+        crucede_score,
+      </if>
+      <if test="dapt_detail != null" >
+        dapt_detail,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="score_id != null" >
+        #{score_id,jdbcType=VARCHAR},
+      </if>
+      <if test="medical_history_id != null" >
+        #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="grace_score != null" >
+        #{grace_score,jdbcType=DECIMAL},
+      </if>
+      <if test="dapt_score != null" >
+        #{dapt_score,jdbcType=DECIMAL},
+      </if>
+      <if test="crucede_score != null" >
+        #{crucede_score,jdbcType=DECIMAL},
+      </if>
+      <if test="dapt_detail != null" >
+        #{dapt_detail,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.Score" >
+    update t_score
+    <set >
+      <if test="medical_history_id != null" >
+        medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="grace_score != null" >
+        grace_score = #{grace_score,jdbcType=DECIMAL},
+      </if>
+      <if test="dapt_score != null" >
+        dapt_score = #{dapt_score,jdbcType=DECIMAL},
+      </if>
+      <if test="crucede_score != null" >
+        crucede_score = #{crucede_score,jdbcType=DECIMAL},
+      </if>
+      <if test="dapt_detail != null" >
+        dapt_detail = #{dapt_detail,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where score_id = #{score_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.Score" >
+    update t_score
+    set medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      grace_score = #{grace_score,jdbcType=DECIMAL},
+      dapt_score = #{dapt_score,jdbcType=DECIMAL},
+      crucede_score = #{crucede_score,jdbcType=DECIMAL},
+      dapt_detail = #{dapt_detail,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where score_id = #{score_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

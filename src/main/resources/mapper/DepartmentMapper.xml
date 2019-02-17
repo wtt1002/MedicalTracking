@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.DepartmentMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.Department" >
+    <constructor >
+      <idArg column="dept_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hos_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_py" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_leader" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_detail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dept_id, hos_id, dept_name, dept_py, dept_leader, dept_address, dept_tel, dept_detail, 
+    create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_department
+    where dept_id = #{dept_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_department
+    where dept_id = #{dept_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.Department" >
+    insert into t_department (dept_id, hos_id, dept_name, 
+      dept_py, dept_leader, dept_address, 
+      dept_tel, dept_detail, create_time, 
+      create_user, modify_time, modify_user, 
+      delete_flag, version)
+    values (#{dept_id,jdbcType=VARCHAR}, #{hos_id,jdbcType=VARCHAR}, #{dept_name,jdbcType=VARCHAR}, 
+      #{dept_py,jdbcType=VARCHAR}, #{dept_leader,jdbcType=VARCHAR}, #{dept_address,jdbcType=VARCHAR}, 
+      #{dept_tel,jdbcType=VARCHAR}, #{dept_detail,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, #{modify_user,jdbcType=VARCHAR}, 
+      #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.Department" >
+    insert into t_department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dept_id != null" >
+        dept_id,
+      </if>
+      <if test="hos_id != null" >
+        hos_id,
+      </if>
+      <if test="dept_name != null" >
+        dept_name,
+      </if>
+      <if test="dept_py != null" >
+        dept_py,
+      </if>
+      <if test="dept_leader != null" >
+        dept_leader,
+      </if>
+      <if test="dept_address != null" >
+        dept_address,
+      </if>
+      <if test="dept_tel != null" >
+        dept_tel,
+      </if>
+      <if test="dept_detail != null" >
+        dept_detail,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dept_id != null" >
+        #{dept_id,jdbcType=VARCHAR},
+      </if>
+      <if test="hos_id != null" >
+        #{hos_id,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_name != null" >
+        #{dept_name,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_py != null" >
+        #{dept_py,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_leader != null" >
+        #{dept_leader,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_address != null" >
+        #{dept_address,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_tel != null" >
+        #{dept_tel,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_detail != null" >
+        #{dept_detail,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.Department" >
+    update t_department
+    <set >
+      <if test="hos_id != null" >
+        hos_id = #{hos_id,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_name != null" >
+        dept_name = #{dept_name,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_py != null" >
+        dept_py = #{dept_py,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_leader != null" >
+        dept_leader = #{dept_leader,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_address != null" >
+        dept_address = #{dept_address,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_tel != null" >
+        dept_tel = #{dept_tel,jdbcType=VARCHAR},
+      </if>
+      <if test="dept_detail != null" >
+        dept_detail = #{dept_detail,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dept_id = #{dept_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.Department" >
+    update t_department
+    set hos_id = #{hos_id,jdbcType=VARCHAR},
+      dept_name = #{dept_name,jdbcType=VARCHAR},
+      dept_py = #{dept_py,jdbcType=VARCHAR},
+      dept_leader = #{dept_leader,jdbcType=VARCHAR},
+      dept_address = #{dept_address,jdbcType=VARCHAR},
+      dept_tel = #{dept_tel,jdbcType=VARCHAR},
+      dept_detail = #{dept_detail,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where dept_id = #{dept_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

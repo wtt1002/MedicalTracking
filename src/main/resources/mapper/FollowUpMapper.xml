@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.FollowUpMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.FollowUp" >
+    <constructor >
+      <idArg column="follow_up_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="medical_history_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="doctor_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="plan_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="final_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="plan_way" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="final_way" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="follow_up_duration" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="recovery_status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="further_consultation" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recent_symptoms" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="follow_up_index" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    follow_up_id, medical_history_id, doctor_id, plan_time, final_time, plan_way, final_way, 
+    follow_up_duration, recovery_status, further_consultation, recent_symptoms, follow_up_index, 
+    create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_follow_up
+    where follow_up_id = #{follow_up_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_follow_up
+    where follow_up_id = #{follow_up_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.FollowUp" >
+    insert into t_follow_up (follow_up_id, medical_history_id, 
+      doctor_id, plan_time, final_time, 
+      plan_way, final_way, follow_up_duration, 
+      recovery_status, further_consultation, 
+      recent_symptoms, follow_up_index, create_time, 
+      create_user, modify_time, modify_user, 
+      delete_flag, version)
+    values (#{follow_up_id,jdbcType=VARCHAR}, #{medical_history_id,jdbcType=VARCHAR}, 
+      #{doctor_id,jdbcType=VARCHAR}, #{plan_time,jdbcType=TIMESTAMP}, #{final_time,jdbcType=TIMESTAMP}, 
+      #{plan_way,jdbcType=TIMESTAMP}, #{final_way,jdbcType=TIMESTAMP}, #{follow_up_duration,jdbcType=INTEGER}, 
+      #{recovery_status,jdbcType=VARCHAR}, #{further_consultation,jdbcType=VARCHAR}, 
+      #{recent_symptoms,jdbcType=VARCHAR}, #{follow_up_index,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, #{modify_user,jdbcType=VARCHAR}, 
+      #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.FollowUp" >
+    insert into t_follow_up
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="follow_up_id != null" >
+        follow_up_id,
+      </if>
+      <if test="medical_history_id != null" >
+        medical_history_id,
+      </if>
+      <if test="doctor_id != null" >
+        doctor_id,
+      </if>
+      <if test="plan_time != null" >
+        plan_time,
+      </if>
+      <if test="final_time != null" >
+        final_time,
+      </if>
+      <if test="plan_way != null" >
+        plan_way,
+      </if>
+      <if test="final_way != null" >
+        final_way,
+      </if>
+      <if test="follow_up_duration != null" >
+        follow_up_duration,
+      </if>
+      <if test="recovery_status != null" >
+        recovery_status,
+      </if>
+      <if test="further_consultation != null" >
+        further_consultation,
+      </if>
+      <if test="recent_symptoms != null" >
+        recent_symptoms,
+      </if>
+      <if test="follow_up_index != null" >
+        follow_up_index,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="follow_up_id != null" >
+        #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="medical_history_id != null" >
+        #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_id != null" >
+        #{doctor_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plan_time != null" >
+        #{plan_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="final_time != null" >
+        #{final_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plan_way != null" >
+        #{plan_way,jdbcType=TIMESTAMP},
+      </if>
+      <if test="final_way != null" >
+        #{final_way,jdbcType=TIMESTAMP},
+      </if>
+      <if test="follow_up_duration != null" >
+        #{follow_up_duration,jdbcType=INTEGER},
+      </if>
+      <if test="recovery_status != null" >
+        #{recovery_status,jdbcType=VARCHAR},
+      </if>
+      <if test="further_consultation != null" >
+        #{further_consultation,jdbcType=VARCHAR},
+      </if>
+      <if test="recent_symptoms != null" >
+        #{recent_symptoms,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_index != null" >
+        #{follow_up_index,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.FollowUp" >
+    update t_follow_up
+    <set >
+      <if test="medical_history_id != null" >
+        medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_id != null" >
+        doctor_id = #{doctor_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plan_time != null" >
+        plan_time = #{plan_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="final_time != null" >
+        final_time = #{final_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plan_way != null" >
+        plan_way = #{plan_way,jdbcType=TIMESTAMP},
+      </if>
+      <if test="final_way != null" >
+        final_way = #{final_way,jdbcType=TIMESTAMP},
+      </if>
+      <if test="follow_up_duration != null" >
+        follow_up_duration = #{follow_up_duration,jdbcType=INTEGER},
+      </if>
+      <if test="recovery_status != null" >
+        recovery_status = #{recovery_status,jdbcType=VARCHAR},
+      </if>
+      <if test="further_consultation != null" >
+        further_consultation = #{further_consultation,jdbcType=VARCHAR},
+      </if>
+      <if test="recent_symptoms != null" >
+        recent_symptoms = #{recent_symptoms,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_index != null" >
+        follow_up_index = #{follow_up_index,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where follow_up_id = #{follow_up_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.FollowUp" >
+    update t_follow_up
+    set medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      doctor_id = #{doctor_id,jdbcType=VARCHAR},
+      plan_time = #{plan_time,jdbcType=TIMESTAMP},
+      final_time = #{final_time,jdbcType=TIMESTAMP},
+      plan_way = #{plan_way,jdbcType=TIMESTAMP},
+      final_way = #{final_way,jdbcType=TIMESTAMP},
+      follow_up_duration = #{follow_up_duration,jdbcType=INTEGER},
+      recovery_status = #{recovery_status,jdbcType=VARCHAR},
+      further_consultation = #{further_consultation,jdbcType=VARCHAR},
+      recent_symptoms = #{recent_symptoms,jdbcType=VARCHAR},
+      follow_up_index = #{follow_up_index,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where follow_up_id = #{follow_up_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

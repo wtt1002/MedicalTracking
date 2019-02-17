@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.FollowSickHistoryMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.FollowSickHistory" >
+    <constructor >
+      <idArg column="follow_sick_history_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="follow_up_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ischemia" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hemorrhage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="revascularization" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="nyha_rank" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_weak" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_soreness" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_smoke" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_patient_edu" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="other_info" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    follow_sick_history_id, follow_up_id, ischemia, hemorrhage, revascularization, nyha_rank, 
+    is_weak, is_soreness, is_smoke, is_patient_edu, other_info, create_time, create_user, 
+    modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_follow_sick_history
+    where follow_sick_history_id = #{follow_sick_history_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_follow_sick_history
+    where follow_sick_history_id = #{follow_sick_history_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.FollowSickHistory" >
+    insert into t_follow_sick_history (follow_sick_history_id, follow_up_id, 
+      ischemia, hemorrhage, revascularization, 
+      nyha_rank, is_weak, is_soreness, 
+      is_smoke, is_patient_edu, other_info, 
+      create_time, create_user, modify_time, 
+      modify_user, delete_flag, version
+      )
+    values (#{follow_sick_history_id,jdbcType=VARCHAR}, #{follow_up_id,jdbcType=VARCHAR}, 
+      #{ischemia,jdbcType=VARCHAR}, #{hemorrhage,jdbcType=VARCHAR}, #{revascularization,jdbcType=TINYINT}, 
+      #{nyha_rank,jdbcType=TINYINT}, #{is_weak,jdbcType=TINYINT}, #{is_soreness,jdbcType=TINYINT}, 
+      #{is_smoke,jdbcType=TINYINT}, #{is_patient_edu,jdbcType=TINYINT}, #{other_info,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, 
+      #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.FollowSickHistory" >
+    insert into t_follow_sick_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="follow_sick_history_id != null" >
+        follow_sick_history_id,
+      </if>
+      <if test="follow_up_id != null" >
+        follow_up_id,
+      </if>
+      <if test="ischemia != null" >
+        ischemia,
+      </if>
+      <if test="hemorrhage != null" >
+        hemorrhage,
+      </if>
+      <if test="revascularization != null" >
+        revascularization,
+      </if>
+      <if test="nyha_rank != null" >
+        nyha_rank,
+      </if>
+      <if test="is_weak != null" >
+        is_weak,
+      </if>
+      <if test="is_soreness != null" >
+        is_soreness,
+      </if>
+      <if test="is_smoke != null" >
+        is_smoke,
+      </if>
+      <if test="is_patient_edu != null" >
+        is_patient_edu,
+      </if>
+      <if test="other_info != null" >
+        other_info,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="follow_sick_history_id != null" >
+        #{follow_sick_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="follow_up_id != null" >
+        #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="ischemia != null" >
+        #{ischemia,jdbcType=VARCHAR},
+      </if>
+      <if test="hemorrhage != null" >
+        #{hemorrhage,jdbcType=VARCHAR},
+      </if>
+      <if test="revascularization != null" >
+        #{revascularization,jdbcType=TINYINT},
+      </if>
+      <if test="nyha_rank != null" >
+        #{nyha_rank,jdbcType=TINYINT},
+      </if>
+      <if test="is_weak != null" >
+        #{is_weak,jdbcType=TINYINT},
+      </if>
+      <if test="is_soreness != null" >
+        #{is_soreness,jdbcType=TINYINT},
+      </if>
+      <if test="is_smoke != null" >
+        #{is_smoke,jdbcType=TINYINT},
+      </if>
+      <if test="is_patient_edu != null" >
+        #{is_patient_edu,jdbcType=TINYINT},
+      </if>
+      <if test="other_info != null" >
+        #{other_info,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.FollowSickHistory" >
+    update t_follow_sick_history
+    <set >
+      <if test="follow_up_id != null" >
+        follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      </if>
+      <if test="ischemia != null" >
+        ischemia = #{ischemia,jdbcType=VARCHAR},
+      </if>
+      <if test="hemorrhage != null" >
+        hemorrhage = #{hemorrhage,jdbcType=VARCHAR},
+      </if>
+      <if test="revascularization != null" >
+        revascularization = #{revascularization,jdbcType=TINYINT},
+      </if>
+      <if test="nyha_rank != null" >
+        nyha_rank = #{nyha_rank,jdbcType=TINYINT},
+      </if>
+      <if test="is_weak != null" >
+        is_weak = #{is_weak,jdbcType=TINYINT},
+      </if>
+      <if test="is_soreness != null" >
+        is_soreness = #{is_soreness,jdbcType=TINYINT},
+      </if>
+      <if test="is_smoke != null" >
+        is_smoke = #{is_smoke,jdbcType=TINYINT},
+      </if>
+      <if test="is_patient_edu != null" >
+        is_patient_edu = #{is_patient_edu,jdbcType=TINYINT},
+      </if>
+      <if test="other_info != null" >
+        other_info = #{other_info,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where follow_sick_history_id = #{follow_sick_history_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.FollowSickHistory" >
+    update t_follow_sick_history
+    set follow_up_id = #{follow_up_id,jdbcType=VARCHAR},
+      ischemia = #{ischemia,jdbcType=VARCHAR},
+      hemorrhage = #{hemorrhage,jdbcType=VARCHAR},
+      revascularization = #{revascularization,jdbcType=TINYINT},
+      nyha_rank = #{nyha_rank,jdbcType=TINYINT},
+      is_weak = #{is_weak,jdbcType=TINYINT},
+      is_soreness = #{is_soreness,jdbcType=TINYINT},
+      is_smoke = #{is_smoke,jdbcType=TINYINT},
+      is_patient_edu = #{is_patient_edu,jdbcType=TINYINT},
+      other_info = #{other_info,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where follow_sick_history_id = #{follow_sick_history_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

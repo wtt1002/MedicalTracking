@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.ExamItemMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.ExamItem" >
+    <constructor >
+      <idArg column="exam_item_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="exam_category_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="exam_item_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="exam_item_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="short_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="item_unit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    exam_item_id, exam_category_id, exam_item_code, exam_item_name, short_name, item_unit, 
+    create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_exam_item
+    where exam_item_id = #{exam_item_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_exam_item
+    where exam_item_id = #{exam_item_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.ExamItem" >
+    insert into t_exam_item (exam_item_id, exam_category_id, exam_item_code, 
+      exam_item_name, short_name, item_unit, 
+      create_time, create_user, modify_time, 
+      modify_user, delete_flag, version
+      )
+    values (#{exam_item_id,jdbcType=VARCHAR}, #{exam_category_id,jdbcType=VARCHAR}, #{exam_item_code,jdbcType=VARCHAR}, 
+      #{exam_item_name,jdbcType=VARCHAR}, #{short_name,jdbcType=VARCHAR}, #{item_unit,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, #{modify_time,jdbcType=TIMESTAMP}, 
+      #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.ExamItem" >
+    insert into t_exam_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="exam_item_id != null" >
+        exam_item_id,
+      </if>
+      <if test="exam_category_id != null" >
+        exam_category_id,
+      </if>
+      <if test="exam_item_code != null" >
+        exam_item_code,
+      </if>
+      <if test="exam_item_name != null" >
+        exam_item_name,
+      </if>
+      <if test="short_name != null" >
+        short_name,
+      </if>
+      <if test="item_unit != null" >
+        item_unit,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="exam_item_id != null" >
+        #{exam_item_id,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_category_id != null" >
+        #{exam_category_id,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_item_code != null" >
+        #{exam_item_code,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_item_name != null" >
+        #{exam_item_name,jdbcType=VARCHAR},
+      </if>
+      <if test="short_name != null" >
+        #{short_name,jdbcType=VARCHAR},
+      </if>
+      <if test="item_unit != null" >
+        #{item_unit,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.ExamItem" >
+    update t_exam_item
+    <set >
+      <if test="exam_category_id != null" >
+        exam_category_id = #{exam_category_id,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_item_code != null" >
+        exam_item_code = #{exam_item_code,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_item_name != null" >
+        exam_item_name = #{exam_item_name,jdbcType=VARCHAR},
+      </if>
+      <if test="short_name != null" >
+        short_name = #{short_name,jdbcType=VARCHAR},
+      </if>
+      <if test="item_unit != null" >
+        item_unit = #{item_unit,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where exam_item_id = #{exam_item_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.ExamItem" >
+    update t_exam_item
+    set exam_category_id = #{exam_category_id,jdbcType=VARCHAR},
+      exam_item_code = #{exam_item_code,jdbcType=VARCHAR},
+      exam_item_name = #{exam_item_name,jdbcType=VARCHAR},
+      short_name = #{short_name,jdbcType=VARCHAR},
+      item_unit = #{item_unit,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where exam_item_id = #{exam_item_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

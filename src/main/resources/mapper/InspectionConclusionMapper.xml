@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lab.c505.dao.InspectionConclusionMapper" >
+  <resultMap id="BaseResultMap" type="lab.c505.entity.InspectionConclusion" >
+    <constructor >
+      <idArg column="inspection_conclusion_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="medical_history_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="exam_category" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="exam_conclusion" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="exam_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="exam_index" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_user" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delete_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inspection_conclusion_id, medical_history_id, exam_category, exam_conclusion, exam_time, 
+    exam_index, create_time, create_user, modify_time, modify_user, delete_flag, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_inspection_conclusion
+    where inspection_conclusion_id = #{inspection_conclusion_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_inspection_conclusion
+    where inspection_conclusion_id = #{inspection_conclusion_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="lab.c505.entity.InspectionConclusion" >
+    insert into t_inspection_conclusion (inspection_conclusion_id, medical_history_id, 
+      exam_category, exam_conclusion, exam_time, 
+      exam_index, create_time, create_user, 
+      modify_time, modify_user, delete_flag, 
+      version)
+    values (#{inspection_conclusion_id,jdbcType=VARCHAR}, #{medical_history_id,jdbcType=VARCHAR}, 
+      #{exam_category,jdbcType=VARCHAR}, #{exam_conclusion,jdbcType=VARCHAR}, #{exam_time,jdbcType=TIMESTAMP}, 
+      #{exam_index,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{create_user,jdbcType=VARCHAR}, 
+      #{modify_time,jdbcType=TIMESTAMP}, #{modify_user,jdbcType=VARCHAR}, #{delete_flag,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="lab.c505.entity.InspectionConclusion" >
+    insert into t_inspection_conclusion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inspection_conclusion_id != null" >
+        inspection_conclusion_id,
+      </if>
+      <if test="medical_history_id != null" >
+        medical_history_id,
+      </if>
+      <if test="exam_category != null" >
+        exam_category,
+      </if>
+      <if test="exam_conclusion != null" >
+        exam_conclusion,
+      </if>
+      <if test="exam_time != null" >
+        exam_time,
+      </if>
+      <if test="exam_index != null" >
+        exam_index,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_user != null" >
+        create_user,
+      </if>
+      <if test="modify_time != null" >
+        modify_time,
+      </if>
+      <if test="modify_user != null" >
+        modify_user,
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inspection_conclusion_id != null" >
+        #{inspection_conclusion_id,jdbcType=VARCHAR},
+      </if>
+      <if test="medical_history_id != null" >
+        #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_category != null" >
+        #{exam_category,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_conclusion != null" >
+        #{exam_conclusion,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_time != null" >
+        #{exam_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exam_index != null" >
+        #{exam_index,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lab.c505.entity.InspectionConclusion" >
+    update t_inspection_conclusion
+    <set >
+      <if test="medical_history_id != null" >
+        medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_category != null" >
+        exam_category = #{exam_category,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_conclusion != null" >
+        exam_conclusion = #{exam_conclusion,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_time != null" >
+        exam_time = #{exam_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exam_index != null" >
+        exam_index = #{exam_index,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_user != null" >
+        create_user = #{create_user,jdbcType=VARCHAR},
+      </if>
+      <if test="modify_time != null" >
+        modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modify_user != null" >
+        modify_user = #{modify_user,jdbcType=VARCHAR},
+      </if>
+      <if test="delete_flag != null" >
+        delete_flag = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where inspection_conclusion_id = #{inspection_conclusion_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lab.c505.entity.InspectionConclusion" >
+    update t_inspection_conclusion
+    set medical_history_id = #{medical_history_id,jdbcType=VARCHAR},
+      exam_category = #{exam_category,jdbcType=VARCHAR},
+      exam_conclusion = #{exam_conclusion,jdbcType=VARCHAR},
+      exam_time = #{exam_time,jdbcType=TIMESTAMP},
+      exam_index = #{exam_index,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_user = #{create_user,jdbcType=VARCHAR},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      modify_user = #{modify_user,jdbcType=VARCHAR},
+      delete_flag = #{delete_flag,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where inspection_conclusion_id = #{inspection_conclusion_id,jdbcType=VARCHAR}
+  </update>
+</mapper>
