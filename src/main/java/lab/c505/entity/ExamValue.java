@@ -4,42 +4,42 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class ExamValue {
-    private String exam_value_id;
+    private String examValueId;
 
-    private String exam_item_id;
+    private String examItemId;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
-    private BigDecimal exam_value;
+    private BigDecimal examValue;
 
-    private Date exam_time;
+    private Date examTime;
 
-    private Integer exam_index;
+    private Integer examIndex;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public ExamValue(String exam_value_id, String exam_item_id, String medical_history_id, BigDecimal exam_value, Date exam_time, Integer exam_index, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.exam_value_id = exam_value_id;
-        this.exam_item_id = exam_item_id;
-        this.medical_history_id = medical_history_id;
-        this.exam_value = exam_value;
-        this.exam_time = exam_time;
-        this.exam_index = exam_index;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public ExamValue(String examValueId, String examItemId, String medicalHistoryId, BigDecimal examValue, Date examTime, Integer examIndex, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.examValueId = examValueId;
+        this.examItemId = examItemId;
+        this.medicalHistoryId = medicalHistoryId;
+        this.examValue = examValue;
+        this.examTime = examTime;
+        this.examIndex = examIndex;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -47,92 +47,92 @@ public class ExamValue {
         super();
     }
 
-    public String getExam_value_id() {
-        return exam_value_id;
+    public String getExamValueId() {
+        return examValueId;
     }
 
-    public void setExam_value_id(String exam_value_id) {
-        this.exam_value_id = exam_value_id == null ? null : exam_value_id.trim();
+    public void setExamValueId(String examValueId) {
+        this.examValueId = examValueId == null ? null : examValueId.trim();
     }
 
-    public String getExam_item_id() {
-        return exam_item_id;
+    public String getExamItemId() {
+        return examItemId;
     }
 
-    public void setExam_item_id(String exam_item_id) {
-        this.exam_item_id = exam_item_id == null ? null : exam_item_id.trim();
+    public void setExamItemId(String examItemId) {
+        this.examItemId = examItemId == null ? null : examItemId.trim();
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
-    public BigDecimal getExam_value() {
-        return exam_value;
+    public BigDecimal getExamValue() {
+        return examValue;
     }
 
-    public void setExam_value(BigDecimal exam_value) {
-        this.exam_value = exam_value;
+    public void setExamValue(BigDecimal examValue) {
+        this.examValue = examValue;
     }
 
-    public Date getExam_time() {
-        return exam_time;
+    public Date getExamTime() {
+        return examTime;
     }
 
-    public void setExam_time(Date exam_time) {
-        this.exam_time = exam_time;
+    public void setExamTime(Date examTime) {
+        this.examTime = examTime;
     }
 
-    public Integer getExam_index() {
-        return exam_index;
+    public Integer getExamIndex() {
+        return examIndex;
     }
 
-    public void setExam_index(Integer exam_index) {
-        this.exam_index = exam_index;
+    public void setExamIndex(Integer examIndex) {
+        this.examIndex = examIndex;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

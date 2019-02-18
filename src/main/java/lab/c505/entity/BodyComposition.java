@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class BodyComposition {
-    private String body_composition_id;
+    private String bodyCompositionId;
 
     private BigDecimal height;
 
@@ -12,40 +12,40 @@ public class BodyComposition {
 
     private BigDecimal bmi;
 
-    private BigDecimal muscle_weight;
+    private BigDecimal muscleWeight;
 
-    private BigDecimal fat_weight;
+    private BigDecimal fatWeight;
 
-    private BigDecimal body_fat_percentage;
+    private BigDecimal bodyFatPercentage;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public BodyComposition(String body_composition_id, BigDecimal height, BigDecimal weight, BigDecimal bmi, BigDecimal muscle_weight, BigDecimal fat_weight, BigDecimal body_fat_percentage, String medical_history_id, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.body_composition_id = body_composition_id;
+    public BodyComposition(String bodyCompositionId, BigDecimal height, BigDecimal weight, BigDecimal bmi, BigDecimal muscleWeight, BigDecimal fatWeight, BigDecimal bodyFatPercentage, String medicalHistoryId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.bodyCompositionId = bodyCompositionId;
         this.height = height;
         this.weight = weight;
         this.bmi = bmi;
-        this.muscle_weight = muscle_weight;
-        this.fat_weight = fat_weight;
-        this.body_fat_percentage = body_fat_percentage;
-        this.medical_history_id = medical_history_id;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.muscleWeight = muscleWeight;
+        this.fatWeight = fatWeight;
+        this.bodyFatPercentage = bodyFatPercentage;
+        this.medicalHistoryId = medicalHistoryId;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -53,12 +53,12 @@ public class BodyComposition {
         super();
     }
 
-    public String getBody_composition_id() {
-        return body_composition_id;
+    public String getBodyCompositionId() {
+        return bodyCompositionId;
     }
 
-    public void setBody_composition_id(String body_composition_id) {
-        this.body_composition_id = body_composition_id == null ? null : body_composition_id.trim();
+    public void setBodyCompositionId(String bodyCompositionId) {
+        this.bodyCompositionId = bodyCompositionId == null ? null : bodyCompositionId.trim();
     }
 
     public BigDecimal getHeight() {
@@ -85,76 +85,76 @@ public class BodyComposition {
         this.bmi = bmi;
     }
 
-    public BigDecimal getMuscle_weight() {
-        return muscle_weight;
+    public BigDecimal getMuscleWeight() {
+        return muscleWeight;
     }
 
-    public void setMuscle_weight(BigDecimal muscle_weight) {
-        this.muscle_weight = muscle_weight;
+    public void setMuscleWeight(BigDecimal muscleWeight) {
+        this.muscleWeight = muscleWeight;
     }
 
-    public BigDecimal getFat_weight() {
-        return fat_weight;
+    public BigDecimal getFatWeight() {
+        return fatWeight;
     }
 
-    public void setFat_weight(BigDecimal fat_weight) {
-        this.fat_weight = fat_weight;
+    public void setFatWeight(BigDecimal fatWeight) {
+        this.fatWeight = fatWeight;
     }
 
-    public BigDecimal getBody_fat_percentage() {
-        return body_fat_percentage;
+    public BigDecimal getBodyFatPercentage() {
+        return bodyFatPercentage;
     }
 
-    public void setBody_fat_percentage(BigDecimal body_fat_percentage) {
-        this.body_fat_percentage = body_fat_percentage;
+    public void setBodyFatPercentage(BigDecimal bodyFatPercentage) {
+        this.bodyFatPercentage = bodyFatPercentage;
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

@@ -3,42 +3,42 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class FollowSideEffects {
-    private String side_effects_id;
+    private String sideEffectsId;
 
-    private String stomach_stimulation;
+    private String stomachStimulation;
 
     private String hemorrhage;
 
-    private String go_hospital;
+    private String goHospital;
 
     private String dyspnea;
 
-    private String follow_up_id;
+    private String followUpId;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public FollowSideEffects(String side_effects_id, String stomach_stimulation, String hemorrhage, String go_hospital, String dyspnea, String follow_up_id, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.side_effects_id = side_effects_id;
-        this.stomach_stimulation = stomach_stimulation;
+    public FollowSideEffects(String sideEffectsId, String stomachStimulation, String hemorrhage, String goHospital, String dyspnea, String followUpId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.sideEffectsId = sideEffectsId;
+        this.stomachStimulation = stomachStimulation;
         this.hemorrhage = hemorrhage;
-        this.go_hospital = go_hospital;
+        this.goHospital = goHospital;
         this.dyspnea = dyspnea;
-        this.follow_up_id = follow_up_id;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.followUpId = followUpId;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -46,20 +46,20 @@ public class FollowSideEffects {
         super();
     }
 
-    public String getSide_effects_id() {
-        return side_effects_id;
+    public String getSideEffectsId() {
+        return sideEffectsId;
     }
 
-    public void setSide_effects_id(String side_effects_id) {
-        this.side_effects_id = side_effects_id == null ? null : side_effects_id.trim();
+    public void setSideEffectsId(String sideEffectsId) {
+        this.sideEffectsId = sideEffectsId == null ? null : sideEffectsId.trim();
     }
 
-    public String getStomach_stimulation() {
-        return stomach_stimulation;
+    public String getStomachStimulation() {
+        return stomachStimulation;
     }
 
-    public void setStomach_stimulation(String stomach_stimulation) {
-        this.stomach_stimulation = stomach_stimulation == null ? null : stomach_stimulation.trim();
+    public void setStomachStimulation(String stomachStimulation) {
+        this.stomachStimulation = stomachStimulation == null ? null : stomachStimulation.trim();
     }
 
     public String getHemorrhage() {
@@ -70,12 +70,12 @@ public class FollowSideEffects {
         this.hemorrhage = hemorrhage == null ? null : hemorrhage.trim();
     }
 
-    public String getGo_hospital() {
-        return go_hospital;
+    public String getGoHospital() {
+        return goHospital;
     }
 
-    public void setGo_hospital(String go_hospital) {
-        this.go_hospital = go_hospital == null ? null : go_hospital.trim();
+    public void setGoHospital(String goHospital) {
+        this.goHospital = goHospital == null ? null : goHospital.trim();
     }
 
     public String getDyspnea() {
@@ -86,52 +86,52 @@ public class FollowSideEffects {
         this.dyspnea = dyspnea == null ? null : dyspnea.trim();
     }
 
-    public String getFollow_up_id() {
-        return follow_up_id;
+    public String getFollowUpId() {
+        return followUpId;
     }
 
-    public void setFollow_up_id(String follow_up_id) {
-        this.follow_up_id = follow_up_id == null ? null : follow_up_id.trim();
+    public void setFollowUpId(String followUpId) {
+        this.followUpId = followUpId == null ? null : followUpId.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class NutritionPrescription {
-    private String nutrition_prescription_id;
+    private String nutritionPrescriptionId;
 
-    private BigDecimal heat_quantity;
+    private BigDecimal heatQuantity;
 
     private BigDecimal saccharides;
 
@@ -14,35 +14,35 @@ public class NutritionPrescription {
 
     private BigDecimal protein;
 
-    private String other_info;
+    private String otherInfo;
 
-    private String follow_up_id;
+    private String followUpId;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public NutritionPrescription(String nutrition_prescription_id, BigDecimal heat_quantity, BigDecimal saccharides, BigDecimal fat, BigDecimal protein, String other_info, String follow_up_id, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.nutrition_prescription_id = nutrition_prescription_id;
-        this.heat_quantity = heat_quantity;
+    public NutritionPrescription(String nutritionPrescriptionId, BigDecimal heatQuantity, BigDecimal saccharides, BigDecimal fat, BigDecimal protein, String otherInfo, String followUpId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.nutritionPrescriptionId = nutritionPrescriptionId;
+        this.heatQuantity = heatQuantity;
         this.saccharides = saccharides;
         this.fat = fat;
         this.protein = protein;
-        this.other_info = other_info;
-        this.follow_up_id = follow_up_id;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.otherInfo = otherInfo;
+        this.followUpId = followUpId;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -50,20 +50,20 @@ public class NutritionPrescription {
         super();
     }
 
-    public String getNutrition_prescription_id() {
-        return nutrition_prescription_id;
+    public String getNutritionPrescriptionId() {
+        return nutritionPrescriptionId;
     }
 
-    public void setNutrition_prescription_id(String nutrition_prescription_id) {
-        this.nutrition_prescription_id = nutrition_prescription_id == null ? null : nutrition_prescription_id.trim();
+    public void setNutritionPrescriptionId(String nutritionPrescriptionId) {
+        this.nutritionPrescriptionId = nutritionPrescriptionId == null ? null : nutritionPrescriptionId.trim();
     }
 
-    public BigDecimal getHeat_quantity() {
-        return heat_quantity;
+    public BigDecimal getHeatQuantity() {
+        return heatQuantity;
     }
 
-    public void setHeat_quantity(BigDecimal heat_quantity) {
-        this.heat_quantity = heat_quantity;
+    public void setHeatQuantity(BigDecimal heatQuantity) {
+        this.heatQuantity = heatQuantity;
     }
 
     public BigDecimal getSaccharides() {
@@ -90,60 +90,60 @@ public class NutritionPrescription {
         this.protein = protein;
     }
 
-    public String getOther_info() {
-        return other_info;
+    public String getOtherInfo() {
+        return otherInfo;
     }
 
-    public void setOther_info(String other_info) {
-        this.other_info = other_info == null ? null : other_info.trim();
+    public void setOtherInfo(String otherInfo) {
+        this.otherInfo = otherInfo == null ? null : otherInfo.trim();
     }
 
-    public String getFollow_up_id() {
-        return follow_up_id;
+    public String getFollowUpId() {
+        return followUpId;
     }
 
-    public void setFollow_up_id(String follow_up_id) {
-        this.follow_up_id = follow_up_id == null ? null : follow_up_id.trim();
+    public void setFollowUpId(String followUpId) {
+        this.followUpId = followUpId == null ? null : followUpId.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

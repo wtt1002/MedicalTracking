@@ -3,48 +3,48 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class RiskFactors {
-    private String risk_factors_id;
+    private String riskFactorsId;
 
-    private Byte is_smoke;
+    private Byte isSmoke;
 
-    private Byte is_heavy;
+    private Byte isHeavy;
 
-    private Byte is_less_move;
+    private Byte isLessMove;
 
-    private Byte blood_pressure_control;
+    private Byte bloodPressureControl;
 
-    private Byte glycemic_control;
+    private Byte glycemicControl;
 
-    private Byte blood_lipid_control;
+    private Byte bloodLipidControl;
 
-    private String follow_up_id;
+    private String followUpId;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public RiskFactors(String risk_factors_id, Byte is_smoke, Byte is_heavy, Byte is_less_move, Byte blood_pressure_control, Byte glycemic_control, Byte blood_lipid_control, String follow_up_id, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.risk_factors_id = risk_factors_id;
-        this.is_smoke = is_smoke;
-        this.is_heavy = is_heavy;
-        this.is_less_move = is_less_move;
-        this.blood_pressure_control = blood_pressure_control;
-        this.glycemic_control = glycemic_control;
-        this.blood_lipid_control = blood_lipid_control;
-        this.follow_up_id = follow_up_id;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public RiskFactors(String riskFactorsId, Byte isSmoke, Byte isHeavy, Byte isLessMove, Byte bloodPressureControl, Byte glycemicControl, Byte bloodLipidControl, String followUpId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.riskFactorsId = riskFactorsId;
+        this.isSmoke = isSmoke;
+        this.isHeavy = isHeavy;
+        this.isLessMove = isLessMove;
+        this.bloodPressureControl = bloodPressureControl;
+        this.glycemicControl = glycemicControl;
+        this.bloodLipidControl = bloodLipidControl;
+        this.followUpId = followUpId;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -52,108 +52,108 @@ public class RiskFactors {
         super();
     }
 
-    public String getRisk_factors_id() {
-        return risk_factors_id;
+    public String getRiskFactorsId() {
+        return riskFactorsId;
     }
 
-    public void setRisk_factors_id(String risk_factors_id) {
-        this.risk_factors_id = risk_factors_id == null ? null : risk_factors_id.trim();
+    public void setRiskFactorsId(String riskFactorsId) {
+        this.riskFactorsId = riskFactorsId == null ? null : riskFactorsId.trim();
     }
 
-    public Byte getIs_smoke() {
-        return is_smoke;
+    public Byte getIsSmoke() {
+        return isSmoke;
     }
 
-    public void setIs_smoke(Byte is_smoke) {
-        this.is_smoke = is_smoke;
+    public void setIsSmoke(Byte isSmoke) {
+        this.isSmoke = isSmoke;
     }
 
-    public Byte getIs_heavy() {
-        return is_heavy;
+    public Byte getIsHeavy() {
+        return isHeavy;
     }
 
-    public void setIs_heavy(Byte is_heavy) {
-        this.is_heavy = is_heavy;
+    public void setIsHeavy(Byte isHeavy) {
+        this.isHeavy = isHeavy;
     }
 
-    public Byte getIs_less_move() {
-        return is_less_move;
+    public Byte getIsLessMove() {
+        return isLessMove;
     }
 
-    public void setIs_less_move(Byte is_less_move) {
-        this.is_less_move = is_less_move;
+    public void setIsLessMove(Byte isLessMove) {
+        this.isLessMove = isLessMove;
     }
 
-    public Byte getBlood_pressure_control() {
-        return blood_pressure_control;
+    public Byte getBloodPressureControl() {
+        return bloodPressureControl;
     }
 
-    public void setBlood_pressure_control(Byte blood_pressure_control) {
-        this.blood_pressure_control = blood_pressure_control;
+    public void setBloodPressureControl(Byte bloodPressureControl) {
+        this.bloodPressureControl = bloodPressureControl;
     }
 
-    public Byte getGlycemic_control() {
-        return glycemic_control;
+    public Byte getGlycemicControl() {
+        return glycemicControl;
     }
 
-    public void setGlycemic_control(Byte glycemic_control) {
-        this.glycemic_control = glycemic_control;
+    public void setGlycemicControl(Byte glycemicControl) {
+        this.glycemicControl = glycemicControl;
     }
 
-    public Byte getBlood_lipid_control() {
-        return blood_lipid_control;
+    public Byte getBloodLipidControl() {
+        return bloodLipidControl;
     }
 
-    public void setBlood_lipid_control(Byte blood_lipid_control) {
-        this.blood_lipid_control = blood_lipid_control;
+    public void setBloodLipidControl(Byte bloodLipidControl) {
+        this.bloodLipidControl = bloodLipidControl;
     }
 
-    public String getFollow_up_id() {
-        return follow_up_id;
+    public String getFollowUpId() {
+        return followUpId;
     }
 
-    public void setFollow_up_id(String follow_up_id) {
-        this.follow_up_id = follow_up_id == null ? null : follow_up_id.trim();
+    public void setFollowUpId(String followUpId) {
+        this.followUpId = followUpId == null ? null : followUpId.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

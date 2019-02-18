@@ -3,33 +3,33 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class DrugCategory {
-    private String drug_category_id;
+    private String drugCategoryId;
 
-    private String drug_category_code;
+    private String drugCategoryCode;
 
-    private String drug_category_name;
+    private String drugCategoryName;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public DrugCategory(String drug_category_id, String drug_category_code, String drug_category_name, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.drug_category_id = drug_category_id;
-        this.drug_category_code = drug_category_code;
-        this.drug_category_name = drug_category_name;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public DrugCategory(String drugCategoryId, String drugCategoryCode, String drugCategoryName, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.drugCategoryId = drugCategoryId;
+        this.drugCategoryCode = drugCategoryCode;
+        this.drugCategoryName = drugCategoryName;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -37,68 +37,68 @@ public class DrugCategory {
         super();
     }
 
-    public String getDrug_category_id() {
-        return drug_category_id;
+    public String getDrugCategoryId() {
+        return drugCategoryId;
     }
 
-    public void setDrug_category_id(String drug_category_id) {
-        this.drug_category_id = drug_category_id == null ? null : drug_category_id.trim();
+    public void setDrugCategoryId(String drugCategoryId) {
+        this.drugCategoryId = drugCategoryId == null ? null : drugCategoryId.trim();
     }
 
-    public String getDrug_category_code() {
-        return drug_category_code;
+    public String getDrugCategoryCode() {
+        return drugCategoryCode;
     }
 
-    public void setDrug_category_code(String drug_category_code) {
-        this.drug_category_code = drug_category_code == null ? null : drug_category_code.trim();
+    public void setDrugCategoryCode(String drugCategoryCode) {
+        this.drugCategoryCode = drugCategoryCode == null ? null : drugCategoryCode.trim();
     }
 
-    public String getDrug_category_name() {
-        return drug_category_name;
+    public String getDrugCategoryName() {
+        return drugCategoryName;
     }
 
-    public void setDrug_category_name(String drug_category_name) {
-        this.drug_category_name = drug_category_name == null ? null : drug_category_name.trim();
+    public void setDrugCategoryName(String drugCategoryName) {
+        this.drugCategoryName = drugCategoryName == null ? null : drugCategoryName.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

@@ -3,78 +3,78 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class Pci {
-    private String pci_id;
+    private String pciId;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
     private String cabg;
 
     private String thrombolysis;
 
-    private String therapy_type;
+    private String therapyType;
 
-    private Date operate_duration;
+    private Date operateDuration;
 
     private Integer pcidb2;
 
-    private String pci_antiplatelet;
+    private String pciAntiplatelet;
 
-    private String pci_type;
+    private String pciType;
 
-    private String pci_anticoagulant;
+    private String pciAnticoagulant;
 
-    private String operate_drug;
+    private String operateDrug;
 
-    private String assistive_device;
+    private String assistiveDevice;
 
-    private String contrast_medium_type;
+    private String contrastMediumType;
 
-    private Integer contrast_medium_amount;
+    private Integer contrastMediumAmount;
 
-    private String operate_doctor;
+    private String operateDoctor;
 
-    private String pci_info;
+    private String pciInfo;
 
-    private String pci_detail;
+    private String pciDetail;
 
-    private String intervention_problem;
+    private String interventionProblem;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public Pci(String pci_id, String medical_history_id, String cabg, String thrombolysis, String therapy_type, Date operate_duration, Integer pcidb2, String pci_antiplatelet, String pci_type, String pci_anticoagulant, String operate_drug, String assistive_device, String contrast_medium_type, Integer contrast_medium_amount, String operate_doctor, String pci_info, String pci_detail, String intervention_problem, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.pci_id = pci_id;
-        this.medical_history_id = medical_history_id;
+    public Pci(String pciId, String medicalHistoryId, String cabg, String thrombolysis, String therapyType, Date operateDuration, Integer pcidb2, String pciAntiplatelet, String pciType, String pciAnticoagulant, String operateDrug, String assistiveDevice, String contrastMediumType, Integer contrastMediumAmount, String operateDoctor, String pciInfo, String pciDetail, String interventionProblem, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.pciId = pciId;
+        this.medicalHistoryId = medicalHistoryId;
         this.cabg = cabg;
         this.thrombolysis = thrombolysis;
-        this.therapy_type = therapy_type;
-        this.operate_duration = operate_duration;
+        this.therapyType = therapyType;
+        this.operateDuration = operateDuration;
         this.pcidb2 = pcidb2;
-        this.pci_antiplatelet = pci_antiplatelet;
-        this.pci_type = pci_type;
-        this.pci_anticoagulant = pci_anticoagulant;
-        this.operate_drug = operate_drug;
-        this.assistive_device = assistive_device;
-        this.contrast_medium_type = contrast_medium_type;
-        this.contrast_medium_amount = contrast_medium_amount;
-        this.operate_doctor = operate_doctor;
-        this.pci_info = pci_info;
-        this.pci_detail = pci_detail;
-        this.intervention_problem = intervention_problem;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.pciAntiplatelet = pciAntiplatelet;
+        this.pciType = pciType;
+        this.pciAnticoagulant = pciAnticoagulant;
+        this.operateDrug = operateDrug;
+        this.assistiveDevice = assistiveDevice;
+        this.contrastMediumType = contrastMediumType;
+        this.contrastMediumAmount = contrastMediumAmount;
+        this.operateDoctor = operateDoctor;
+        this.pciInfo = pciInfo;
+        this.pciDetail = pciDetail;
+        this.interventionProblem = interventionProblem;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -82,20 +82,20 @@ public class Pci {
         super();
     }
 
-    public String getPci_id() {
-        return pci_id;
+    public String getPciId() {
+        return pciId;
     }
 
-    public void setPci_id(String pci_id) {
-        this.pci_id = pci_id == null ? null : pci_id.trim();
+    public void setPciId(String pciId) {
+        this.pciId = pciId == null ? null : pciId.trim();
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
     public String getCabg() {
@@ -114,20 +114,20 @@ public class Pci {
         this.thrombolysis = thrombolysis == null ? null : thrombolysis.trim();
     }
 
-    public String getTherapy_type() {
-        return therapy_type;
+    public String getTherapyType() {
+        return therapyType;
     }
 
-    public void setTherapy_type(String therapy_type) {
-        this.therapy_type = therapy_type == null ? null : therapy_type.trim();
+    public void setTherapyType(String therapyType) {
+        this.therapyType = therapyType == null ? null : therapyType.trim();
     }
 
-    public Date getOperate_duration() {
-        return operate_duration;
+    public Date getOperateDuration() {
+        return operateDuration;
     }
 
-    public void setOperate_duration(Date operate_duration) {
-        this.operate_duration = operate_duration;
+    public void setOperateDuration(Date operateDuration) {
+        this.operateDuration = operateDuration;
     }
 
     public Integer getPcidb2() {
@@ -138,132 +138,132 @@ public class Pci {
         this.pcidb2 = pcidb2;
     }
 
-    public String getPci_antiplatelet() {
-        return pci_antiplatelet;
+    public String getPciAntiplatelet() {
+        return pciAntiplatelet;
     }
 
-    public void setPci_antiplatelet(String pci_antiplatelet) {
-        this.pci_antiplatelet = pci_antiplatelet == null ? null : pci_antiplatelet.trim();
+    public void setPciAntiplatelet(String pciAntiplatelet) {
+        this.pciAntiplatelet = pciAntiplatelet == null ? null : pciAntiplatelet.trim();
     }
 
-    public String getPci_type() {
-        return pci_type;
+    public String getPciType() {
+        return pciType;
     }
 
-    public void setPci_type(String pci_type) {
-        this.pci_type = pci_type == null ? null : pci_type.trim();
+    public void setPciType(String pciType) {
+        this.pciType = pciType == null ? null : pciType.trim();
     }
 
-    public String getPci_anticoagulant() {
-        return pci_anticoagulant;
+    public String getPciAnticoagulant() {
+        return pciAnticoagulant;
     }
 
-    public void setPci_anticoagulant(String pci_anticoagulant) {
-        this.pci_anticoagulant = pci_anticoagulant == null ? null : pci_anticoagulant.trim();
+    public void setPciAnticoagulant(String pciAnticoagulant) {
+        this.pciAnticoagulant = pciAnticoagulant == null ? null : pciAnticoagulant.trim();
     }
 
-    public String getOperate_drug() {
-        return operate_drug;
+    public String getOperateDrug() {
+        return operateDrug;
     }
 
-    public void setOperate_drug(String operate_drug) {
-        this.operate_drug = operate_drug == null ? null : operate_drug.trim();
+    public void setOperateDrug(String operateDrug) {
+        this.operateDrug = operateDrug == null ? null : operateDrug.trim();
     }
 
-    public String getAssistive_device() {
-        return assistive_device;
+    public String getAssistiveDevice() {
+        return assistiveDevice;
     }
 
-    public void setAssistive_device(String assistive_device) {
-        this.assistive_device = assistive_device == null ? null : assistive_device.trim();
+    public void setAssistiveDevice(String assistiveDevice) {
+        this.assistiveDevice = assistiveDevice == null ? null : assistiveDevice.trim();
     }
 
-    public String getContrast_medium_type() {
-        return contrast_medium_type;
+    public String getContrastMediumType() {
+        return contrastMediumType;
     }
 
-    public void setContrast_medium_type(String contrast_medium_type) {
-        this.contrast_medium_type = contrast_medium_type == null ? null : contrast_medium_type.trim();
+    public void setContrastMediumType(String contrastMediumType) {
+        this.contrastMediumType = contrastMediumType == null ? null : contrastMediumType.trim();
     }
 
-    public Integer getContrast_medium_amount() {
-        return contrast_medium_amount;
+    public Integer getContrastMediumAmount() {
+        return contrastMediumAmount;
     }
 
-    public void setContrast_medium_amount(Integer contrast_medium_amount) {
-        this.contrast_medium_amount = contrast_medium_amount;
+    public void setContrastMediumAmount(Integer contrastMediumAmount) {
+        this.contrastMediumAmount = contrastMediumAmount;
     }
 
-    public String getOperate_doctor() {
-        return operate_doctor;
+    public String getOperateDoctor() {
+        return operateDoctor;
     }
 
-    public void setOperate_doctor(String operate_doctor) {
-        this.operate_doctor = operate_doctor == null ? null : operate_doctor.trim();
+    public void setOperateDoctor(String operateDoctor) {
+        this.operateDoctor = operateDoctor == null ? null : operateDoctor.trim();
     }
 
-    public String getPci_info() {
-        return pci_info;
+    public String getPciInfo() {
+        return pciInfo;
     }
 
-    public void setPci_info(String pci_info) {
-        this.pci_info = pci_info == null ? null : pci_info.trim();
+    public void setPciInfo(String pciInfo) {
+        this.pciInfo = pciInfo == null ? null : pciInfo.trim();
     }
 
-    public String getPci_detail() {
-        return pci_detail;
+    public String getPciDetail() {
+        return pciDetail;
     }
 
-    public void setPci_detail(String pci_detail) {
-        this.pci_detail = pci_detail == null ? null : pci_detail.trim();
+    public void setPciDetail(String pciDetail) {
+        this.pciDetail = pciDetail == null ? null : pciDetail.trim();
     }
 
-    public String getIntervention_problem() {
-        return intervention_problem;
+    public String getInterventionProblem() {
+        return interventionProblem;
     }
 
-    public void setIntervention_problem(String intervention_problem) {
-        this.intervention_problem = intervention_problem == null ? null : intervention_problem.trim();
+    public void setInterventionProblem(String interventionProblem) {
+        this.interventionProblem = interventionProblem == null ? null : interventionProblem.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

@@ -3,60 +3,60 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class FollowUp {
-    private String follow_up_id;
+    private String followUpId;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
-    private String doctor_id;
+    private String doctorId;
 
-    private Date plan_time;
+    private Date planTime;
 
-    private Date final_time;
+    private Date finalTime;
 
-    private Date plan_way;
+    private Date planWay;
 
-    private Date final_way;
+    private Date finalWay;
 
-    private Integer follow_up_duration;
+    private Integer followUpDuration;
 
-    private String recovery_status;
+    private String recoveryStatus;
 
-    private String further_consultation;
+    private String furtherConsultation;
 
-    private String recent_symptoms;
+    private String recentSymptoms;
 
-    private Integer follow_up_index;
+    private Integer followUpIndex;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public FollowUp(String follow_up_id, String medical_history_id, String doctor_id, Date plan_time, Date final_time, Date plan_way, Date final_way, Integer follow_up_duration, String recovery_status, String further_consultation, String recent_symptoms, Integer follow_up_index, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.follow_up_id = follow_up_id;
-        this.medical_history_id = medical_history_id;
-        this.doctor_id = doctor_id;
-        this.plan_time = plan_time;
-        this.final_time = final_time;
-        this.plan_way = plan_way;
-        this.final_way = final_way;
-        this.follow_up_duration = follow_up_duration;
-        this.recovery_status = recovery_status;
-        this.further_consultation = further_consultation;
-        this.recent_symptoms = recent_symptoms;
-        this.follow_up_index = follow_up_index;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public FollowUp(String followUpId, String medicalHistoryId, String doctorId, Date planTime, Date finalTime, Date planWay, Date finalWay, Integer followUpDuration, String recoveryStatus, String furtherConsultation, String recentSymptoms, Integer followUpIndex, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.followUpId = followUpId;
+        this.medicalHistoryId = medicalHistoryId;
+        this.doctorId = doctorId;
+        this.planTime = planTime;
+        this.finalTime = finalTime;
+        this.planWay = planWay;
+        this.finalWay = finalWay;
+        this.followUpDuration = followUpDuration;
+        this.recoveryStatus = recoveryStatus;
+        this.furtherConsultation = furtherConsultation;
+        this.recentSymptoms = recentSymptoms;
+        this.followUpIndex = followUpIndex;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -64,140 +64,140 @@ public class FollowUp {
         super();
     }
 
-    public String getFollow_up_id() {
-        return follow_up_id;
+    public String getFollowUpId() {
+        return followUpId;
     }
 
-    public void setFollow_up_id(String follow_up_id) {
-        this.follow_up_id = follow_up_id == null ? null : follow_up_id.trim();
+    public void setFollowUpId(String followUpId) {
+        this.followUpId = followUpId == null ? null : followUpId.trim();
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
-    public String getDoctor_id() {
-        return doctor_id;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor_id(String doctor_id) {
-        this.doctor_id = doctor_id == null ? null : doctor_id.trim();
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId == null ? null : doctorId.trim();
     }
 
-    public Date getPlan_time() {
-        return plan_time;
+    public Date getPlanTime() {
+        return planTime;
     }
 
-    public void setPlan_time(Date plan_time) {
-        this.plan_time = plan_time;
+    public void setPlanTime(Date planTime) {
+        this.planTime = planTime;
     }
 
-    public Date getFinal_time() {
-        return final_time;
+    public Date getFinalTime() {
+        return finalTime;
     }
 
-    public void setFinal_time(Date final_time) {
-        this.final_time = final_time;
+    public void setFinalTime(Date finalTime) {
+        this.finalTime = finalTime;
     }
 
-    public Date getPlan_way() {
-        return plan_way;
+    public Date getPlanWay() {
+        return planWay;
     }
 
-    public void setPlan_way(Date plan_way) {
-        this.plan_way = plan_way;
+    public void setPlanWay(Date planWay) {
+        this.planWay = planWay;
     }
 
-    public Date getFinal_way() {
-        return final_way;
+    public Date getFinalWay() {
+        return finalWay;
     }
 
-    public void setFinal_way(Date final_way) {
-        this.final_way = final_way;
+    public void setFinalWay(Date finalWay) {
+        this.finalWay = finalWay;
     }
 
-    public Integer getFollow_up_duration() {
-        return follow_up_duration;
+    public Integer getFollowUpDuration() {
+        return followUpDuration;
     }
 
-    public void setFollow_up_duration(Integer follow_up_duration) {
-        this.follow_up_duration = follow_up_duration;
+    public void setFollowUpDuration(Integer followUpDuration) {
+        this.followUpDuration = followUpDuration;
     }
 
-    public String getRecovery_status() {
-        return recovery_status;
+    public String getRecoveryStatus() {
+        return recoveryStatus;
     }
 
-    public void setRecovery_status(String recovery_status) {
-        this.recovery_status = recovery_status == null ? null : recovery_status.trim();
+    public void setRecoveryStatus(String recoveryStatus) {
+        this.recoveryStatus = recoveryStatus == null ? null : recoveryStatus.trim();
     }
 
-    public String getFurther_consultation() {
-        return further_consultation;
+    public String getFurtherConsultation() {
+        return furtherConsultation;
     }
 
-    public void setFurther_consultation(String further_consultation) {
-        this.further_consultation = further_consultation == null ? null : further_consultation.trim();
+    public void setFurtherConsultation(String furtherConsultation) {
+        this.furtherConsultation = furtherConsultation == null ? null : furtherConsultation.trim();
     }
 
-    public String getRecent_symptoms() {
-        return recent_symptoms;
+    public String getRecentSymptoms() {
+        return recentSymptoms;
     }
 
-    public void setRecent_symptoms(String recent_symptoms) {
-        this.recent_symptoms = recent_symptoms == null ? null : recent_symptoms.trim();
+    public void setRecentSymptoms(String recentSymptoms) {
+        this.recentSymptoms = recentSymptoms == null ? null : recentSymptoms.trim();
     }
 
-    public Integer getFollow_up_index() {
-        return follow_up_index;
+    public Integer getFollowUpIndex() {
+        return followUpIndex;
     }
 
-    public void setFollow_up_index(Integer follow_up_index) {
-        this.follow_up_index = follow_up_index;
+    public void setFollowUpIndex(Integer followUpIndex) {
+        this.followUpIndex = followUpIndex;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

@@ -3,39 +3,39 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class Drug {
-    private String drug_id;
+    private String drugId;
 
-    private String drug_code;
+    private String drugCode;
 
-    private String drug_category_id;
+    private String drugCategoryId;
 
-    private String drug_name;
+    private String drugName;
 
-    private String drug_short_name;
+    private String drugShortName;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public Drug(String drug_id, String drug_code, String drug_category_id, String drug_name, String drug_short_name, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.drug_id = drug_id;
-        this.drug_code = drug_code;
-        this.drug_category_id = drug_category_id;
-        this.drug_name = drug_name;
-        this.drug_short_name = drug_short_name;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public Drug(String drugId, String drugCode, String drugCategoryId, String drugName, String drugShortName, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.drugId = drugId;
+        this.drugCode = drugCode;
+        this.drugCategoryId = drugCategoryId;
+        this.drugName = drugName;
+        this.drugShortName = drugShortName;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -43,84 +43,84 @@ public class Drug {
         super();
     }
 
-    public String getDrug_id() {
-        return drug_id;
+    public String getDrugId() {
+        return drugId;
     }
 
-    public void setDrug_id(String drug_id) {
-        this.drug_id = drug_id == null ? null : drug_id.trim();
+    public void setDrugId(String drugId) {
+        this.drugId = drugId == null ? null : drugId.trim();
     }
 
-    public String getDrug_code() {
-        return drug_code;
+    public String getDrugCode() {
+        return drugCode;
     }
 
-    public void setDrug_code(String drug_code) {
-        this.drug_code = drug_code == null ? null : drug_code.trim();
+    public void setDrugCode(String drugCode) {
+        this.drugCode = drugCode == null ? null : drugCode.trim();
     }
 
-    public String getDrug_category_id() {
-        return drug_category_id;
+    public String getDrugCategoryId() {
+        return drugCategoryId;
     }
 
-    public void setDrug_category_id(String drug_category_id) {
-        this.drug_category_id = drug_category_id == null ? null : drug_category_id.trim();
+    public void setDrugCategoryId(String drugCategoryId) {
+        this.drugCategoryId = drugCategoryId == null ? null : drugCategoryId.trim();
     }
 
-    public String getDrug_name() {
-        return drug_name;
+    public String getDrugName() {
+        return drugName;
     }
 
-    public void setDrug_name(String drug_name) {
-        this.drug_name = drug_name == null ? null : drug_name.trim();
+    public void setDrugName(String drugName) {
+        this.drugName = drugName == null ? null : drugName.trim();
     }
 
-    public String getDrug_short_name() {
-        return drug_short_name;
+    public String getDrugShortName() {
+        return drugShortName;
     }
 
-    public void setDrug_short_name(String drug_short_name) {
-        this.drug_short_name = drug_short_name == null ? null : drug_short_name.trim();
+    public void setDrugShortName(String drugShortName) {
+        this.drugShortName = drugShortName == null ? null : drugShortName.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

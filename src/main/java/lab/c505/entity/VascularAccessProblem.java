@@ -3,36 +3,36 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class VascularAccessProblem {
-    private String vascular_access_problem_id;
+    private String vascularAccessProblemId;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
     private String complication;
 
-    private String other_complication;
+    private String otherComplication;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public VascularAccessProblem(String vascular_access_problem_id, String medical_history_id, String complication, String other_complication, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.vascular_access_problem_id = vascular_access_problem_id;
-        this.medical_history_id = medical_history_id;
+    public VascularAccessProblem(String vascularAccessProblemId, String medicalHistoryId, String complication, String otherComplication, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.vascularAccessProblemId = vascularAccessProblemId;
+        this.medicalHistoryId = medicalHistoryId;
         this.complication = complication;
-        this.other_complication = other_complication;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.otherComplication = otherComplication;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -40,20 +40,20 @@ public class VascularAccessProblem {
         super();
     }
 
-    public String getVascular_access_problem_id() {
-        return vascular_access_problem_id;
+    public String getVascularAccessProblemId() {
+        return vascularAccessProblemId;
     }
 
-    public void setVascular_access_problem_id(String vascular_access_problem_id) {
-        this.vascular_access_problem_id = vascular_access_problem_id == null ? null : vascular_access_problem_id.trim();
+    public void setVascularAccessProblemId(String vascularAccessProblemId) {
+        this.vascularAccessProblemId = vascularAccessProblemId == null ? null : vascularAccessProblemId.trim();
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
     public String getComplication() {
@@ -64,52 +64,52 @@ public class VascularAccessProblem {
         this.complication = complication == null ? null : complication.trim();
     }
 
-    public String getOther_complication() {
-        return other_complication;
+    public String getOtherComplication() {
+        return otherComplication;
     }
 
-    public void setOther_complication(String other_complication) {
-        this.other_complication = other_complication == null ? null : other_complication.trim();
+    public void setOtherComplication(String otherComplication) {
+        this.otherComplication = otherComplication == null ? null : otherComplication.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

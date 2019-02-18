@@ -3,72 +3,72 @@ package lab.c505.entity;
 import java.math.BigDecimal;
 
 public class FollowPhysicalExam {
-    private String follow_physical_exam_id;
+    private String followPhysicalExamId;
 
-    private String follow_up_id;
+    private String followUpId;
 
-    private BigDecimal blood_pressure_high;
+    private BigDecimal bloodPressureHigh;
 
-    private BigDecimal blood_pressure_low;
+    private BigDecimal bloodPressureLow;
 
-    private Short heart_rate;
+    private Short heartRate;
 
     private BigDecimal weight;
 
-    private String other_info;
+    private String otherInfo;
 
-    public FollowPhysicalExam(String follow_physical_exam_id, String follow_up_id, BigDecimal blood_pressure_high, BigDecimal blood_pressure_low, Short heart_rate, BigDecimal weight, String other_info) {
-        this.follow_physical_exam_id = follow_physical_exam_id;
-        this.follow_up_id = follow_up_id;
-        this.blood_pressure_high = blood_pressure_high;
-        this.blood_pressure_low = blood_pressure_low;
-        this.heart_rate = heart_rate;
+    public FollowPhysicalExam(String followPhysicalExamId, String followUpId, BigDecimal bloodPressureHigh, BigDecimal bloodPressureLow, Short heartRate, BigDecimal weight, String otherInfo) {
+        this.followPhysicalExamId = followPhysicalExamId;
+        this.followUpId = followUpId;
+        this.bloodPressureHigh = bloodPressureHigh;
+        this.bloodPressureLow = bloodPressureLow;
+        this.heartRate = heartRate;
         this.weight = weight;
-        this.other_info = other_info;
+        this.otherInfo = otherInfo;
     }
 
     public FollowPhysicalExam() {
         super();
     }
 
-    public String getFollow_physical_exam_id() {
-        return follow_physical_exam_id;
+    public String getFollowPhysicalExamId() {
+        return followPhysicalExamId;
     }
 
-    public void setFollow_physical_exam_id(String follow_physical_exam_id) {
-        this.follow_physical_exam_id = follow_physical_exam_id == null ? null : follow_physical_exam_id.trim();
+    public void setFollowPhysicalExamId(String followPhysicalExamId) {
+        this.followPhysicalExamId = followPhysicalExamId == null ? null : followPhysicalExamId.trim();
     }
 
-    public String getFollow_up_id() {
-        return follow_up_id;
+    public String getFollowUpId() {
+        return followUpId;
     }
 
-    public void setFollow_up_id(String follow_up_id) {
-        this.follow_up_id = follow_up_id == null ? null : follow_up_id.trim();
+    public void setFollowUpId(String followUpId) {
+        this.followUpId = followUpId == null ? null : followUpId.trim();
     }
 
-    public BigDecimal getBlood_pressure_high() {
-        return blood_pressure_high;
+    public BigDecimal getBloodPressureHigh() {
+        return bloodPressureHigh;
     }
 
-    public void setBlood_pressure_high(BigDecimal blood_pressure_high) {
-        this.blood_pressure_high = blood_pressure_high;
+    public void setBloodPressureHigh(BigDecimal bloodPressureHigh) {
+        this.bloodPressureHigh = bloodPressureHigh;
     }
 
-    public BigDecimal getBlood_pressure_low() {
-        return blood_pressure_low;
+    public BigDecimal getBloodPressureLow() {
+        return bloodPressureLow;
     }
 
-    public void setBlood_pressure_low(BigDecimal blood_pressure_low) {
-        this.blood_pressure_low = blood_pressure_low;
+    public void setBloodPressureLow(BigDecimal bloodPressureLow) {
+        this.bloodPressureLow = bloodPressureLow;
     }
 
-    public Short getHeart_rate() {
-        return heart_rate;
+    public Short getHeartRate() {
+        return heartRate;
     }
 
-    public void setHeart_rate(Short heart_rate) {
-        this.heart_rate = heart_rate;
+    public void setHeartRate(Short heartRate) {
+        this.heartRate = heartRate;
     }
 
     public BigDecimal getWeight() {
@@ -79,11 +79,11 @@ public class FollowPhysicalExam {
         this.weight = weight;
     }
 
-    public String getOther_info() {
-        return other_info;
+    public String getOtherInfo() {
+        return otherInfo;
     }
 
-    public void setOther_info(String other_info) {
-        this.other_info = other_info == null ? null : other_info.trim();
+    public void setOtherInfo(String otherInfo) {
+        this.otherInfo = otherInfo == null ? null : otherInfo.trim();
     }
 }

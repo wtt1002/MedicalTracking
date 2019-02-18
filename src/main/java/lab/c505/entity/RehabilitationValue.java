@@ -3,54 +3,54 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class RehabilitationValue {
-    private String train_value_id;
+    private String trainValueId;
 
-    private String rehabilitation_item_id;
+    private String rehabilitationItemId;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
-    private Integer train_value;
+    private Integer trainValue;
 
-    private Byte train_period;
+    private Byte trainPeriod;
 
-    private Byte train_intensity;
+    private Byte trainIntensity;
 
-    private Byte train_time;
+    private Byte trainTime;
 
-    private Byte train_group;
+    private Byte trainGroup;
 
-    private Byte train_duration;
+    private Byte trainDuration;
 
-    private String other_info;
+    private String otherInfo;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public RehabilitationValue(String train_value_id, String rehabilitation_item_id, String medical_history_id, Integer train_value, Byte train_period, Byte train_intensity, Byte train_time, Byte train_group, Byte train_duration, String other_info, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.train_value_id = train_value_id;
-        this.rehabilitation_item_id = rehabilitation_item_id;
-        this.medical_history_id = medical_history_id;
-        this.train_value = train_value;
-        this.train_period = train_period;
-        this.train_intensity = train_intensity;
-        this.train_time = train_time;
-        this.train_group = train_group;
-        this.train_duration = train_duration;
-        this.other_info = other_info;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public RehabilitationValue(String trainValueId, String rehabilitationItemId, String medicalHistoryId, Integer trainValue, Byte trainPeriod, Byte trainIntensity, Byte trainTime, Byte trainGroup, Byte trainDuration, String otherInfo, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.trainValueId = trainValueId;
+        this.rehabilitationItemId = rehabilitationItemId;
+        this.medicalHistoryId = medicalHistoryId;
+        this.trainValue = trainValue;
+        this.trainPeriod = trainPeriod;
+        this.trainIntensity = trainIntensity;
+        this.trainTime = trainTime;
+        this.trainGroup = trainGroup;
+        this.trainDuration = trainDuration;
+        this.otherInfo = otherInfo;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -58,124 +58,124 @@ public class RehabilitationValue {
         super();
     }
 
-    public String getTrain_value_id() {
-        return train_value_id;
+    public String getTrainValueId() {
+        return trainValueId;
     }
 
-    public void setTrain_value_id(String train_value_id) {
-        this.train_value_id = train_value_id == null ? null : train_value_id.trim();
+    public void setTrainValueId(String trainValueId) {
+        this.trainValueId = trainValueId == null ? null : trainValueId.trim();
     }
 
-    public String getRehabilitation_item_id() {
-        return rehabilitation_item_id;
+    public String getRehabilitationItemId() {
+        return rehabilitationItemId;
     }
 
-    public void setRehabilitation_item_id(String rehabilitation_item_id) {
-        this.rehabilitation_item_id = rehabilitation_item_id == null ? null : rehabilitation_item_id.trim();
+    public void setRehabilitationItemId(String rehabilitationItemId) {
+        this.rehabilitationItemId = rehabilitationItemId == null ? null : rehabilitationItemId.trim();
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
-    public Integer getTrain_value() {
-        return train_value;
+    public Integer getTrainValue() {
+        return trainValue;
     }
 
-    public void setTrain_value(Integer train_value) {
-        this.train_value = train_value;
+    public void setTrainValue(Integer trainValue) {
+        this.trainValue = trainValue;
     }
 
-    public Byte getTrain_period() {
-        return train_period;
+    public Byte getTrainPeriod() {
+        return trainPeriod;
     }
 
-    public void setTrain_period(Byte train_period) {
-        this.train_period = train_period;
+    public void setTrainPeriod(Byte trainPeriod) {
+        this.trainPeriod = trainPeriod;
     }
 
-    public Byte getTrain_intensity() {
-        return train_intensity;
+    public Byte getTrainIntensity() {
+        return trainIntensity;
     }
 
-    public void setTrain_intensity(Byte train_intensity) {
-        this.train_intensity = train_intensity;
+    public void setTrainIntensity(Byte trainIntensity) {
+        this.trainIntensity = trainIntensity;
     }
 
-    public Byte getTrain_time() {
-        return train_time;
+    public Byte getTrainTime() {
+        return trainTime;
     }
 
-    public void setTrain_time(Byte train_time) {
-        this.train_time = train_time;
+    public void setTrainTime(Byte trainTime) {
+        this.trainTime = trainTime;
     }
 
-    public Byte getTrain_group() {
-        return train_group;
+    public Byte getTrainGroup() {
+        return trainGroup;
     }
 
-    public void setTrain_group(Byte train_group) {
-        this.train_group = train_group;
+    public void setTrainGroup(Byte trainGroup) {
+        this.trainGroup = trainGroup;
     }
 
-    public Byte getTrain_duration() {
-        return train_duration;
+    public Byte getTrainDuration() {
+        return trainDuration;
     }
 
-    public void setTrain_duration(Byte train_duration) {
-        this.train_duration = train_duration;
+    public void setTrainDuration(Byte trainDuration) {
+        this.trainDuration = trainDuration;
     }
 
-    public String getOther_info() {
-        return other_info;
+    public String getOtherInfo() {
+        return otherInfo;
     }
 
-    public void setOther_info(String other_info) {
-        this.other_info = other_info == null ? null : other_info.trim();
+    public void setOtherInfo(String otherInfo) {
+        this.otherInfo = otherInfo == null ? null : otherInfo.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

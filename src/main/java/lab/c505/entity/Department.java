@@ -3,48 +3,48 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class Department {
-    private String dept_id;
+    private String deptId;
 
-    private String hos_id;
+    private String hosId;
 
-    private String dept_name;
+    private String deptName;
 
-    private String dept_py;
+    private String deptPy;
 
-    private String dept_leader;
+    private String deptLeader;
 
-    private String dept_address;
+    private String deptAddress;
 
-    private String dept_tel;
+    private String deptTel;
 
-    private String dept_detail;
+    private String deptDetail;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public Department(String dept_id, String hos_id, String dept_name, String dept_py, String dept_leader, String dept_address, String dept_tel, String dept_detail, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.dept_id = dept_id;
-        this.hos_id = hos_id;
-        this.dept_name = dept_name;
-        this.dept_py = dept_py;
-        this.dept_leader = dept_leader;
-        this.dept_address = dept_address;
-        this.dept_tel = dept_tel;
-        this.dept_detail = dept_detail;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public Department(String deptId, String hosId, String deptName, String deptPy, String deptLeader, String deptAddress, String deptTel, String deptDetail, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.deptId = deptId;
+        this.hosId = hosId;
+        this.deptName = deptName;
+        this.deptPy = deptPy;
+        this.deptLeader = deptLeader;
+        this.deptAddress = deptAddress;
+        this.deptTel = deptTel;
+        this.deptDetail = deptDetail;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -52,108 +52,108 @@ public class Department {
         super();
     }
 
-    public String getDept_id() {
-        return dept_id;
+    public String getDeptId() {
+        return deptId;
     }
 
-    public void setDept_id(String dept_id) {
-        this.dept_id = dept_id == null ? null : dept_id.trim();
+    public void setDeptId(String deptId) {
+        this.deptId = deptId == null ? null : deptId.trim();
     }
 
-    public String getHos_id() {
-        return hos_id;
+    public String getHosId() {
+        return hosId;
     }
 
-    public void setHos_id(String hos_id) {
-        this.hos_id = hos_id == null ? null : hos_id.trim();
+    public void setHosId(String hosId) {
+        this.hosId = hosId == null ? null : hosId.trim();
     }
 
-    public String getDept_name() {
-        return dept_name;
+    public String getDeptName() {
+        return deptName;
     }
 
-    public void setDept_name(String dept_name) {
-        this.dept_name = dept_name == null ? null : dept_name.trim();
+    public void setDeptName(String deptName) {
+        this.deptName = deptName == null ? null : deptName.trim();
     }
 
-    public String getDept_py() {
-        return dept_py;
+    public String getDeptPy() {
+        return deptPy;
     }
 
-    public void setDept_py(String dept_py) {
-        this.dept_py = dept_py == null ? null : dept_py.trim();
+    public void setDeptPy(String deptPy) {
+        this.deptPy = deptPy == null ? null : deptPy.trim();
     }
 
-    public String getDept_leader() {
-        return dept_leader;
+    public String getDeptLeader() {
+        return deptLeader;
     }
 
-    public void setDept_leader(String dept_leader) {
-        this.dept_leader = dept_leader == null ? null : dept_leader.trim();
+    public void setDeptLeader(String deptLeader) {
+        this.deptLeader = deptLeader == null ? null : deptLeader.trim();
     }
 
-    public String getDept_address() {
-        return dept_address;
+    public String getDeptAddress() {
+        return deptAddress;
     }
 
-    public void setDept_address(String dept_address) {
-        this.dept_address = dept_address == null ? null : dept_address.trim();
+    public void setDeptAddress(String deptAddress) {
+        this.deptAddress = deptAddress == null ? null : deptAddress.trim();
     }
 
-    public String getDept_tel() {
-        return dept_tel;
+    public String getDeptTel() {
+        return deptTel;
     }
 
-    public void setDept_tel(String dept_tel) {
-        this.dept_tel = dept_tel == null ? null : dept_tel.trim();
+    public void setDeptTel(String deptTel) {
+        this.deptTel = deptTel == null ? null : deptTel.trim();
     }
 
-    public String getDept_detail() {
-        return dept_detail;
+    public String getDeptDetail() {
+        return deptDetail;
     }
 
-    public void setDept_detail(String dept_detail) {
-        this.dept_detail = dept_detail == null ? null : dept_detail.trim();
+    public void setDeptDetail(String deptDetail) {
+        this.deptDetail = deptDetail == null ? null : deptDetail.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

@@ -4,171 +4,171 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class FollowDrugUsage {
-    private String drug_usage_id;
+    private String drugUsageId;
 
-    private BigDecimal drug_dosage;
+    private BigDecimal drugDosage;
 
-    private String drug_dosage_unit;
+    private String drugDosageUnit;
 
-    private Integer drug_time;
+    private Integer drugTime;
 
-    private Integer drug_day;
+    private Integer drugDay;
 
-    private Integer drug_period;
+    private Integer drugPeriod;
 
-    private String drug_period_unit;
+    private String drugPeriodUnit;
 
-    private String drug_id;
+    private String drugId;
 
-    private String medical_history_id;
+    private String medicalHistoryId;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    private Integer follow_up_index;
+    private Integer followUpIndex;
 
-    public FollowDrugUsage(String drug_usage_id, BigDecimal drug_dosage, String drug_dosage_unit, Integer drug_time, Integer drug_day, Integer drug_period, String drug_period_unit, String drug_id, String medical_history_id, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version, Integer follow_up_index) {
-        this.drug_usage_id = drug_usage_id;
-        this.drug_dosage = drug_dosage;
-        this.drug_dosage_unit = drug_dosage_unit;
-        this.drug_time = drug_time;
-        this.drug_day = drug_day;
-        this.drug_period = drug_period;
-        this.drug_period_unit = drug_period_unit;
-        this.drug_id = drug_id;
-        this.medical_history_id = medical_history_id;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+    public FollowDrugUsage(String drugUsageId, BigDecimal drugDosage, String drugDosageUnit, Integer drugTime, Integer drugDay, Integer drugPeriod, String drugPeriodUnit, String drugId, String medicalHistoryId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version, Integer followUpIndex) {
+        this.drugUsageId = drugUsageId;
+        this.drugDosage = drugDosage;
+        this.drugDosageUnit = drugDosageUnit;
+        this.drugTime = drugTime;
+        this.drugDay = drugDay;
+        this.drugPeriod = drugPeriod;
+        this.drugPeriodUnit = drugPeriodUnit;
+        this.drugId = drugId;
+        this.medicalHistoryId = medicalHistoryId;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
-        this.follow_up_index = follow_up_index;
+        this.followUpIndex = followUpIndex;
     }
 
     public FollowDrugUsage() {
         super();
     }
 
-    public String getDrug_usage_id() {
-        return drug_usage_id;
+    public String getDrugUsageId() {
+        return drugUsageId;
     }
 
-    public void setDrug_usage_id(String drug_usage_id) {
-        this.drug_usage_id = drug_usage_id == null ? null : drug_usage_id.trim();
+    public void setDrugUsageId(String drugUsageId) {
+        this.drugUsageId = drugUsageId == null ? null : drugUsageId.trim();
     }
 
-    public BigDecimal getDrug_dosage() {
-        return drug_dosage;
+    public BigDecimal getDrugDosage() {
+        return drugDosage;
     }
 
-    public void setDrug_dosage(BigDecimal drug_dosage) {
-        this.drug_dosage = drug_dosage;
+    public void setDrugDosage(BigDecimal drugDosage) {
+        this.drugDosage = drugDosage;
     }
 
-    public String getDrug_dosage_unit() {
-        return drug_dosage_unit;
+    public String getDrugDosageUnit() {
+        return drugDosageUnit;
     }
 
-    public void setDrug_dosage_unit(String drug_dosage_unit) {
-        this.drug_dosage_unit = drug_dosage_unit == null ? null : drug_dosage_unit.trim();
+    public void setDrugDosageUnit(String drugDosageUnit) {
+        this.drugDosageUnit = drugDosageUnit == null ? null : drugDosageUnit.trim();
     }
 
-    public Integer getDrug_time() {
-        return drug_time;
+    public Integer getDrugTime() {
+        return drugTime;
     }
 
-    public void setDrug_time(Integer drug_time) {
-        this.drug_time = drug_time;
+    public void setDrugTime(Integer drugTime) {
+        this.drugTime = drugTime;
     }
 
-    public Integer getDrug_day() {
-        return drug_day;
+    public Integer getDrugDay() {
+        return drugDay;
     }
 
-    public void setDrug_day(Integer drug_day) {
-        this.drug_day = drug_day;
+    public void setDrugDay(Integer drugDay) {
+        this.drugDay = drugDay;
     }
 
-    public Integer getDrug_period() {
-        return drug_period;
+    public Integer getDrugPeriod() {
+        return drugPeriod;
     }
 
-    public void setDrug_period(Integer drug_period) {
-        this.drug_period = drug_period;
+    public void setDrugPeriod(Integer drugPeriod) {
+        this.drugPeriod = drugPeriod;
     }
 
-    public String getDrug_period_unit() {
-        return drug_period_unit;
+    public String getDrugPeriodUnit() {
+        return drugPeriodUnit;
     }
 
-    public void setDrug_period_unit(String drug_period_unit) {
-        this.drug_period_unit = drug_period_unit == null ? null : drug_period_unit.trim();
+    public void setDrugPeriodUnit(String drugPeriodUnit) {
+        this.drugPeriodUnit = drugPeriodUnit == null ? null : drugPeriodUnit.trim();
     }
 
-    public String getDrug_id() {
-        return drug_id;
+    public String getDrugId() {
+        return drugId;
     }
 
-    public void setDrug_id(String drug_id) {
-        this.drug_id = drug_id == null ? null : drug_id.trim();
+    public void setDrugId(String drugId) {
+        this.drugId = drugId == null ? null : drugId.trim();
     }
 
-    public String getMedical_history_id() {
-        return medical_history_id;
+    public String getMedicalHistoryId() {
+        return medicalHistoryId;
     }
 
-    public void setMedical_history_id(String medical_history_id) {
-        this.medical_history_id = medical_history_id == null ? null : medical_history_id.trim();
+    public void setMedicalHistoryId(String medicalHistoryId) {
+        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {
@@ -179,11 +179,11 @@ public class FollowDrugUsage {
         this.version = version;
     }
 
-    public Integer getFollow_up_index() {
-        return follow_up_index;
+    public Integer getFollowUpIndex() {
+        return followUpIndex;
     }
 
-    public void setFollow_up_index(Integer follow_up_index) {
-        this.follow_up_index = follow_up_index;
+    public void setFollowUpIndex(Integer followUpIndex) {
+        this.followUpIndex = followUpIndex;
     }
 }

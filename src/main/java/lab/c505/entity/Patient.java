@@ -3,11 +3,11 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class Patient {
-    private String patient_id;
+    private String patientId;
 
     private String name;
 
-    private String num_id;
+    private String numId;
 
     private String gender;
 
@@ -23,17 +23,17 @@ public class Patient {
 
     private Date birthday;
 
-    private Integer sick_age;
+    private Integer sickAge;
 
-    private String mobile_phone;
+    private String mobilePhone;
 
     private String telphone;
 
-    private String emerge_people;
+    private String emergePeople;
 
-    private String emerge_phone;
+    private String emergePhone;
 
-    private String emerge_relationship;
+    private String emergeRelationship;
 
     private String married;
 
@@ -43,24 +43,24 @@ public class Patient {
 
     private String income;
 
-    private String profession_status;
+    private String professionStatus;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public Patient(String patient_id, String name, String num_id, String gender, String nation, String province, String city, String district, String address, Date birthday, Integer sick_age, String mobile_phone, String telphone, String emerge_people, String emerge_phone, String emerge_relationship, String married, String profession, String education, String income, String profession_status, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.patient_id = patient_id;
+    public Patient(String patientId, String name, String numId, String gender, String nation, String province, String city, String district, String address, Date birthday, Integer sickAge, String mobilePhone, String telphone, String emergePeople, String emergePhone, String emergeRelationship, String married, String profession, String education, String income, String professionStatus, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.patientId = patientId;
         this.name = name;
-        this.num_id = num_id;
+        this.numId = numId;
         this.gender = gender;
         this.nation = nation;
         this.province = province;
@@ -68,22 +68,22 @@ public class Patient {
         this.district = district;
         this.address = address;
         this.birthday = birthday;
-        this.sick_age = sick_age;
-        this.mobile_phone = mobile_phone;
+        this.sickAge = sickAge;
+        this.mobilePhone = mobilePhone;
         this.telphone = telphone;
-        this.emerge_people = emerge_people;
-        this.emerge_phone = emerge_phone;
-        this.emerge_relationship = emerge_relationship;
+        this.emergePeople = emergePeople;
+        this.emergePhone = emergePhone;
+        this.emergeRelationship = emergeRelationship;
         this.married = married;
         this.profession = profession;
         this.education = education;
         this.income = income;
-        this.profession_status = profession_status;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.professionStatus = professionStatus;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -91,12 +91,12 @@ public class Patient {
         super();
     }
 
-    public String getPatient_id() {
-        return patient_id;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public void setPatient_id(String patient_id) {
-        this.patient_id = patient_id == null ? null : patient_id.trim();
+    public void setPatientId(String patientId) {
+        this.patientId = patientId == null ? null : patientId.trim();
     }
 
     public String getName() {
@@ -107,12 +107,12 @@ public class Patient {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getNum_id() {
-        return num_id;
+    public String getNumId() {
+        return numId;
     }
 
-    public void setNum_id(String num_id) {
-        this.num_id = num_id == null ? null : num_id.trim();
+    public void setNumId(String numId) {
+        this.numId = numId == null ? null : numId.trim();
     }
 
     public String getGender() {
@@ -171,20 +171,20 @@ public class Patient {
         this.birthday = birthday;
     }
 
-    public Integer getSick_age() {
-        return sick_age;
+    public Integer getSickAge() {
+        return sickAge;
     }
 
-    public void setSick_age(Integer sick_age) {
-        this.sick_age = sick_age;
+    public void setSickAge(Integer sickAge) {
+        this.sickAge = sickAge;
     }
 
-    public String getMobile_phone() {
-        return mobile_phone;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setMobile_phone(String mobile_phone) {
-        this.mobile_phone = mobile_phone == null ? null : mobile_phone.trim();
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone == null ? null : mobilePhone.trim();
     }
 
     public String getTelphone() {
@@ -195,28 +195,28 @@ public class Patient {
         this.telphone = telphone == null ? null : telphone.trim();
     }
 
-    public String getEmerge_people() {
-        return emerge_people;
+    public String getEmergePeople() {
+        return emergePeople;
     }
 
-    public void setEmerge_people(String emerge_people) {
-        this.emerge_people = emerge_people == null ? null : emerge_people.trim();
+    public void setEmergePeople(String emergePeople) {
+        this.emergePeople = emergePeople == null ? null : emergePeople.trim();
     }
 
-    public String getEmerge_phone() {
-        return emerge_phone;
+    public String getEmergePhone() {
+        return emergePhone;
     }
 
-    public void setEmerge_phone(String emerge_phone) {
-        this.emerge_phone = emerge_phone == null ? null : emerge_phone.trim();
+    public void setEmergePhone(String emergePhone) {
+        this.emergePhone = emergePhone == null ? null : emergePhone.trim();
     }
 
-    public String getEmerge_relationship() {
-        return emerge_relationship;
+    public String getEmergeRelationship() {
+        return emergeRelationship;
     }
 
-    public void setEmerge_relationship(String emerge_relationship) {
-        this.emerge_relationship = emerge_relationship == null ? null : emerge_relationship.trim();
+    public void setEmergeRelationship(String emergeRelationship) {
+        this.emergeRelationship = emergeRelationship == null ? null : emergeRelationship.trim();
     }
 
     public String getMarried() {
@@ -251,52 +251,52 @@ public class Patient {
         this.income = income == null ? null : income.trim();
     }
 
-    public String getProfession_status() {
-        return profession_status;
+    public String getProfessionStatus() {
+        return professionStatus;
     }
 
-    public void setProfession_status(String profession_status) {
-        this.profession_status = profession_status == null ? null : profession_status.trim();
+    public void setProfessionStatus(String professionStatus) {
+        this.professionStatus = professionStatus == null ? null : professionStatus.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {

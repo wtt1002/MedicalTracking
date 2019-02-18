@@ -3,54 +3,54 @@ package lab.c505.entity;
 import java.util.Date;
 
 public class Doctor {
-    private String doctor_id;
+    private String doctorId;
 
-    private String doctor_name;
+    private String doctorName;
 
     private Byte gender;
 
-    private String doctor_major;
+    private String doctorMajor;
 
-    private String dept_id;
+    private String deptId;
 
-    private String doctor_num;
+    private String doctorNum;
 
-    private String qc_num;
+    private String qcNum;
 
-    private String qc_date;
+    private String qcDate;
 
-    private String opqc_num;
+    private String opqcNum;
 
-    private String opqc_date;
+    private String opqcDate;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date modify_time;
+    private Date modifyTime;
 
-    private String modify_user;
+    private String modifyUser;
 
-    private Integer delete_flag;
+    private Integer deleteFlag;
 
     private Integer version;
 
-    public Doctor(String doctor_id, String doctor_name, Byte gender, String doctor_major, String dept_id, String doctor_num, String qc_num, String qc_date, String opqc_num, String opqc_date, Date create_time, String create_user, Date modify_time, String modify_user, Integer delete_flag, Integer version) {
-        this.doctor_id = doctor_id;
-        this.doctor_name = doctor_name;
+    public Doctor(String doctorId, String doctorName, Byte gender, String doctorMajor, String deptId, String doctorNum, String qcNum, String qcDate, String opqcNum, String opqcDate, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
+        this.doctorId = doctorId;
+        this.doctorName = doctorName;
         this.gender = gender;
-        this.doctor_major = doctor_major;
-        this.dept_id = dept_id;
-        this.doctor_num = doctor_num;
-        this.qc_num = qc_num;
-        this.qc_date = qc_date;
-        this.opqc_num = opqc_num;
-        this.opqc_date = opqc_date;
-        this.create_time = create_time;
-        this.create_user = create_user;
-        this.modify_time = modify_time;
-        this.modify_user = modify_user;
-        this.delete_flag = delete_flag;
+        this.doctorMajor = doctorMajor;
+        this.deptId = deptId;
+        this.doctorNum = doctorNum;
+        this.qcNum = qcNum;
+        this.qcDate = qcDate;
+        this.opqcNum = opqcNum;
+        this.opqcDate = opqcDate;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.modifyTime = modifyTime;
+        this.modifyUser = modifyUser;
+        this.deleteFlag = deleteFlag;
         this.version = version;
     }
 
@@ -58,20 +58,20 @@ public class Doctor {
         super();
     }
 
-    public String getDoctor_id() {
-        return doctor_id;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor_id(String doctor_id) {
-        this.doctor_id = doctor_id == null ? null : doctor_id.trim();
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId == null ? null : doctorId.trim();
     }
 
-    public String getDoctor_name() {
-        return doctor_name;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDoctor_name(String doctor_name) {
-        this.doctor_name = doctor_name == null ? null : doctor_name.trim();
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName == null ? null : doctorName.trim();
     }
 
     public Byte getGender() {
@@ -82,100 +82,100 @@ public class Doctor {
         this.gender = gender;
     }
 
-    public String getDoctor_major() {
-        return doctor_major;
+    public String getDoctorMajor() {
+        return doctorMajor;
     }
 
-    public void setDoctor_major(String doctor_major) {
-        this.doctor_major = doctor_major == null ? null : doctor_major.trim();
+    public void setDoctorMajor(String doctorMajor) {
+        this.doctorMajor = doctorMajor == null ? null : doctorMajor.trim();
     }
 
-    public String getDept_id() {
-        return dept_id;
+    public String getDeptId() {
+        return deptId;
     }
 
-    public void setDept_id(String dept_id) {
-        this.dept_id = dept_id == null ? null : dept_id.trim();
+    public void setDeptId(String deptId) {
+        this.deptId = deptId == null ? null : deptId.trim();
     }
 
-    public String getDoctor_num() {
-        return doctor_num;
+    public String getDoctorNum() {
+        return doctorNum;
     }
 
-    public void setDoctor_num(String doctor_num) {
-        this.doctor_num = doctor_num == null ? null : doctor_num.trim();
+    public void setDoctorNum(String doctorNum) {
+        this.doctorNum = doctorNum == null ? null : doctorNum.trim();
     }
 
-    public String getQc_num() {
-        return qc_num;
+    public String getQcNum() {
+        return qcNum;
     }
 
-    public void setQc_num(String qc_num) {
-        this.qc_num = qc_num == null ? null : qc_num.trim();
+    public void setQcNum(String qcNum) {
+        this.qcNum = qcNum == null ? null : qcNum.trim();
     }
 
-    public String getQc_date() {
-        return qc_date;
+    public String getQcDate() {
+        return qcDate;
     }
 
-    public void setQc_date(String qc_date) {
-        this.qc_date = qc_date == null ? null : qc_date.trim();
+    public void setQcDate(String qcDate) {
+        this.qcDate = qcDate == null ? null : qcDate.trim();
     }
 
-    public String getOpqc_num() {
-        return opqc_num;
+    public String getOpqcNum() {
+        return opqcNum;
     }
 
-    public void setOpqc_num(String opqc_num) {
-        this.opqc_num = opqc_num == null ? null : opqc_num.trim();
+    public void setOpqcNum(String opqcNum) {
+        this.opqcNum = opqcNum == null ? null : opqcNum.trim();
     }
 
-    public String getOpqc_date() {
-        return opqc_date;
+    public String getOpqcDate() {
+        return opqcDate;
     }
 
-    public void setOpqc_date(String opqc_date) {
-        this.opqc_date = opqc_date == null ? null : opqc_date.trim();
+    public void setOpqcDate(String opqcDate) {
+        this.opqcDate = opqcDate == null ? null : opqcDate.trim();
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreate_user() {
-        return create_user;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setCreate_user(String create_user) {
-        this.create_user = create_user == null ? null : create_user.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Date getModify_time() {
-        return modify_time;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
-    public String getModify_user() {
-        return modify_user;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setModify_user(String modify_user) {
-        this.modify_user = modify_user == null ? null : modify_user.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
+    public Integer getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getVersion() {
