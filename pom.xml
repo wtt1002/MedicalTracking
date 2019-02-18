@@ -42,24 +42,35 @@
       <version>5.1.37</version>
       <scope>runtime</scope>
     </dependency>
+    <!--<dependency>-->
+      <!--<groupId>c3p0</groupId>-->
+      <!--<artifactId>c3p0</artifactId>-->
+      <!--<version>0.9.1.2</version>-->
+    <!--</dependency>-->
     <dependency>
-      <groupId>c3p0</groupId>
+      <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
-      <version>0.9.1.2</version>
+      <version>0.9.5.2</version>
     </dependency>
 
     <!-- DAO: MyBatis -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.2.3</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.mybatis</groupId>-->
+      <!--<artifactId>mybatis</artifactId>-->
+      <!--<version>3.3.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.mybatis</groupId>-->
+      <!--<artifactId>mybatis-spring</artifactId>-->
+      <!--<version>1.2.3</version>-->
+    <!--</dependency>-->
 
+    <!-- MyBatis-plus 防止冲突，需要注释掉mybatis和mybatis-spring-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+      <version>3.0.7.1</version>
+    </dependency>
     <!-- 3.Servlet web -->
     <dependency>
       <groupId>taglibs</groupId>
@@ -186,6 +197,16 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+        <!-- mybatis-generator 相关配置 -->
+        <!--<plugin>-->
+          <!--<groupId>org.mybatis.generator</groupId>-->
+          <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+          <!--<version>1.3.2</version>-->
+          <!--<configuration>-->
+            <!--<verbose>true</verbose>-->
+            <!--<overwrite>true</overwrite>-->
+          <!--</configuration>-->
+        <!--</plugin>-->
       </plugins>
     </pluginManagement>
   </build>
