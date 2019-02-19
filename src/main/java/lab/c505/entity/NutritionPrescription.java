@@ -1,9 +1,16 @@
 package lab.c505.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@TableName(value = "t_nutrition_prescription")
 public class NutritionPrescription {
+
+    @TableId(type = IdType.AUTO)
     private String nutritionPrescriptionId;
 
     private BigDecimal heatQuantity;

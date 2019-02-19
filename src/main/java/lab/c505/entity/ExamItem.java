@@ -1,8 +1,15 @@
 package lab.c505.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 
+@TableName(value = "t_exam_item")
 public class ExamItem {
+
+    @TableId(type = IdType.AUTO)
     private String examItemId;
 
     private String examCategoryId;

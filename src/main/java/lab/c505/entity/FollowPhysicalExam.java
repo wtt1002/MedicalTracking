@@ -1,8 +1,15 @@
 package lab.c505.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.math.BigDecimal;
 
+@TableName(value = "t_follow_physical_exam")
 public class FollowPhysicalExam {
+
+    @TableId(type = IdType.AUTO)
     private String followPhysicalExamId;
 
     private String followUpId;

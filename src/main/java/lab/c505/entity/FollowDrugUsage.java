@@ -1,9 +1,16 @@
 package lab.c505.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@TableName(value = "t_follow_drug_usage")
 public class FollowDrugUsage {
+
+    @TableId(type = IdType.AUTO)
     private String drugUsageId;
 
     private BigDecimal drugDosage;

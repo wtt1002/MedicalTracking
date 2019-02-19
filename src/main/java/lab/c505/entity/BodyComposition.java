@@ -1,9 +1,16 @@
 package lab.c505.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@TableName(value = "t_body_composition")
 public class BodyComposition {
+
+    @TableId(type = IdType.AUTO)
     private String bodyCompositionId;
 
     private BigDecimal height;
