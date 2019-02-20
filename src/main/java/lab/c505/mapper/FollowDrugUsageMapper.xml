@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.FollowDrugUsageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.FollowDrugUsage">
+        <id column="drug_usage_id" property="drugUsageId" />
+        <result column="drug_dosage" property="drugDosage" />
+        <result column="drug_dosage_unit" property="drugDosageUnit" />
+        <result column="drug_time" property="drugTime" />
+        <result column="drug_day" property="drugDay" />
+        <result column="drug_period" property="drugPeriod" />
+        <result column="drug_period_unit" property="drugPeriodUnit" />
+        <result column="drug_id" property="drugId" />
+        <result column="medical_history_id" property="medicalHistoryId" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+        <result column="follow_up_index" property="followUpIndex" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        drug_usage_id, drug_dosage, drug_dosage_unit, drug_time, drug_day, drug_period, drug_period_unit, drug_id, medical_history_id, create_time, create_user, modify_time, modify_user, delete_flag, version, follow_up_index
+    </sql>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.HospitalMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.Hospital">
+        <id column="hos_id" property="hosId" />
+        <result column="hos_name" property="hosName" />
+        <result column="hos_py" property="hosPy" />
+        <result column="hos_code" property="hosCode" />
+        <result column="hos_rank" property="hosRank" />
+        <result column="hos_type" property="hosType" />
+        <result column="hos_province" property="hosProvince" />
+        <result column="hos_city" property="hosCity" />
+        <result column="hos_district" property="hosDistrict" />
+        <result column="hos_beds" property="hosBeds" />
+        <result column="hos_address" property="hosAddress" />
+        <result column="hos_detail" property="hosDetail" />
+        <result column="hos_tel" property="hosTel" />
+        <result column="hos_longitude" property="hosLongitude" />
+        <result column="hos_latitude" property="hosLatitude" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        hos_id, hos_name, hos_py, hos_code, hos_rank, hos_type, hos_province, hos_city, hos_district, hos_beds, hos_address, hos_detail, hos_tel, hos_longitude, hos_latitude, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

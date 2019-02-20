@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.PatientMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.Patient">
+        <id column="patient_id" property="patientId" />
+        <result column="name" property="name" />
+        <result column="num_id" property="numId" />
+        <result column="gender" property="gender" />
+        <result column="nation" property="nation" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="district" property="district" />
+        <result column="address" property="address" />
+        <result column="birthday" property="birthday" />
+        <result column="sick_age" property="sickAge" />
+        <result column="mobile_phone" property="mobilePhone" />
+        <result column="telphone" property="telphone" />
+        <result column="emerge_people" property="emergePeople" />
+        <result column="emerge_phone" property="emergePhone" />
+        <result column="emerge_relationship" property="emergeRelationship" />
+        <result column="married" property="married" />
+        <result column="profession" property="profession" />
+        <result column="education" property="education" />
+        <result column="income" property="income" />
+        <result column="profession_status" property="professionStatus" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        patient_id, name, num_id, gender, nation, province, city, district, address, birthday, sick_age, mobile_phone, telphone, emerge_people, emerge_phone, emerge_relationship, married, profession, education, income, profession_status, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

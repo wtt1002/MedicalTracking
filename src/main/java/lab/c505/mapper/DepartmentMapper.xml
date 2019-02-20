@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.DepartmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.Department">
+        <id column="dept_id" property="deptId" />
+        <result column="hos_id" property="hosId" />
+        <result column="dept_name" property="deptName" />
+        <result column="dept_py" property="deptPy" />
+        <result column="dept_leader" property="deptLeader" />
+        <result column="dept_address" property="deptAddress" />
+        <result column="dept_tel" property="deptTel" />
+        <result column="dept_detail" property="deptDetail" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        dept_id, hos_id, dept_name, dept_py, dept_leader, dept_address, dept_tel, dept_detail, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

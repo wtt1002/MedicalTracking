@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.FollowSideEffectsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.FollowSideEffects">
+        <id column="side_effects_id" property="sideEffectsId" />
+        <result column="stomach_stimulation" property="stomachStimulation" />
+        <result column="hemorrhage" property="hemorrhage" />
+        <result column="go_hospital" property="goHospital" />
+        <result column="dyspnea" property="dyspnea" />
+        <result column="follow_up_id" property="followUpId" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        side_effects_id, stomach_stimulation, hemorrhage, go_hospital, dyspnea, follow_up_id, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

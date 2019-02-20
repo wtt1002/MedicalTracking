@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.RehabilitationTrainCategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.RehabilitationTrainCategory">
+        <id column="rehabilitation_train_category_id" property="rehabilitationTrainCategoryId" />
+        <result column="rehabilitation_train_category_code" property="rehabilitationTrainCategoryCode" />
+        <result column="rehabilitation_train_category_name" property="rehabilitationTrainCategoryName" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rehabilitation_train_category_id, rehabilitation_train_category_code, rehabilitation_train_category_name, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

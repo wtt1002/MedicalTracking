@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.AssessmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.Assessment">
+        <id column="assessment_id" property="assessmentId" />
+        <result column="sas_score" property="sasScore" />
+        <result column="sds_score" property="sdsScore" />
+        <result column="na_score" property="naScore" />
+        <result column="psqi_score" property="psqiScore" />
+        <result column="ipqa_score" property="ipqaScore" />
+        <result column="fagerstorm_score" property="fagerstormScore" />
+        <result column="left_grip" property="leftGrip" />
+        <result column="right_grip" property="rightGrip" />
+        <result column="three_meter_test" property="threeMeterTest" />
+        <result column="four_meter_test" property="fourMeterTest" />
+        <result column="stand_up_test" property="standUpTest" />
+        <result column="left_balance_test" property="leftBalanceTest" />
+        <result column="right_balance_test" property="rightBalanceTest" />
+        <result column="sit_reach" property="sitReach" />
+        <result column="upperarm_circumference" property="upperarmCircumference" />
+        <result column="bmi" property="bmi" />
+        <result column="triceps_skinfold_thickness" property="tricepsSkinfoldThickness" />
+        <result column="medical_history_id" property="medicalHistoryId" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        assessment_id, sas_score, sds_score, na_score, psqi_score, ipqa_score, fagerstorm_score, left_grip, right_grip, three_meter_test, four_meter_test, stand_up_test, left_balance_test, right_balance_test, sit_reach, upperarm_circumference, bmi, triceps_skinfold_thickness, medical_history_id, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

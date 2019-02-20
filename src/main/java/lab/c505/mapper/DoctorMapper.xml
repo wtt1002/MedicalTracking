@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.DoctorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.Doctor">
+        <id column="doctor_id" property="doctorId" />
+        <result column="doctor_name" property="doctorName" />
+        <result column="gender" property="gender" />
+        <result column="doctor_major" property="doctorMajor" />
+        <result column="dept_id" property="deptId" />
+        <result column="doctor_num" property="doctorNum" />
+        <result column="qc_num" property="qcNum" />
+        <result column="qc_date" property="qcDate" />
+        <result column="opqc_num" property="opqcNum" />
+        <result column="opqc_date" property="opqcDate" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        doctor_id, doctor_name, gender, doctor_major, dept_id, doctor_num, qc_num, qc_date, opqc_num, opqc_date, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

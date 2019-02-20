@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.PciMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.Pci">
+        <id column="pci_id" property="pciId" />
+        <result column="medical_history_id" property="medicalHistoryId" />
+        <result column="cabg" property="cabg" />
+        <result column="thrombolysis" property="thrombolysis" />
+        <result column="therapy_type" property="therapyType" />
+        <result column="operate_duration" property="operateDuration" />
+        <result column="pcidb2" property="pcidb2" />
+        <result column="pci_antiplatelet" property="pciAntiplatelet" />
+        <result column="pci_type" property="pciType" />
+        <result column="pci_anticoagulant" property="pciAnticoagulant" />
+        <result column="operate_drug" property="operateDrug" />
+        <result column="assistive_device" property="assistiveDevice" />
+        <result column="contrast_medium_type" property="contrastMediumType" />
+        <result column="contrast_medium_amount" property="contrastMediumAmount" />
+        <result column="operate_doctor" property="operateDoctor" />
+        <result column="pci_info" property="pciInfo" />
+        <result column="pci_detail" property="pciDetail" />
+        <result column="intervention_problem" property="interventionProblem" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        pci_id, medical_history_id, cabg, thrombolysis, therapy_type, operate_duration, pcidb2, pci_antiplatelet, pci_type, pci_anticoagulant, operate_drug, assistive_device, contrast_medium_type, contrast_medium_amount, operate_doctor, pci_info, pci_detail, intervention_problem, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

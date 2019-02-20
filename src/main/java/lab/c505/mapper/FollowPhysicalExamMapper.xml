@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.FollowPhysicalExamMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.FollowPhysicalExam">
+        <id column="follow_physical_exam_id" property="followPhysicalExamId" />
+        <result column="follow_up_id" property="followUpId" />
+        <result column="blood_pressure_high" property="bloodPressureHigh" />
+        <result column="blood_pressure_low" property="bloodPressureLow" />
+        <result column="heart_rate" property="heartRate" />
+        <result column="weight" property="weight" />
+        <result column="other_info" property="otherInfo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        follow_physical_exam_id, follow_up_id, blood_pressure_high, blood_pressure_low, heart_rate, weight, other_info
+    </sql>
+
+</mapper>

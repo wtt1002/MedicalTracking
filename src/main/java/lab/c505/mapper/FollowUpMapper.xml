@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.FollowUpMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.FollowUp">
+        <id column="follow_up_id" property="followUpId" />
+        <result column="medical_history_id" property="medicalHistoryId" />
+        <result column="doctor_id" property="doctorId" />
+        <result column="plan_time" property="planTime" />
+        <result column="final_time" property="finalTime" />
+        <result column="plan_way" property="planWay" />
+        <result column="final_way" property="finalWay" />
+        <result column="follow_up_duration" property="followUpDuration" />
+        <result column="recovery_status" property="recoveryStatus" />
+        <result column="further_consultation" property="furtherConsultation" />
+        <result column="recent_symptoms" property="recentSymptoms" />
+        <result column="follow_up_index" property="followUpIndex" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        follow_up_id, medical_history_id, doctor_id, plan_time, final_time, plan_way, final_way, follow_up_duration, recovery_status, further_consultation, recent_symptoms, follow_up_index, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>

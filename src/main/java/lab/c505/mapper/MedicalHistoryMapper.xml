@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.c505.mapper.MedicalHistoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="lab.c505.entity.MedicalHistory">
+        <id column="medical_history_id" property="medicalHistoryId" />
+        <result column="patient_id" property="patientId" />
+        <result column="admission_num" property="admissionNum" />
+        <result column="in_time" property="inTime" />
+        <result column="out_time" property="outTime" />
+        <result column="operate_doc" property="operateDoc" />
+        <result column="main_diagnose" property="mainDiagnose" />
+        <result column="risk_factor" property="riskFactor" />
+        <result column="pre_drugs" property="preDrugs" />
+        <result column="blood_pressure_h" property="bloodPressureH" />
+        <result column="blood_pressure_l" property="bloodPressureL" />
+        <result column="heart_rate" property="heartRate" />
+        <result column="height" property="height" />
+        <result column="weight" property="weight" />
+        <result column="bmi" property="bmi" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        medical_history_id, patient_id, admission_num, in_time, out_time, operate_doc, main_diagnose, risk_factor, pre_drugs, blood_pressure_h, blood_pressure_l, heart_rate, height, weight, bmi, create_time, create_user, modify_time, modify_user, delete_flag, version
+    </sql>
+
+</mapper>
