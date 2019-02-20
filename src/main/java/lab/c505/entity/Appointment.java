@@ -1,72 +1,52 @@
 package lab.c505.entity;
 
-import java.util.Date;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
- * 预约图书实体
+ * <p>
+ * 预约图书表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
  */
-public class Appointment {
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class Appointment extends Model<Appointment> {
 
-	private long bookId;// 图书ID
+    private static final long serialVersionUID = 1L;
 
-	private long studentId;// 学号
+    /**
+     * 图书ID
+     */
+    private Long bookId;
 
-	private Date appointTime;// 预约时间
+    /**
+     * 学号
+     */
+    private Long studentId;
 
-	// 多对一的复合属性
-	private Book book;// 图书实体
+    /**
+     * 预约时间
+     */
+    private LocalDateTime appointTime;
 
-	public Appointment() {
-	}
 
-	public Appointment(long bookId, long studentId, Date appointTime) {
-		this.bookId = bookId;
-		this.studentId = studentId;
-		this.appointTime = appointTime;
-	}
+    public static final String BOOK_ID = "book_id";
 
-	public Appointment(long bookId, long studentId, Date appointTime, Book book) {
-		this.bookId = bookId;
-		this.studentId = studentId;
-		this.appointTime = appointTime;
-		this.book = book;
-	}
+    public static final String STUDENT_ID = "student_id";
 
-	public long getBookId() {
-		return bookId;
-	}
+    public static final String APPOINT_TIME = "appoint_time";
 
-	public void setBookId(long bookId) {
-		this.bookId = bookId;
-	}
-
-	public long getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(long studentId) {
-		this.studentId = studentId;
-	}
-
-	public Date getAppointTime() {
-		return appointTime;
-	}
-
-	public void setAppointTime(Date appointTime) {
-		this.appointTime = appointTime;
-	}
-
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-	@Override
-	public String toString() {
-		return "Appointment [bookId=" + bookId + ", studentId=" + studentId + ", appointTime=" + appointTime + "]";
-	}
+    @Override
+    protected Serializable pkVal() {
+        return this.bookId;
+    }
 
 }

@@ -1,16 +1,33 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 随访药物不良反应表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_follow_side_effects")
+public class FollowSideEffects extends Model<FollowSideEffects> {
 
-@TableName(value = "t_follow_side_effects")
-public class FollowSideEffects {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String sideEffectsId;
+    @TableId(value = "side_effects_id", type = IdType.AUTO)
+    private Integer sideEffectsId;
 
     private String stomachStimulation;
 
@@ -22,130 +39,52 @@ public class FollowSideEffects {
 
     private String followUpId;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public FollowSideEffects(String sideEffectsId, String stomachStimulation, String hemorrhage, String goHospital, String dyspnea, String followUpId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.sideEffectsId = sideEffectsId;
-        this.stomachStimulation = stomachStimulation;
-        this.hemorrhage = hemorrhage;
-        this.goHospital = goHospital;
-        this.dyspnea = dyspnea;
-        this.followUpId = followUpId;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String SIDE_EFFECTS_ID = "side_effects_id";
+
+    public static final String STOMACH_STIMULATION = "stomach_stimulation";
+
+    public static final String HEMORRHAGE = "hemorrhage";
+
+    public static final String GO_HOSPITAL = "go_hospital";
+
+    public static final String DYSPNEA = "dyspnea";
+
+    public static final String FOLLOW_UP_ID = "follow_up_id";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.sideEffectsId;
     }
 
-    public FollowSideEffects() {
-        super();
-    }
-
-    public String getSideEffectsId() {
-        return sideEffectsId;
-    }
-
-    public void setSideEffectsId(String sideEffectsId) {
-        this.sideEffectsId = sideEffectsId == null ? null : sideEffectsId.trim();
-    }
-
-    public String getStomachStimulation() {
-        return stomachStimulation;
-    }
-
-    public void setStomachStimulation(String stomachStimulation) {
-        this.stomachStimulation = stomachStimulation == null ? null : stomachStimulation.trim();
-    }
-
-    public String getHemorrhage() {
-        return hemorrhage;
-    }
-
-    public void setHemorrhage(String hemorrhage) {
-        this.hemorrhage = hemorrhage == null ? null : hemorrhage.trim();
-    }
-
-    public String getGoHospital() {
-        return goHospital;
-    }
-
-    public void setGoHospital(String goHospital) {
-        this.goHospital = goHospital == null ? null : goHospital.trim();
-    }
-
-    public String getDyspnea() {
-        return dyspnea;
-    }
-
-    public void setDyspnea(String dyspnea) {
-        this.dyspnea = dyspnea == null ? null : dyspnea.trim();
-    }
-
-    public String getFollowUpId() {
-        return followUpId;
-    }
-
-    public void setFollowUpId(String followUpId) {
-        this.followUpId = followUpId == null ? null : followUpId.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

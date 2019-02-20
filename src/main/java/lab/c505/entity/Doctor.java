@@ -1,20 +1,37 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 医生表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_doctor")
+public class Doctor extends Model<Doctor> {
 
-@TableName(value = "t_doctor")
-public class Doctor {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String doctorId;
+    @TableId(value = "doctor_id", type = IdType.AUTO)
+    private Integer doctorId;
 
     private String doctorName;
 
-    private Byte gender;
+    private Integer gender;
 
     private String doctorMajor;
 
@@ -30,166 +47,60 @@ public class Doctor {
 
     private String opqcDate;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public Doctor(String doctorId, String doctorName, Byte gender, String doctorMajor, String deptId, String doctorNum, String qcNum, String qcDate, String opqcNum, String opqcDate, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.doctorId = doctorId;
-        this.doctorName = doctorName;
-        this.gender = gender;
-        this.doctorMajor = doctorMajor;
-        this.deptId = deptId;
-        this.doctorNum = doctorNum;
-        this.qcNum = qcNum;
-        this.qcDate = qcDate;
-        this.opqcNum = opqcNum;
-        this.opqcDate = opqcDate;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String DOCTOR_ID = "doctor_id";
+
+    public static final String DOCTOR_NAME = "doctor_name";
+
+    public static final String GENDER = "gender";
+
+    public static final String DOCTOR_MAJOR = "doctor_major";
+
+    public static final String DEPT_ID = "dept_id";
+
+    public static final String DOCTOR_NUM = "doctor_num";
+
+    public static final String QC_NUM = "qc_num";
+
+    public static final String QC_DATE = "qc_date";
+
+    public static final String OPQC_NUM = "opqc_num";
+
+    public static final String OPQC_DATE = "opqc_date";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.doctorId;
     }
 
-    public Doctor() {
-        super();
-    }
-
-    public String getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId == null ? null : doctorId.trim();
-    }
-
-    public String getDoctorName() {
-        return doctorName;
-    }
-
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName == null ? null : doctorName.trim();
-    }
-
-    public Byte getGender() {
-        return gender;
-    }
-
-    public void setGender(Byte gender) {
-        this.gender = gender;
-    }
-
-    public String getDoctorMajor() {
-        return doctorMajor;
-    }
-
-    public void setDoctorMajor(String doctorMajor) {
-        this.doctorMajor = doctorMajor == null ? null : doctorMajor.trim();
-    }
-
-    public String getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(String deptId) {
-        this.deptId = deptId == null ? null : deptId.trim();
-    }
-
-    public String getDoctorNum() {
-        return doctorNum;
-    }
-
-    public void setDoctorNum(String doctorNum) {
-        this.doctorNum = doctorNum == null ? null : doctorNum.trim();
-    }
-
-    public String getQcNum() {
-        return qcNum;
-    }
-
-    public void setQcNum(String qcNum) {
-        this.qcNum = qcNum == null ? null : qcNum.trim();
-    }
-
-    public String getQcDate() {
-        return qcDate;
-    }
-
-    public void setQcDate(String qcDate) {
-        this.qcDate = qcDate == null ? null : qcDate.trim();
-    }
-
-    public String getOpqcNum() {
-        return opqcNum;
-    }
-
-    public void setOpqcNum(String opqcNum) {
-        this.opqcNum = opqcNum == null ? null : opqcNum.trim();
-    }
-
-    public String getOpqcDate() {
-        return opqcDate;
-    }
-
-    public void setOpqcDate(String opqcDate) {
-        this.opqcDate = opqcDate == null ? null : opqcDate.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

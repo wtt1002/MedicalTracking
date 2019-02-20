@@ -1,173 +1,98 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 个体化危险因素控制表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_risk_factors")
+public class RiskFactors extends Model<RiskFactors> {
 
-@TableName(value = "t_risk_factors")
-public class RiskFactors {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String riskFactorsId;
+    @TableId(value = "risk_factors_id", type = IdType.AUTO)
+    private Integer riskFactorsId;
 
-    private Byte isSmoke;
+    private Integer isSmoke;
 
-    private Byte isHeavy;
+    private Integer isHeavy;
 
-    private Byte isLessMove;
+    private Integer isLessMove;
 
-    private Byte bloodPressureControl;
+    private Integer bloodPressureControl;
 
-    private Byte glycemicControl;
+    private Integer glycemicControl;
 
-    private Byte bloodLipidControl;
+    private Integer bloodLipidControl;
 
     private String followUpId;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public RiskFactors(String riskFactorsId, Byte isSmoke, Byte isHeavy, Byte isLessMove, Byte bloodPressureControl, Byte glycemicControl, Byte bloodLipidControl, String followUpId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.riskFactorsId = riskFactorsId;
-        this.isSmoke = isSmoke;
-        this.isHeavy = isHeavy;
-        this.isLessMove = isLessMove;
-        this.bloodPressureControl = bloodPressureControl;
-        this.glycemicControl = glycemicControl;
-        this.bloodLipidControl = bloodLipidControl;
-        this.followUpId = followUpId;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String RISK_FACTORS_ID = "risk_factors_id";
+
+    public static final String IS_SMOKE = "is_smoke";
+
+    public static final String IS_HEAVY = "is_heavy";
+
+    public static final String IS_LESS_MOVE = "is_less_move";
+
+    public static final String BLOOD_PRESSURE_CONTROL = "blood_pressure_control";
+
+    public static final String GLYCEMIC_CONTROL = "glycemic_control";
+
+    public static final String BLOOD_LIPID_CONTROL = "blood_lipid_control";
+
+    public static final String FOLLOW_UP_ID = "follow_up_id";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.riskFactorsId;
     }
 
-    public RiskFactors() {
-        super();
-    }
-
-    public String getRiskFactorsId() {
-        return riskFactorsId;
-    }
-
-    public void setRiskFactorsId(String riskFactorsId) {
-        this.riskFactorsId = riskFactorsId == null ? null : riskFactorsId.trim();
-    }
-
-    public Byte getIsSmoke() {
-        return isSmoke;
-    }
-
-    public void setIsSmoke(Byte isSmoke) {
-        this.isSmoke = isSmoke;
-    }
-
-    public Byte getIsHeavy() {
-        return isHeavy;
-    }
-
-    public void setIsHeavy(Byte isHeavy) {
-        this.isHeavy = isHeavy;
-    }
-
-    public Byte getIsLessMove() {
-        return isLessMove;
-    }
-
-    public void setIsLessMove(Byte isLessMove) {
-        this.isLessMove = isLessMove;
-    }
-
-    public Byte getBloodPressureControl() {
-        return bloodPressureControl;
-    }
-
-    public void setBloodPressureControl(Byte bloodPressureControl) {
-        this.bloodPressureControl = bloodPressureControl;
-    }
-
-    public Byte getGlycemicControl() {
-        return glycemicControl;
-    }
-
-    public void setGlycemicControl(Byte glycemicControl) {
-        this.glycemicControl = glycemicControl;
-    }
-
-    public Byte getBloodLipidControl() {
-        return bloodLipidControl;
-    }
-
-    public void setBloodLipidControl(Byte bloodLipidControl) {
-        this.bloodLipidControl = bloodLipidControl;
-    }
-
-    public String getFollowUpId() {
-        return followUpId;
-    }
-
-    public void setFollowUpId(String followUpId) {
-        this.followUpId = followUpId == null ? null : followUpId.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

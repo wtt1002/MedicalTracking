@@ -1,17 +1,34 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.math.BigDecimal;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-@TableName(value = "t_nutrition_prescription")
-public class NutritionPrescription {
+/**
+ * <p>
+ * 营养处方表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_nutrition_prescription")
+public class NutritionPrescription extends Model<NutritionPrescription> {
 
-    @TableId(type = IdType.AUTO)
-    private String nutritionPrescriptionId;
+    private static final long serialVersionUID = 1L;
+
+    @TableId(value = "nutrition_prescription_id", type = IdType.AUTO)
+    private Integer nutritionPrescriptionId;
 
     private BigDecimal heatQuantity;
 
@@ -25,139 +42,54 @@ public class NutritionPrescription {
 
     private String followUpId;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public NutritionPrescription(String nutritionPrescriptionId, BigDecimal heatQuantity, BigDecimal saccharides, BigDecimal fat, BigDecimal protein, String otherInfo, String followUpId, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.nutritionPrescriptionId = nutritionPrescriptionId;
-        this.heatQuantity = heatQuantity;
-        this.saccharides = saccharides;
-        this.fat = fat;
-        this.protein = protein;
-        this.otherInfo = otherInfo;
-        this.followUpId = followUpId;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String NUTRITION_PRESCRIPTION_ID = "nutrition_prescription_id";
+
+    public static final String HEAT_QUANTITY = "heat_quantity";
+
+    public static final String SACCHARIDES = "saccharides";
+
+    public static final String FAT = "fat";
+
+    public static final String PROTEIN = "protein";
+
+    public static final String OTHER_INFO = "other_info";
+
+    public static final String FOLLOW_UP_ID = "follow_up_id";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.nutritionPrescriptionId;
     }
 
-    public NutritionPrescription() {
-        super();
-    }
-
-    public String getNutritionPrescriptionId() {
-        return nutritionPrescriptionId;
-    }
-
-    public void setNutritionPrescriptionId(String nutritionPrescriptionId) {
-        this.nutritionPrescriptionId = nutritionPrescriptionId == null ? null : nutritionPrescriptionId.trim();
-    }
-
-    public BigDecimal getHeatQuantity() {
-        return heatQuantity;
-    }
-
-    public void setHeatQuantity(BigDecimal heatQuantity) {
-        this.heatQuantity = heatQuantity;
-    }
-
-    public BigDecimal getSaccharides() {
-        return saccharides;
-    }
-
-    public void setSaccharides(BigDecimal saccharides) {
-        this.saccharides = saccharides;
-    }
-
-    public BigDecimal getFat() {
-        return fat;
-    }
-
-    public void setFat(BigDecimal fat) {
-        this.fat = fat;
-    }
-
-    public BigDecimal getProtein() {
-        return protein;
-    }
-
-    public void setProtein(BigDecimal protein) {
-        this.protein = protein;
-    }
-
-    public String getOtherInfo() {
-        return otherInfo;
-    }
-
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo == null ? null : otherInfo.trim();
-    }
-
-    public String getFollowUpId() {
-        return followUpId;
-    }
-
-    public void setFollowUpId(String followUpId) {
-        this.followUpId = followUpId == null ? null : followUpId.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

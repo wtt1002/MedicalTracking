@@ -1,16 +1,33 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 药物表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_drug")
+public class Drug extends Model<Drug> {
 
-@TableName(value = "t_drug")
-public class Drug {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String drugId;
+    @TableId(value = "drug_id", type = IdType.AUTO)
+    private Integer drugId;
 
     private String drugCode;
 
@@ -20,121 +37,50 @@ public class Drug {
 
     private String drugShortName;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public Drug(String drugId, String drugCode, String drugCategoryId, String drugName, String drugShortName, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.drugId = drugId;
-        this.drugCode = drugCode;
-        this.drugCategoryId = drugCategoryId;
-        this.drugName = drugName;
-        this.drugShortName = drugShortName;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String DRUG_ID = "drug_id";
+
+    public static final String DRUG_CODE = "drug_code";
+
+    public static final String DRUG_CATEGORY_ID = "drug_category_id";
+
+    public static final String DRUG_NAME = "drug_name";
+
+    public static final String DRUG_SHORT_NAME = "drug_short_name";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.drugId;
     }
 
-    public Drug() {
-        super();
-    }
-
-    public String getDrugId() {
-        return drugId;
-    }
-
-    public void setDrugId(String drugId) {
-        this.drugId = drugId == null ? null : drugId.trim();
-    }
-
-    public String getDrugCode() {
-        return drugCode;
-    }
-
-    public void setDrugCode(String drugCode) {
-        this.drugCode = drugCode == null ? null : drugCode.trim();
-    }
-
-    public String getDrugCategoryId() {
-        return drugCategoryId;
-    }
-
-    public void setDrugCategoryId(String drugCategoryId) {
-        this.drugCategoryId = drugCategoryId == null ? null : drugCategoryId.trim();
-    }
-
-    public String getDrugName() {
-        return drugName;
-    }
-
-    public void setDrugName(String drugName) {
-        this.drugName = drugName == null ? null : drugName.trim();
-    }
-
-    public String getDrugShortName() {
-        return drugShortName;
-    }
-
-    public void setDrugShortName(String drugShortName) {
-        this.drugShortName = drugShortName == null ? null : drugShortName.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

@@ -1,16 +1,33 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 药物更换日志信息表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_change_drug_log")
+public class ChangeDrugLog extends Model<ChangeDrugLog> {
 
-@TableName(value = "t_change_drug_log")
-public class ChangeDrugLog {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String changeDrugId;
+    @TableId(value = "change_drug_id", type = IdType.AUTO)
+    private Integer changeDrugId;
 
     private String operateDocId;
 
@@ -20,143 +37,58 @@ public class ChangeDrugLog {
 
     private String aftDrugUsage;
 
-    private Date changeTime;
+    private LocalDateTime changeTime;
 
     private String changeReason;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public ChangeDrugLog(String changeDrugId, String operateDocId, String followUpId, String preDrugUsage, String aftDrugUsage, Date changeTime, String changeReason, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.changeDrugId = changeDrugId;
-        this.operateDocId = operateDocId;
-        this.followUpId = followUpId;
-        this.preDrugUsage = preDrugUsage;
-        this.aftDrugUsage = aftDrugUsage;
-        this.changeTime = changeTime;
-        this.changeReason = changeReason;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String CHANGE_DRUG_ID = "change_drug_id";
+
+    public static final String OPERATE_DOC_ID = "operate_doc_id";
+
+    public static final String FOLLOW_UP_ID = "follow_up_id";
+
+    public static final String PRE_DRUG_USAGE = "pre_drug_usage";
+
+    public static final String AFT_DRUG_USAGE = "aft_drug_usage";
+
+    public static final String CHANGE_TIME = "change_time";
+
+    public static final String CHANGE_REASON = "change_reason";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.changeDrugId;
     }
 
-    public ChangeDrugLog() {
-        super();
-    }
-
-    public String getChangeDrugId() {
-        return changeDrugId;
-    }
-
-    public void setChangeDrugId(String changeDrugId) {
-        this.changeDrugId = changeDrugId == null ? null : changeDrugId.trim();
-    }
-
-    public String getOperateDocId() {
-        return operateDocId;
-    }
-
-    public void setOperateDocId(String operateDocId) {
-        this.operateDocId = operateDocId == null ? null : operateDocId.trim();
-    }
-
-    public String getFollowUpId() {
-        return followUpId;
-    }
-
-    public void setFollowUpId(String followUpId) {
-        this.followUpId = followUpId == null ? null : followUpId.trim();
-    }
-
-    public String getPreDrugUsage() {
-        return preDrugUsage;
-    }
-
-    public void setPreDrugUsage(String preDrugUsage) {
-        this.preDrugUsage = preDrugUsage == null ? null : preDrugUsage.trim();
-    }
-
-    public String getAftDrugUsage() {
-        return aftDrugUsage;
-    }
-
-    public void setAftDrugUsage(String aftDrugUsage) {
-        this.aftDrugUsage = aftDrugUsage == null ? null : aftDrugUsage.trim();
-    }
-
-    public Date getChangeTime() {
-        return changeTime;
-    }
-
-    public void setChangeTime(Date changeTime) {
-        this.changeTime = changeTime;
-    }
-
-    public String getChangeReason() {
-        return changeReason;
-    }
-
-    public void setChangeReason(String changeReason) {
-        this.changeReason = changeReason == null ? null : changeReason.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

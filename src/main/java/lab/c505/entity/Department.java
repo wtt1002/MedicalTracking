@@ -1,21 +1,41 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_department")
+public class Department extends Model<Department> {
 
-@TableName(value = "t_department")
-public class Department {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String deptId;
+    @TableId(value = "dept_id", type = IdType.AUTO)
+    private Integer deptId;
 
     private String hosId;
 
     private String deptName;
 
+    /**
+     * 科室名称首字母缩写，用于快速查询与检索
+     */
     private String deptPy;
 
     private String deptLeader;
@@ -26,148 +46,56 @@ public class Department {
 
     private String deptDetail;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public Department(String deptId, String hosId, String deptName, String deptPy, String deptLeader, String deptAddress, String deptTel, String deptDetail, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.deptId = deptId;
-        this.hosId = hosId;
-        this.deptName = deptName;
-        this.deptPy = deptPy;
-        this.deptLeader = deptLeader;
-        this.deptAddress = deptAddress;
-        this.deptTel = deptTel;
-        this.deptDetail = deptDetail;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String DEPT_ID = "dept_id";
+
+    public static final String HOS_ID = "hos_id";
+
+    public static final String DEPT_NAME = "dept_name";
+
+    public static final String DEPT_PY = "dept_py";
+
+    public static final String DEPT_LEADER = "dept_leader";
+
+    public static final String DEPT_ADDRESS = "dept_address";
+
+    public static final String DEPT_TEL = "dept_tel";
+
+    public static final String DEPT_DETAIL = "dept_detail";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.deptId;
     }
 
-    public Department() {
-        super();
-    }
-
-    public String getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(String deptId) {
-        this.deptId = deptId == null ? null : deptId.trim();
-    }
-
-    public String getHosId() {
-        return hosId;
-    }
-
-    public void setHosId(String hosId) {
-        this.hosId = hosId == null ? null : hosId.trim();
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName == null ? null : deptName.trim();
-    }
-
-    public String getDeptPy() {
-        return deptPy;
-    }
-
-    public void setDeptPy(String deptPy) {
-        this.deptPy = deptPy == null ? null : deptPy.trim();
-    }
-
-    public String getDeptLeader() {
-        return deptLeader;
-    }
-
-    public void setDeptLeader(String deptLeader) {
-        this.deptLeader = deptLeader == null ? null : deptLeader.trim();
-    }
-
-    public String getDeptAddress() {
-        return deptAddress;
-    }
-
-    public void setDeptAddress(String deptAddress) {
-        this.deptAddress = deptAddress == null ? null : deptAddress.trim();
-    }
-
-    public String getDeptTel() {
-        return deptTel;
-    }
-
-    public void setDeptTel(String deptTel) {
-        this.deptTel = deptTel == null ? null : deptTel.trim();
-    }
-
-    public String getDeptDetail() {
-        return deptDetail;
-    }
-
-    public void setDeptDetail(String deptDetail) {
-        this.deptDetail = deptDetail == null ? null : deptDetail.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

@@ -1,16 +1,33 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.math.BigDecimal;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-@TableName(value = "t_follow_physical_exam")
-public class FollowPhysicalExam {
+/**
+ * <p>
+ * 随访体检表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_follow_physical_exam")
+public class FollowPhysicalExam extends Model<FollowPhysicalExam> {
 
-    @TableId(type = IdType.AUTO)
-    private String followPhysicalExamId;
+    private static final long serialVersionUID = 1L;
+
+    @TableId(value = "follow_physical_exam_id", type = IdType.AUTO)
+    private Integer followPhysicalExamId;
 
     private String followUpId;
 
@@ -18,79 +35,30 @@ public class FollowPhysicalExam {
 
     private BigDecimal bloodPressureLow;
 
-    private Short heartRate;
+    private BigDecimal heartRate;
 
     private BigDecimal weight;
 
     private String otherInfo;
 
-    public FollowPhysicalExam(String followPhysicalExamId, String followUpId, BigDecimal bloodPressureHigh, BigDecimal bloodPressureLow, Short heartRate, BigDecimal weight, String otherInfo) {
-        this.followPhysicalExamId = followPhysicalExamId;
-        this.followUpId = followUpId;
-        this.bloodPressureHigh = bloodPressureHigh;
-        this.bloodPressureLow = bloodPressureLow;
-        this.heartRate = heartRate;
-        this.weight = weight;
-        this.otherInfo = otherInfo;
+
+    public static final String FOLLOW_PHYSICAL_EXAM_ID = "follow_physical_exam_id";
+
+    public static final String FOLLOW_UP_ID = "follow_up_id";
+
+    public static final String BLOOD_PRESSURE_HIGH = "blood_pressure_high";
+
+    public static final String BLOOD_PRESSURE_LOW = "blood_pressure_low";
+
+    public static final String HEART_RATE = "heart_rate";
+
+    public static final String WEIGHT = "weight";
+
+    public static final String OTHER_INFO = "other_info";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.followPhysicalExamId;
     }
 
-    public FollowPhysicalExam() {
-        super();
-    }
-
-    public String getFollowPhysicalExamId() {
-        return followPhysicalExamId;
-    }
-
-    public void setFollowPhysicalExamId(String followPhysicalExamId) {
-        this.followPhysicalExamId = followPhysicalExamId == null ? null : followPhysicalExamId.trim();
-    }
-
-    public String getFollowUpId() {
-        return followUpId;
-    }
-
-    public void setFollowUpId(String followUpId) {
-        this.followUpId = followUpId == null ? null : followUpId.trim();
-    }
-
-    public BigDecimal getBloodPressureHigh() {
-        return bloodPressureHigh;
-    }
-
-    public void setBloodPressureHigh(BigDecimal bloodPressureHigh) {
-        this.bloodPressureHigh = bloodPressureHigh;
-    }
-
-    public BigDecimal getBloodPressureLow() {
-        return bloodPressureLow;
-    }
-
-    public void setBloodPressureLow(BigDecimal bloodPressureLow) {
-        this.bloodPressureLow = bloodPressureLow;
-    }
-
-    public Short getHeartRate() {
-        return heartRate;
-    }
-
-    public void setHeartRate(Short heartRate) {
-        this.heartRate = heartRate;
-    }
-
-    public BigDecimal getWeight() {
-        return weight;
-    }
-
-    public void setWeight(BigDecimal weight) {
-        this.weight = weight;
-    }
-
-    public String getOtherInfo() {
-        return otherInfo;
-    }
-
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo == null ? null : otherInfo.trim();
-    }
 }

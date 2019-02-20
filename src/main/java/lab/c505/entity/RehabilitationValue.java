@@ -1,16 +1,33 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 康复训练值表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_rehabilitation_value")
+public class RehabilitationValue extends Model<RehabilitationValue> {
 
-@TableName(value = "t_rehabilitation_value")
-public class RehabilitationValue {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String trainValueId;
+    @TableId(value = "train_value_id", type = IdType.AUTO)
+    private Integer trainValueId;
 
     private String rehabilitationItemId;
 
@@ -18,178 +35,72 @@ public class RehabilitationValue {
 
     private Integer trainValue;
 
-    private Byte trainPeriod;
+    private Integer trainPeriod;
 
-    private Byte trainIntensity;
+    private Integer trainIntensity;
 
-    private Byte trainTime;
+    private Integer trainTime;
 
-    private Byte trainGroup;
+    private Integer trainGroup;
 
-    private Byte trainDuration;
+    private Integer trainDuration;
 
     private String otherInfo;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public RehabilitationValue(String trainValueId, String rehabilitationItemId, String medicalHistoryId, Integer trainValue, Byte trainPeriod, Byte trainIntensity, Byte trainTime, Byte trainGroup, Byte trainDuration, String otherInfo, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.trainValueId = trainValueId;
-        this.rehabilitationItemId = rehabilitationItemId;
-        this.medicalHistoryId = medicalHistoryId;
-        this.trainValue = trainValue;
-        this.trainPeriod = trainPeriod;
-        this.trainIntensity = trainIntensity;
-        this.trainTime = trainTime;
-        this.trainGroup = trainGroup;
-        this.trainDuration = trainDuration;
-        this.otherInfo = otherInfo;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String TRAIN_VALUE_ID = "train_value_id";
+
+    public static final String REHABILITATION_ITEM_ID = "rehabilitation_item_id";
+
+    public static final String MEDICAL_HISTORY_ID = "medical_history_id";
+
+    public static final String TRAIN_VALUE = "train_value";
+
+    public static final String TRAIN_PERIOD = "train_period";
+
+    public static final String TRAIN_INTENSITY = "train_intensity";
+
+    public static final String TRAIN_TIME = "train_time";
+
+    public static final String TRAIN_GROUP = "train_group";
+
+    public static final String TRAIN_DURATION = "train_duration";
+
+    public static final String OTHER_INFO = "other_info";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.trainValueId;
     }
 
-    public RehabilitationValue() {
-        super();
-    }
-
-    public String getTrainValueId() {
-        return trainValueId;
-    }
-
-    public void setTrainValueId(String trainValueId) {
-        this.trainValueId = trainValueId == null ? null : trainValueId.trim();
-    }
-
-    public String getRehabilitationItemId() {
-        return rehabilitationItemId;
-    }
-
-    public void setRehabilitationItemId(String rehabilitationItemId) {
-        this.rehabilitationItemId = rehabilitationItemId == null ? null : rehabilitationItemId.trim();
-    }
-
-    public String getMedicalHistoryId() {
-        return medicalHistoryId;
-    }
-
-    public void setMedicalHistoryId(String medicalHistoryId) {
-        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
-    }
-
-    public Integer getTrainValue() {
-        return trainValue;
-    }
-
-    public void setTrainValue(Integer trainValue) {
-        this.trainValue = trainValue;
-    }
-
-    public Byte getTrainPeriod() {
-        return trainPeriod;
-    }
-
-    public void setTrainPeriod(Byte trainPeriod) {
-        this.trainPeriod = trainPeriod;
-    }
-
-    public Byte getTrainIntensity() {
-        return trainIntensity;
-    }
-
-    public void setTrainIntensity(Byte trainIntensity) {
-        this.trainIntensity = trainIntensity;
-    }
-
-    public Byte getTrainTime() {
-        return trainTime;
-    }
-
-    public void setTrainTime(Byte trainTime) {
-        this.trainTime = trainTime;
-    }
-
-    public Byte getTrainGroup() {
-        return trainGroup;
-    }
-
-    public void setTrainGroup(Byte trainGroup) {
-        this.trainGroup = trainGroup;
-    }
-
-    public Byte getTrainDuration() {
-        return trainDuration;
-    }
-
-    public void setTrainDuration(Byte trainDuration) {
-        this.trainDuration = trainDuration;
-    }
-
-    public String getOtherInfo() {
-        return otherInfo;
-    }
-
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo == null ? null : otherInfo.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

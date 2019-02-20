@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 图书表
+ * 
  * </p>
  *
  * @author TingTing W
@@ -19,36 +19,27 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Book extends Model<Book> {
+public class Mytest extends Model<Mytest> {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 图书ID
-     */
-    @TableId(value = "book_id", type = IdType.AUTO)
-    private Long bookId;
+    @TableId(value = "stu_id", type = IdType.AUTO)
+    private Integer stuId;
 
-    /**
-     * 图书名称
-     */
     private String name;
 
-    /**
-     * 馆藏数量
-     */
-    private Integer number;
+    private Integer age;
 
 
-    public static final String BOOK_ID = "book_id";
+    public static final String STU_ID = "stu_id";
 
     public static final String NAME = "name";
 
-    public static final String NUMBER = "number";
+    public static final String AGE = "age";
 
     @Override
     protected Serializable pkVal() {
-        return this.bookId;
+        return this.stuId;
     }
 
 }

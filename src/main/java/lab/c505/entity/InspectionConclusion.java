@@ -1,16 +1,33 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 检查结论表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_inspection_conclusion")
+public class InspectionConclusion extends Model<InspectionConclusion> {
 
-@TableName(value = "t_inspection_conclusion")
-public class InspectionConclusion {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String inspectionConclusionId;
+    @TableId(value = "inspection_conclusion_id", type = IdType.AUTO)
+    private Integer inspectionConclusionId;
 
     private String medicalHistoryId;
 
@@ -18,134 +35,56 @@ public class InspectionConclusion {
 
     private String examConclusion;
 
-    private Date examTime;
+    private LocalDateTime examTime;
 
     private Integer examIndex;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public InspectionConclusion(String inspectionConclusionId, String medicalHistoryId, String examCategory, String examConclusion, Date examTime, Integer examIndex, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.inspectionConclusionId = inspectionConclusionId;
-        this.medicalHistoryId = medicalHistoryId;
-        this.examCategory = examCategory;
-        this.examConclusion = examConclusion;
-        this.examTime = examTime;
-        this.examIndex = examIndex;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String INSPECTION_CONCLUSION_ID = "inspection_conclusion_id";
+
+    public static final String MEDICAL_HISTORY_ID = "medical_history_id";
+
+    public static final String EXAM_CATEGORY = "exam_category";
+
+    public static final String EXAM_CONCLUSION = "exam_conclusion";
+
+    public static final String EXAM_TIME = "exam_time";
+
+    public static final String EXAM_INDEX = "exam_index";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.inspectionConclusionId;
     }
 
-    public InspectionConclusion() {
-        super();
-    }
-
-    public String getInspectionConclusionId() {
-        return inspectionConclusionId;
-    }
-
-    public void setInspectionConclusionId(String inspectionConclusionId) {
-        this.inspectionConclusionId = inspectionConclusionId == null ? null : inspectionConclusionId.trim();
-    }
-
-    public String getMedicalHistoryId() {
-        return medicalHistoryId;
-    }
-
-    public void setMedicalHistoryId(String medicalHistoryId) {
-        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
-    }
-
-    public String getExamCategory() {
-        return examCategory;
-    }
-
-    public void setExamCategory(String examCategory) {
-        this.examCategory = examCategory == null ? null : examCategory.trim();
-    }
-
-    public String getExamConclusion() {
-        return examConclusion;
-    }
-
-    public void setExamConclusion(String examConclusion) {
-        this.examConclusion = examConclusion == null ? null : examConclusion.trim();
-    }
-
-    public Date getExamTime() {
-        return examTime;
-    }
-
-    public void setExamTime(Date examTime) {
-        this.examTime = examTime;
-    }
-
-    public Integer getExamIndex() {
-        return examIndex;
-    }
-
-    public void setExamIndex(Integer examIndex) {
-        this.examIndex = examIndex;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

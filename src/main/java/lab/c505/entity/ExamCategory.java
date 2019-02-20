@@ -1,118 +1,78 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 医院检查类别表，血常规、尿常规等
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_exam_category")
+public class ExamCategory extends Model<ExamCategory> {
 
-@TableName(value = "t_exam_category")
-public class ExamCategory {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String examCategoryId;
+    @TableId(value = "exam_category_id", type = IdType.AUTO)
+    private Integer examCategoryId;
 
     private String examCategoryCode;
 
     private String examCategoryName;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public ExamCategory(String examCategoryId, String examCategoryCode, String examCategoryName, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.examCategoryId = examCategoryId;
-        this.examCategoryCode = examCategoryCode;
-        this.examCategoryName = examCategoryName;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String EXAM_CATEGORY_ID = "exam_category_id";
+
+    public static final String EXAM_CATEGORY_CODE = "exam_category_code";
+
+    public static final String EXAM_CATEGORY_NAME = "exam_category_name";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.examCategoryId;
     }
 
-    public ExamCategory() {
-        super();
-    }
-
-    public String getExamCategoryId() {
-        return examCategoryId;
-    }
-
-    public void setExamCategoryId(String examCategoryId) {
-        this.examCategoryId = examCategoryId == null ? null : examCategoryId.trim();
-    }
-
-    public String getExamCategoryCode() {
-        return examCategoryCode;
-    }
-
-    public void setExamCategoryCode(String examCategoryCode) {
-        this.examCategoryCode = examCategoryCode == null ? null : examCategoryCode.trim();
-    }
-
-    public String getExamCategoryName() {
-        return examCategoryName;
-    }
-
-    public void setExamCategoryName(String examCategoryName) {
-        this.examCategoryName = examCategoryName == null ? null : examCategoryName.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

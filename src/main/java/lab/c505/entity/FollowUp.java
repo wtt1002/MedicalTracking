@@ -1,28 +1,45 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 随访表，记录随访的计划与实际时间，随访患者与医生等信息
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_follow_up")
+public class FollowUp extends Model<FollowUp> {
 
-@TableName(value = "t_follow_up")
-public class FollowUp {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String followUpId;
+    @TableId(value = "follow_up_id", type = IdType.AUTO)
+    private Integer followUpId;
 
     private String medicalHistoryId;
 
     private String doctorId;
 
-    private Date planTime;
+    private LocalDateTime planTime;
 
-    private Date finalTime;
+    private LocalDateTime finalTime;
 
-    private Date planWay;
+    private LocalDateTime planWay;
 
-    private Date finalWay;
+    private LocalDateTime finalWay;
 
     private Integer followUpDuration;
 
@@ -34,184 +51,64 @@ public class FollowUp {
 
     private Integer followUpIndex;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public FollowUp(String followUpId, String medicalHistoryId, String doctorId, Date planTime, Date finalTime, Date planWay, Date finalWay, Integer followUpDuration, String recoveryStatus, String furtherConsultation, String recentSymptoms, Integer followUpIndex, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.followUpId = followUpId;
-        this.medicalHistoryId = medicalHistoryId;
-        this.doctorId = doctorId;
-        this.planTime = planTime;
-        this.finalTime = finalTime;
-        this.planWay = planWay;
-        this.finalWay = finalWay;
-        this.followUpDuration = followUpDuration;
-        this.recoveryStatus = recoveryStatus;
-        this.furtherConsultation = furtherConsultation;
-        this.recentSymptoms = recentSymptoms;
-        this.followUpIndex = followUpIndex;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String FOLLOW_UP_ID = "follow_up_id";
+
+    public static final String MEDICAL_HISTORY_ID = "medical_history_id";
+
+    public static final String DOCTOR_ID = "doctor_id";
+
+    public static final String PLAN_TIME = "plan_time";
+
+    public static final String FINAL_TIME = "final_time";
+
+    public static final String PLAN_WAY = "plan_way";
+
+    public static final String FINAL_WAY = "final_way";
+
+    public static final String FOLLOW_UP_DURATION = "follow_up_duration";
+
+    public static final String RECOVERY_STATUS = "recovery_status";
+
+    public static final String FURTHER_CONSULTATION = "further_consultation";
+
+    public static final String RECENT_SYMPTOMS = "recent_symptoms";
+
+    public static final String FOLLOW_UP_INDEX = "follow_up_index";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.followUpId;
     }
 
-    public FollowUp() {
-        super();
-    }
-
-    public String getFollowUpId() {
-        return followUpId;
-    }
-
-    public void setFollowUpId(String followUpId) {
-        this.followUpId = followUpId == null ? null : followUpId.trim();
-    }
-
-    public String getMedicalHistoryId() {
-        return medicalHistoryId;
-    }
-
-    public void setMedicalHistoryId(String medicalHistoryId) {
-        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
-    }
-
-    public String getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId == null ? null : doctorId.trim();
-    }
-
-    public Date getPlanTime() {
-        return planTime;
-    }
-
-    public void setPlanTime(Date planTime) {
-        this.planTime = planTime;
-    }
-
-    public Date getFinalTime() {
-        return finalTime;
-    }
-
-    public void setFinalTime(Date finalTime) {
-        this.finalTime = finalTime;
-    }
-
-    public Date getPlanWay() {
-        return planWay;
-    }
-
-    public void setPlanWay(Date planWay) {
-        this.planWay = planWay;
-    }
-
-    public Date getFinalWay() {
-        return finalWay;
-    }
-
-    public void setFinalWay(Date finalWay) {
-        this.finalWay = finalWay;
-    }
-
-    public Integer getFollowUpDuration() {
-        return followUpDuration;
-    }
-
-    public void setFollowUpDuration(Integer followUpDuration) {
-        this.followUpDuration = followUpDuration;
-    }
-
-    public String getRecoveryStatus() {
-        return recoveryStatus;
-    }
-
-    public void setRecoveryStatus(String recoveryStatus) {
-        this.recoveryStatus = recoveryStatus == null ? null : recoveryStatus.trim();
-    }
-
-    public String getFurtherConsultation() {
-        return furtherConsultation;
-    }
-
-    public void setFurtherConsultation(String furtherConsultation) {
-        this.furtherConsultation = furtherConsultation == null ? null : furtherConsultation.trim();
-    }
-
-    public String getRecentSymptoms() {
-        return recentSymptoms;
-    }
-
-    public void setRecentSymptoms(String recentSymptoms) {
-        this.recentSymptoms = recentSymptoms == null ? null : recentSymptoms.trim();
-    }
-
-    public Integer getFollowUpIndex() {
-        return followUpIndex;
-    }
-
-    public void setFollowUpIndex(Integer followUpIndex) {
-        this.followUpIndex = followUpIndex;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

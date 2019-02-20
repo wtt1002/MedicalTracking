@@ -1,17 +1,34 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.math.BigDecimal;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-@TableName(value = "t_score")
-public class Score {
+/**
+ * <p>
+ * 患者评分表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_score")
+public class Score extends Model<Score> {
 
-    @TableId(type = IdType.AUTO)
-    private String scoreId;
+    private static final long serialVersionUID = 1L;
+
+    @TableId(value = "score_id", type = IdType.AUTO)
+    private Integer scoreId;
 
     private String medicalHistoryId;
 
@@ -23,130 +40,52 @@ public class Score {
 
     private String daptDetail;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public Score(String scoreId, String medicalHistoryId, BigDecimal graceScore, BigDecimal daptScore, BigDecimal crucedeScore, String daptDetail, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.scoreId = scoreId;
-        this.medicalHistoryId = medicalHistoryId;
-        this.graceScore = graceScore;
-        this.daptScore = daptScore;
-        this.crucedeScore = crucedeScore;
-        this.daptDetail = daptDetail;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String SCORE_ID = "score_id";
+
+    public static final String MEDICAL_HISTORY_ID = "medical_history_id";
+
+    public static final String GRACE_SCORE = "grace_score";
+
+    public static final String DAPT_SCORE = "dapt_score";
+
+    public static final String CRUCEDE_SCORE = "crucede_score";
+
+    public static final String DAPT_DETAIL = "dapt_detail";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.scoreId;
     }
 
-    public Score() {
-        super();
-    }
-
-    public String getScoreId() {
-        return scoreId;
-    }
-
-    public void setScoreId(String scoreId) {
-        this.scoreId = scoreId == null ? null : scoreId.trim();
-    }
-
-    public String getMedicalHistoryId() {
-        return medicalHistoryId;
-    }
-
-    public void setMedicalHistoryId(String medicalHistoryId) {
-        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
-    }
-
-    public BigDecimal getGraceScore() {
-        return graceScore;
-    }
-
-    public void setGraceScore(BigDecimal graceScore) {
-        this.graceScore = graceScore;
-    }
-
-    public BigDecimal getDaptScore() {
-        return daptScore;
-    }
-
-    public void setDaptScore(BigDecimal daptScore) {
-        this.daptScore = daptScore;
-    }
-
-    public BigDecimal getCrucedeScore() {
-        return crucedeScore;
-    }
-
-    public void setCrucedeScore(BigDecimal crucedeScore) {
-        this.crucedeScore = crucedeScore;
-    }
-
-    public String getDaptDetail() {
-        return daptDetail;
-    }
-
-    public void setDaptDetail(String daptDetail) {
-        this.daptDetail = daptDetail == null ? null : daptDetail.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

@@ -1,25 +1,42 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.math.BigDecimal;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-@TableName(value = "t_medical_history")
-public class MedicalHistory {
+/**
+ * <p>
+ * 患者病史表，记录患者每一次入院信息
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_medical_history")
+public class MedicalHistory extends Model<MedicalHistory> {
 
-    @TableId(type = IdType.AUTO)
-    private String medicalHistoryId;
+    private static final long serialVersionUID = 1L;
+
+    @TableId(value = "medical_history_id", type = IdType.AUTO)
+    private Integer medicalHistoryId;
 
     private String patientId;
 
     private String admissionNum;
 
-    private Date inTime;
+    private LocalDateTime inTime;
 
-    private Date outTime;
+    private LocalDateTime outTime;
 
     private String operateDoc;
 
@@ -41,211 +58,70 @@ public class MedicalHistory {
 
     private BigDecimal bmi;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public MedicalHistory(String medicalHistoryId, String patientId, String admissionNum, Date inTime, Date outTime, String operateDoc, String mainDiagnose, String riskFactor, String preDrugs, Integer bloodPressureH, Integer bloodPressureL, Integer heartRate, BigDecimal height, BigDecimal weight, BigDecimal bmi, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.medicalHistoryId = medicalHistoryId;
-        this.patientId = patientId;
-        this.admissionNum = admissionNum;
-        this.inTime = inTime;
-        this.outTime = outTime;
-        this.operateDoc = operateDoc;
-        this.mainDiagnose = mainDiagnose;
-        this.riskFactor = riskFactor;
-        this.preDrugs = preDrugs;
-        this.bloodPressureH = bloodPressureH;
-        this.bloodPressureL = bloodPressureL;
-        this.heartRate = heartRate;
-        this.height = height;
-        this.weight = weight;
-        this.bmi = bmi;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String MEDICAL_HISTORY_ID = "medical_history_id";
+
+    public static final String PATIENT_ID = "patient_id";
+
+    public static final String ADMISSION_NUM = "admission_num";
+
+    public static final String IN_TIME = "in_time";
+
+    public static final String OUT_TIME = "out_time";
+
+    public static final String OPERATE_DOC = "operate_doc";
+
+    public static final String MAIN_DIAGNOSE = "main_diagnose";
+
+    public static final String RISK_FACTOR = "risk_factor";
+
+    public static final String PRE_DRUGS = "pre_drugs";
+
+    public static final String BLOOD_PRESSURE_H = "blood_pressure_h";
+
+    public static final String BLOOD_PRESSURE_L = "blood_pressure_l";
+
+    public static final String HEART_RATE = "heart_rate";
+
+    public static final String HEIGHT = "height";
+
+    public static final String WEIGHT = "weight";
+
+    public static final String BMI = "bmi";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.medicalHistoryId;
     }
 
-    public MedicalHistory() {
-        super();
-    }
-
-    public String getMedicalHistoryId() {
-        return medicalHistoryId;
-    }
-
-    public void setMedicalHistoryId(String medicalHistoryId) {
-        this.medicalHistoryId = medicalHistoryId == null ? null : medicalHistoryId.trim();
-    }
-
-    public String getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(String patientId) {
-        this.patientId = patientId == null ? null : patientId.trim();
-    }
-
-    public String getAdmissionNum() {
-        return admissionNum;
-    }
-
-    public void setAdmissionNum(String admissionNum) {
-        this.admissionNum = admissionNum == null ? null : admissionNum.trim();
-    }
-
-    public Date getInTime() {
-        return inTime;
-    }
-
-    public void setInTime(Date inTime) {
-        this.inTime = inTime;
-    }
-
-    public Date getOutTime() {
-        return outTime;
-    }
-
-    public void setOutTime(Date outTime) {
-        this.outTime = outTime;
-    }
-
-    public String getOperateDoc() {
-        return operateDoc;
-    }
-
-    public void setOperateDoc(String operateDoc) {
-        this.operateDoc = operateDoc == null ? null : operateDoc.trim();
-    }
-
-    public String getMainDiagnose() {
-        return mainDiagnose;
-    }
-
-    public void setMainDiagnose(String mainDiagnose) {
-        this.mainDiagnose = mainDiagnose == null ? null : mainDiagnose.trim();
-    }
-
-    public String getRiskFactor() {
-        return riskFactor;
-    }
-
-    public void setRiskFactor(String riskFactor) {
-        this.riskFactor = riskFactor == null ? null : riskFactor.trim();
-    }
-
-    public String getPreDrugs() {
-        return preDrugs;
-    }
-
-    public void setPreDrugs(String preDrugs) {
-        this.preDrugs = preDrugs == null ? null : preDrugs.trim();
-    }
-
-    public Integer getBloodPressureH() {
-        return bloodPressureH;
-    }
-
-    public void setBloodPressureH(Integer bloodPressureH) {
-        this.bloodPressureH = bloodPressureH;
-    }
-
-    public Integer getBloodPressureL() {
-        return bloodPressureL;
-    }
-
-    public void setBloodPressureL(Integer bloodPressureL) {
-        this.bloodPressureL = bloodPressureL;
-    }
-
-    public Integer getHeartRate() {
-        return heartRate;
-    }
-
-    public void setHeartRate(Integer heartRate) {
-        this.heartRate = heartRate;
-    }
-
-    public BigDecimal getHeight() {
-        return height;
-    }
-
-    public void setHeight(BigDecimal height) {
-        this.height = height;
-    }
-
-    public BigDecimal getWeight() {
-        return weight;
-    }
-
-    public void setWeight(BigDecimal weight) {
-        this.weight = weight;
-    }
-
-    public BigDecimal getBmi() {
-        return bmi;
-    }
-
-    public void setBmi(BigDecimal bmi) {
-        this.bmi = bmi;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

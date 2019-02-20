@@ -1,118 +1,78 @@
 package lab.c505.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import java.util.Date;
+/**
+ * <p>
+ * 康复训练类别表
+ * </p>
+ *
+ * @author TingTing W
+ * @since 2019-02-19
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_rehabilitation_train_category")
+public class RehabilitationTrainCategory extends Model<RehabilitationTrainCategory> {
 
-@TableName(value = "t_rehabilitation_train_category")
-public class RehabilitationTrainCategory {
+    private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.AUTO)
-    private String rehabilitationTrainCategoryId;
+    @TableId(value = "rehabilitation_train_category_id", type = IdType.AUTO)
+    private Integer rehabilitationTrainCategoryId;
 
     private String rehabilitationTrainCategoryCode;
 
     private String rehabilitationTrainCategoryName;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String createUser;
 
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     private String modifyUser;
 
+    /**
+     * 0删除，1有效
+     */
     private Integer deleteFlag;
 
+    /**
+     * 此字段用于数据修改并发控制
+     */
     private Integer version;
 
-    public RehabilitationTrainCategory(String rehabilitationTrainCategoryId, String rehabilitationTrainCategoryCode, String rehabilitationTrainCategoryName, Date createTime, String createUser, Date modifyTime, String modifyUser, Integer deleteFlag, Integer version) {
-        this.rehabilitationTrainCategoryId = rehabilitationTrainCategoryId;
-        this.rehabilitationTrainCategoryCode = rehabilitationTrainCategoryCode;
-        this.rehabilitationTrainCategoryName = rehabilitationTrainCategoryName;
-        this.createTime = createTime;
-        this.createUser = createUser;
-        this.modifyTime = modifyTime;
-        this.modifyUser = modifyUser;
-        this.deleteFlag = deleteFlag;
-        this.version = version;
+
+    public static final String REHABILITATION_TRAIN_CATEGORY_ID = "rehabilitation_train_category_id";
+
+    public static final String REHABILITATION_TRAIN_CATEGORY_CODE = "rehabilitation_train_category_code";
+
+    public static final String REHABILITATION_TRAIN_CATEGORY_NAME = "rehabilitation_train_category_name";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String CREATE_USER = "create_user";
+
+    public static final String MODIFY_TIME = "modify_time";
+
+    public static final String MODIFY_USER = "modify_user";
+
+    public static final String DELETE_FLAG = "delete_flag";
+
+    public static final String VERSION = "version";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.rehabilitationTrainCategoryId;
     }
 
-    public RehabilitationTrainCategory() {
-        super();
-    }
-
-    public String getRehabilitationTrainCategoryId() {
-        return rehabilitationTrainCategoryId;
-    }
-
-    public void setRehabilitationTrainCategoryId(String rehabilitationTrainCategoryId) {
-        this.rehabilitationTrainCategoryId = rehabilitationTrainCategoryId == null ? null : rehabilitationTrainCategoryId.trim();
-    }
-
-    public String getRehabilitationTrainCategoryCode() {
-        return rehabilitationTrainCategoryCode;
-    }
-
-    public void setRehabilitationTrainCategoryCode(String rehabilitationTrainCategoryCode) {
-        this.rehabilitationTrainCategoryCode = rehabilitationTrainCategoryCode == null ? null : rehabilitationTrainCategoryCode.trim();
-    }
-
-    public String getRehabilitationTrainCategoryName() {
-        return rehabilitationTrainCategoryName;
-    }
-
-    public void setRehabilitationTrainCategoryName(String rehabilitationTrainCategoryName) {
-        this.rehabilitationTrainCategoryName = rehabilitationTrainCategoryName == null ? null : rehabilitationTrainCategoryName.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }
