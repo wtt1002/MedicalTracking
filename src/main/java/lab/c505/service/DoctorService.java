@@ -12,5 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-02-19
  */
 public interface DoctorService extends IService<Doctor> {
-
+    Doctor getDoctorById(String doctorId);
+    String getDocNameById(String doctorId);
 }
