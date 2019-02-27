@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,9 +29,9 @@ public class RehabilitationValue extends Model<RehabilitationValue> {
     @TableId(value = "train_value_id", type = IdType.AUTO)
     private Integer trainValueId;
 
-    private String rehabilitationItemId;
+    private Integer rehabilitationItemId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
     private Integer trainValue;
 

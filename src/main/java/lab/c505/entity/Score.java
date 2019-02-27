@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,7 +30,7 @@ public class Score extends Model<Score> {
     @TableId(value = "score_id", type = IdType.AUTO)
     private Integer scoreId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
     private BigDecimal graceScore;
 

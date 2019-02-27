@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,7 +29,7 @@ public class Pci extends Model<Pci> {
     @TableId(value = "pci_id", type = IdType.AUTO)
     private Integer pciId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
     private String cabg;
 

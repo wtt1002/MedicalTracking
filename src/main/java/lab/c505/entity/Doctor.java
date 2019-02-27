@@ -3,6 +3,7 @@ package lab.c505.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -16,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -35,17 +36,17 @@ public class Doctor extends Model<Doctor> {
 
     private String doctorMajor;
 
-    private String deptId;
+    private Integer deptId;
 
     private String doctorNum;
 
     private String qcNum;
 
-    private String qcDate;
+    private LocalDate qcDate;
 
     private String opqcNum;
 
-    private String opqcDate;
+    private LocalDate opqcDate;
 
     private LocalDateTime createTime;
 

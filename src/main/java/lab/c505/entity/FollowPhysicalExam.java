@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,7 +29,7 @@ public class FollowPhysicalExam extends Model<FollowPhysicalExam> {
     @TableId(value = "follow_physical_exam_id", type = IdType.AUTO)
     private Integer followPhysicalExamId;
 
-    private String followUpId;
+    private Integer followUpId;
 
     private BigDecimal bloodPressureHigh;
 

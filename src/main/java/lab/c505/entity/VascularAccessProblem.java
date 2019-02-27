@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,7 +29,7 @@ public class VascularAccessProblem extends Model<VascularAccessProblem> {
     @TableId(value = "vascular_access_problem_id", type = IdType.AUTO)
     private Integer vascularAccessProblemId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
     private String complication;
 

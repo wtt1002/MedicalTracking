@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -45,6 +45,8 @@ public class Patient extends Model<Patient> {
     private String district;
 
     private String address;
+
+    private Integer age;
 
     private LocalDate birthday;
 
@@ -106,6 +108,8 @@ public class Patient extends Model<Patient> {
     public static final String DISTRICT = "district";
 
     public static final String ADDRESS = "address";
+
+    public static final String AGE = "age";
 
     public static final String BIRTHDAY = "birthday";
 

@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,9 +29,9 @@ public class FollowUp extends Model<FollowUp> {
     @TableId(value = "follow_up_id", type = IdType.AUTO)
     private Integer followUpId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
-    private String doctorId;
+    private Integer doctorId;
 
     private LocalDateTime planTime;
 

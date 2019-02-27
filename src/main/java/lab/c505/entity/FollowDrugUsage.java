@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -42,9 +42,9 @@ public class FollowDrugUsage extends Model<FollowDrugUsage> {
 
     private String drugPeriodUnit;
 
-    private String drugId;
+    private Integer drugId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
     private LocalDateTime createTime;
 

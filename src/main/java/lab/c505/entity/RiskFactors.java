@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -41,7 +41,7 @@ public class RiskFactors extends Model<RiskFactors> {
 
     private Integer bloodLipidControl;
 
-    private String followUpId;
+    private Integer followUpId;
 
     private LocalDateTime createTime;
 

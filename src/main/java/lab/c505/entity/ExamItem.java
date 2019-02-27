@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,7 +29,7 @@ public class ExamItem extends Model<ExamItem> {
     @TableId(value = "exam_item_id", type = IdType.AUTO)
     private Integer examItemId;
 
-    private String examCategoryId;
+    private Integer examCategoryId;
 
     private String examItemCode;
 

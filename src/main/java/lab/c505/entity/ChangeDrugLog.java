@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,13 +29,13 @@ public class ChangeDrugLog extends Model<ChangeDrugLog> {
     @TableId(value = "change_drug_id", type = IdType.AUTO)
     private Integer changeDrugId;
 
-    private String operateDocId;
+    private Integer operateDocId;
 
-    private String followUpId;
+    private Integer followUpId;
 
-    private String preDrugUsage;
+    private Integer preDrugUsage;
 
-    private String aftDrugUsage;
+    private Integer aftDrugUsage;
 
     private LocalDateTime changeTime;
 

@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-19
+ * @since 2019-02-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,9 +30,9 @@ public class ExamValue extends Model<ExamValue> {
     @TableId(value = "exam_value_id", type = IdType.AUTO)
     private Integer examValueId;
 
-    private String examItemId;
+    private Integer examItemId;
 
-    private String medicalHistoryId;
+    private Integer medicalHistoryId;
 
     private BigDecimal examValue;
 
