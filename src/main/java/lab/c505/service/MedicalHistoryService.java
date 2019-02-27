@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-02-19
  */
 public interface MedicalHistoryService extends IService<MedicalHistory> {
-
+    String getLastMainDiagnose(Integer patientId);
 }

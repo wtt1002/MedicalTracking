@@ -7,6 +7,7 @@ import lab.c505.mapper.PatientMapper;
 import lab.c505.service.PatientService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
  * @since 2019-02-19
  */
 @Service
+@Primary
 public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> implements PatientService {
 
     @Autowired
@@ -29,8 +31,8 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         QueryWrapper<Patient> queryWrapper = new QueryWrapper<>();
         System.out.println(page);
         int a = page, b = count;
-        queryWrapper.like(Patient.NAME, filter).or().like(Patient.BIRTHDAY, filter).or().like(Patient.MOBILE_PHONE,filter).or().like(Patient.NUM_ID,filter);
-        List<Patient> list = patientMapper.selectPage(new Page<>(a, b), null).getRecords();
+        queryWrapper.like(Patient.NAME, filter);
+        List<Patient> list = patientMapper.selectPage(new Page<>(a, b), queryWrapper).getRecords();
         return list;
     }
 }

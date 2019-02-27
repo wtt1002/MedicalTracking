@@ -24,12 +24,12 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
     DoctorMapper doctorMapper;
 
     @Override
-    public Doctor getDoctorById(String doctorId) {
+    public Doctor getDoctorById(Integer doctorId) {
         return doctorMapper.selectById(doctorId);
     }
 
     @Override
-    public String getDocNameById(String doctorId) {
+    public String getDocNameById(Integer doctorId) {
         Doctor doctor = doctorMapper.selectById(doctorId);
         return doctor.getDoctorName();
     }
