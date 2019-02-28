@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,5 +35,11 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         queryWrapper.like(Patient.NAME, filter);
         List<Patient> list = patientMapper.selectPage(new Page<>(a, b), queryWrapper).getRecords();
         return list;
+    }
+
+    @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
+    public void addOnePatient(Patient patient) throws Exception {
+        patientMapper.insert(patient);
     }
 }
