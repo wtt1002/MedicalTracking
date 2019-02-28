@@ -29,7 +29,6 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     @Override
     public List<Patient> getPatientsByPage(Integer page, Integer count, String filter) {
         QueryWrapper<Patient> queryWrapper = new QueryWrapper<>();
-        System.out.println(page);
         int a = page, b = count;
         queryWrapper.like(Patient.NAME, filter);
         List<Patient> list = patientMapper.selectPage(new Page<>(a, b), queryWrapper).getRecords();
