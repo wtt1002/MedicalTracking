@@ -15,5 +15,5 @@ import java.util.List;
  */
 public interface PatientService extends IService<Patient> {
     List<Patient> getPatientsByPage(Integer page, Integer count, String filter);
-    //
+    void addOnePatient(Patient patient) throws Exception;
 }

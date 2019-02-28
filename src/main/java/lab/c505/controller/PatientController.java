@@ -1,6 +1,7 @@
 package lab.c505.controller;
 
 
+import lab.c505.dto.AddPatientDto;
 import lab.c505.dto.PatientBriefInfoDto;
 import lab.c505.entity.MedicalHistory;
 import lab.c505.entity.Patient;
@@ -63,5 +64,20 @@ public class PatientController {
         }
         return response;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public ResponseObject addPatient(@RequestBody AddPatientDto addPatientDto){
+        ResponseObject response = ResponseObject.create();
+        try {
+            patientService.addOnePatient(addPatientDto.setDate().getPatient());
+            response.setData("插入成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setData("插入失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
 }
 
