@@ -7,11 +7,13 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 //import org.junit.jupiter.api.Test;
@@ -66,12 +68,16 @@ public class CodeGenerator {
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig.setCapitalMode(true)//开启全局大写命名
 //                .setDbColumnUnderline(true)//表名字段名使用下划线
+//                .setSuperEntityClass("com.baomidou.ant.common.BaseEntity")
                 .setNaming(NamingStrategy.underline_to_camel)//下划线到驼峰的命名方式
                 .setTablePrefix("t_")//表名前缀
                 .setEntityLombokModel(true)//使用lombok
                 .setEntityColumnConstant(true)// 【实体】是否生成字段常量（默认 false）
                 // 自定义实体，公共字段
                 .setSuperEntityColumns(new String[] { "VERSION","CREATE_TIME","CREATE_USER","MODIFY_TIME","MODIFY_USER","DELETE_FLAG" });
+
+
+
 //                .setInclude("表1","表2");//逆向工程使用的表
         //4、包名策略配置
         PackageConfig packageConfig = new PackageConfig();
