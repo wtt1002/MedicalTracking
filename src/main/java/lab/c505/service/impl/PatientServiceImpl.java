@@ -1,6 +1,7 @@
 package lab.c505.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lab.c505.entity.Patient;
 import lab.c505.mapper.PatientMapper;
@@ -29,17 +30,37 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     @Autowired
     PatientMapper patientMapper;
     @Override
-    public List<Patient> getPatientsByPage(Integer page, Integer count, String filter) {
+    public IPage<Patient> getPatientsByPage(Integer page, Integer count, String filter) {
         QueryWrapper<Patient> queryWrapper = new QueryWrapper<>();
-        int a = page, b = count;
         queryWrapper.like(Patient.NAME, filter);
-        List<Patient> list = patientMapper.selectPage(new Page<>(a, b), queryWrapper).getRecords();
-        return list;
+        IPage<Patient> ipage = patientMapper.selectPage(new Page<Patient>(page ,count), queryWrapper);
+//        System.out.println("Page111 " + ipage.getCurrent());
+//        System.out.println("count " + ipage.getSize());
+//        System.out.println("totalCount : " + ipage.getTotal());
+        return ipage;
     }
 
     @Override
     @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
-    public void addOnePatient(Patient patient) throws Exception {
+    public void addOnePatient(Patient patient){
         patientMapper.insert(patient);
+    }
+
+    @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
+    public void uptOnePatient(Patient patient){
+        patientMapper.updateById(patient);
+    }
+
+    @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
+    public void removeOnePatient(String patientId) {
+        patientMapper.deleteById(patientId);
+    }
+
+    @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
+    public void batchRemovePatient(List<String> ids) {
+        patientMapper.deleteBatchIds(ids);
     }
 }
