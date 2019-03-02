@@ -1,8 +1,10 @@
 package lab.c505.dto;
 
 import lab.c505.entity.Patient;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -12,13 +14,13 @@ import java.util.Date;
  * Author: TingTing W
  * Date: Created in 2019/2/27 10:45
  */
+@Data
+@Accessors(chain = true)
 public class PatientBriefInfoDto {
-    @Getter
     private Patient patient;
-    @Getter @Setter
     private String birthday;
-    @Getter @Setter
     private String mainDiagnose;
+    private long total;
 
     public void setPatient(Patient patient) {
         this.patient = patient;
