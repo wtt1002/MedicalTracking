@@ -44,7 +44,7 @@ public class AccountController {
                 doctorDetailDto.setAccount(account);
                 doctorDetailDto.setDocName(doctorService.getDocNameById(account.getDoctorId()));
             }else {
-                response.setMsg("用户名或密码错误");
+                response.setMsg("用户名或密码错误。");
                 response.setCode("0003");
             }
         }else {
