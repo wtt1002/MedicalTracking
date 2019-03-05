@@ -1,6 +1,8 @@
 package lab.c505.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lab.c505.entity.MedicalHistory;
 import lab.c505.mapper.MedicalHistoryMapper;
 import lab.c505.service.MedicalHistoryService;
@@ -36,5 +38,15 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
             return list.get(0).getMainDiagnose();
         }
         return null;
+    }
+
+    @Override
+    public IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, Integer patientId) {
+        System.out.println("patientId...."+patientId);
+        QueryWrapper<MedicalHistory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(MedicalHistory.PATIENT_ID, patientId);
+        queryWrapper.orderByDesc(MedicalHistory.IN_TIME);
+        System.out.println("patientId...."+patientId);
+        return medicalHistoryMapper.selectPage(new Page<>(page, count),queryWrapper);
     }
 }

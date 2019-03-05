@@ -1,5 +1,6 @@
 package lab.c505.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lab.c505.entity.MedicalHistory;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface MedicalHistoryService extends IService<MedicalHistory> {
     String getLastMainDiagnose(Integer patientId);
+    IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, Integer patientId);
 }
