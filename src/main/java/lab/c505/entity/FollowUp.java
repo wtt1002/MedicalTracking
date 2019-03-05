@@ -3,6 +3,7 @@ package lab.c505.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -16,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-27
+ * @since 2019-03-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -33,13 +34,13 @@ public class FollowUp extends Model<FollowUp> {
 
     private Integer doctorId;
 
-    private LocalDateTime planTime;
+    private LocalDate planTime;
 
-    private LocalDateTime finalTime;
+    private LocalDate finalTime;
 
-    private LocalDateTime planWay;
+    private String planWay;
 
-    private LocalDateTime finalWay;
+    private String finalWay;
 
     private Integer followUpDuration;
 

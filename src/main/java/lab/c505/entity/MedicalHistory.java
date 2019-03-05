@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -17,7 +18,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-02-27
+ * @since 2019-03-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -34,9 +35,9 @@ public class MedicalHistory extends Model<MedicalHistory> {
 
     private String admissionNum;
 
-    private LocalDateTime inTime;
+    private LocalDate inTime;
 
-    private LocalDateTime outTime;
+    private LocalDate outTime;
 
     private String operateDoc;
 
