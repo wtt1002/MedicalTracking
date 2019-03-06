@@ -12,9 +12,11 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class RecordBriefInfoDto {
+    private Integer medicalHistoryId;
     private String inTime;
     private String outTime;
-    private String operate_doc;
-    private String main_diagnose;
+    private String operateDoc;
+    private String mainDiagnose;
+    private String riskFactor;
     private Long total;
 }

@@ -2,6 +2,7 @@ package lab.c505.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lab.c505.dto.MedicalHistoryDto;
 import lab.c505.dto.RecordBriefInfoDto;
 import lab.c505.entity.MedicalHistory;
 import lab.c505.service.MedicalHistoryService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * <p>
@@ -34,18 +36,17 @@ public class MedicalHistoryController {
     public ResponseObject getRecordsByPatientId(@RequestBody Map<String, Object> params){
         ResponseObject response = ResponseObject.create();
         List<RecordBriefInfoDto> dtos = new ArrayList<>();
-        System.out.println(params.get("page"));
-        System.out.println(params.get("count"));
-        System.out.println(params.get("patientId"));
         try {
             IPage<MedicalHistory> records = medicalHistoryService.getRecordsByPage((Integer) params.get("page"),(Integer) params.get("count"),(Integer) params.get("patientId"));
             for (MedicalHistory mh : records.getRecords()) {
                 RecordBriefInfoDto dto = new RecordBriefInfoDto();
-                dto.setTotal(records.getTotal());
+                dto.setMedicalHistoryId(mh.getMedicalHistoryId());
                 dto.setInTime(mh.getInTime().toString());
                 dto.setOutTime(mh.getOutTime().toString());
-                dto.setOperate_doc(mh.getOperateDoc());
-                dto.setMain_diagnose(mh.getMainDiagnose());
+                dto.setOperateDoc(mh.getOperateDoc());
+                dto.setMainDiagnose(mh.getMainDiagnose());
+                dto.setRiskFactor(mh.getRiskFactor());
+                dto.setTotal(records.getTotal());
                 dtos.add(dto);
             }
             response.setData(dtos).encode();
@@ -54,6 +55,20 @@ public class MedicalHistoryController {
             response.setData("查询失败").setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);
         }
         return response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public ResponseObject addMedicalHistory(@RequestBody MedicalHistoryDto dto){
+        ResponseObject response = ResponseObject.create();
+        try {
+            medicalHistoryService.addMedicalHistory(dto.formatTime().getMedicalHistory());
+            response.setData("插入成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("插入失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return null;
     }
 }
 

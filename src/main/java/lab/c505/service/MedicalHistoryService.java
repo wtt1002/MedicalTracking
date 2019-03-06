@@ -15,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface MedicalHistoryService extends IService<MedicalHistory> {
     String getLastMainDiagnose(Integer patientId);
     IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, Integer patientId);
+    void addMedicalHistory(MedicalHistory medicalHistory);
 }

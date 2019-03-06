@@ -10,6 +10,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,11 +44,15 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
 
     @Override
     public IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, Integer patientId) {
-        System.out.println("patientId...."+patientId);
         QueryWrapper<MedicalHistory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(MedicalHistory.PATIENT_ID, patientId);
-        queryWrapper.orderByDesc(MedicalHistory.IN_TIME);
-        System.out.println("patientId...."+patientId);
+        queryWrapper.orderByDesc(MedicalHistory.IN_TIME);;
         return medicalHistoryMapper.selectPage(new Page<>(page, count),queryWrapper);
+    }
+
+    @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
+    public void addMedicalHistory(MedicalHistory medicalHistory) {
+        medicalHistoryMapper.insert(medicalHistory);
     }
 }
