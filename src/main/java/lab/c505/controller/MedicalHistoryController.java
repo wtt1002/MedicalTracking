@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * <p>
@@ -37,12 +36,12 @@ public class MedicalHistoryController {
         ResponseObject response = ResponseObject.create();
         List<RecordBriefInfoDto> dtos = new ArrayList<>();
         try {
-            IPage<MedicalHistory> records = medicalHistoryService.getRecordsByPage((Integer) params.get("page"),(Integer) params.get("count"),(Integer) params.get("patientId"));
+            IPage<MedicalHistory> records = medicalHistoryService.getRecordsByPage((Integer) params.get("page"),(Integer) params.get("count"),String.valueOf(params.get("patientId")));
             for (MedicalHistory mh : records.getRecords()) {
                 RecordBriefInfoDto dto = new RecordBriefInfoDto();
                 dto.setMedicalHistoryId(mh.getMedicalHistoryId());
-                dto.setInTime(mh.getInTime().toString());
-                dto.setOutTime(mh.getOutTime().toString());
+                dto.setInTime(mh.getInTime());
+                dto.setOutTime(mh.getOutTime());
                 dto.setOperateDoc(mh.getOperateDoc());
                 dto.setMainDiagnose(mh.getMainDiagnose());
                 dto.setRiskFactor(mh.getRiskFactor());
@@ -62,13 +61,31 @@ public class MedicalHistoryController {
     public ResponseObject addMedicalHistory(@RequestBody MedicalHistoryDto dto){
         ResponseObject response = ResponseObject.create();
         try {
-            medicalHistoryService.addMedicalHistory(dto.formatTime().getMedicalHistory());
-            response.setData("插入成功");
+            String uuid = medicalHistoryService.addMedicalHistory(dto.formatTime().getMedicalHistory());
+            response.setData(uuid);
         }catch (Exception e){
             e.printStackTrace();
             response.setMsg("插入失败").setCode(ResponseObject.CODE_SYSTEMERROR);
         }
-        return null;
+        return response;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/detail{medicalHistoryId}", method = RequestMethod.GET)
+    public  ResponseObject getOneMedicalHistory(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
+        ResponseObject response = ResponseObject.create();
+        MedicalHistoryDto dto = new MedicalHistoryDto();
+        try {
+            MedicalHistory m = medicalHistoryService.getOneMedicalHistory(medicalHistoryId);
+            dto.setMedicalHistory(m).stringTime();
+            response.setData(dto);
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
+
 }
 

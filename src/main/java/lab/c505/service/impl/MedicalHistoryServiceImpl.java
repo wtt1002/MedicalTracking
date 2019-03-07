@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -31,7 +32,7 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
     MedicalHistoryMapper medicalHistoryMapper;
 
     @Override
-    public String getLastMainDiagnose(Integer patientId) {
+    public String getLastMainDiagnose(String patientId) {
         QueryWrapper<MedicalHistory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(MedicalHistory.PATIENT_ID,patientId);
         queryWrapper.orderByDesc(MedicalHistory.IN_TIME);
@@ -43,16 +44,24 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
     }
 
     @Override
-    public IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, Integer patientId) {
+    public IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, String patientId) {
         QueryWrapper<MedicalHistory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(MedicalHistory.PATIENT_ID, patientId);
-        queryWrapper.orderByDesc(MedicalHistory.IN_TIME);;
+        queryWrapper.orderByDesc(MedicalHistory.IN_TIME);
         return medicalHistoryMapper.selectPage(new Page<>(page, count),queryWrapper);
     }
 
     @Override
     @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
-    public void addMedicalHistory(MedicalHistory medicalHistory) {
+    public String addMedicalHistory(MedicalHistory medicalHistory) {
+        String uuid = UUID.randomUUID().toString();
+        medicalHistory.setMedicalHistoryId(uuid);
         medicalHistoryMapper.insert(medicalHistory);
+        return uuid;
+    }
+
+    @Override
+    public MedicalHistory getOneMedicalHistory(String medicalHistoryId) {
+        return medicalHistoryMapper.selectById(medicalHistoryId);
     }
 }
