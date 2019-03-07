@@ -26,12 +26,12 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
     DoctorMapper doctorMapper;
 
     @Override
-    public Doctor getDoctorById(Integer doctorId) {
+    public Doctor getDoctorById(String doctorId) {
         return doctorMapper.selectById(doctorId);
     }
 
     @Override
-    public String getDocNameById(Integer doctorId) {
+    public String getDocNameById(String doctorId) {
         Doctor doctor = doctorMapper.selectById(doctorId);
         return doctor.getDoctorName();
     }
@@ -45,7 +45,7 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
 
     @Override
     @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
-    public void addOnePatient(String name, int dept) throws Exception {
+    public void addOnePatient(String name, String dept) throws Exception {
         Doctor doctor = new Doctor();
         doctor.setDoctorName(name).setDeptId(dept);
         insetPatient(doctor);
