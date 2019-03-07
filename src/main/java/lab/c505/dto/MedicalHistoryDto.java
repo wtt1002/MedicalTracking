@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 /**
  * Package: lab.c505.dto
- * Description： TODO
+ * Description： 病历dto
  * Author: TingTing W
  * Date: Created in 2019/3/6 19:36
  */
@@ -30,10 +30,10 @@ public class MedicalHistoryDto {
     }
 
     public MedicalHistoryDto stringTime(){
-        if (medicalHistory.getInTime() != null){
+        if (medicalHistory != null && medicalHistory.getInTime() != null){
             inTimeStr = medicalHistory.getInTime().toString();
         }
-        if (medicalHistory.getOutTime() != null){
+        if (medicalHistory != null && medicalHistory.getOutTime() != null){
             outTimeStr = medicalHistory.getOutTime().toString();
         }
         return this;

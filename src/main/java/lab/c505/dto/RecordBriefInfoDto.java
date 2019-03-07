@@ -1,7 +1,11 @@
 package lab.c505.dto;
 
+import com.fasterxml.jackson.databind.JsonSerializable;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDate;
 
 /**
  * Package: lab.c505.dto
@@ -12,11 +16,35 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class RecordBriefInfoDto {
-    private Integer medicalHistoryId;
+    private String medicalHistoryId;
     private String inTime;
     private String outTime;
     private String operateDoc;
     private String mainDiagnose;
     private String riskFactor;
     private Long total;
+
+    public void setMainDiagnose(String diagnose ){
+        System.out.println(diagnose);
+//        diagnose.replace("[","");
+//        diagnose.replace("]","");
+//        diagnose.replace("\"","");
+        this.mainDiagnose = diagnose;
+    }
+
+    public void setInTime(LocalDate inTime) {
+        if(inTime != null){
+            this.inTime = inTime.toString();
+        }else {
+            this.inTime = "";
+        }
+    }
+
+    public void setOutTime(LocalDate outTime) {
+        if (outTime != null){
+            this.outTime = outTime.toString();
+        }else {
+            this.outTime = "";
+        }
+    }
 }
