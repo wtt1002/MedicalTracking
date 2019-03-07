@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-03-05
+ * @since 2019-03-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,10 +27,10 @@ public class Score extends Model<Score> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "score_id", type = IdType.AUTO)
-    private Integer scoreId;
+    @TableId(value = "score_id", type = IdType.UUID)
+    private String scoreId;
 
-    private Integer medicalHistoryId;
+    private String medicalHistoryId;
 
     private BigDecimal graceScore;
 

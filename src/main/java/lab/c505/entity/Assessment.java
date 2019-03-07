@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-03-05
+ * @since 2019-03-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,8 +27,8 @@ public class Assessment extends Model<Assessment> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "assessment_id", type = IdType.AUTO)
-    private Integer assessmentId;
+    @TableId(value = "assessment_id", type = IdType.UUID)
+    private String assessmentId;
 
     private BigDecimal sasScore;
 
@@ -64,7 +64,7 @@ public class Assessment extends Model<Assessment> {
 
     private BigDecimal tricepsSkinfoldThickness;
 
-    private Integer medicalHistoryId;
+    private String medicalHistoryId;
 
     private LocalDateTime createTime;
 

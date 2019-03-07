@@ -3,8 +3,8 @@ package lab.c505.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-03-05
+ * @since 2019-03-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,8 +26,8 @@ public class FollowSideEffects extends Model<FollowSideEffects> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "side_effects_id", type = IdType.AUTO)
-    private Integer sideEffectsId;
+    @TableId(value = "side_effects_id", type = IdType.UUID)
+    private String sideEffectsId;
 
     private String stomachStimulation;
 
@@ -37,7 +37,7 @@ public class FollowSideEffects extends Model<FollowSideEffects> {
 
     private String dyspnea;
 
-    private Integer followUpId;
+    private String followUpId;
 
     private LocalDateTime createTime;
 

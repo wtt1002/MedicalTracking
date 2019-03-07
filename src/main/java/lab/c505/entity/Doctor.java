@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-03-05
+ * @since 2019-03-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,8 +27,8 @@ public class Doctor extends Model<Doctor> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "doctor_id", type = IdType.AUTO)
-    private Integer doctorId;
+    @TableId(value = "doctor_id", type = IdType.UUID)
+    private String doctorId;
 
     private String doctorName;
 
@@ -36,7 +36,7 @@ public class Doctor extends Model<Doctor> {
 
     private String doctorMajor;
 
-    private Integer deptId;
+    private String deptId;
 
     private String doctorNum;
 

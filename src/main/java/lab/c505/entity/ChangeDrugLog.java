@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author TingTing W
- * @since 2019-03-05
+ * @since 2019-03-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,16 +27,16 @@ public class ChangeDrugLog extends Model<ChangeDrugLog> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "change_drug_id", type = IdType.AUTO)
-    private Integer changeDrugId;
+    @TableId(value = "change_drug_id", type = IdType.UUID)
+    private String changeDrugId;
 
-    private Integer operateDocId;
+    private String operateDocId;
 
-    private Integer followUpId;
+    private String followUpId;
 
-    private Integer preDrugUsage;
+    private String preDrugUsage;
 
-    private Integer aftDrugUsage;
+    private String aftDrugUsage;
 
     private LocalDate changeTime;
 
