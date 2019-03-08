@@ -45,7 +45,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!-- 以上部分配置固定，无需改动，此处往下开始项目设置 -->
+        <!--(已不再使用，先使用mybatis plus 的代码生成器) 以上部分配置固定，无需改动，此处往下开始项目设置 -->
 
         <!-- t_account表 -->
         <table tableName="t_account" domainObjectName="Account"
