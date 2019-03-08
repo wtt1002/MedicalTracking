@@ -34,6 +34,7 @@
             <property name="trimStrings" value="true"/>
             <!-- 建立的Model对象是否 不可改变 即生成的Model对象不会有 setter方法，只有构造方法 -->
             <property name="immutable" value="false"/>
+            <property name="useActualColumnNames" value="false"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mapper" targetProject="E:\IDEAProjects\MedicalTracking\src\main\resources">
@@ -53,7 +54,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="false" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_assessment表 -->
@@ -63,7 +64,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_body_composition表 -->
@@ -73,7 +74,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_change_drug_log表 -->
@@ -83,7 +84,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_department表 -->
@@ -93,7 +94,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_doctor表 -->
@@ -103,7 +104,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_drug表 -->
@@ -113,7 +114,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_drug_category表 -->
@@ -123,7 +124,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_exam_category表 -->
@@ -133,7 +134,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_exam_item表 -->
@@ -143,7 +144,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_exam_value表 -->
@@ -153,7 +154,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_follow_drug_usage表 -->
@@ -163,7 +164,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_follow_physical_exam表 -->
@@ -173,7 +174,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_follow_sick_history表 -->
@@ -183,7 +184,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_follow_side_effects表 -->
@@ -193,7 +194,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_follow_up表 -->
@@ -203,7 +204,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_hospital表 -->
@@ -213,7 +214,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_inspection_conclusion表 -->
@@ -223,7 +224,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_medical_history表 -->
@@ -233,7 +234,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_nutrition_prescription表 -->
@@ -243,7 +244,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_patient表 -->
@@ -253,7 +254,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_pci表 -->
@@ -263,7 +264,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_rehabilitation_item表 -->
@@ -273,7 +274,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_rehabilitation_train_category表 -->
@@ -283,7 +284,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
 
@@ -295,7 +296,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_risk_factors表 -->
@@ -305,7 +306,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_score表 -->
@@ -315,7 +316,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
         <!-- t_vascular_access_problem表 -->
@@ -325,7 +326,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true" />
+            <!--<property name="useActualColumnNames" value="true" />-->
             <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />-->
         </table>
 
