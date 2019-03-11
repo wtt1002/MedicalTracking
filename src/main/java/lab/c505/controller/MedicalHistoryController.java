@@ -2,8 +2,11 @@ package lab.c505.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lab.c505.dto.AddMedicalExamDto;
 import lab.c505.dto.MedicalHistoryDto;
+import lab.c505.dto.MyExamDto;
 import lab.c505.dto.RecordBriefInfoDto;
+import lab.c505.entity.ExamValue;
 import lab.c505.entity.MedicalHistory;
 import lab.c505.service.MedicalHistoryService;
 import lab.c505.utils.ResponseObject;
@@ -86,6 +89,47 @@ public class MedicalHistoryController {
         return response;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/exam{medicalHistoryId}", method = RequestMethod.GET)
+    public  ResponseObject getMedicalHistoryExam(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
+        ResponseObject response = ResponseObject.create();
+        try {
+
+            response.setData(medicalHistoryService.queryMedicalHistory(medicalHistoryId)).setMsg("查询成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/exam/addone", method = RequestMethod.POST)
+    public  ResponseObject addMedicalHistoryExam(@RequestBody List<AddMedicalExamDto> addExamDtos){
+        ResponseObject response = ResponseObject.create();
+        try {
+
+            response.setData(medicalHistoryService.insertMedicalExam(addExamDtos)).setMsg("添加成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("添加失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/exam/update", method = RequestMethod.POST)
+    public  ResponseObject updateMedicalHistoryExam(@RequestBody List<AddMedicalExamDto> addExamDtos){
+        ResponseObject response = ResponseObject.create();
+        try {
+
+            response.setData(medicalHistoryService.updateMedicalExam(addExamDtos)).setMsg("添加成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("添加失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
 
 }
 
