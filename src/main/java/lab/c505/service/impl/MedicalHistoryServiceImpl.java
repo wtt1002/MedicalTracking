@@ -124,11 +124,11 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         List<ExamValue> listValue = getListExamValue(medicalHistoryId);
         List<ExamItem> listItem = getListExamItem(listValue);
         HashMap<String, MedicalHistoryExamDto> maps = getMedicalHistory(listValue, listItem);
-        List<MedicalHistoryExamDto> list = new ArrayList<>();
-        for(String key : maps.keySet()){
-            list.add(maps.get(key));
-        }
-        return list;
+//        List<MedicalHistoryExamDto> list = new ArrayList<>();
+//        for(String key : maps.keySet()){
+//            list.add(maps.get(key));
+//        }
+        return new ArrayList<>(maps.values());
     }
 
     private ExamItem getItemExamByCode(String code) throws Exception{
@@ -168,7 +168,7 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         if(examItem == null){
             throw new Exception("ExamItem不存在");
         }
-        addMedicalExamDto.setExamItemId(examItem.getExamItemId()).setExamValueId(null);
+        addMedicalExamDto.setExamItemId(examItem.getExamItemId()).setExamValueId(UUID.randomUUID().toString());
         ExamValue examValue = addMedicalExamDto.toExamValue();
         if(examValueMapper.insert(examValue) == 0){
             throw new Exception("插入 ExamValue 失败");
