@@ -1,8 +1,9 @@
 package lab.c505.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import lab.c505.dto.DischargeExamItem;
+import lab.c505.dto.DischargeExamItemDto;
 import lab.c505.dto.DischargeSummaryDto;
+import lab.c505.dto.ScoreAndVapDto;
 import lab.c505.entity.ExamItem;
 import lab.c505.entity.ExamValue;
 import lab.c505.entity.Score;
@@ -15,7 +16,11 @@ import lab.c505.service.DischargeSummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,18 +80,153 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
             dischargeSummaryDto.setExamTime(examValues.get(0).getExamTime().toString());
 
             //PCI术后检查
-            List<DischargeExamItem> dischargeExamItems = new ArrayList<>();
-            for (ExamValue examValue:examValues) {
+            List<DischargeExamItemDto> dischargeExamItemDtos = new ArrayList<>();
+            for (ExamValue examValue : examValues) {
                 ExamItem examItem = examItemMapper.selectById(examValue.getExamItemId());
-                DischargeExamItem dischargeExamItem = new DischargeExamItem();
-                dischargeExamItem.setExamValue(examValue.getExamValue().toString());
-                dischargeExamItem.setExamItemName(examItem.getExamItemName());
-                dischargeExamItem.setShortName(examItem.getShortName());
-                dischargeExamItems.add(dischargeExamItem);
+                DischargeExamItemDto dischargeExamItemDto = new DischargeExamItemDto();
+                dischargeExamItemDto.setExamValue(examValue.getExamValue());
+                dischargeExamItemDto.setExamItemName(examItem.getExamItemName());
+                dischargeExamItemDto.setShortName(examItem.getShortName());
+                dischargeExamItemDto.setExamIndex(examValue.getExamIndex());
+                dischargeExamItemDtos.add(dischargeExamItemDto);
             }
-            dischargeSummaryDto.setDischargeExamItems(dischargeExamItems);
+            dischargeSummaryDto.setDischargeExamItemDtos(dischargeExamItemDtos);
         }
 
         return dischargeSummaryDto;
+    }
+
+    /**
+     * 添加出院小结PCI术后检查
+     *
+     * @param dischargeExamItemDtos
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public List<DischargeExamItemDto> addDischargeExamItems(List<DischargeExamItemDto> dischargeExamItemDtos) throws Exception {
+        for (DischargeExamItemDto dischargeExamItemDto : dischargeExamItemDtos) {
+            ExamValue examValue = new ExamValue();
+            examValue.setExamTime(LocalDate.parse(dischargeExamItemDto.getExamTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            examValue.setExamValue(dischargeExamItemDto.getExamValue());
+            examValue.setExamIndex(dischargeExamItemDto.getExamIndex());
+            examValue.setMedicalHistoryId(dischargeExamItemDto.getMedicalHistoryId());
+            examValue.setExamItemId(getExamItemIdByCode(dischargeExamItemDto.getExamItemCode()));
+            insertExamValue(examValue);
+        }
+        return dischargeExamItemDtos;
+    }
+
+    public String getExamItemIdByCode(String examItemCode) throws Exception {
+        QueryWrapper<ExamItem> queryWrapperEi = new QueryWrapper<>();
+        queryWrapperEi.eq(true, ExamItem.EXAM_ITEM_CODE, examItemCode);
+        ExamItem examItem = examItemMapper.selectOne(queryWrapperEi);
+        if (examItem != null && examItem.getExamCategoryId() != null) {
+            return examItem.getExamCategoryId();
+        }
+        throw new Exception("数据写入出错!!!");
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ExamValue insertExamValue(ExamValue examValue) throws Exception {
+        if (examValueMapper.insert(examValue) != 1) {
+            throw new Exception("添加PCI术后检查单项值出错！");
+        }
+        return examValue;
+    }
+
+    /**
+     * 添加评分和血管路入并发症
+     *
+     * @param scoreAndVapDto
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ScoreAndVapDto addScoreAndVap(ScoreAndVapDto scoreAndVapDto) throws Exception {
+        scoreAndVapDto.setScore(insertScore(scoreAndVapDto.getScore()));
+        scoreAndVapDto.setVascularAccessProblem(insertVascularAccessProblem(scoreAndVapDto.getVascularAccessProblem()));
+        return scoreAndVapDto;
+    }
+
+    /**
+     * 修改出院小结PCI术后检查
+     *
+     * @param dischargeExamItemDtos
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public List<DischargeExamItemDto> updateDischargeExamItems(List<DischargeExamItemDto> dischargeExamItemDtos) throws Exception {
+        for (DischargeExamItemDto dischargeExamItemDto : dischargeExamItemDtos) {
+            ExamValue examValue = new ExamValue();
+            examValue.setExamValueId(dischargeExamItemDto.getExamValueId());
+            examValue.setExamIndex(dischargeExamItemDto.getExamIndex());
+            examValue.setExamTime(LocalDate.parse(dischargeExamItemDto.getExamTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            examValue.setExamValue(dischargeExamItemDto.getExamValue());
+            examValue.setMedicalHistoryId(dischargeExamItemDto.getMedicalHistoryId());
+            examValue.setExamItemId(getExamItemIdByCode(dischargeExamItemDto.getExamItemCode()));
+            updateExamValue(examValue);
+        }
+        return dischargeExamItemDtos;
+    }
+
+    /**
+     * 修改评分和血管路入并发症
+     *
+     * @param scoreAndVapDto
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ScoreAndVapDto updateScoreAndVap(ScoreAndVapDto scoreAndVapDto) throws Exception {
+        scoreAndVapDto.setScore(updateScore(scoreAndVapDto.getScore()));
+        scoreAndVapDto.setVascularAccessProblem(updateVascularAccessProblem(scoreAndVapDto.getVascularAccessProblem()));
+        return scoreAndVapDto;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public Score updateScore(Score score) throws Exception {
+        if (scoreMapper.updateById(score) == 0) {
+            throw new Exception("修改失败");
+        }
+        return score;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public VascularAccessProblem updateVascularAccessProblem(VascularAccessProblem vascularAccessProblem) throws Exception {
+        if (vascularAccessProblemMapper.updateById(vascularAccessProblem) == 0) {
+            throw new Exception("修改失败");
+        }
+        return vascularAccessProblem;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ExamValue updateExamValue(ExamValue examValue) throws Exception {
+        if (examValueMapper.updateById(examValue) == 0) {
+            throw new Exception("修改失败");
+        }
+        return examValue;
+    }
+
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public Score insertScore(Score score) throws Exception {
+        if (scoreMapper.insert(score) != 1) {
+            throw new Exception("评分表添加出错！");
+        }
+        return score;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public VascularAccessProblem insertVascularAccessProblem(VascularAccessProblem vascularAccessProblem) throws Exception {
+        if (vascularAccessProblemMapper.insert(vascularAccessProblem) != 1) {
+            throw new Exception("血管路入并发症添加出错！");
+        }
+        return vascularAccessProblem;
     }
 }
