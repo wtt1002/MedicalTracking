@@ -19,5 +19,5 @@ public class DischargeSummaryDto {
     private Score score;
     private VascularAccessProblem vascularAccessProblem;
     private String examTime;
-    private List<DischargeExamItem> dischargeExamItems;
+    private List<DischargeExamItemDto> dischargeExamItemDtos;
 }
