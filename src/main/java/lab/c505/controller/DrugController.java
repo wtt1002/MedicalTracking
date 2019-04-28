@@ -28,6 +28,11 @@ public class DrugController {
     @Autowired
     private DrugService drugService;
 
+    /**
+     * 查询已用药物
+     * @param medicalHistoryId
+     * @return ResponseObject
+     */
     @RequestMapping(value = "/usage{medicalHistoryId}", method = RequestMethod.GET)
     public ResponseObject getDrugUsage(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
         ResponseObject response = ResponseObject.create();
@@ -40,6 +45,11 @@ public class DrugController {
         return response;
     }
 
+    /**
+     * 添加药物
+     * @param queryDrugDtoList
+     * @return ResponseObject
+     */
     @RequestMapping(value = "/usage/add", method = RequestMethod.POST)
     public ResponseObject addDrugUsage(@RequestBody List<QueryDrugDto> queryDrugDtoList){
         ResponseObject response = ResponseObject.create();
@@ -52,6 +62,11 @@ public class DrugController {
         return response;
     }
 
+    /**
+     * 更新药物
+     * @param drugAndUseageDto
+     * @return ResponseObject
+     */
     @RequestMapping(value = "/usage/update", method = RequestMethod.POST)
     public ResponseObject updateDrugUsage(@RequestBody DrugAndUseageDto drugAndUseageDto){
         ResponseObject response = ResponseObject.create();

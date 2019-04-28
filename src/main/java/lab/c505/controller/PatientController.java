@@ -33,6 +33,11 @@ public class PatientController {
     @Autowired
     MedicalHistoryService medicalHistoryService;
 
+    /**
+     * 查询所有患者
+     * @param params
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     public ResponseObject getPatientList(@RequestBody Map<String, Object> params){
@@ -64,6 +69,11 @@ public class PatientController {
         return response;
     }
 
+    /**
+     * 添加单个患者
+     * @param addPatientDto
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public ResponseObject addPatient(@RequestBody PatientDto addPatientDto){
@@ -78,6 +88,11 @@ public class PatientController {
         return response;
     }
 
+    /**
+     * 查询单个患者
+     * @param patientId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/edit{patientId}",method = RequestMethod.GET)
     public ResponseObject getOnePatient(@RequestParam(value = "patientId") String patientId){
@@ -110,6 +125,11 @@ public class PatientController {
         return null;
     }
 
+    /**
+     * 删除患者
+     * @param patientId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/remove{patientId}",method = RequestMethod.GET)
     public ResponseObject removePatient(@RequestParam(value = "patientId") String patientId){
@@ -124,6 +144,11 @@ public class PatientController {
         return response;
     }
 
+    /**
+     * 批量删除患者
+     * @param ids
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/batchRemove",method = RequestMethod.POST)
     public ResponseObject batchRemovePatient(@RequestBody List<String> ids){
