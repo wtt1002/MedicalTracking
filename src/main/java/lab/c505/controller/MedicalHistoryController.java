@@ -33,6 +33,12 @@ public class MedicalHistoryController {
     @Autowired
     MedicalHistoryService medicalHistoryService;
 
+
+    /**
+     * 根据患者ID分页查询患者的病历
+     * @param params
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/records",method = RequestMethod.POST)
     public ResponseObject getRecordsByPatientId(@RequestBody Map<String, Object> params){
@@ -59,6 +65,12 @@ public class MedicalHistoryController {
         return response;
     }
 
+
+    /**
+     * 添加患者病历
+     * @param dto
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public ResponseObject addMedicalHistory(@RequestBody MedicalHistoryDto dto){
@@ -73,6 +85,11 @@ public class MedicalHistoryController {
         return response;
     }
 
+    /**
+     * 根据病历ID获取病历详情
+     * @param medicalHistoryId
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/detail{medicalHistoryId}", method = RequestMethod.GET)
     public  ResponseObject getOneMedicalHistory(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
@@ -89,6 +106,11 @@ public class MedicalHistoryController {
         return response;
     }
 
+    /**
+     * 根据病历ID获取辅助检查数据
+     * @param medicalHistoryId
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/exam{medicalHistoryId}", method = RequestMethod.GET)
     public  ResponseObject getMedicalHistoryExam(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
@@ -103,6 +125,11 @@ public class MedicalHistoryController {
         return response;
     }
 
+    /**
+     * 添加单类型辅助检查数据
+     * @param addExamDtos
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/exam/addone", method = RequestMethod.POST)
     public  ResponseObject addMedicalHistoryExam(@RequestBody List<AddMedicalExamDto> addExamDtos){
@@ -117,6 +144,11 @@ public class MedicalHistoryController {
         return response;
     }
 
+    /**
+     * 更新=单类型辅助检查数据
+     * @param addExamDtos
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/exam/update", method = RequestMethod.POST)
     public  ResponseObject updateMedicalHistoryExam(@RequestBody List<AddMedicalExamDto> addExamDtos){

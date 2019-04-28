@@ -33,6 +33,12 @@ public class AccountController {
     @Autowired
     DoctorService doctorService;
 
+    /**
+     * 登录
+     * @param params
+     * @return ResponseObject
+     * @throws Exception
+     */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseObject login(@RequestBody Map<String, Object> params) throws Exception{
