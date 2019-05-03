@@ -6,8 +6,10 @@ import lab.c505.dto.AddMedicalExamDto;
 import lab.c505.dto.MedicalHistoryDto;
 import lab.c505.dto.MyExamDto;
 import lab.c505.dto.RecordBriefInfoDto;
+import lab.c505.entity.Assessment;
 import lab.c505.entity.ExamValue;
 import lab.c505.entity.MedicalHistory;
+import lab.c505.service.AssessmentService;
 import lab.c505.service.MedicalHistoryService;
 import lab.c505.utils.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,8 @@ import java.util.Map;
 public class MedicalHistoryController {
     @Autowired
     MedicalHistoryService medicalHistoryService;
-
+    @Autowired
+    AssessmentService assessmentService;
 
     /**
      * 根据患者ID分页查询患者的病历
@@ -163,5 +166,52 @@ public class MedicalHistoryController {
         return response;
     }
 
+    /**
+     * 查询入院评估
+     * @param medicalHistoryId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/assessment{medicalHistoryId}", method = RequestMethod.GET)
+    public ResponseObject getMedicalHistoryAssessment(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
+        ResponseObject response = ResponseObject.create();
+        try{
+            response.setData(assessmentService.getOneAssessment(medicalHistoryId)).setCode(ResponseObject.CODE_SUCCESS);
+        }catch (Exception e){
+            response.setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+
+        return response;
+    }
+
+    /**
+     * 添加入院评估
+     * @param assessment
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/assessment/addone", method = RequestMethod.POST)
+    public ResponseObject addMedicalHistoryAssessment(@RequestBody Assessment assessment){
+        ResponseObject response = ResponseObject.create();
+        try {
+            response.setData(assessmentService.addOneAssessment(assessment)).setMsg("添加成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("添加失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/assessment/update", method = RequestMethod.POST)
+    public  ResponseObject updateMedicalHistoryAssessment(@RequestBody Assessment assessment){
+        ResponseObject response = ResponseObject.create();
+        try {
+            response.setData(assessmentService.updateOneAssessment(assessment)).setMsg("更新成功");
+        }catch (Exception e){
+            response.setMsg("更新失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
 }
 
