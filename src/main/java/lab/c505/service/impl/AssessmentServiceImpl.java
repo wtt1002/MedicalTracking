@@ -46,10 +46,9 @@ public class AssessmentServiceImpl extends ServiceImpl<AssessmentMapper, Assessm
 
     @Override
     @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
-    public Assessment updateOneAssessment(Assessment assessment) throws Exception {
+    public void updateOneAssessment(Assessment assessment) throws Exception {
         if(assessmentMapper.updateById(assessment)==0){
             throw new Exception("更新失败");
         }
-        return null;
     }
 }
