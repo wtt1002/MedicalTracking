@@ -44,6 +44,8 @@ public class Pci extends Model<Pci> {
 
     private String pciAntiplatelet;
 
+    private String contrastOutput;
+
     private String pciType;
 
     private String pciAnticoagulant;
@@ -98,6 +100,8 @@ public class Pci extends Model<Pci> {
     public static final String PCIDB2 = "pcidb2";
 
     public static final String PCI_ANTIPLATELET = "pci_antiplatelet";
+
+    public static final String CONTRAST_OUTPUT = "contrast_output";
 
     public static final String PCI_TYPE = "pci_type";
 
