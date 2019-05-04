@@ -17,6 +17,6 @@ public interface AssessmentService extends IService<Assessment> {
 
     List<Assessment> getOneAssessment(String medicalHistoryId);
     String addOneAssessment(Assessment assessment) throws Exception;
-    Assessment updateOneAssessment(Assessment assessment) throws Exception;
+    void updateOneAssessment(Assessment assessment) throws Exception;
 
 }

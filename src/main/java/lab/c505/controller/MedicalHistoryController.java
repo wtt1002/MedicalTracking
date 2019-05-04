@@ -207,7 +207,7 @@ public class MedicalHistoryController {
     public  ResponseObject updateMedicalHistoryAssessment(@RequestBody Assessment assessment){
         ResponseObject response = ResponseObject.create();
         try {
-            response.setData(assessmentService.updateOneAssessment(assessment)).setMsg("更新成功");
+            response.setData("").setMsg("更新成功");
         }catch (Exception e){
             response.setMsg("更新失败").setCode(ResponseObject.CODE_SYSTEMERROR);
         }
