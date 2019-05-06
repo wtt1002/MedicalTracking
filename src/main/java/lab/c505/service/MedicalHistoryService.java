@@ -2,6 +2,7 @@ package lab.c505.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lab.c505.dto.AddMedicalExamDto;
+import lab.c505.dto.MedicalHistoryDto;
 import lab.c505.dto.MedicalHistoryExamDto;
 import lab.c505.dto.MyExamDto;
 import lab.c505.entity.ExamValue;
@@ -28,4 +29,6 @@ public interface MedicalHistoryService extends IService<MedicalHistory> {
     List<MyExamDto> insertMedicalExam(List<AddMedicalExamDto> addMedicalExamDtos) throws Exception;
 
     List<MyExamDto> updateMedicalExam(List<AddMedicalExamDto> addMedicalExamDtos) throws Exception;
+
+    List<MedicalHistoryExamDto> queryMedicalHistoryWithConclusion(String medicalHistoryId,int examIndex) throws Exception;
 }

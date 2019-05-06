@@ -7,16 +7,11 @@ import lab.c505.dto.AddMedicalExamDto;
 import lab.c505.dto.MedicalHistoryDto;
 import lab.c505.dto.MedicalHistoryExamDto;
 import lab.c505.dto.MyExamDto;
-import lab.c505.entity.ExamCategory;
-import lab.c505.entity.ExamItem;
-import lab.c505.entity.ExamValue;
-import lab.c505.entity.MedicalHistory;
-import lab.c505.mapper.ExamCategoryMapper;
-import lab.c505.mapper.ExamItemMapper;
-import lab.c505.mapper.ExamValueMapper;
-import lab.c505.mapper.MedicalHistoryMapper;
+import lab.c505.entity.*;
+import lab.c505.mapper.*;
 import lab.c505.service.MedicalHistoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -53,6 +48,11 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
     @Autowired
     private ExamCategoryMapper examCategoryMapper;
 
+    @Autowired
+    private InspectionConclusionMapper inspectionConclusionMapper;
+
+    String[] examType = {"1","2","3","4"};
+    String[] admissionType = {"6","7","8"};
     @Override
     public String getLastMainDiagnose(String patientId) {
         QueryWrapper<MedicalHistory> queryWrapper = new QueryWrapper<>();
@@ -124,11 +124,17 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         List<ExamValue> listValue = getListExamValue(medicalHistoryId);
         List<ExamItem> listItem = getListExamItem(listValue);
         HashMap<String, MedicalHistoryExamDto> maps = getMedicalHistory(listValue, listItem);
-//        List<MedicalHistoryExamDto> list = new ArrayList<>();
+        List<MedicalHistoryExamDto> list = new ArrayList<>();
+        for(String key : maps.keySet()) {
+            if (ArrayUtils.contains(examType, key)) {
+                list.add(maps.get(key));
+            }
+        }
 //        for(String key : maps.keySet()){
 //            list.add(maps.get(key));
 //        }
-        return new ArrayList<>(maps.values());
+
+        return list;
     }
 
     private ExamItem getItemExamByCode(String code) throws Exception{
@@ -182,6 +188,37 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         List<MyExamDto> list = new ArrayList<>();
         for(AddMedicalExamDto addMedicalExamDto : addExamDtos){
             list.add(insertSingleExamValue(addMedicalExamDto));
+        }
+        return list;
+    }
+
+    /**
+     * 查询入院康复检查项目，携带检查结论
+     * @param medicalHistoryId
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<MedicalHistoryExamDto> queryMedicalHistoryWithConclusion(String medicalHistoryId ,int examIndex) throws Exception {
+        List<ExamValue> listValue = getListExamValue(medicalHistoryId);
+        List<ExamItem> listItem = getListExamItem(listValue);
+        HashMap<String, MedicalHistoryExamDto> maps = getMedicalHistory(listValue, listItem);
+
+        List<MedicalHistoryExamDto> list = new ArrayList<>();
+        //查询结论
+        for(String key : maps.keySet()){
+            if (ArrayUtils.contains(admissionType,key)){
+                MedicalHistoryExamDto singleDto = maps.get(key);
+                QueryWrapper<InspectionConclusion> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq(InspectionConclusion.MEDICAL_HISTORY_ID,medicalHistoryId)
+                        .eq(InspectionConclusion.EXAM_INDEX,examIndex)
+                        .eq(InspectionConclusion.EXAM_CATEGORY,singleDto.getExamCategoryCode());
+                InspectionConclusion conclusion = inspectionConclusionMapper.selectOne(queryWrapper);
+                if(conclusion != null){
+                    singleDto.setExamConclusion(conclusion.getExamConclusion());
+                }
+                list.add(singleDto);
+            }
         }
         return list;
     }

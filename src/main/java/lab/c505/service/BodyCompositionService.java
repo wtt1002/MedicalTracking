@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-02-19
  */
 public interface BodyCompositionService extends IService<BodyComposition> {
-
+    BodyComposition getOneBodyComposition(String medicalHistory);
 }
