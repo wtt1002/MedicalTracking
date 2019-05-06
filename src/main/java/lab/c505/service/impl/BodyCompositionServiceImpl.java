@@ -7,6 +7,10 @@ import lab.c505.service.BodyCompositionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 /**
  * <p>
@@ -26,5 +30,25 @@ public class BodyCompositionServiceImpl extends ServiceImpl<BodyCompositionMappe
         QueryWrapper<BodyComposition> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(BodyComposition.MEDICAL_HISTORY_ID,medicalHistory);
         return bodyCompositionMapper.selectOne(queryWrapper);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public String addOneBodyComposition(BodyComposition bodyComposition) throws Exception{
+        String uuid = UUID.randomUUID().toString();
+        bodyComposition.setBodyCompositionId(uuid);
+        if(bodyCompositionMapper.insert(bodyComposition) == 0){
+            throw new Exception("添加失败");
+        }
+        return uuid;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public BodyComposition updateBodyComposition(BodyComposition bodyComposition) throws Exception {
+        if (bodyCompositionMapper.updateById(bodyComposition) == 0){
+            throw new Exception("更新失败");
+        }
+        return bodyComposition;
     }
 }

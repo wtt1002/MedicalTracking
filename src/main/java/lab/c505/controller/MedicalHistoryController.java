@@ -2,14 +2,13 @@ package lab.c505.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import lab.c505.dto.AddMedicalExamDto;
-import lab.c505.dto.MedicalHistoryDto;
-import lab.c505.dto.MyExamDto;
-import lab.c505.dto.RecordBriefInfoDto;
+import lab.c505.dto.*;
 import lab.c505.entity.Assessment;
+import lab.c505.entity.BodyComposition;
 import lab.c505.entity.ExamValue;
 import lab.c505.entity.MedicalHistory;
 import lab.c505.service.AssessmentService;
+import lab.c505.service.BodyCompositionService;
 import lab.c505.service.MedicalHistoryService;
 import lab.c505.utils.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,8 @@ public class MedicalHistoryController {
     MedicalHistoryService medicalHistoryService;
     @Autowired
     AssessmentService assessmentService;
+    @Autowired
+    BodyCompositionService bodyCompositionService;
 
     /**
      * 根据患者ID分页查询患者的病历
@@ -169,7 +170,7 @@ public class MedicalHistoryController {
     /**
      * 查询入院评估
      * @param medicalHistoryId
-     * @return
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/assessment{medicalHistoryId}", method = RequestMethod.GET)
@@ -187,7 +188,7 @@ public class MedicalHistoryController {
     /**
      * 添加入院评估
      * @param assessment
-     * @return
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/assessment/addone", method = RequestMethod.POST)
@@ -202,12 +203,79 @@ public class MedicalHistoryController {
         return response;
     }
 
+    /**
+     *
+     * @param assessment
+     * @return ResponseObject
+     */
     @ResponseBody
     @RequestMapping(value = "/assessment/update", method = RequestMethod.POST)
     public  ResponseObject updateMedicalHistoryAssessment(@RequestBody Assessment assessment){
         ResponseObject response = ResponseObject.create();
         try {
-            response.setData("").setMsg("更新成功");
+            response.setData(assessmentService.updateOneAssessment(assessment)).setMsg("更新成功");
+        }catch (Exception e){
+            response.setMsg("更新失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
+    /**
+     * 获取入院康复检查信息
+     * @param params medicalHistoryId examIndex
+     * @return ResponseObject
+     */
+    @ResponseBody
+    @RequestMapping(value = "/admissionCheck/getChecks", method = RequestMethod.POST)
+    public ResponseObject getMedicalHistoryAdmissionCheck(@RequestBody Map<String, Object> params){
+        ResponseObject response = ResponseObject.create();
+        AdmissionCheckDto dto = new AdmissionCheckDto();
+        if (params.get("medicalHistoryId") == null || params.get("examIndex") == null){
+            return response.setCode(ResponseObject.CODE_SYSTEMERROR).setMsg("参数有误");
+        }
+        try{
+            String medicalHistory = (String) params.get("medicalHistoryId");
+            int examIndex = (int) params.get("examIndex");
+            dto.setBodyComposition(bodyCompositionService.getOneBodyComposition(medicalHistory));
+            dto.setMedicalHistoryExamDtos(medicalHistoryService.queryMedicalHistoryWithConclusion(medicalHistory,examIndex));
+            response.setData(dto).setMsg("查询成功");
+
+        }catch (Exception e){
+            response.setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+
+        return response;
+    }
+
+    /**
+     * 添加人体成分分析
+     * @param bodyComposition
+     * @return ResponseObject
+     */
+    @ResponseBody
+    @RequestMapping(value = "/bodyComposition/addone", method = RequestMethod.POST)
+    public ResponseObject addMedicalHistoryBodyComposition(@RequestBody BodyComposition bodyComposition){
+        ResponseObject response = ResponseObject.create();
+        try {
+            response.setData(bodyCompositionService.addOneBodyComposition(bodyComposition)).setMsg("添加成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("添加失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
+    /**
+     * 更新人体成分分析
+     * @param bodyComposition
+     * @return ResponseObject
+     */
+    @ResponseBody
+    @RequestMapping(value = "/bodyComposition/update", method = RequestMethod.POST)
+    public  ResponseObject updateMedicalHistoryBodyComposition(@RequestBody BodyComposition bodyComposition){
+        ResponseObject response = ResponseObject.create();
+        try {
+            response.setData(bodyCompositionService.updateBodyComposition(bodyComposition)).setMsg("更新成功");
         }catch (Exception e){
             response.setMsg("更新失败").setCode(ResponseObject.CODE_SYSTEMERROR);
         }
