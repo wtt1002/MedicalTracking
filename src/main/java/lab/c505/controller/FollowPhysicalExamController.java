@@ -23,7 +23,7 @@ public class FollowPhysicalExamController {
     private FollowPhysicalExamService followPhysicalExamService;
 
     @ResponseBody
-    @RequestMapping(value = "/get{followUpId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getFollowPhysicalExam{followUpId}", method = RequestMethod.GET)
     public ResponseObject getOnePatient(@RequestParam(value = "followUpId") String followUpId) {
         ResponseObject responseObject = ResponseObject.create();
         try {

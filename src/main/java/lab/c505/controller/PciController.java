@@ -20,7 +20,7 @@ public class PciController {
     private PciService pciService;
 
     @ResponseBody
-    @RequestMapping(value = "/get{medicalHistoryId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getPci{medicalHistoryId}", method = RequestMethod.GET)
     public ResponseObject getOnePatient(@RequestParam(value = "medicalHistoryId") String medicalHistoryId) {
         ResponseObject responseObject = ResponseObject.create();
         try {
