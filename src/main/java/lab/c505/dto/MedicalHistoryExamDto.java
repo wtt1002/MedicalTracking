@@ -18,6 +18,8 @@ public class MedicalHistoryExamDto {
 
     private List<MyExamDto> listMyExamDto;
 
+    private String examConclusion;
+
     public MedicalHistoryExamDto(){
 
     }
