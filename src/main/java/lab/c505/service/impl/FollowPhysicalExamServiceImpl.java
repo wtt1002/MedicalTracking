@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -31,6 +33,7 @@ public class FollowPhysicalExamServiceImpl extends ServiceImpl<FollowPhysicalExa
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public FollowPhysicalExam addFollowPhysicalExam(FollowPhysicalExam followPhysicalExam) throws Exception {
         if (followPhysicalExamMapper.insert(followPhysicalExam) != 1) {
             throw new Exception("随访查体表添加出错！");
@@ -39,6 +42,7 @@ public class FollowPhysicalExamServiceImpl extends ServiceImpl<FollowPhysicalExa
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public FollowPhysicalExam updateFollowPhysicalExam(FollowPhysicalExam followPhysicalExam) throws Exception {
         if (followPhysicalExamMapper.updateById(followPhysicalExam) == 0) {
             throw new Exception("修改失败");
