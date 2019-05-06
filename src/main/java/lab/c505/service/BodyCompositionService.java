@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface BodyCompositionService extends IService<BodyComposition> {
     BodyComposition getOneBodyComposition(String medicalHistory);
+    String addOneBodyComposition(BodyComposition bodyComposition) throws Exception;
+    BodyComposition updateBodyComposition(BodyComposition bodyComposition) throws Exception;
 }
