@@ -8,9 +8,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * 随访体检表 服务类
  * </p>
  *
- * @author TingTing W
- * @since 2019-02-19
+ * @author Liu Chenglong
+ * @since 2019-05-06
  */
 public interface FollowPhysicalExamService extends IService<FollowPhysicalExam> {
 
+    FollowPhysicalExam getFollowPhysicalExam(String followUpId) throws Exception;
+
+    FollowPhysicalExam addFollowPhysicalExam(FollowPhysicalExam followPhysicalExam) throws Exception;
+
+    FollowPhysicalExam updateFollowPhysicalExam(FollowPhysicalExam followPhysicalExam) throws Exception;
 }
