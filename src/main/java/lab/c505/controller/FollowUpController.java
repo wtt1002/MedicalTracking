@@ -46,6 +46,7 @@ public class FollowUpController {
         ResponseObject responseObject = ResponseObject.create();
         try {
             followUpService.addFollowUp(followUp);
+            responseObject.setData(followUp);
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
@@ -58,6 +59,7 @@ public class FollowUpController {
         ResponseObject responseObject = ResponseObject.create();
         try {
             followUpService.updateFollowUp(followUp);
+            responseObject.setData(followUp);
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }

@@ -41,6 +41,7 @@ public class FollowPhysicalExamController {
         ResponseObject responseObject = ResponseObject.create();
         try {
             followPhysicalExamService.addFollowPhysicalExam(followPhysicalExam);
+            responseObject.setData(followPhysicalExam);
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
@@ -53,6 +54,7 @@ public class FollowPhysicalExamController {
         ResponseObject responseObject = ResponseObject.create();
         try {
             followPhysicalExamService.updateFollowPhysicalExam(followPhysicalExam);
+            responseObject.setData(followPhysicalExam);
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
