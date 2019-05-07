@@ -49,7 +49,7 @@ public class PciController {
             if (pciDto.getOperateDuration() != null && pciDto.getOperateDuration().length() != 0) {
                 pci.setOperateDuration(LocalDate.parse(pciDto.getOperateDuration()));
             }
-            pciService.addPci(pci);
+            responseObject.setData(pciService.addPci(pci));
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
@@ -66,6 +66,7 @@ public class PciController {
                 pci.setOperateDuration(LocalDate.parse(pciDto.getOperateDuration()));
             }
             pciService.updatePci(pci);
+            responseObject.setData(pciService.updatePci(pci));
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
