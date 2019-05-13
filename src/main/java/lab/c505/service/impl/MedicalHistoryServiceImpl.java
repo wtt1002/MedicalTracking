@@ -3,10 +3,7 @@ package lab.c505.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lab.c505.dto.AddMedicalExamDto;
-import lab.c505.dto.MedicalHistoryDto;
-import lab.c505.dto.MedicalHistoryExamDto;
-import lab.c505.dto.MyExamDto;
+import lab.c505.dto.*;
 import lab.c505.entity.*;
 import lab.c505.mapper.*;
 import lab.c505.service.MedicalHistoryService;
@@ -221,5 +218,20 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
             }
         }
         return list;
+    }
+
+
+    @Override
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    public MyExamWithConclusionDto insertExamWithConclusion(AddMedicalExamWithConclusionDto addMedicalExamWithConclusionDto) throws Exception {
+
+        return null;
+    }
+
+    @Override
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    public MyExamWithConclusionDto updateExamWithConclusion(AddMedicalExamWithConclusionDto addMedicalExamWithConclusionDto) throws Exception {
+
+        return null;
     }
 }
