@@ -31,8 +31,10 @@ public class AddMedicalExamDto {
     private String examItemCode;
     private String myExamTime;
 
-    public ExamValue toExamValue(){
-        if(myExamTime.equals(""))return null;
+    public ExamValue toExamValue() throws Exception{
+        if(myExamTime.equals("")){
+            throw new Exception("ExamTime is null");
+        }
         examTime = LocalDate.parse(myExamTime);
         ExamValue examValue = new ExamValue();
         BeanUtils.copyProperties(this, examValue);

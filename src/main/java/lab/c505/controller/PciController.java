@@ -29,12 +29,14 @@ public class PciController {
         try {
             Pci pci = pciService.getPci(medicalHistoryId);
             PciDto pciDto = new PciDto();
-            pciDto.setPci(pci);
-            if (pci.getOperateDuration() != null) {
+            if (pci != null && pci.getOperateDuration() != null) {
+                pciDto.setPci(pci);
                 pciDto.setOperateDuration(pci.getOperateDuration().toString());
+                responseObject.setData(pciDto);
             }
-            responseObject.setData(pciDto).encode();
+//            responseObject.setData(pciDto).encode();
         } catch (Exception e) {
+            e.printStackTrace();
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
         return responseObject;
@@ -46,10 +48,11 @@ public class PciController {
         ResponseObject responseObject = ResponseObject.create();
         try {
             Pci pci = pciDto.getPci();
-            if (pciDto.getOperateDuration() != null && pciDto.getOperateDuration().length() != 0) {
+            if (pci != null && pciDto.getOperateDuration() != null && pciDto.getOperateDuration().length() != 0) {
                 pci.setOperateDuration(LocalDate.parse(pciDto.getOperateDuration()));
             }
-            responseObject.setData(pciService.addPci(pci));
+            pciDto.setPci(pciService.addPci(pci));
+            responseObject.setData(pciDto);
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
@@ -65,8 +68,8 @@ public class PciController {
             if (pciDto.getOperateDuration() != null && pciDto.getOperateDuration().length() != 0) {
                 pci.setOperateDuration(LocalDate.parse(pciDto.getOperateDuration()));
             }
-            pciService.updatePci(pci);
-            responseObject.setData(pciService.updatePci(pci));
+            pciDto.setPci(pciService.updatePci(pci));
+            responseObject.setData(pciDto);
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
