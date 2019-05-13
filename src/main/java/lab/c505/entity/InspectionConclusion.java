@@ -3,6 +3,8 @@ package lab.c505.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -35,7 +37,7 @@ public class InspectionConclusion extends Model<InspectionConclusion> {
 
     private String examConclusion;
 
-    private LocalDateTime examTime;
+    private LocalDate examTime;
 
     private Integer examIndex;
 
