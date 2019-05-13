@@ -14,4 +14,6 @@ import lab.c505.entity.MedicalHistory;
  */
 public interface InspectionConclusionService extends IService<InspectionConclusion> {
     InspectionConclusion getOneConclusion(String medicalHistoryId, int examIndex, String examCategory);
+    InspectionConclusion updateConclusion(InspectionConclusion inspectionConclusion) throws Exception;
+    InspectionConclusion insertConclusion(InspectionConclusion inspectionConclusion) throws Exception;
 }
