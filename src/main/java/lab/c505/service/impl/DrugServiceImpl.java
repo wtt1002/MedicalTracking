@@ -100,8 +100,8 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
             DrugCategory drugCategory = getDrugCategoryByCode(queryDrugDto.getDrugCategoryCode());
             for(DrugAndUseageDto drugAndUseageDto : queryDrugDto.getDrugAndUseageDtoList()){
                 String drugId = UUID.randomUUID().toString();
-                addDrug(drugAndUseageDto.getDrug().setDrugId(drugId)
-                        .setDrugCategoryId(drugCategory.getDrugCategoryId()));
+//                addDrug(drugAndUseageDto.getDrug().setDrugId(drugId)
+//                        .setDrugCategoryId(drugCategory.getDrugCategoryId()));
                 addDrugUsage(drugAndUseageDto.getFollowDrugUsage()
                         .setDrugId(drugId).setDrugUsageId(UUID.randomUUID().toString()));
             }
@@ -113,11 +113,11 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
     @Override
     @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
     public DrugAndUseageDto updateDrug(DrugAndUseageDto drugAndUseageDto) throws Exception {
-        if(drugMapper.updateById(drugAndUseageDto.getDrug()) == 0){
-            throw new Exception("update Drug failed");
-        }
+//        if(drugMapper.updateById(drugAndUseageDto.getDrug()) == 0){
+//            throw new Exception("update Drug failed");
+//        }
         if(followDrugUsageMapper.updateById(drugAndUseageDto.getFollowDrugUsage()) == 0){
-            throw new Exception("update Drug failed");
+            throw new Exception("update DrugUsage failed");
         }
         return drugAndUseageDto;
     }
@@ -128,9 +128,9 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
         if(followDrugUsageMapper.deleteById(followDrugUsage.getDrugUsageId()) == 0){
             throw new Exception("delete Drug failed");
         }
-        if(drugMapper.deleteById(followDrugUsage.getDrugId()) == 0){
-            throw new Exception("delete Drug failed");
-        }
+//        if(drugMapper.deleteById(followDrugUsage.getDrugId()) == 0){
+//            throw new Exception("delete Drug failed");
+//        }
 
     }
 }
