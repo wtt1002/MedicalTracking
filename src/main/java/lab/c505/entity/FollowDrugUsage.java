@@ -66,6 +66,8 @@ public class FollowDrugUsage extends Model<FollowDrugUsage> {
 
     private Integer followUpIndex;
 
+    private String drugRemark;
+
 
     public static final String DRUG_USAGE_ID = "drug_usage_id";
 
@@ -98,6 +100,8 @@ public class FollowDrugUsage extends Model<FollowDrugUsage> {
     public static final String VERSION = "version";
 
     public static final String FOLLOW_UP_INDEX = "follow_up_index";
+
+    public static final String DRUG_REMARK = "drug_remark";
 
     @Override
     protected Serializable pkVal() {
