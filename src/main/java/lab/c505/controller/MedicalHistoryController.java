@@ -248,6 +248,46 @@ public class MedicalHistoryController {
     }
 
     /**
+     * 添加入院康复检查信息
+     * @param  addDto
+     * @return ResponseObject
+     */
+    @ResponseBody
+    @RequestMapping(value = "/admissionCheck/addChecks", method = RequestMethod.POST)
+    public ResponseObject addMedicalHistoryAdmissionCheck(@RequestBody AddMedicalExamWithConclusionDto addDto){
+        ResponseObject response = ResponseObject.create();
+        try{
+            response.setData(medicalHistoryService.insertExamWithConclusion(addDto))
+                    .setMsg("插入成功");
+
+        }catch (Exception e){
+            response.setMsg("插入失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+
+        return response;
+    }
+
+    /**
+     * 更新入院康复检查信息
+     * @param  addDto
+     * @return ResponseObject
+     */
+    @ResponseBody
+    @RequestMapping(value = "/admissionCheck/updateChecks", method = RequestMethod.POST)
+    public ResponseObject updateMedicalHistoryAdmissionCheck(@RequestBody AddMedicalExamWithConclusionDto addDto){
+        ResponseObject response = ResponseObject.create();
+        try{
+            response.setData(medicalHistoryService.updateExamWithConclusion(addDto))
+                    .setMsg("更新成功");
+
+        }catch (Exception e){
+            response.setMsg("更新失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+
+        return response;
+    }
+
+    /**
      * 添加人体成分分析
      * @param bodyComposition
      * @return ResponseObject
