@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -220,18 +221,40 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         return list;
     }
 
-
-    @Override
     @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
-    public MyExamWithConclusionDto insertExamWithConclusion(AddMedicalExamWithConclusionDto addMedicalExamWithConclusionDto) throws Exception {
+    public InspectionConclusion insertInspection(InspectionConclusion inspectionConclusion) throws Exception {
+        inspectionConclusion.setInspectionConclusionId(UUID.randomUUID().toString())
+                .setExamTime(LocalDate.now());
+        if(inspectionConclusionMapper.insert(inspectionConclusion) == 0){
+            throw new Exception("InspectionConclusion 插入失败！");
+        }
+        return inspectionConclusion;
+    }
 
-        return null;
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    public InspectionConclusion updateInspection(InspectionConclusion inspectionConclusion) throws Exception {
+        inspectionConclusion.setExamTime(LocalDate.now());
+        if(inspectionConclusionMapper.updateById(inspectionConclusion) == 0){
+            throw new Exception("InspectionConclusion 插入失败！");
+        }
+        return inspectionConclusion;
     }
 
     @Override
     @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
-    public MyExamWithConclusionDto updateExamWithConclusion(AddMedicalExamWithConclusionDto addMedicalExamWithConclusionDto) throws Exception {
+    public MyExamWithConclusionDto insertExamWithConclusion(AddMedicalExamWithConclusionDto addDto) throws Exception {
+        MyExamWithConclusionDto mydto = new MyExamWithConclusionDto();
+        mydto.setMyExamDtos(insertMedicalExam(addDto.getAddMedicalExamDtos()));
+        mydto.setInspectionConclusion(insertInspection(addDto.getInspectionConclusion()));
+        return mydto;
+    }
 
-        return null;
+    @Override
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    public MyExamWithConclusionDto updateExamWithConclusion(AddMedicalExamWithConclusionDto addDto) throws Exception {
+        MyExamWithConclusionDto mydto = new MyExamWithConclusionDto();
+        mydto.setMyExamDtos(updateMedicalExam(addDto.getAddMedicalExamDtos()));
+        mydto.setInspectionConclusion(updateInspection(addDto.getInspectionConclusion()));
+        return mydto;
     }
 }
