@@ -33,11 +33,12 @@ public class DrugController {
      * @param medicalHistoryId
      * @return ResponseObject
      */
-    @RequestMapping(value = "/usage{medicalHistoryId}", method = RequestMethod.GET)
-    public ResponseObject getDrugUsage(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
+    @RequestMapping(value = "/usage/get", method = RequestMethod.GET)
+    public ResponseObject getDrugUsage(@RequestParam(value = "medicalHistoryId") String medicalHistoryId,
+                                       @RequestParam(value = "followUpIndexId") Integer followUpIndex){
         ResponseObject response = ResponseObject.create();
         try {
-            response.setData(drugService.queryDrugList(medicalHistoryId)).setMsg("查询成功");
+            response.setData(drugService.queryDrugList(medicalHistoryId, followUpIndex)).setMsg("查询成功");
         }catch (Exception e){
             e.printStackTrace();
             response.setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);

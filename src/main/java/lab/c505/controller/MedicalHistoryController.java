@@ -116,12 +116,13 @@ public class MedicalHistoryController {
      * @return ResponseObject
      */
     @ResponseBody
-    @RequestMapping(value = "/exam{medicalHistoryId}", method = RequestMethod.GET)
-    public  ResponseObject getMedicalHistoryExam(@RequestParam(value = "medicalHistoryId") String medicalHistoryId){
+    @RequestMapping(value = "/exam/get", method = RequestMethod.GET)
+    public  ResponseObject getMedicalHistoryExam(@RequestParam(value = "medicalHistoryId") String medicalHistoryId
+    , @RequestParam(value = "examIndex") int examIndex){
         ResponseObject response = ResponseObject.create();
         try {
 
-            response.setData(medicalHistoryService.queryMedicalHistory(medicalHistoryId)).setMsg("查询成功");
+            response.setData(medicalHistoryService.queryMedicalHistory(medicalHistoryId, examIndex)).setMsg("查询成功");
         }catch (Exception e){
             e.printStackTrace();
             response.setMsg("查询失败").setCode(ResponseObject.CODE_SYSTEMERROR);
