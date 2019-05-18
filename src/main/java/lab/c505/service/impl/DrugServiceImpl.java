@@ -17,10 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * <p>
@@ -92,14 +89,18 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
         queryWrapper.eq(DrugCategory.DRUG_CATEGORY_CODE, code);
         return drugCategoryMapper.selectOne(queryWrapper);
     }
-
+    public Drug getDrug(String code) throws Exception{
+        QueryWrapper<Drug> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(Drug.DRUG_CODE, code);
+        return drugMapper.selectOne(queryWrapper);
+    }
     @Override
     @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
     public List<QueryDrugDto> insertDrugList(List<QueryDrugDto> queryDrugDtoList) throws Exception {
         for(QueryDrugDto queryDrugDto : queryDrugDtoList){
             DrugCategory drugCategory = getDrugCategoryByCode(queryDrugDto.getDrugCategoryCode());
             for(DrugAndUseageDto drugAndUseageDto : queryDrugDto.getDrugAndUseageDtoList()){
-                String drugId = UUID.randomUUID().toString();
+                String drugId = getDrug(drugAndUseageDto.getDrug().getDrugCode()).getDrugId();
 //                addDrug(drugAndUseageDto.getDrug().setDrugId(drugId)
 //                        .setDrugCategoryId(drugCategory.getDrugCategoryId()));
                 addDrugUsage(drugAndUseageDto.getFollowDrugUsage()
@@ -116,7 +117,8 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
 //        if(drugMapper.updateById(drugAndUseageDto.getDrug()) == 0){
 //            throw new Exception("update Drug failed");
 //        }
-        if(followDrugUsageMapper.updateById(drugAndUseageDto.getFollowDrugUsage()) == 0){
+        String drugId = getDrug(drugAndUseageDto.getDrug().getDrugCode()).getDrugId();
+        if(followDrugUsageMapper.updateById(drugAndUseageDto.getFollowDrugUsage().setDrugId(drugId)) == 0){
             throw new Exception("update DrugUsage failed");
         }
         return drugAndUseageDto;
