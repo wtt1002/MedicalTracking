@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface DrugService extends IService<Drug> {
 
-    List<QueryDrugDto> queryDrugList(String medicalHistoryId) throws Exception;
+    List<QueryDrugDto> queryDrugList(String medicalHistoryId, int followUpIndex) throws Exception;
 
     List<QueryDrugDto> insertDrugList(List<QueryDrugDto> queryDrugDtoList) throws Exception;
 

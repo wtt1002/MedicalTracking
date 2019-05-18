@@ -39,9 +39,10 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
     @Autowired
     private DrugCategoryMapper drugCategoryMapper;
 
-    private List<FollowDrugUsage> getListFollowDrug(String medicalHistoryId) throws Exception{
+    private List<FollowDrugUsage> getListFollowDrug(String medicalHistoryId, int followUpIndex) throws Exception{
         QueryWrapper<FollowDrugUsage> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(FollowDrugUsage.MEDICAL_HISTORY_ID, medicalHistoryId);
+        queryWrapper.eq(FollowDrugUsage.MEDICAL_HISTORY_ID, medicalHistoryId)
+        .eq(FollowDrugUsage.FOLLOW_UP_INDEX, followUpIndex);
         return followDrugUsageMapper.selectList(queryWrapper);
     }
 
@@ -53,9 +54,9 @@ public class DrugServiceImpl extends ServiceImpl<DrugMapper, Drug> implements Dr
         return new DrugAndUseageDto(drug, followDrugUsage);
     }
     @Override
-    public List<QueryDrugDto> queryDrugList(String medicalHistoryId) throws Exception {
+    public List<QueryDrugDto> queryDrugList(String medicalHistoryId, int followUpIndex) throws Exception {
         HashMap<String, QueryDrugDto> maps = new HashMap<>();
-        List<FollowDrugUsage> list = getListFollowDrug(medicalHistoryId);
+        List<FollowDrugUsage> list = getListFollowDrug(medicalHistoryId, followUpIndex);
         for(FollowDrugUsage followDrugUsage : list){
             DrugAndUseageDto drugAndUseageDto = getDrugUseageDot(followDrugUsage);
             String drugCategoryId = drugAndUseageDto.getDrug().getDrugCategoryId();

@@ -85,9 +85,10 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         return medicalHistoryMapper.selectById(medicalHistoryId);
     }
 
-    private List<ExamValue> getListExamValue(String medicalHistoryId) throws Exception{
+    private List<ExamValue> getListExamValue(String medicalHistoryId, int examIndex) throws Exception{
         QueryWrapper<ExamValue> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(ExamValue.MEDICAL_HISTORY_ID, medicalHistoryId);
+        queryWrapper.eq(ExamValue.MEDICAL_HISTORY_ID, medicalHistoryId)
+        .eq(ExamValue.EXAM_INDEX, examIndex);
         return examValueMapper.selectList(queryWrapper);
     }
 
@@ -118,8 +119,8 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
         return maps;
     }
     @Override
-    public List<MedicalHistoryExamDto> queryMedicalHistory(String medicalHistoryId) throws Exception{
-        List<ExamValue> listValue = getListExamValue(medicalHistoryId);
+    public List<MedicalHistoryExamDto> queryMedicalHistory(String medicalHistoryId, int examIndex) throws Exception{
+        List<ExamValue> listValue = getListExamValue(medicalHistoryId, examIndex);
         List<ExamItem> listItem = getListExamItem(listValue);
         HashMap<String, MedicalHistoryExamDto> maps = getMedicalHistory(listValue, listItem);
         List<MedicalHistoryExamDto> list = new ArrayList<>();
@@ -198,7 +199,7 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
      */
     @Override
     public List<MedicalHistoryExamDto> queryMedicalHistoryWithConclusion(String medicalHistoryId ,int examIndex) throws Exception {
-        List<ExamValue> listValue = getListExamValue(medicalHistoryId);
+        List<ExamValue> listValue = getListExamValue(medicalHistoryId, examIndex);
         List<ExamItem> listItem = getListExamItem(listValue);
         HashMap<String, MedicalHistoryExamDto> maps = getMedicalHistory(listValue, listItem);
 
