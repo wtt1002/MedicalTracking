@@ -31,21 +31,21 @@ public class FollowSickHistory extends Model<FollowSickHistory> {
 
     private String followUpId;
 
-    private Integer ischemia;
+    private String ischemia;
 
     private String hemorrhage;
 
     private String revascularization;
 
-    private Integer nyhaRank;
+    private String nyhaRank;
 
-    private Integer isWeak;
+    private String isWeak;
 
-    private Integer isSoreness;
+    private String isSoreness;
 
-    private Integer isSmoke;
+    private String isSmoke;
 
-    private Integer isPatientEdu;
+    private String isPatientEdu;
 
     private String otherInfo;
 

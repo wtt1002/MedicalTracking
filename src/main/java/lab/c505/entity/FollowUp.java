@@ -42,7 +42,7 @@ public class FollowUp extends Model<FollowUp> {
 
     private String finalWay;
 
-    private Integer followUpDuration;
+    private String followUpDuration;
 
     private String recoveryStatus;
 

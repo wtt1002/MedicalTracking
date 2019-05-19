@@ -29,17 +29,17 @@ public class RiskFactors extends Model<RiskFactors> {
     @TableId(value = "risk_factors_id", type = IdType.UUID)
     private String riskFactorsId;
 
-    private Integer isSmoke;
+    private String isSmoke;
 
-    private Integer isHeavy;
+    private String isHeavy;
 
-    private Integer isLessMove;
+    private String isLessMove;
 
-    private Integer bloodPressureControl;
+    private String bloodPressureControl;
 
-    private Integer glycemicControl;
+    private String glycemicControl;
 
-    private Integer bloodLipidControl;
+    private String bloodLipidControl;
 
     private String followUpId;
 
