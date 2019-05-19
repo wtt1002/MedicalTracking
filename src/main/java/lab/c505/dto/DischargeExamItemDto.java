@@ -1,7 +1,11 @@
 package lab.c505.dto;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
+import lab.c505.entity.ExamItem;
+import lab.c505.entity.ExamValue;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 
@@ -21,5 +25,12 @@ public class DischargeExamItemDto {
     private String medicalHistoryId;
     private String shortName;
     private BigDecimal examValue;
-    private String examTime;
+    private String examTimeStr;
+
+    public DischargeExamItemDto(){};
+    public DischargeExamItemDto(ExamItem examItem, ExamValue examValue){
+        BeanUtils.copyProperties(examItem, this);
+        BeanUtils.copyProperties(examValue, this);
+        examTimeStr = examValue.getExamTime().toString();
+    }
 }

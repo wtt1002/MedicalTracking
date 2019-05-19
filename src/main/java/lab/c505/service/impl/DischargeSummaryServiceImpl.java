@@ -82,13 +82,18 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
             //PCI术后检查
             List<DischargeExamItemDto> dischargeExamItemDtos = new ArrayList<>();
             for (ExamValue examValue : examValues) {
-                ExamItem examItem = examItemMapper.selectById(examValue.getExamItemId());
-                DischargeExamItemDto dischargeExamItemDto = new DischargeExamItemDto();
-                dischargeExamItemDto.setExamValue(examValue.getExamValue());
-                dischargeExamItemDto.setExamItemName(examItem.getExamItemName());
-                dischargeExamItemDto.setShortName(examItem.getShortName());
-                dischargeExamItemDto.setExamIndex(examValue.getExamIndex());
-                dischargeExamItemDtos.add(dischargeExamItemDto);
+                QueryWrapper<ExamItem> query = new QueryWrapper<>();
+                query.eq(ExamItem.EXAM_ITEM_ID, examValue.getExamItemId())
+                        .eq(ExamItem.EXAM_CATEGORY_ID, "5");
+                ExamItem examItem = examItemMapper.selectOne(query);
+                if(examItem != null) dischargeExamItemDtos.add(new DischargeExamItemDto(examItem, examValue));
+//                ExamItem examItem = examItemMapper.selectById(examValue.getExamItemId());
+//                DischargeExamItemDto dischargeExamItemDto = new DischargeExamItemDto();
+//                dischargeExamItemDto.setExamValue(examValue.getExamValue());
+//                dischargeExamItemDto.setExamItemName(examItem.getExamItemName());
+//                dischargeExamItemDto.setShortName(examItem.getShortName());
+//                dischargeExamItemDto.setExamIndex(examValue.getExamIndex());
+//                dischargeExamItemDtos.add(dischargeExamItemDto);
             }
             dischargeSummaryDto.setDischargeExamItemDtos(dischargeExamItemDtos);
         }
@@ -108,7 +113,7 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
     public List<DischargeExamItemDto> addDischargeExamItems(List<DischargeExamItemDto> dischargeExamItemDtos) throws Exception {
         for (DischargeExamItemDto dischargeExamItemDto : dischargeExamItemDtos) {
             ExamValue examValue = new ExamValue();
-            examValue.setExamTime(LocalDate.parse(dischargeExamItemDto.getExamTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            //examValue.setExamTime(LocalDate.parse(dischargeExamItemDto.getExamTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             examValue.setExamValue(dischargeExamItemDto.getExamValue());
             examValue.setExamIndex(dischargeExamItemDto.getExamIndex());
             examValue.setMedicalHistoryId(dischargeExamItemDto.getMedicalHistoryId());
@@ -165,7 +170,7 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
             ExamValue examValue = new ExamValue();
             examValue.setExamValueId(dischargeExamItemDto.getExamValueId());
             examValue.setExamIndex(dischargeExamItemDto.getExamIndex());
-            examValue.setExamTime(LocalDate.parse(dischargeExamItemDto.getExamTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            //examValue.setExamTime(LocalDate.parse(dischargeExamItemDto.getExamTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             examValue.setExamValue(dischargeExamItemDto.getExamValue());
             examValue.setMedicalHistoryId(dischargeExamItemDto.getMedicalHistoryId());
             examValue.setExamItemId(getExamItemIdByCode(dischargeExamItemDto.getExamItemCode()));
@@ -189,6 +194,7 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
         return scoreAndVapDto;
     }
 
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Score updateScore(Score score) throws Exception {
         if (scoreMapper.updateById(score) == 0) {
@@ -196,7 +202,7 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
         }
         return score;
     }
-
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public VascularAccessProblem updateVascularAccessProblem(VascularAccessProblem vascularAccessProblem) throws Exception {
         if (vascularAccessProblemMapper.updateById(vascularAccessProblem) == 0) {
@@ -213,7 +219,7 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
         return examValue;
     }
 
-
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Score insertScore(Score score) throws Exception {
         if (scoreMapper.insert(score) != 1) {
@@ -222,6 +228,7 @@ public class DischargeSummaryServiceImpl implements DischargeSummaryService {
         return score;
     }
 
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public VascularAccessProblem insertVascularAccessProblem(VascularAccessProblem vascularAccessProblem) throws Exception {
         if (vascularAccessProblemMapper.insert(vascularAccessProblem) != 1) {

@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
 /**
  * <p>
  * 随访药物不良反应表 服务实现类
@@ -33,8 +31,7 @@ public class FollowSideEffectsServiceImpl extends ServiceImpl<FollowSideEffectsM
     @Override
     @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
     public FollowSideEffects addFsEffects(FollowSideEffects followSideEffects) throws Exception {
-        if(followSideEffectsMapper.insert(followSideEffects
-                .setSideEffectsId(UUID.randomUUID().toString())) == 0){
+        if(followSideEffectsMapper.insert(followSideEffects.setSideEffectsId(null)) == 0){
             throw new Exception("插入FollowSideEffects失败");
         }
         return followSideEffects;
