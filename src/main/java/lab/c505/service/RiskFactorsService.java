@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-02-19
  */
 public interface RiskFactorsService extends IService<RiskFactors> {
-
+    RiskFactors getRiskFactors(String id) throws Exception;
+    RiskFactors addRiskFactors(RiskFactors riskFactors) throws Exception;
+    RiskFactors updateRiskFactors(RiskFactors riskFactors) throws Exception;
 }

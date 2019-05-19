@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-02-19
  */
 public interface FollowSideEffectsService extends IService<FollowSideEffects> {
-
+    FollowSideEffects getFsEffects(String id) throws Exception;
+    FollowSideEffects addFsEffects(FollowSideEffects followSideEffects) throws Exception;
+    FollowSideEffects updateFsEffects(FollowSideEffects followSideEffects) throws Exception;
 }

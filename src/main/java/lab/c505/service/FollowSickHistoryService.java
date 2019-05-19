@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-02-19
  */
 public interface FollowSickHistoryService extends IService<FollowSickHistory> {
-
+    FollowSickHistory getFollowSickHistory(String id) throws Exception;
+    FollowSickHistory addFollowSickHistory(FollowSickHistory followSickHistory) throws Exception;
+    FollowSickHistory updateFollowSickHistory(FollowSickHistory followSickHistory) throws Exception;
 }
