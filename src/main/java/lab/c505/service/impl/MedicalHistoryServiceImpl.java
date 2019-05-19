@@ -214,7 +214,7 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
                         .eq(InspectionConclusion.EXAM_CATEGORY,singleDto.getExamCategoryCode());
                 InspectionConclusion conclusion = inspectionConclusionMapper.selectOne(queryWrapper);
                 if(conclusion != null){
-                    singleDto.setExamConclusion(conclusion.getExamConclusion());
+                    singleDto.setInspectionConclusion(conclusion);
                 }
                 list.add(singleDto);
             }
@@ -236,7 +236,7 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
     public InspectionConclusion updateInspection(InspectionConclusion inspectionConclusion) throws Exception {
         inspectionConclusion.setExamTime(LocalDate.now());
         if(inspectionConclusionMapper.updateById(inspectionConclusion) == 0){
-            throw new Exception("InspectionConclusion 插入失败！");
+            throw new Exception("InspectionConclusion 更新失败！");
         }
         return inspectionConclusion;
     }

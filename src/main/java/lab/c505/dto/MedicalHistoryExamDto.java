@@ -3,6 +3,7 @@ package lab.c505.dto;
 import lab.c505.entity.ExamCategory;
 import lab.c505.entity.ExamItem;
 import lab.c505.entity.ExamValue;
+import lab.c505.entity.InspectionConclusion;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -18,7 +19,7 @@ public class MedicalHistoryExamDto {
 
     private List<MyExamDto> listMyExamDto;
 
-    private String examConclusion;
+    private InspectionConclusion inspectionConclusion;
 
     public MedicalHistoryExamDto(){
 
