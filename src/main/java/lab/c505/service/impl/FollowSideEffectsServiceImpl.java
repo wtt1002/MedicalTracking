@@ -1,5 +1,6 @@
 package lab.c505.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lab.c505.entity.FollowSideEffects;
 import lab.c505.mapper.FollowSideEffectsMapper;
 import lab.c505.service.FollowSideEffectsService;
@@ -25,7 +26,9 @@ public class FollowSideEffectsServiceImpl extends ServiceImpl<FollowSideEffectsM
 
     @Override
     public FollowSideEffects getFsEffects(String id) throws Exception {
-        return followSideEffectsMapper.selectById(id);
+        QueryWrapper<FollowSideEffects> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(FollowSideEffects.FOLLOW_UP_ID, id);
+        return followSideEffectsMapper.selectOne(queryWrapper);
     }
 
     @Override

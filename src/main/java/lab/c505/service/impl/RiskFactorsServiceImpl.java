@@ -1,5 +1,6 @@
 package lab.c505.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lab.c505.entity.RiskFactors;
 import lab.c505.mapper.RiskFactorsMapper;
 import lab.c505.service.RiskFactorsService;
@@ -27,7 +28,9 @@ public class RiskFactorsServiceImpl extends ServiceImpl<RiskFactorsMapper, RiskF
 
     @Override
     public RiskFactors getRiskFactors(String id) throws Exception {
-        return riskFactorsMapper.selectById(id);
+        QueryWrapper<RiskFactors> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(RiskFactors.FOLLOW_UP_ID, id);
+        return riskFactorsMapper.selectOne(queryWrapper);
     }
 
     @Override

@@ -23,15 +23,15 @@ public class RiskFactorsController {
 
     /**
      * 查询单个患者的危险因素
-     * @param rishFactorsId
+     * @param followUpId
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public ResponseObject getSingleRiskFactors(@RequestParam(value = "rishFactorsId") String rishFactorsId) {
+    public ResponseObject getSingleRiskFactors(@RequestParam(value = "followUpId") String followUpId) {
         ResponseObject responseObject = ResponseObject.create();
         try{
-            responseObject.setData(riskFactorsService.getRiskFactors(rishFactorsId))
+            responseObject.setData(riskFactorsService.getRiskFactors(followUpId))
                     .setMsg("查询成功");
         }catch (Exception e){
             e.printStackTrace();

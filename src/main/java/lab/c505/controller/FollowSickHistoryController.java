@@ -26,15 +26,15 @@ public class FollowSickHistoryController {
 
     /**
      * 查询单个患者的出院病史
-     * @param fshId
+     * @param followUpId
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public ResponseObject getSingleFollowUpDetail(@RequestParam(value = "followSickhistoryId") String fshId) {
+    public ResponseObject getSingleFollowUpDetail(@RequestParam(value = "followUpId") String followUpId) {
         ResponseObject responseObject = ResponseObject.create();
         try{
-            responseObject.setData(followSickHistoryService.getFollowSickHistory(fshId))
+            responseObject.setData(followSickHistoryService.getFollowSickHistory(followUpId))
                     .setMsg("查询成功");
         }catch (Exception e){
             e.printStackTrace();

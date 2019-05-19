@@ -26,15 +26,15 @@ public class FollowSideEffectsController {
 
     /**
      * 查询单个患者的不良反应
-     * @param fseId
+     * @param followUpId
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public ResponseObject getSingleFollowSideEffects(@RequestParam(value = "fseId") String fseId) {
+    public ResponseObject getSingleFollowSideEffects(@RequestParam(value = "followUpId") String followUpId) {
         ResponseObject responseObject = ResponseObject.create();
         try{
-            responseObject.setData(followSideEffectsService.getFsEffects(fseId))
+            responseObject.setData(followSideEffectsService.getFsEffects(followUpId))
                     .setMsg("查询成功");
         }catch (Exception e){
             e.printStackTrace();

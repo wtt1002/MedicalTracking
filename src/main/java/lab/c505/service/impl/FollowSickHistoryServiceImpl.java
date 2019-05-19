@@ -1,5 +1,6 @@
 package lab.c505.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lab.c505.entity.FollowSickHistory;
 import lab.c505.mapper.FollowSickHistoryMapper;
 import lab.c505.service.FollowSickHistoryService;
@@ -27,7 +28,9 @@ public class FollowSickHistoryServiceImpl extends ServiceImpl<FollowSickHistoryM
 
     @Override
     public FollowSickHistory getFollowSickHistory(String id) throws Exception {
-        return followSickHistoryMapper.selectById(id);
+        QueryWrapper<FollowSickHistory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(FollowSickHistory.FOLLOW_UP_ID, id);
+        return followSickHistoryMapper.selectOne(queryWrapper);
     }
 
     @Override
