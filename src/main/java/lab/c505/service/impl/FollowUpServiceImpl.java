@@ -2,6 +2,7 @@ package lab.c505.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lab.c505.dto.FollowUpTimeDto;
 import lab.c505.entity.FollowUp;
 import lab.c505.entity.MedicalHistory;
 import lab.c505.mapper.FollowUpMapper;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -31,28 +34,35 @@ public class FollowUpServiceImpl extends ServiceImpl<FollowUpMapper, FollowUp> i
     private FollowUpMapper followUpMapper;
 
     @Override
-    public List<FollowUp> getFollowUp(String medicalHistoryId, Integer page, Integer count) throws Exception {
+    public List<FollowUpTimeDto> getFollowUp(String medicalHistoryId, Integer page, Integer count) throws Exception {
         QueryWrapper<FollowUp> fuQueryWrapper = new QueryWrapper<>();
         fuQueryWrapper.eq(true, FollowUp.MEDICAL_HISTORY_ID, medicalHistoryId);
         fuQueryWrapper.orderByAsc(true, FollowUp.FOLLOW_UP_INDEX);
-        return followUpMapper.selectPage(new Page<>(page, count), fuQueryWrapper).getRecords();
+        List<FollowUp> list =  followUpMapper.selectPage(new Page<>(page, count), fuQueryWrapper).getRecords();
+        List<FollowUpTimeDto> output = new ArrayList<>();
+        for(FollowUp followUp : list){
+            output.add(new FollowUpTimeDto(followUp));
+        }
+        return output;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public FollowUp addFollowUp(FollowUp followUp) throws Exception {
-        if (followUpMapper.insert(followUp) != 1) {
+    public FollowUpTimeDto addFollowUp(FollowUpTimeDto followUpTimeDto) throws Exception {
+        followUpTimeDto.parseTime();
+        if (followUpMapper.insert(followUpTimeDto.getFollowUp().setFollowUpId(UUID.randomUUID().toString())) != 1) {
             throw new Exception("添加失败！");
         }
-        return followUp;
+        return followUpTimeDto;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public FollowUp updateFollowUp(FollowUp followUp) throws Exception {
-        if (followUpMapper.updateById(followUp) == 0) {
+    public FollowUpTimeDto updateFollowUp(FollowUpTimeDto followUpTimeDto) throws Exception {
+        followUpTimeDto.parseTime();
+        if (followUpMapper.updateById(followUpTimeDto.getFollowUp()) == 0) {
             throw new Exception("修改失败");
         }
-        return followUp;
+        return followUpTimeDto;
     }
 }

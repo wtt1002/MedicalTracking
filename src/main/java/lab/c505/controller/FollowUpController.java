@@ -1,6 +1,6 @@
 package lab.c505.controller;
 
-import lab.c505.entity.FollowUp;
+import lab.c505.dto.FollowUpTimeDto;
 import lab.c505.service.FollowUpService;
 import lab.c505.utils.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
 
 /**
  * <p>
@@ -32,8 +31,7 @@ public class FollowUpController {
         ResponseObject responseObject = ResponseObject.create();
         try {
             System.out.print(medicalHistoryId + page + count);
-            List<FollowUp> followUps = followUpService.getFollowUp(medicalHistoryId, page, count);
-            responseObject.setData(followUps).encode();
+            responseObject.setData(followUpService.getFollowUp(medicalHistoryId, page, count));
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
@@ -42,11 +40,10 @@ public class FollowUpController {
 
     @ResponseBody
     @RequestMapping(value = "/addFollowUp", method = RequestMethod.POST)
-    public ResponseObject addPci(@RequestBody FollowUp followUp) {
+    public ResponseObject addPci(@RequestBody FollowUpTimeDto followUpTimeDto) {
         ResponseObject responseObject = ResponseObject.create();
         try {
-            followUpService.addFollowUp(followUp);
-            responseObject.setData(followUp);
+            responseObject.setData(followUpService.addFollowUp(followUpTimeDto));
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }
@@ -55,11 +52,10 @@ public class FollowUpController {
 
     @ResponseBody
     @RequestMapping(value = "/updateFollowUp", method = RequestMethod.POST)
-    public ResponseObject updatePci(@RequestBody FollowUp followUp) {
+    public ResponseObject updatePci(@RequestBody FollowUpTimeDto followUpTimeDto) {
         ResponseObject responseObject = ResponseObject.create();
         try {
-            followUpService.updateFollowUp(followUp);
-            responseObject.setData(followUp);
+            responseObject.setData(followUpService.updateFollowUp(followUpTimeDto));
         } catch (Exception e) {
             responseObject.setMsg(e.getMessage()).setCode(ResponseObject.CODE_SYSTEMERROR);
         }

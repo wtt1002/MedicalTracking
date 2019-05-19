@@ -1,5 +1,6 @@
 package lab.c505.service;
 
+import lab.c505.dto.FollowUpTimeDto;
 import lab.c505.entity.FollowUp;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -15,9 +16,9 @@ import java.util.List;
  */
 public interface FollowUpService extends IService<FollowUp> {
 
-    List<FollowUp> getFollowUp(String medicalHistoryId, Integer page, Integer count) throws Exception;
+    List<FollowUpTimeDto> getFollowUp(String medicalHistoryId, Integer page, Integer count) throws Exception;
 
-    FollowUp addFollowUp(FollowUp followUp) throws Exception;
+    FollowUpTimeDto addFollowUp(FollowUpTimeDto followUpTimeDto) throws Exception;
 
-    FollowUp updateFollowUp(FollowUp followUp) throws Exception;
+    FollowUpTimeDto updateFollowUp(FollowUpTimeDto followUpTimeDto) throws Exception;
 }
