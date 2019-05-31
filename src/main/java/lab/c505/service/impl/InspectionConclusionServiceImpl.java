@@ -7,6 +7,8 @@ import lab.c505.service.InspectionConclusionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -35,6 +37,7 @@ public class InspectionConclusionServiceImpl extends ServiceImpl<InspectionConcl
     }
 
     @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
     public InspectionConclusion updateConclusion(InspectionConclusion inspectionConclusion) throws Exception{
         if (inspectionConclusionMapper.updateById(inspectionConclusion) == 0){
             throw new Exception("更新失败");
@@ -43,9 +46,9 @@ public class InspectionConclusionServiceImpl extends ServiceImpl<InspectionConcl
     }
 
     @Override
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
     public InspectionConclusion insertConclusion(InspectionConclusion inspectionConclusion) throws Exception{
-        String uuid = UUID.randomUUID().toString();
-        inspectionConclusion.setInspectionConclusionId(uuid);
+        inspectionConclusion.setInspectionConclusionId(null);
         if (inspectionConclusionMapper.insert(inspectionConclusion) == 0){
             throw new Exception("插入失败");
         }
