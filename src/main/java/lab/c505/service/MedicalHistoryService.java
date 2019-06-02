@@ -20,6 +20,7 @@ public interface MedicalHistoryService extends IService<MedicalHistory> {
     String getLastMainDiagnose(String patientId);
     IPage<MedicalHistory> getRecordsByPage(Integer page, Integer count, String patientId);
     String addMedicalHistory(MedicalHistory medicalHistory);
+    MedicalHistoryDto updateMedicalHistory(MedicalHistoryDto medicalHistoryDto) throws Exception;
     MedicalHistory getOneMedicalHistory(String medicalHistoryId);
     List<MedicalHistoryExamDto> queryMedicalHistory(String medicalHistoryId, int examIndex) throws Exception;
     List<MyExamDto> insertMedicalExam(List<AddMedicalExamDto> addMedicalExamDtos) throws Exception;
