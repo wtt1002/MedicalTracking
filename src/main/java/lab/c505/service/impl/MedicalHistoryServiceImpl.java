@@ -81,6 +81,16 @@ public class MedicalHistoryServiceImpl extends ServiceImpl<MedicalHistoryMapper,
     }
 
     @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
+    public MedicalHistoryDto updateMedicalHistory(MedicalHistoryDto medicalHistoryDto) throws Exception {
+        medicalHistoryDto.formatTime();
+        if(medicalHistoryMapper.updateById(medicalHistoryDto.getMedicalHistory()) == 0){
+            throw new Exception("更新medicalHistory失败");
+        }
+        return medicalHistoryDto;
+    }
+
+    @Override
     public MedicalHistory getOneMedicalHistory(String medicalHistoryId) {
         return medicalHistoryMapper.selectById(medicalHistoryId);
     }

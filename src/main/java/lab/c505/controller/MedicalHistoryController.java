@@ -88,7 +88,23 @@ public class MedicalHistoryController {
         }
         return response;
     }
-
+    /**
+     * 更新患者病历
+     * @param dto
+     * @return ResponseObject
+     */
+    @ResponseBody
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public ResponseObject updateMedicalHistory(@RequestBody MedicalHistoryDto dto){
+        ResponseObject response = ResponseObject.create();
+        try {
+            response.setData(medicalHistoryService.updateMedicalHistory(dto));
+        }catch (Exception e){
+            e.printStackTrace();
+            response.setMsg("更新失败").setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
     /**
      * 根据病历ID获取病历详情
      * @param medicalHistoryId
