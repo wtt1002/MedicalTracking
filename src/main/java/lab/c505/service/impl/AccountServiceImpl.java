@@ -61,8 +61,13 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     @Override
     @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
     public AccountInfoDto addAccount(Account account) throws Exception {
+        QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(Account.LOGIN_MOBILE, account.getLoginMobile());
+        if(accountMapper.selectOne(queryWrapper) != null){
+            throw new Exception("号码已存在");
+        }
         if(accountMapper.insert(account.setAccountId(null)) == 0){
-            throw new Exception("更新失败");
+            throw new Exception("插入失败");
         }
         Doctor doctor = doctorService.getDoctorById(account.getDoctorId());
         return new AccountInfoDto(account, doctor);
@@ -79,7 +84,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
             output.add(new AccountInfoDto(account,
                     doctorService.getDoctorById(account.getDoctorId())));
         }
-        return null;
+        return output;
     }
 
     @Override
