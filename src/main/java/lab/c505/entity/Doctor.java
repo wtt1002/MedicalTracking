@@ -36,6 +36,8 @@ public class Doctor extends Model<Doctor> {
 
     private String doctorMajor;
 
+    private String hospitalId;
+
     private String deptId;
 
     private String doctorNum;
@@ -74,6 +76,8 @@ public class Doctor extends Model<Doctor> {
     public static final String GENDER = "gender";
 
     public static final String DOCTOR_MAJOR = "doctor_major";
+
+    public static final String HOSPITAL_ID = "hospital_id";
 
     public static final String DEPT_ID = "dept_id";
 

@@ -1,5 +1,8 @@
 package lab.c505.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lab.c505.entity.Doctor;
 import lab.c505.mapper.DoctorMapper;
 import lab.c505.service.DoctorService;
@@ -49,6 +52,14 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
         Doctor doctor = new Doctor();
         doctor.setDoctorName(name).setDeptId(dept);
         insetPatient(doctor);
+    }
+
+    @Override
+    public IPage<Doctor> getDoctorsByPage(Integer page, Integer count, String filter) {
+        QueryWrapper<Doctor> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(Doctor.DOCTOR_NAME,filter);
+        IPage<Doctor> ipage = doctorMapper.selectPage(new Page<Doctor>(page ,count), queryWrapper);
+        return ipage;
     }
 
 

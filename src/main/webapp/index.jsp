@@ -2,7 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html>
 <body>
-<h2>Medical兢兢racking is Started...</h2>
-<h2>致敬兢兢业业的后端开发人员!</h2>
+<h2>Medical tracking is Started...</h2>
+<h2>ପ(´‘▽‘｀)ଓ 向可爱的后端开发人员致敬~~ ପ(´‘▽‘｀)ଓ</h2>
 </body>
 </html>
