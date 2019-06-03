@@ -38,20 +38,66 @@ public class DoctorController {
     @Autowired
     DepartmentService departmentService;
 
+    /**
+     * 添加医生
+     * @param doctor
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public ResponseObject addDoctor(@RequestBody Doctor doctor){
         ResponseObject responseObject = ResponseObject.create();
         try{
-            doctorService.addOnePatient(doctor.getDoctorName(), doctor.getDeptId());
-            responseObject.setData("插入成功");
+
+            responseObject.setMsg("插入成功").setData(doctorService.addOnePatient(doctor));
         }catch (Exception e){
             e.printStackTrace();
             responseObject.setCode(ResponseObject.CODE_SYSTEMERROR).setMsg("插入失败");
         }
         return responseObject;
     }
+    /**
+     * 更新医生信息
+     * @param doctor
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public ResponseObject updateDoctor(@RequestBody Doctor doctor){
+        ResponseObject responseObject = ResponseObject.create();
+        try{
 
+            responseObject.setMsg("更新成功").setData(doctorService.updateDoctor(doctor));
+        }catch (Exception e){
+            e.printStackTrace();
+            responseObject.setCode(ResponseObject.CODE_SYSTEMERROR).setMsg("更新失败");
+        }
+        return responseObject;
+    }
+
+    /**
+     * 删除医生信息
+     * @param doctorId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public ResponseObject deleteDoctor(@RequestParam(value = "hospitalId") String doctorId){
+        ResponseObject responseObject = ResponseObject.create();
+        try{
+            doctorService.deleteDoctor(doctorId);
+            responseObject.setMsg("删除成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            responseObject.setCode(ResponseObject.CODE_SYSTEMERROR).setMsg("删除失败");
+        }
+        return responseObject;
+    }
+    /**
+     * 分页查询医生信息
+     * @param params
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     public ResponseObject getPatientList(@RequestBody Map<String, Object> params){
@@ -82,6 +128,10 @@ public class DoctorController {
         return response;
     }
 
+    /**
+     * 查询医院信息
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getHospital",method = RequestMethod.GET)
     public ResponseObject getAllHospital(){
@@ -94,12 +144,17 @@ public class DoctorController {
         return response;
     }
 
+    /**
+     * 查询医院部门信息
+     * @param hospitalId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getDepartment",method = RequestMethod.GET)
     public ResponseObject getDepartments(@RequestParam(value = "hospitalId") String hospitalId){
         ResponseObject response = ResponseObject.create();
         try {
-            response.setData(hospitalService.getHospitalById(hospitalId));
+            response.setData(departmentService.getDepartmentsByHosId(hospitalId));
         }catch (Exception e){
             response.setCode(ResponseObject.CODE_SYSTEMERROR);
         }

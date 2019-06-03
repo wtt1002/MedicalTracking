@@ -39,19 +39,30 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
         return doctor.getDoctorName();
     }
 
-    @Transactional(propagation= Propagation.REQUIRED,rollbackFor=Exception.class)
-    public void insetPatient(Doctor doctor) throws Exception{
-        if(doctorMapper.insert(doctor) == 0){
+    @Override
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    public Doctor addOnePatient(Doctor doctor) throws Exception {
+        if(doctorMapper.insert(doctor.setDoctorId(null)) == 0){
             throw new Exception("插入医生失败");
         }
+        return doctor;
     }
 
     @Override
     @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
-    public void addOnePatient(String name, String dept) throws Exception {
-        Doctor doctor = new Doctor();
-        doctor.setDoctorName(name).setDeptId(dept);
-        insetPatient(doctor);
+    public Doctor updateDoctor(Doctor doctor) throws Exception {
+        if(doctorMapper.updateById(doctor) == 0){
+            throw new Exception("更新医生失败");
+        }
+        return doctor;
+    }
+
+    @Override
+    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    public void deleteDoctor(String id) throws Exception {
+        if(doctorMapper.deleteById(id) == 0){
+            throw new Exception("删除医生失败，可能是外键依赖所致");
+        }
     }
 
     @Override
