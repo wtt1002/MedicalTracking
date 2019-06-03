@@ -3,6 +3,7 @@ package lab.c505.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lab.c505.dto.DoctorBriefInfoDto;
+import lab.c505.dto.DoctorDto;
 import lab.c505.dto.PatientBriefInfoDto;
 import lab.c505.entity.Doctor;
 import lab.c505.entity.Hospital;
@@ -40,16 +41,16 @@ public class DoctorController {
 
     /**
      * 添加医生
-     * @param doctor
+     * @param doctorDto
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public ResponseObject addDoctor(@RequestBody Doctor doctor){
+    public ResponseObject addDoctor(@RequestBody DoctorDto doctorDto){
         ResponseObject responseObject = ResponseObject.create();
         try{
 
-            responseObject.setMsg("插入成功").setData(doctorService.addOnePatient(doctor));
+            responseObject.setMsg("插入成功").setData(doctorService.addOnePatient(doctorDto.toEntity().getDoctor()));
         }catch (Exception e){
             e.printStackTrace();
             responseObject.setCode(ResponseObject.CODE_SYSTEMERROR).setMsg("插入失败");
@@ -58,16 +59,16 @@ public class DoctorController {
     }
     /**
      * 更新医生信息
-     * @param doctor
+     * @param doctorDto
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public ResponseObject updateDoctor(@RequestBody Doctor doctor){
+    public ResponseObject updateDoctor(@RequestBody DoctorDto doctorDto){
         ResponseObject responseObject = ResponseObject.create();
         try{
 
-            responseObject.setMsg("更新成功").setData(doctorService.updateDoctor(doctor));
+            responseObject.setMsg("更新成功").setData(doctorService.updateDoctor(doctorDto.toEntity().getDoctor()));
         }catch (Exception e){
             e.printStackTrace();
             responseObject.setCode(ResponseObject.CODE_SYSTEMERROR).setMsg("更新失败");
@@ -82,7 +83,7 @@ public class DoctorController {
      */
     @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
-    public ResponseObject deleteDoctor(@RequestParam(value = "hospitalId") String doctorId){
+    public ResponseObject deleteDoctor(@RequestParam(value = "doctorId") String doctorId){
         ResponseObject responseObject = ResponseObject.create();
         try{
             doctorService.deleteDoctor(doctorId);
