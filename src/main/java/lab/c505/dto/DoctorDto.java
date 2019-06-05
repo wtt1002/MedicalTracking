@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class DoctorDto {
     Doctor doctor;
     String qcDateStr;
-    String opqcDate;
+    String opqcDateStr;
 
     public DoctorDto toEntity(){
         if (doctor != null){
@@ -27,7 +27,7 @@ public class DoctorDto {
                 doctor.setQcDate(null);
             }
             try {
-                doctor.setOpqcDate(LocalDate.parse((opqcDate)));
+                doctor.setOpqcDate(LocalDate.parse((opqcDateStr)));
             }catch (Exception e){
                 doctor.setOpqcDate(null);
             }

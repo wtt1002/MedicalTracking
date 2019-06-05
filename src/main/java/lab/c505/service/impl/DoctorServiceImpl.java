@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * <p>
  * 医生表 服务实现类
@@ -69,8 +71,13 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
     public IPage<Doctor> getDoctorsByPage(Integer page, Integer count, String filter) {
         QueryWrapper<Doctor> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(Doctor.DOCTOR_NAME,filter);
-        IPage<Doctor> ipage = doctorMapper.selectPage(new Page<Doctor>(page ,count), queryWrapper);
-        return ipage;
+        return doctorMapper.selectPage(new Page<>(page ,count), queryWrapper);
+
+    }
+
+    @Override
+    public List<Doctor> getDoctors() {
+        return doctorMapper.selectList(null);
     }
 
 
