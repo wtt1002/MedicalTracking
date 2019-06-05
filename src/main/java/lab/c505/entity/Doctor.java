@@ -32,7 +32,7 @@ public class Doctor extends Model<Doctor> {
 
     private String doctorName;
 
-    private Integer gender;
+    private String gender;
 
     private String doctorMajor;
 

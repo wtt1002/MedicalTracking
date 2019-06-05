@@ -41,8 +41,8 @@ public class DoctorController {
 
     /**
      * 添加医生
-     * @param doctorDto
-     * @return
+     * @param doctorDto 医生实体dto
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
@@ -59,8 +59,8 @@ public class DoctorController {
     }
     /**
      * 更新医生信息
-     * @param doctorDto
-     * @return
+     * @param doctorDto 医生实体dto
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/update",method = RequestMethod.POST)
@@ -78,8 +78,8 @@ public class DoctorController {
 
     /**
      * 删除医生信息
-     * @param doctorId
-     * @return
+     * @param doctorId 医生id
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
@@ -96,8 +96,8 @@ public class DoctorController {
     }
     /**
      * 分页查询医生信息
-     * @param params
-     * @return
+     * @param params 分解查询参数 page count filter
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/list",method = RequestMethod.POST)
@@ -119,7 +119,7 @@ public class DoctorController {
                     dtos.add(dto);
                 }
             }
-            response.setData(dtos).encode().setCode(ResponseObject.CODE_SUCCESS);
+            response.setData(dtos).setCode(ResponseObject.CODE_SUCCESS);
         }catch (IllegalArgumentException e){
             response.setData(e.getMessage()).setCode(ResponseObject.CODE_PARAMERROR).setMsg(e.getMessage());
         } catch (Exception e){
@@ -131,7 +131,7 @@ public class DoctorController {
 
     /**
      * 查询医院信息
-     * @return
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/getHospital",method = RequestMethod.GET)
@@ -147,8 +147,8 @@ public class DoctorController {
 
     /**
      * 查询医院部门信息
-     * @param hospitalId
-     * @return
+     * @param hospitalId 医院id
+     * @return ResponseObject
      */
     @ResponseBody
     @RequestMapping(value = "/getDepartment",method = RequestMethod.GET)
@@ -161,5 +161,18 @@ public class DoctorController {
         }
         return response;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/getDoctors",method = RequestMethod.GET)
+    public ResponseObject getDoctors(){
+        ResponseObject response = ResponseObject.create();
+        try {
+            response.setData(doctorService.getDoctors());
+        }catch (Exception e){
+            response.setCode(ResponseObject.CODE_SYSTEMERROR);
+        }
+        return response;
+    }
+
 }
 

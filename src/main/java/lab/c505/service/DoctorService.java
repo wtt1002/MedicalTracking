@@ -5,6 +5,7 @@ import lab.c505.entity.Doctor;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.print.Doc;
+import java.util.List;
 
 /**
  * <p>
@@ -21,4 +22,5 @@ public interface DoctorService extends IService<Doctor> {
     Doctor updateDoctor(Doctor doctor) throws Exception;
     void deleteDoctor(String id) throws Exception;
     IPage<Doctor> getDoctorsByPage(Integer page, Integer count, String filter);
+    List<Doctor> getDoctors();
 }
