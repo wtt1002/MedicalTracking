@@ -2,9 +2,12 @@ package lab.c505.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lab.c505.dto.PatientDto;
 import lab.c505.dto.PatientBriefInfoDto;
+import lab.c505.entity.AccountPatient;
 import lab.c505.entity.Patient;
+import lab.c505.service.AccountPatientService;
 import lab.c505.service.MedicalHistoryService;
 import lab.c505.service.PatientService;
 import lab.c505.utils.ResponseObject;
@@ -32,6 +35,8 @@ public class PatientController {
     PatientService patientService;
     @Autowired
     MedicalHistoryService medicalHistoryService;
+    @Autowired
+    AccountPatientService accountPatientService;
 
     /**
      * 查询所有患者
@@ -45,7 +50,11 @@ public class PatientController {
         List<Patient> list;
         List<PatientBriefInfoDto> dtos = new ArrayList<>();
         try {
-            IPage<Patient> ipage = patientService.getPatientsByPage((Integer) params.get("page"), (Integer) params.get("count"), (String) params.get("filter"));
+//            IPage<Patient> ipage = patientService.getPatientsByPage((String) params.get("accountId"),
+//                    (Integer) params.get("page"), (Integer) params.get("count"), (String) params.get("filter"));
+            String filter = "".equals(params.get("filter"))? null: (String) params.get("filter");
+            IPage<Patient> ipage = accountPatientService.getPatientsByPage(new Page<>((Integer) params.get("page"),
+                    (Integer) params.get("count")), (String) params.get("accountId"), filter);
             list = ipage.getRecords();
             if (list != null){
                 for (Patient p : list) {
@@ -79,7 +88,13 @@ public class PatientController {
     public ResponseObject addPatient(@RequestBody PatientDto addPatientDto){
         ResponseObject response = ResponseObject.create();
         try {
-            patientService.addOnePatient(addPatientDto.setBirthday().getPatient());
+            Patient patient = addPatientDto.setBirthday().getPatient();
+            patientService.addOnePatient(patient);
+            // 维护新增患者与对应管理员的信息
+            AccountPatient accountPatient = new AccountPatient();
+            accountPatient.setAccountId(addPatientDto.getAccountId());
+            accountPatient.setPatientId(patient.getPatientId());
+            accountPatientService.addOneAccountPatient(accountPatient);
             response.setData("插入成功");
         }catch (Exception e){
             e.printStackTrace();

@@ -30,7 +30,8 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     @Autowired
     PatientMapper patientMapper;
     @Override
-    public IPage<Patient> getPatientsByPage(Integer page, Integer count, String filter) {
+    public IPage<Patient> getPatientsByPage(String accountId, Integer page, Integer count, String filter) {
+
         QueryWrapper<Patient> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(Patient.NAME, filter);
         IPage<Patient> ipage = patientMapper.selectPage(new Page<Patient>(page ,count), queryWrapper);

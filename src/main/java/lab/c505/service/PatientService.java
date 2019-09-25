@@ -15,7 +15,7 @@ import java.util.List;
  * @since 2019-02-19
  */
 public interface PatientService extends IService<Patient> {
-    IPage<Patient> getPatientsByPage(Integer page, Integer count, String filter);
+    IPage<Patient> getPatientsByPage(String accountId, Integer page, Integer count, String filter);
     void addOnePatient(Patient patient);
     void uptOnePatient(Patient patient);
     void removeOnePatient(String patientId);

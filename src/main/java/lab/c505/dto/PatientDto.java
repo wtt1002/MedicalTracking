@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @Data
 @Accessors(chain = true)
 public class PatientDto {
+    private String accountId;
     private Patient patient;
     private String birthdayStr;
 
@@ -32,5 +33,9 @@ public class PatientDto {
         if (patient != null && patient.getBirthday() != null){
             this.birthdayStr = patient.getBirthday().toString();
         }
+    }
+
+    public String getAccountId() {
+        return accountId;
     }
 }
